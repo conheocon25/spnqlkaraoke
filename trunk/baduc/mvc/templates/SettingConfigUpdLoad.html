@@ -1,0 +1,34 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>		
+	</head>
+<body>
+	<div data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">
+				<form tal:attributes="action Config/getURLUpdExe" method="post" data-ajax="false">
+					<ul data-role="listview" data-theme="c" data-dividertheme="b">
+						<li data-role="list-divider" tal:content="Title" />
+						<li data-role="fieldcontain">
+							<label for="Param" class="text">Tham số:</label>
+							<input class="required" id="Param" name="Param" type="text" tal:attributes="value Config/getParam"/>
+						</li>
+						<li data-role="fieldcontain">
+							<label for="Value" class="text">Giá trị:</label>
+							<input class="required" id="Value" name="Value" type="text" tal:attributes="value Config/getValue"/>
+						</li>
+						<button type="submit" data-corners="false" data-theme="c"  data-icon="edit" name="submit" value="submit-value">Cập nhật</button>
+					</ul>						
+				</form>
+			</div>
+			<div class="content-secondary">
+				
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+</body>
+</html>

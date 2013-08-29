@@ -1,0 +1,107 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>				
+	</head>
+<body>
+	<div data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">
+				<div data-role="collapsible-set" data-inset="false" data-theme="b" data-content-theme="d" tal:condition="php:@\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isSeller()" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+					<div data-role="collapsible">
+						<h3>BÁO CÁO / BÁN HÀNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">							
+							<li><a target="blank" tal:attributes="href '/report/selling/today/detail'">HÔM NAY</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/yesterday/detail'">HÔM QUA</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/thisweek/detail'">TUẦN NÀY</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/lastweek/detail'">TUẦN TRƯỚC</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/thismonth/detail'">THÁNG NÀY</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/lastmonth/detail'">THÁNG TRƯỚC</a></li>
+						</ul>
+					</div>					
+				</div>				
+				<div data-role="collapsible-set" data-inset="false" data-theme="b" data-content-theme="d" tal:condition="php:@\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isManager()" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+					<div data-role="collapsible">
+						<h3>BÁO CÁO / BÁN HÀNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">							
+							<li><a target="blank" tal:attributes="href '/report/selling/today/detail'">HÔM NAY</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/yesterday/detail'">HÔM QUA</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/thisweek/detail'">TUẦN NÀY</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/lastweek/detail'">TUẦN TRƯỚC</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/thismonth/detail'">THÁNG NÀY</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/lastmonth/detail'">THÁNG TRƯỚC</a></li>
+						</ul>
+					</div>					
+				</div>
+				
+				<div data-role="collapsible-set" data-inset="false" data-theme="b" data-content-theme="d" tal:condition="php:@\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isAdmin()" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+					<div data-role="collapsible">
+						<h3>BÁO CÁO / BÁN HÀNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">							
+							<li><a target="blank" tal:attributes="href '/report/selling/today/detail'">HÔM NAY</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/yesterday/detail'">HÔM QUA</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/thisweek/detail'">TUẦN NÀY</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/lastweek/detail'">TUẦN TRƯỚC</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/thismonth/detail'">THÁNG NÀY</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/lastmonth/detail'">THÁNG TRƯỚC</a></li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>BÁO CÁO / MẪU BIỂU</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">
+							<li><a target="blank" tal:attributes="href '/report/recipe/print'">ÁNH XẠ</a></li>
+							<li><a target="blank" tal:attributes="href '/report/form/store/print'">MẪU NHẬT KÝ</a></li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>BÁO CÁO / TỔNG HỢP</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">
+							<li tal:repeat="Track Tracks">
+								<a tal:attributes="href Track/getURLView">
+									TỪ [<span tal:content="Track/getDateStartPrint" />] ĐẾN [<span tal:content="Track/getDateEndPrint"/>]
+								</a>
+								<a tal:attributes="href Track/getURLDelLoad" data-theme="c" data-icon="delete" />
+							</li>
+							<li>
+								<a data-corners="false" data-ajax="false" href="/report/ins/load" data-theme="c">Thêm mới ...</a>
+								<a data-ajax="false" href="/report/ins/load" data-theme="c" data-icon="plus" />
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div data-role="collapsible-set" data-inset="false" data-theme="b" data-content-theme="d" tal:condition="php:@\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isViewer()" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+					<div data-role="collapsible">
+						<h3>BÁO CÁO / BÁN HÀNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">							
+							<li><a target="blank" tal:attributes="href '/report/selling/today/detail'">HÔM NAY</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/yesterday/detail'">HÔM QUA</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/thisweek/detail'">TUẦN NÀY</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/lastweek/detail'">TUẦN TRƯỚC</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/thismonth/detail'">THÁNG NÀY</a></li>
+							<li><a target="blank" tal:attributes="href '/report/selling/lastmonth/detail'">THÁNG TRƯỚC</a></li>
+						</ul>
+					</div>					
+					<div data-role="collapsible">
+						<h3>BÁO CÁO / TỔNG HỢP</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">
+							<li tal:repeat="Track Tracks">
+								<a tal:attributes="href Track/getURLView">
+									TỪ [<span tal:content="Track/getDateStartPrint" />] ĐẾN [<span tal:content="Track/getDateEndPrint"/>]
+								</a>
+								<a tal:attributes="href Track/getURLDelLoad" data-theme="c" data-icon="delete" />
+							</li>							
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="content-secondary">
+				
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>		
+</body>
+</html>

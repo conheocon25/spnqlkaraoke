@@ -1,0 +1,163 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>		
+	</head>
+<body>
+	<div data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">
+				<div data-role="collapsible-set" data-inset="false" data-theme="b" data-content-theme="d" tal:condition="php:@\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isAdmin()" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+					<div data-role="collapsible">
+						<h3>BÁN HÀNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">							
+							<li tal:repeat="Domain DomainAll">
+								<a data-ajax="false" tal:attributes="href Domain/getURLSelling" tal:content="Domain/getName"/>
+							</li>
+						</ul>
+					</div>					
+					<div data-role="collapsible">
+						<h3>NHẬP HÀNG / NHÀ PHÂN PHỐI</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">
+							<li tal:repeat="Supplier SupplierAll" >
+								<a data-ajax="false" tal:attributes="href Supplier/getURLImport"><span tal:content="Supplier/getName"/></a>
+							</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>KHOẢN CHI / CHUNG CHUNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">
+							<li tal:repeat="Term TermPaidAll" >
+								<a data-ajax="false" tal:attributes="href Term/getURLDetail"><span tal:content="Term/getName"/></a>
+							</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>KHOẢN CHI / NHÀ PHÂN PHỐI</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">
+							<li tal:repeat="Supplier SupplierAll" >
+								<a data-ajax="false" tal:attributes="href Supplier/getURLPaid"><span tal:content="Supplier/getName"/></a>
+							</li>
+							<li><a data-ajax="false" href="/paid/payroll">BẢNG LƯƠNG</a></li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>KHOẢN THU / CHUNG CHUNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">
+							<li tal:repeat="Term TermCollectAll" >
+								<a data-ajax="false" tal:attributes="href Term/getURLCollect"><span tal:content="Term/getName"/></a>
+							</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>KHOẢN THU / KHÁCH HÀNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">							
+							<li tal:repeat="Customer CustomerAll">
+								<a data-ajax="false" tal:attributes="href Customer/getURLCollect" tal:content="Customer/getName"/>
+							</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>HỆ THỐNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">
+							<li><a data-ajax="false" href="/report">BÁO CÁO</a></li>
+							<li><a data-ajax="false" href="/change/pass/load">ĐỔI MẬT KHẨU</a></li>
+							<li><a data-ajax="false" href="/setting">THIẾT LẬP</a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<div data-role="collapsible-set" data-inset="false" data-theme="b" data-content-theme="d" tal:condition="php:@\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isManager()" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+					<div data-role="collapsible">
+						<h3>BÁN HÀNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">							
+							<li tal:repeat="Domain DomainAll">
+								<a data-ajax="false" tal:attributes="href Domain/getURLSelling" tal:content="Domain/getName"/>
+							</li>
+						</ul>
+					</div>					
+					<div data-role="collapsible">
+						<h3>NHẬP HÀNG / NHÀ PHÂN PHỐI</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">
+							<li tal:repeat="Supplier SupplierAll" >
+								<a data-ajax="false" tal:attributes="href Supplier/getURLImport"><span tal:content="Supplier/getName"/></a>
+							</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>KHOẢN CHI / CHUNG CHUNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">
+							<li tal:repeat="Term TermPaidAll" >
+								<a data-ajax="false" tal:attributes="href Term/getURLDetail"><span tal:content="Term/getName"/></a>
+							</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>KHOẢN CHI / NHÀ PHÂN PHỐI</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">
+							<li tal:repeat="Supplier SupplierAll" >
+								<a data-ajax="false" tal:attributes="href Supplier/getURLPaid"><span tal:content="Supplier/getName"/></a>
+							</li>
+							<li><a data-ajax="false" href="/paid/payroll">BẢNG LƯƠNG</a></li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>KHOẢN THU / CHUNG CHUNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">
+							<li tal:repeat="Term TermCollectAll" >
+								<a data-ajax="false" tal:attributes="href Term/getURLCollect"><span tal:content="Term/getName"/></a>
+							</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>KHOẢN THU / KHÁCH HÀNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">							
+							<li tal:repeat="Customer CustomerAll">
+								<a data-ajax="false" tal:attributes="href Customer/getURLCollect" tal:content="Customer/getName"/>
+							</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>HỆ THỐNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">
+							<li><a data-ajax="false" href="/report">BÁO CÁO</a></li>
+							<li><a data-ajax="false" href="/change/pass/load">ĐỔI MẬT KHẨU</a></li>
+						</ul>
+					</div>
+				</div>
+				<div data-role="collapsible-set" data-inset="false" data-theme="b" data-content-theme="d" tal:condition="php:@\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isSeller()" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+					<div data-role="collapsible">
+						<h3>BÁN HÀNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">							
+							<li tal:repeat="Domain DomainAll">
+								<a data-ajax="false" tal:attributes="href Domain/getURLSelling" tal:content="Domain/getName"/>
+							</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>HỆ THỐNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">
+							<li><a data-ajax="false" href="/change/pass/load">ĐỔI MẬT KHẨU</a></li>
+						</ul>
+					</div>
+				</div>
+				<div data-role="collapsible-set" data-inset="false" data-theme="b" data-content-theme="d" tal:condition="php:@\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isViewer()" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+					<div data-role="collapsible">
+						<h3>HỆ THỐNG</h3>
+						<ul data-role="listview" data-theme="c" data-dividertheme="b">
+							<li><a data-ajax="false" href="/report">BÁO CÁO</a></li>
+							<li><a data-ajax="false" href="/change/pass/load">ĐỔI MẬT KHẨU</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="content-secondary">
+				
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+</body>
+</html>

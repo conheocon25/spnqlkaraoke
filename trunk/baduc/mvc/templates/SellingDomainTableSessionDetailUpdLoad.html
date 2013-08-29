@@ -1,0 +1,35 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/SellingDomainTableSessionDetailUpdLoad.js"/>
+	</head>
+<body>
+	<div class="type-interior" data-role="page">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">				
+				<form id="FormSellingDomainTableSessionDetailUpdLoad" tal:attributes="action SD/getURLUpdExe" method="post">
+					<ul data-role="listview" data-theme="c" data-dividertheme="b">
+						<li data-role="list-divider" tal:content="Title" />
+						<li data-role="fieldcontain">
+							<label for="Count">Số lượng:</label>
+							<input class="required" type="text" name="Count" id="Count" tal:attributes="value SD/getCount"/>
+						</li>
+						<li data-role="fieldcontain">
+							<label for="Price" class="text">Đơn giá:</label>
+							<input class="required" id="Price" name="Price" type="text" tal:attributes="value SD/getPrice"/>
+						</li>
+						<button data-corners="false" type="submit" data-theme="c"  data-icon="edit" name="submit" value="submit-value">Cập nhật</button>
+					</ul>
+				</form>				
+			</div>
+			<div class="content-secondary">
+				
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+</body>
+</html>

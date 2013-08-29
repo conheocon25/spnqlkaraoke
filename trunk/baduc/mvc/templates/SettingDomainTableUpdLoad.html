@@ -1,0 +1,37 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>		
+	</head>
+<body>	
+	<div data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">				
+				<form tal:attributes="action Table/getURLUpdExe" method="post" data-ajax="false">
+					<ul data-role="listview" data-theme="c" data-dividertheme="b">
+						<li data-role="list-divider" tal:content="Title" />
+						<li data-role="fieldcontain">
+							<label for="Name" class="text">Tên phòng:</label>
+							<input class="required" id="Name" name="Name" type="text" tal:attributes="value Table/getName"/>
+						</li>							
+						<li data-role="fieldcontain">
+							<label for="Type" class="select">Loại:</label>
+							<select name="Type" id="Type" data-role="slider">
+								<option value="0" tal:attributes="selected Table/getType">Thường</option>
+								<option value="1" tal:attributes="selected Table/getType">VIP</option>
+							</select>
+						</li>
+						<button data-corners="false" type="submit" data-theme="c"  data-icon="edit" name="submit" value="submit-value">Cập nhật</button>
+					</ul>
+				</form>
+			</div>
+			<div class="content-secondary">
+				
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+</body>
+</html>

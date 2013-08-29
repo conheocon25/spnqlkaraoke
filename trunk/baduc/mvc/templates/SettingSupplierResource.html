@@ -1,0 +1,43 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>		
+	</head>
+<body>	
+	<div tal:attributes="id Supplier/getIdPrint" data-role="page" class="supplier type-interior" tal:repeat="Supplier Suppliers">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">				
+				<ul data-role="listview">
+					<li data-role="list-divider" tal:content="php:'THIẾT LẬP / NHÀ CUNG CẤP / ' . mb_strtoupper(Supplier->getName(),'UTF8')"/>
+					<li tal:repeat="Resource Supplier/getResources">
+						<a data-ajax="false" tal:attributes="href Resource/getURLUpdLoad">
+							<span tal:content="repeat/Resource/number" />. <span tal:content="Resource/getName"/>
+							 (<span tal:content="Resource/getUnit"/>)
+							<p class="ui-li-aside"><strong tal:content="Resource/getPricePrint"></strong></p>
+						</a>
+						<a tal:attributes="href Resource/getURLDelLoad" data-theme="c" data-icon="delete" />
+					</li>
+					<li>
+						<a data-ajax="false" tal:attributes="href Supplier/getURLResourceInsLoad">Thêm mới ...</a>
+						<a data-ajax="false" tal:attributes="href Supplier/getURLResourceInsLoad" data-theme="c" data-icon="delete" />
+					</li>
+				</ul>
+			</div>
+			<div class="content-secondary">				
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-role="list-divider" tal:content="string:NHÀ CUNG CẤP"/>
+					<li tal:attributes="data-theme php: Supplier1->getId()==Supplier->getId() ? 'a' : 'c'" tal:repeat="Supplier1 Suppliers1">
+						<a data-transition="none" tal:attributes="href Supplier1/getURLResource">
+							<span tal:content="repeat/Supplier1/number" />. <span tal:content="Supplier1/getName" />
+						</a>
+					</li>
+				</ul>
+				<a data-corners="false" data-ajax="false" tal:attributes="href Supplier/getURLUpdLoad" data-role="button" data-icon="edit" data-theme="c">Cập nhật</a>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+</body>
+</html>

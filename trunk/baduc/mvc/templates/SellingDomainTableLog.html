@@ -1,0 +1,35 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>		
+	</head>
+<body>
+	<div data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">					
+				<ul data-role="listview" data-theme="c" data-dividertheme="b">
+					<li data-role="list-divider" tal:content="Title" />
+					<li tal:repeat="Session SessionAll" >
+						<a rel="external" tal:attributes="href Session/getURLDetail">
+							<span tal:content="Session/getDateTimePrint"/>, <span tal:content="Session/getUser/getName"/>
+							<span class="ui-li-count" tal:content="Session/getValuePrint" />
+						</a>
+						<a tal:attributes="href Session/getURLDelLoad" data-theme="c" data-icon="delete" />
+					</li>
+				</ul>				
+			</div>
+			<div class="content-secondary">				
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-role="list-divider">CÁC TRANG</li>
+					<li tal:repeat="P PN/getPages" tal:attributes="data-theme php: P->getId()==Page?'a':'c'">
+						<a data-ajax="false" tal:attributes="href P/getURL" tal:content="P/getName"/>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>		
+	</head>
+<body>
+	<div data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">			
+			<div class="content-primary">
+				<ul data-role="listview" tal:condition="Session">
+					<li data-role="list-divider" data-theme="b" tal:content="Title"/>
+					<li data-theme="d">
+						<a rel="external" data-ajax="false" tal:attributes="href Session/getURLUpdLoad">
+							<span tal:content="Session/getTimeRangePrint" />, <B tal:content="Session/getHours" /> 
+							<span class="ui-li-aside" tal:content="Session/getValueHoursPrint"/>						
+						</a>
+					</li>
+					<li data-theme="c" tal:repeat="Detail Session/getDetails" >						
+						<strong>
+							<span tal:content="repeat/Detail/number"/>. <span tal:content="Detail/getCourse/getName"/> 
+							(<span tal:content="Detail/getCourse/getUnit"/>) <span tal:content="Detail/getCount"/> x <span tal:content="Detail/getPricePrint"/>
+						</strong>						
+						<span class="ui-li-count" tal:content="Detail/getValuePrint" />
+					</li>
+					<li data-theme="d">
+						<h4>TỔNG CỘNG:<span class="ui-li-aside" tal:content="Session/getValuePrint"/></h4>
+						<p>( <span tal:content="Session/getValueStrPrint" /> )</p>
+					</li>
+					<li data-theme="c">
+						<a data-corners="false" target="blank" data-ajax="false"  data-theme="c" tal:attributes="href Session/getURLPrint" data-icon="grid">IN PHIẾU</a>
+					</li>
+				</ul>				
+			</div>
+			<div class="content-secondary">
+				
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+</body>
+</html>

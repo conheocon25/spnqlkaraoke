@@ -1,0 +1,46 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>		
+	</head>
+<body>
+	<div id="main" data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">
+				<form tal:attributes="action Resource/getURLUpdExe" method="post" data-ajax="false">
+					<ul data-role="listview" data-theme="c" data-dividertheme="b">
+						<li data-role="list-divider" tal:content="Title" />
+						<li data-role="fieldcontain">
+							<label for="Name" class="text">Tên:</label>
+							<input class="required" id="Name" name="Name" type="text" tal:attributes="value Resource/getName" />	
+						</li>							
+						<li data-role="fieldcontain">
+							<label for="Unit" class="text">Đơn vị:</label>
+							<select name="Unit" id="Unit">
+								<option tal:repeat="Unit Units" tal:attributes="value Unit/getName;selected php:Resource->getUnit()==Unit->getName()">
+									<span tal:content="Unit/getName" />
+								</option>
+							</select>	
+						</li>
+						<li data-role="fieldcontain">
+							<label for="Price" class="text">Giá:</label>
+							<input class="required" id="Price" name="Price" type="text" tal:attributes="value Resource/getPrice"/>	
+						</li>
+						<li data-role="fieldcontain">
+							<label for="Description" class="text">Diễn giải:</label>
+							<input id="Description" name="Description" type="text" tal:attributes="value Resource/getDescription"/>	
+						</li>							
+						<button data-corners="false" type="submit" data-theme="c"  data-icon="edit" name="submit" value="submit-value">Cập nhật</button>
+					</ul>
+				</form>
+			</div>
+			<div class="content-secondary">
+				
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+</body>
+</html>
