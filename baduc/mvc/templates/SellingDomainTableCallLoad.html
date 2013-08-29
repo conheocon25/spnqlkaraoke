@@ -1,0 +1,110 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/SellingDomainTableCallLoad.js"/>
+	</head>
+<body>
+	<div id="called" data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary Table" tal:attributes="alt Table/getURLCallExe">
+				
+					<ul data-role="listview" data-collapsed="false" data-theme="c" data-content-theme="b">
+						<li data-role="list-divider" tal:content="string:BỔ SUNG MÓN ĐÃ GỌI" />
+						<li tal:repeat="Detail Table/getSessionActive/getDetails">
+							<a href="#" class="Plus" tal:attributes="alt Detail/getCourse/getId">
+								<span tal:content="Detail/getCourse/getName"/> (<span tal:content="Detail/getCourse/getUnit" />)
+								<span class="ui-li-count" tal:content="Detail/getCount" />
+							</a>
+							<a href="#" class="Minus" tal:attributes="alt Detail/getCourse/getId" data-theme="c" data-icon="minus"/>
+						</li>
+					</ul>
+				
+			</div>
+			<div class="content-secondary">
+				<div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d">
+					
+						<ul data-role="listview" data-theme="c" data-dividertheme="d">\
+							<li data-role="list-divider" >DANH MỤC</li>
+							<li data-theme="a"><a tal:attributes="href '#called'">ĐÃ GỌI</a></li>
+							<li><a tal:attributes="href '#top20'">TOP 20</a></li>
+							<li tal:repeat="Category1 Categories1">
+								<a tal:attributes="href php:'#'.Category1->getIdPrint()" tal:content="Category1/getName" data-transtition="none"/>
+							</li>
+						</ul>
+					
+				</div>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+	<div id="top20" data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary Table" tal:attributes="alt Table/getURLCallExe">				
+					
+					<ul data-role="listview" data-theme="c" data-dividertheme="b">
+						<li data-role="list-divider" tal:content="string:CHỌN TRONG TỐP 20" />
+						<li class="Course" tal:repeat="Course CoursesTop20" tal:attributes="alt Course/getId">							
+							<a href="#" class="Plus" tal:attributes="alt Course/getId">
+								<span tal:content="Course/getName"/> (<span tal:content="Course/getUnit" />)
+								<span class="ui-li-count" tal:content="string:0" />
+							</a>
+							<a href="#" class="Minus" tal:attributes="alt Course/getId" data-theme="c" data-icon="minus"/>
+						</li>
+					</ul>
+				
+			</div>
+			<div class="content-secondary">
+				<div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d">
+					
+						<ul data-role="listview" data-theme="c" data-dividertheme="d">
+							<li data-role="list-divider" >DANH MỤC</li>
+							<li><a tal:attributes="href '#called'">ĐÃ GỌI</a></li>
+							<li data-theme="a"><a tal:attributes="href '#top20'">TOP 20</a></li>
+							<li tal:repeat="Category1 Categories1">
+								<a tal:attributes="href php:'#'.Category1->getIdPrint()" tal:content="Category1/getName" data-transtition="none"/>
+							</li>
+						</ul>
+					
+				</div>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+	<div tal:attributes="id Category/getIdPrint" data-role="page" class="type-interior" tal:repeat="Category Categories">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary Table" tal:attributes="alt Table/getURLCallExe">
+									
+					<ul data-role="listview" data-theme="c" data-dividertheme="b">
+						<li data-role="list-divider" tal:content="php:'CHỌN ' . mb_strtoupper(Category->getName(),'UTF8')" />
+						<li class="Course" tal:repeat="Course Category/getCourses" tal:attributes="alt Course/getId">
+							<a href="#" class="Plus" tal:attributes="alt Course/getId">
+								<span tal:content="Course/getName"/> (<span tal:content="Course/getUnit" />)
+								<span class="ui-li-count" tal:content="string:0" />
+							</a>
+							<a href="#" class="Minus" tal:attributes="alt Course/getId" data-theme="c" data-icon="minus"/>
+						</li>
+					</ul>
+				
+			</div>
+			<div class="content-secondary">
+				
+					<ul data-role="listview" data-theme="c" data-dividertheme="d">
+						<li data-role="list-divider" >DANH MỤC</li>
+						<li><a tal:attributes="href '#called'">ĐÃ GỌI</a></li>
+						<li><a tal:attributes="href '#top20'">TOP 20</a></li>
+						<li tal:repeat="Category1 Categories1" tal:attributes="data-theme php:Category1->getId()==Category->getId()?'a':'c'">
+							<a tal:attributes="href php:'#'.Category1->getIdPrint()" tal:content="Category1/getName" data-transtition="none" />
+						</li>
+					</ul>
+
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+</body>
+</html>

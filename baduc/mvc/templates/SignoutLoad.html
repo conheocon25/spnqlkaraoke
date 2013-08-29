@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+	<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>
+	<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.validate.min.js"/>
+	<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.validate.messages_vi.js"/>
+	
+	<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.jqcrypt.pack.js"></script>
+	<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/SigninLoad.js"/>
+</head>
+<body>
+	<div data-role="page" id="normal" class="type-interior">						
+		<span metal:use-macro="macros.xhtml/header"/>		
+		<div data-role="content">
+			<div class="content-primary">
+				<form id="FormSignin" tal:attributes="action '/signout/exe'" method="post">
+					<ul data-role="listview" data-theme="a" data-dividertheme="b">
+						<li data-role="list-divider" >BẠN CÓ CHẮC CHẮN THOÁT KHỎI HỆ THỐNG KHÔNG ?</li>						
+						
+						<button data-corners="false" type="submit" data-theme="c"  name="submit" value="submit-value">Thoát Khỏi Hệ Thống</button>
+					</ul>
+				</form>
+			</div>
+			
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>	
+</body>
+</html>

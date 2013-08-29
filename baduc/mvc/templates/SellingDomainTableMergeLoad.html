@@ -1,0 +1,34 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/SellingDomainTableMergeLoad.js"/>
+	</head>
+<body>
+	<div data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary TitleTable" tal:attributes="alt Table/getURLMergeExe">
+				<div class="TitleTable" tal:attributes="alt Table/getURLMoveExe" data-role="collapsible" data-collapsed="false" data-theme="e" data-content-theme="d">
+					<h3 tal:content="php:'GOM ' . mb_strtoupper(Table->getName(),'UTF8') . ' VỚI'" />
+					<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" tal:repeat="Domain Domains">
+						<h3 tal:content="Domain/getName" tal:condition="Domain/getGuestTables/count"/>
+						<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="d" tal:condition="Domain/getGuestTables/count">
+							<li class="Table" tal:repeat="Table1 Domain/getGuestTables" tal:attributes="alt Table1/getId">
+								<span tal:condition="php: (Table1->getName() != Table->getName())? true : false">
+									<a href="#"><span tal:content="Table1/getName"/></a>
+								</span>						
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="content-secondary">
+				
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+</body>
+</html>

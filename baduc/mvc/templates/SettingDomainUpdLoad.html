@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>		
+	</head>
+<body>	
+	<div data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">				
+				<form tal:attributes="action Domain/getURLUpdExe" method="post" data-ajax="false">
+					<ul data-role="listview" data-theme="c" data-dividertheme="b">
+						<li data-role="list-divider" tal:content="Title" />
+						<li data-role="fieldcontain">
+							<label for="Name" class="text">Tên:</label>
+							<input class="required" id="Name" name="Name" type="text" tal:attributes="value Domain/getName"/>
+						</li>							
+						<button data-corners="false" type="submit" data-theme="c"  data-icon="edit" name="submit" value="submit-value">Cập nhật</button>
+					</ul>
+				</form>
+			</div>
+			<div class="content-secondary">
+				
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+</body>
+</html>

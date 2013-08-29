@@ -1,0 +1,43 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>		
+	</head>
+<body>	
+	<div tal:repeat="Category Categories" data-role="page" class="type-interior" tal:attributes="id Category/getIdPrint">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">				
+				<ul data-role="listview">
+					<li data-role="list-divider" tal:content="php:'THIẾT LẬP / ' . mb_strtoupper(Category->getName(),'UTF8')" />
+					<li tal:repeat="Course Category/getCourses">
+						<a data-ajax="false" tal:attributes="href Course/getURLUpdLoad">
+							<span tal:content="repeat/Course/number"/>. <span tal:content="Course/getName"/>
+							(<span tal:content="Course/getUnit"/>)
+							<p class="ui-li-aside"><strong tal:content="Course/getPrice1Print"></strong></p>
+						</a>
+						<a tal:attributes="href Course/getURLDelLoad" data-theme="c" data-icon="delete"/>
+					</li>
+					<li>
+						<a data-ajax="false" tal:attributes="href Category/getURLCourseInsLoad" data-theme="c">Thêm mới ...</a>
+						<a data-ajax="false" tal:attributes="href Category/getURLCourseInsLoad" data-theme="c" data-icon="plus"/>
+					</li>
+				</ul>
+			</div>
+			<div class="content-secondary">				
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-role="list-divider">DANH MỤC</li>
+					<li tal:repeat="Category1 Categories1" tal:attributes="data-theme php: Category1->getId()==Category->getId() ? 'a':'c'">
+						<a data-transition="none" tal:attributes="href Category1/getURLCourse">
+							<span tal:content="repeat/Category1/number" />. <span tal:content="Category1/getName" />
+						</a>
+					</li>
+				</ul>
+				<a data-corners="false" data-ajax="false" tal:attributes="href Category/getURLUpdLoad" data-role="button" data-icon="edit" data-theme="c">Cập nhật</a>
+			</div>
+		</div><!-- /content -->
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+</body>
+</html>

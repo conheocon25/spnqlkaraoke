@@ -1,0 +1,64 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+	<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>
+	<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.validate.min.js"/>
+	<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.validate.messages_vi.js"/>	
+	<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.jqcrypt.pack.js"></script>
+	<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/SigninLoad.js"/>
+</head>
+<body>
+	<div data-role="page" id="normal" class="type-interior">						
+		<span metal:use-macro="macros.xhtml/header"/>		
+		<div data-role="content">
+			<div class="content-primary">
+				<form id="FormSignin" tal:attributes="action '/signin/exe'" method="post">
+					<ul data-role="listview" data-theme="c" data-dividertheme="b">
+						<li data-role="list-divider" tal:content="Title" />
+						<li data-role="fieldcontain">
+							<label for="Email" class="text">Email:</label>
+							<input id="Email" name="Email" type="text" class="email required" minlength="5"/>
+						</li>
+						<li data-role="fieldcontain">
+							<label for="Pass" class="text">Mật khẩu:</label>
+							<input id="Pass" name="Pass" type="Password" class="required" minlength="5"/>
+						</li>
+						<button data-corners="false" type="submit" data-theme="c"  data-icon="check" name="submit" value="submit-value">Đăng nhập</button>
+					</ul>
+				</form>
+			</div>
+			<div class="content-secondary">
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-theme="a"><a data-transition="none" href='#normal'>THÔNG THƯỜNG</a></li>
+					<li data-theme="c"><a data-transition="none" href='#barcode'>QUÉT THẺ</a></li>
+				</ul>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+	<div data-role="page" id="barcode" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>		
+		<div data-role="content">
+			<div class="content-primary">
+				<form id="FormBarcode" tal:attributes="action '/signin/exe'" method="post">
+					<ul data-role="listview" data-theme="c" data-dividertheme="b">
+						<li data-role="list-divider" tal:content="Title" />
+						<li data-role="fieldcontain">
+							<label for="Barcode" class="text">Đặt con trỏ chuột vào và quét:</label>
+							<input id="Barcode" name="Barcode" type="text" minlength="5"/>
+						</li>						
+					</ul>
+				</form>
+			</div>
+			<div class="content-secondary">
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-theme="c"><a data-transition="none" href='#normal'>THÔNG THƯỜNG</a></li>
+					<li data-theme="a"><a data-transition="none" href='#barcode'>QUÉT THẺ</a></li>
+				</ul>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+</body>
+</html>

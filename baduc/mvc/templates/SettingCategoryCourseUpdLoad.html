@@ -1,0 +1,54 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>		
+	</head>
+<body>
+	<div data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">				
+				<form tal:attributes="action Course/getURLUpdExe" method="post" data-ajax="false">
+					<ul data-role="listview" data-theme="c" data-dividertheme="b">
+						<li data-role="list-divider" tal:content="Title" />
+						<li data-role="fieldcontain">
+							<label for="IdCategory" class="text">Danh mục:</label>
+							<select name="IdCategory" id="IdCategory">
+								<option tal:repeat="Category1 CategoryAll" tal:attributes="value Category1/getId;selected php:Category1->getId()==Category->getId()">
+									<span tal:content="Category1/getName" />
+								</option>
+							</select>
+						</li>
+						<li data-role="fieldcontain">
+							<label for="Name" class="text">Tên món:</label>
+							<input class="required" id="Name" name="Name" type="text" tal:attributes="value Course/getName" />
+						</li>
+						<li data-role="fieldcontain">
+							<label for="ShortName" class="text">Tên rút gọn:</label>
+							<input class="required" id="ShortName" name="ShortName" type="text" tal:attributes="value Course/getShortName"/>
+						</li>
+						<li data-role="fieldcontain">
+							<label for="Unit" class="text">Đơn vị:</label>
+							<select name="Unit" id="Unit">
+								<option tal:repeat="Unit UnitAll" tal:attributes="value Unit/getName;selected php:Course->getUnit()==Unit->getName()">
+									<span tal:content="Unit/getName" />
+								</option>
+							</select>
+						</li>
+						<li data-role="fieldcontain">
+							<label for="Price1" class="text">Giá:</label>
+							<input class="required"  id="Price1" name="Price1" type="text" tal:attributes="value Course/getPrice1"/>
+						</li>
+						<button data-corners="false" type="submit" data-theme="c"  data-icon="edit" name="submit" value="submit-value">Cập nhật</button>
+					</ul>
+				</form>
+			</div>
+			<div class="content-secondary">				
+				<a data-corners="false" data-ajax="false" tal:attributes="href Course/getURLRecipe" data-role="button" data-icon="edit" data-theme="c">Công thức</a>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+</body>
+</html>

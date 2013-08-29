@@ -1,0 +1,37 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>		
+	</head>
+<body>
+	<div data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">				
+				<ul data-role="listview" data-theme="c" data-dividertheme="b">
+					<li data-role="list-divider" tal:content="php:'BÁN HÀNG / ' . mb_strtoupper(Domain->getName(),'UTF8')" />
+					<li tal:repeat="Table Domain/getTables" tal:attributes="data-theme php:Table->getSessionActive()?'e':'c'">
+						<a tal:attributes="href Table/getURLDetail">
+							<span tal:content="repeat/Table/number" />. <span tal:content="Table/getName" />
+							<span class="ui-li-count" tal:content="Table/getSessionActive/getValuePrint|string:0 đ" />
+						</a>
+						<a data-ajax="false" tal:attributes="href Table/getURLLog" data-theme="c" data-icon="gear" />
+					</li>
+				</ul>
+			</div>
+			<div class="content-secondary">									
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-role="list-divider">BÁN HÀNG</li>
+					<li tal:repeat="Domain1 DomainAll" tal:attributes="data-theme php:Domain1->getId()==Domain->getId()?'a':'c'">
+						<a data-transition="none" tal:attributes="href Domain1/getURLSelling">
+							<span tal:content="repeat/Domain1/number" />. <span tal:content="Domain1/getName" /> (<span tal:content="Domain1/getTables/count"/>)
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>	
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>
+	</head>
+<body>
+	<!-- EMPLOYEE !-->
+	<div id="employee" data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">
+				<ul data-role="listview" data-theme="c">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP / DANH SÁCH NHÂN VIÊN" />
+					<li tal:repeat="Employee EmployeeAll">
+						<a tal:attributes="href Employee/getURLUpdLoad" data-ajax="false">
+							<strong tal:content="repeat/Employee/number" />. <strong tal:content="Employee/getName" />
+						</a>
+						<a tal:attributes="href Employee/getURLDelLoad" data-theme="c" data-icon="delete" />
+					</li>
+					<li>
+						<a data-ajax="false" data-corners="false" data-theme="e" href="/setting/employee/ins/load" data-icon="plus">Thêm mới ...</a>
+						<a href="/setting/employee/ins/load" data-theme="c" data-icon="plus" />
+					</li>
+				</ul>				
+			</div>
+			<div class="content-secondary">								
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP" />
+					<li><a href="/setting#category" data-transition="none" data-inline="true">DANH MỤC MÓN</a></li>
+					<li><a href="/setting#domain" data-transition="none" data-inline="true">KHU VỰC QUÁN</a></li>
+					<li><a href="/setting#supplier" data-transition="none" data-inline="true">NHÀ CUNG CẤP</a></li>
+					<li><a href="/setting#user" data-transition="none" data-inline="true">NGƯỜI DÙNG</a></li>
+					<li><a href="/setting#customer" data-transition="none" data-inline="true">KHÁCH HÀNG</a></li>					
+					<li><a href="/setting#unit" data-transition="none" data-inline="true">ĐƠN VỊ TÍNH</a></li>
+					<li data-theme="a"><a href="/setting#employee" data-transition="none" data-inline="true">NHÂN VIÊN</a></li>
+					<li><a href="/setting#term" data-transition="none" data-inline="true">KHOẢN CHI</a></li>
+					<li><a href="/setting#collect" data-transition="none" data-inline="true">KHOẢN THU</a></li>
+					<li><a href="/setting#config" data-transition="none" data-inline="true">CẤU HÌNH</a></li>
+				</ul>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+	
+	<!-- UNIT !-->
+	<div id="unit" data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">
+				<ul data-role="listview" data-theme="c">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP / ĐƠN VỊ TÍNH" />					
+					<li tal:repeat="Unit UnitAll">
+						<a tal:attributes="href Unit/getURLUpdLoad" data-ajax="false">
+							<strong tal:content="repeat/Unit/number" />. <strong tal:content="Unit/getName" />
+						</a>
+						<a tal:attributes="href Unit/getURLDelLoad" data-theme="c" data-icon="delete" />
+					</li>
+					<li>
+						<a data-ajax="false" data-corners="false" data-theme="e" href="/setting/unit/ins/load" data-icon="plus">Thêm mới ...</a>
+						<a href="/setting/unit/ins/load" data-theme="e" data-icon="plus" />
+					</li>
+				</ul>				
+			</div>
+			<div class="content-secondary">								
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP" />
+					<li><a href="/setting#category" data-transition="none" data-inline="true">DANH MỤC MÓN</a></li>
+					<li><a href="/setting#domain" data-transition="none" data-inline="true">KHU VỰC QUÁN</a></li>
+					<li><a href="/setting#supplier" data-transition="none" data-inline="true">NHÀ CUNG CẤP</a></li>
+					<li><a href="/setting#user" data-transition="none" data-inline="true">NGƯỜI DÙNG</a></li>
+					<li><a href="/setting#customer" data-transition="none" data-inline="true">KHÁCH HÀNG</a></li>
+					<li data-theme="a"><a href="/setting#unit" data-transition="none" data-inline="true">ĐƠN VỊ TÍNH</a></li>
+					<li><a href="/setting#employee" data-transition="none" data-inline="true">NHÂN VIÊN</a></li>
+					<li><a href="/setting#term" data-transition="none" data-inline="true">KHOẢN CHI</a></li>
+					<li><a href="/setting#collect" data-transition="none" data-inline="true">KHOẢN THU</a></li>
+					<li><a href="/setting#config" data-transition="none" data-inline="true">CẤU HÌNH</a></li>
+				</ul>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+	
+	<!-- CATEGORY !-->
+	<div id="category" data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">				
+				<ul data-role="listview" data-theme="c">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP / DANH MỤC MÓN" />
+					<li tal:repeat="Category CategoryAll">
+						<a tal:attributes="href Category/getURLCourse" data-ajax="false">
+							<strong tal:content="repeat/Category/number" />. <strong tal:content="Category/getName" />
+							<strong class="ui-li-aside"><span tal:content="Category/getCourses/count" /> món</strong>
+						</a>
+						<a tal:attributes="href Category/getURLDelLoad" data-theme="c" data-icon="delete" />
+					</li>
+					<li>
+						<a data-ajax="false" data-corners="false" data-theme="c" href="/setting/category/ins/load">Thêm mới ...</a>
+						<a href="/setting/category/ins/load" data-theme="c" data-icon="plus" />
+					</li>
+				</ul>
+			</div>
+			<div class="content-secondary">
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP" />
+					<li data-theme="a"><a href="/setting#category" data-transition="none" data-inline="true">DANH MỤC MÓN</a></li>
+					<li><a href="/setting#domain" data-transition="none" data-inline="true">KHU VỰC QUÁN</a></li>
+					<li><a href="/setting#supplier" data-transition="none" data-inline="true">NHÀ CUNG CẤP</a></li>
+					<li><a href="/setting#user" data-transition="none" data-inline="true">NGƯỜI DÙNG</a></li>
+					<li><a href="/setting#customer" data-transition="none" data-inline="true">KHÁCH HÀNG</a></li>
+					<li><a href="/setting#unit" data-transition="none" data-inline="true">ĐƠN VỊ TÍNH</a></li>
+					<li><a href="/setting#employee" data-transition="none" data-inline="true">NHÂN VIÊN</a></li>
+					<li><a href="/setting#term" data-transition="none" data-inline="true">KHOẢN CHI</a></li>
+					<li><a href="/setting#collect" data-transition="none" data-inline="true">KHOẢN THU</a></li>
+					<li><a href="/setting#config" data-transition="none" data-inline="true">CẤU HÌNH</a></li>
+				</ul>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+	
+	<!-- DOMAIN !-->
+	<div id="domain" data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">				
+				<ul data-role="listview">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP / KHU VỰC QUÁN" />
+					<li tal:repeat="Domain DomainAll">
+						<a data-ajax="false" tal:attributes="href Domain/getURLTable">
+							<span tal:content="repeat/Domain/number" />. <span tal:content="Domain/getName" />
+							<span class="ui-li-aside"><span tal:content="Domain/getTables/count" /> phòng</span>
+						</a>
+						<a tal:attributes="href Domain/getURLDelLoad" data-theme="c" data-icon="delete" />
+					</li>
+					<li>
+						<a data-ajax="false" data-corners="false" href="/setting/domain/ins/load" data-theme="c">Thêm mới ...</a>
+						<a data-ajax="false" href="/setting/domain/ins/load" data-theme="c" data-icon="plus" />
+					</li>
+				</ul>
+			</div>
+			<div class="content-secondary">				
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP" />
+					<li><a href="/setting#category" data-transition="none" data-inline="true">DANH MỤC MÓN</a></li>
+					<li data-theme="a"><a href="/setting#domain" data-transition="none" data-inline="true">KHU VỰC QUÁN</a></li>
+					<li><a href="/setting#supplier" data-transition="none" data-inline="true">NHÀ CUNG CẤP</a></li>
+					<li><a href="/setting#user" data-transition="none" data-inline="true">NGƯỜI DÙNG</a></li>
+					<li><a href="/setting#customer" data-transition="none" data-inline="true">KHÁCH HÀNG</a></li>
+					<li><a href="/setting#unit" data-transition="none" data-inline="true">ĐƠN VỊ TÍNH</a></li>
+					<li><a href="/setting#employee" data-transition="none" data-inline="true">NHÂN VIÊN</a></li>
+					<li><a href="/setting#term" data-transition="none" data-inline="true">KHOẢN CHI</a></li>
+					<li><a href="/setting#collect" data-transition="none" data-inline="true">KHOẢN THU</a></li>
+					<li><a href="/setting#config" data-transition="none" data-inline="true">CẤU HÌNH</a></li>
+				</ul>				
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+	
+	<!-- USER !-->
+	<div id="user" data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">				
+				<ul data-role="listview">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP / NGƯỜI DÙNG" />
+					<li tal:repeat="User UserAll">
+						<a data-ajax="false" tal:attributes="href User/getURLUpdLoad">
+							<span tal:content="User/getName"/>
+							<p class="ui-li-aside"><strong tal:content="User/getEmail"></strong></p>
+						</a>
+						<a tal:attributes="href User/getURLDelLoad" data-theme="c" data-icon="delete" />
+					</li>
+					<li>
+						<a data-ajax="false" data-corners="false" href="/setting/user/ins/load" data-theme="c">Thêm mới ...</a>
+						<a data-ajax="false" href="/setting/user/ins/load" data-theme="c" data-icon="plus" />
+					</li>
+				</ul>				
+			</div>
+			<div class="content-secondary">				
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP" />
+					<li><a href="/setting#category" data-transition="none" data-inline="true">DANH MỤC MÓN</a></li>
+					<li><a href="/setting#domain" data-transition="none" data-inline="true">KHU VỰC QUÁN</a></li>
+					<li><a href="/setting#supplier" data-transition="none" data-inline="true">NHÀ CUNG CẤP</a></li>
+					<li data-theme="a"><a href="/setting#user" data-transition="none" data-inline="true">NGƯỜI DÙNG</a></li>
+					<li><a href="/setting#customer" data-transition="none" data-inline="true">KHÁCH HÀNG</a></li>
+					<li><a href="/setting#unit" data-transition="none" data-inline="true">ĐƠN VỊ TÍNH</a></li>
+					<li><a href="/setting#employee" data-transition="none" data-inline="true">NHÂN VIÊN</a></li>
+					<li><a href="/setting#term" data-transition="none" data-inline="true">KHOẢN CHI</a></li>
+					<li><a href="/setting#collect" data-transition="none" data-inline="true">KHOẢN THU</a></li>
+					<li><a href="/setting#config" data-transition="none" data-inline="true">CẤU HÌNH</a></li>
+				</ul>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+	
+	<!-- SUPPLIER !-->
+	<div id="supplier" data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">
+				<ul data-role="listview">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP / NHÀ CUNG CẤP" />
+					<li tal:repeat="Supplier SupplierAll">
+						<a data-ajax="false" tal:attributes="href Supplier/getURLResource">
+							<span tal:content="repeat/Supplier/number"/>. <span tal:content="Supplier/getName"/>
+							<p class="ui-li-aside"><strong tal:content="Supplier/getPhone"></strong></p>
+						</a>
+						<a tal:attributes="href Supplier/getURLDelLoad" data-theme="c" data-icon="delete" />
+					</li>
+					<li>
+						<a data-ajax="false" data-corners="false" href="/setting/supplier/ins/load" data-theme="c">Thêm mới ...</a>
+						<a data-ajax="false" href="/setting/supplier/ins/load" data-theme="c" data-icon="plus" />
+					</li>
+				</ul>
+			</div>
+			<div class="content-secondary">				
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP" />
+					<li><a href="/setting#category" data-transition="none" data-inline="true">DANH MỤC MÓN</a></li>
+					<li><a href="/setting#domain" data-transition="none" data-inline="true">KHU VỰC QUÁN</a></li>
+					<li data-theme="a"><a href="/setting#supplier" data-transition="none" data-inline="true">NHÀ CUNG CẤP</a></li>
+					<li><a href="/setting#user" data-transition="none" data-inline="true">NGƯỜI DÙNG</a></li>
+					<li><a href="/setting#customer" data-transition="none" data-inline="true">KHÁCH HÀNG</a></li>
+					<li><a href="/setting#unit" data-transition="none" data-inline="true">ĐƠN VỊ TÍNH</a></li>
+					<li><a href="/setting#employee" data-transition="none" data-inline="true">NHÂN VIÊN</a></li>
+					<li><a href="/setting#term" data-transition="none" data-inline="true">KHOẢN CHI</a></li>
+					<li><a href="/setting#collect" data-transition="none" data-inline="true">KHOẢN THU</a></li>
+					<li><a href="/setting#config" data-transition="none" data-inline="true">CẤU HÌNH</a></li>
+				</ul>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+	
+	<!-- CUSTOMER !-->
+	<div id="customer" data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">				
+				<ul data-role="listview" data-theme="c" data-filter="true" data-filter-placeholder="gõ vào TÊN hoặc MÃ KHÁCH HÀNG">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP / KHÁCH HÀNG" />
+					<li tal:repeat="Customer CustomerAll">
+						<a data-ajax="false" tal:attributes="href Customer/getURLUpdLoad">
+							<span tal:content="repeat/Customer/number"/>. <span tal:content="Customer/getName"/>
+							<p class="ui-li-aside"><strong tal:content="Customer/getCard"></strong></p>
+						</a>
+						<a tal:attributes="href Customer/getURLDelLoad" data-theme="c" data-icon="delete" />
+					</li>
+					<li>
+						<a data-ajax="false" data-corners="false" href="/setting/customer/ins/load" data-theme="c">Thêm mới ...</a>
+						<a data-ajax="false" href="/setting/customer/ins/load" data-theme="c" data-icon="plus" />
+					</li>
+				</ul>
+			</div>
+			<div class="content-secondary">
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP" />
+					<li><a href="/setting#category" data-transition="none" data-inline="true">DANH MỤC MÓN</a></li>
+					<li><a href="/setting#domain" data-transition="none" data-inline="true">KHU VỰC QUÁN</a></li>
+					<li><a href="/setting#supplier" data-transition="none" data-inline="true">NHÀ CUNG CẤP</a></li>
+					<li><a href="/setting#user" data-transition="none" data-inline="true">NGƯỜI DÙNG</a></li>
+					<li data-theme="a"><a href="/setting#customer" data-transition="none" data-inline="true">KHÁCH HÀNG</a></li>
+					<li><a href="/setting#unit" data-transition="none" data-inline="true">ĐƠN VỊ TÍNH</a></li>
+					<li><a href="/setting#employee" data-transition="none" data-inline="true">NHÂN VIÊN</a></li>
+					<li><a href="/setting#term" data-transition="none" data-inline="true">KHOẢN CHI</a></li>
+					<li><a href="/setting#collect" data-transition="none" data-inline="true">KHOẢN THU</a></li>
+					<li><a href="/setting#config" data-transition="none" data-inline="true">CẤU HÌNH</a></li>
+				</ul>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+	
+	<!-- PAID !-->
+	<div id="term" data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">
+				<ul data-role="listview" data-theme="c">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP / KHOẢN CHI" />
+					<li tal:repeat="Term TermPaidAll">
+						<a data-ajax="false" tal:attributes="href Term/getURLUpdLoad">
+							<span tal:content="repeat/Term/number"/>. <span tal:content="Term/getName"/>
+							<p class="ui-li-aside"><strong tal:content="Term/getTypePrint"></strong></p>
+						</a>
+						<a tal:attributes="href Term/getURLDelLoad" data-theme="c" data-icon="delete" />
+					</li>
+					<li>
+						<a data-ajax="false" data-corners="false" href="/setting/termpaid/ins/load" data-theme="c">Thêm mới ...</a>
+						<a data-ajax="false" href="/setting/termpaid/ins/load" data-theme="c" data-icon="plus" />
+					</li>
+				</ul>
+			</div>
+			<div class="content-secondary">
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP" />
+					<li><a href="/setting#category" data-transition="none" data-inline="true">DANH MỤC MÓN</a></li>
+					<li><a href="/setting#domain" data-transition="none" data-inline="true">KHU VỰC QUÁN</a></li>
+					<li><a href="/setting#supplier" data-transition="none" data-inline="true">NHÀ CUNG CẤP</a></li>
+					<li><a href="/setting#user" data-transition="none" data-inline="true">NGƯỜI DÙNG</a></li>
+					<li><a href="/setting#customer" data-transition="none" data-inline="true">KHÁCH HÀNG</a></li>
+					<li><a href="/setting#unit" data-transition="none" data-inline="true">ĐƠN VỊ TÍNH</a></li>
+					<li><a href="/setting#employee" data-transition="none" data-inline="true">NHÂN VIÊN</a></li>
+					<li data-theme="a"><a href="/setting#term" data-transition="none" data-inline="true">KHOẢN CHI</a></li>
+					<li><a href="/setting#collect" data-transition="none" data-inline="true">KHOẢN THU</a></li>
+					<li><a href="/setting#config" data-transition="none" data-inline="true">CẤU HÌNH</a></li>
+				</ul>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+	
+	<!-- collect !-->
+	<div id="collect" data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">
+				<ul data-role="listview">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP / KHOẢN THU" />
+					<li tal:repeat="Term TermCollectAll">
+						<a data-ajax="false" tal:attributes="href Term/getURLUpdLoad">
+							<span tal:content="repeat/Term/number"/>. <span tal:content="Term/getName"/>
+						</a>
+						<a tal:attributes="href Term/getURLDelLoad" data-theme="c" data-icon="delete" />
+					</li>
+					<li>
+						<a data-ajax="false" data-corners="false" href="/setting/termcollect/ins/load" data-theme="c">Thêm mới ...</a>
+						<a data-ajax="false" href="/setting/termcollect/ins/load" data-theme="c" data-icon="plus" />
+					</li>					
+				</ul>				
+			</div>
+			<div class="content-secondary">				
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP" />
+					<li><a href="/setting#category" data-transition="none" data-inline="true">DANH MỤC MÓN</a></li>
+					<li><a href="/setting#domain" data-transition="none" data-inline="true">KHU VỰC QUÁN</a></li>
+					<li><a href="/setting#supplier" data-transition="none" data-inline="true">NHÀ CUNG CẤP</a></li>
+					<li><a href="/setting#user" data-transition="none" data-inline="true">NGƯỜI DÙNG</a></li>
+					<li><a href="/setting#customer" data-transition="none" data-inline="true">KHÁCH HÀNG</a></li>
+					<li><a href="/setting#unit" data-transition="none" data-inline="true">ĐƠN VỊ TÍNH</a></li>
+					<li><a href="/setting#employee" data-transition="none" data-inline="true">NHÂN VIÊN</a></li>
+					<li><a href="/setting#term" data-transition="none" data-inline="true">KHOẢN CHI</a></li>
+					<li data-theme="a"><a href="/setting#collect" data-transition="none" data-inline="true">KHOẢN THU</a></li>
+					<li><a href="/setting#config" data-transition="none" data-inline="true">CẤU HÌNH</a></li>
+				</ul>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+	
+	<!-- CONFIG !-->
+	<div id="config" data-role="page" class="type-interior">
+		<span metal:use-macro="macros.xhtml/header"/>
+		<div data-role="content">
+			<div class="content-primary">				
+				<ul data-role="listview">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP / CẤU HÌNH" />
+					<li tal:repeat="Config ConfigAll">
+						<a data-ajax="false" tal:attributes="href Config/getURLUpdLoad">
+							<span tal:content="repeat/Config/number"/>. <span tal:content="Config/getParam"/>
+							<p class="ui-li-aside"><strong tal:content="Config/getValue"></strong></p>
+						</a>
+						<a tal:attributes="href Config/getURLDelLoad" data-theme="c" data-icon="delete" />
+					</li>
+					<li>
+						<a data-ajax="false" data-corners="false" href="/setting/config/ins/load" data-theme="c">Thêm mới ...</a>
+						<a data-ajax="false" href="/setting/config/ins/load" data-theme="c" data-icon="plus" />
+					</li>					
+				</ul>				
+			</div>
+			<div class="content-secondary">				
+				<ul data-role="listview" data-theme="c" data-dividertheme="d">
+					<li data-role="list-divider" tal:content="string:THIẾT LẬP" />
+					<li><a href="/setting#category" data-transition="none" data-inline="true">DANH MỤC MÓN</a></li>
+					<li><a href="/setting#domain" data-transition="none" data-inline="true">KHU VỰC QUÁN</a></li>
+					<li><a href="/setting#supplier" data-transition="none" data-inline="true">NHÀ CUNG CẤP</a></li>
+					<li><a href="/setting#user" data-transition="none" data-inline="true">NGƯỜI DÙNG</a></li>
+					<li><a href="/setting#customer" data-transition="none" data-inline="true">KHÁCH HÀNG</a></li>
+					<li><a href="/setting#unit" data-transition="none" data-inline="true">ĐƠN VỊ TÍNH</a></li>
+					<li><a href="/setting#employee" data-transition="none" data-inline="true">NHÂN VIÊN</a></li>
+					<li><a href="/setting#term" data-transition="none" data-inline="true">KHOẢN CHI</a></li>
+					<li><a href="/setting#collect" data-transition="none" data-inline="true">KHOẢN THU</a></li>
+					<li data-theme="a"><a href="/setting#config" data-transition="none" data-inline="true">CẤU HÌNH</a></li>
+				</ul>
+			</div>
+		</div>
+		<span metal:use-macro="macros.xhtml/footer"/>
+	</div>
+</body>
+</html>
