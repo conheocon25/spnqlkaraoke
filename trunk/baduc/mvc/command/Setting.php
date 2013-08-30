@@ -15,16 +15,7 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mCategory = new \MVC\Mapper\Category();
-			$mEmployee = new \MVC\Mapper\Employee();
-			$mDomain = new \MVC\Mapper\Domain();
-			$mSupplier = new \MVC\Mapper\Supplier();			
-			$mUnit = new \MVC\Mapper\Unit();
-			$mCustomer = new \MVC\Mapper\Customer();
-			$mTermPaid = new \MVC\Mapper\TermPaid();
-			$mTermCollect = new \MVC\Mapper\TermCollect();
-			$mUser = new \MVC\Mapper\User();			
-			$mConfig = new \MVC\Mapper\Config();
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -44,8 +35,16 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
+			$Title = "THIẾT LẬP";
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app")				
+			);
+			
+			//-------------------------------------------------------------
+			//THAM SỐ GỬI ĐI
+			//-------------------------------------------------------------
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', '/app');
+			$request->setObject('Navigation', $Navigation);
 			
 			$request->setObject('CategoryAll', $CategoryAll);
 			$request->setObject('SupplierAll', $SupplierAll);
