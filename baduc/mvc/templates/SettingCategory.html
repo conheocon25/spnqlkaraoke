@@ -21,23 +21,21 @@
 									<tr>
 										<th width="30">STT</th>
 										<th>TÊN</th>
+										<th width="120">MÓN</th>
 										<th width="30">XÓA</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr tal:repeat="Category CategoryAll1">
-										<td align="center">
-											<div tal:content="repeat/Category/number" />
+										<td><div tal:content="repeat/Category/number" /></td>
+										<td><a tal:attributes="href Category/getURLUpdLoad"><div tal:content="Category/getName" /></a></td>
+										<td>
+											<a class="btn" tal:attributes="href Category/getURLCourse">
+												<div tal:content="Category/getCourseAll/count" />
+											</a>
 										</td>
 										<td>
-											<a tal:attributes="href Category/getURLUpdLoad">
-												<div tal:content="Category/getName" />
-											</a>
-										</td>										
-										<td>
-											<a class="btn" tal:attributes="href Category/getURLDelLoad">
-												<span class="icon-remove"/>
-											</a>
+											<a class="btn" tal:attributes="href Category/getURLDelLoad"><span class="icon-remove"/></a>
 										</td>
 									</tr>
 								</tbody>

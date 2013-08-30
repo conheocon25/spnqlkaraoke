@@ -21,6 +21,7 @@
 									<tr>
 										<th width="30">STT</th>
 										<th>TÊN</th>
+										<th width="120">SẢN PHẨM</th>
 										<th width="30">XÓA</th>
 									</tr>
 								</thead>
@@ -33,7 +34,12 @@
 											<a tal:attributes="href Supplier/getURLUpdLoad">
 												<div tal:content="Supplier/getName" />
 											</a>
-										</td>										
+										</td>
+										<td>
+											<a class="btn" tal:attributes="href Supplier/getURLResource">
+												<div tal:content="Supplier/getResourceAll/count" />
+											</a>
+										</td>
 										<td>
 											<a class="btn" tal:attributes="href Supplier/getURLDelLoad">
 												<span class="icon-remove"/>
