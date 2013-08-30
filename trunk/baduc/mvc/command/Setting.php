@@ -44,6 +44,7 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setProperty('Title', $Title);
+			$request->setProperty('ActiveAdmin', '');
 			$request->setObject('Navigation', $Navigation);
 			
 			$request->setObject('CategoryAll', $CategoryAll);
