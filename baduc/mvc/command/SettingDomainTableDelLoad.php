@@ -25,14 +25,21 @@
 			//-------------------------------------------------------------	
 			$Domain = $mDomain->find($IdDomain);
 			$Table = $mTable->find($IdTable);			
-			$Title = mb_strtoupper("THIẾT LẬP / ".$Domain->getName()." / ".$Table->getName()." / XÓA", 'UTF8');
+			$Title = mb_strtoupper($Table->getName(), 'UTF8');
+			
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("KHU VỰC", "/setting/domain"),
+				array(mb_strtoupper($Domain->getName(), 'UTF8'), $Domain->getURLTable())
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			$request->setObject('Table', $Table);			
+			$request->setObject('Table', $Table);
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', $Domain->getURLTable());
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>

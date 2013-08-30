@@ -32,7 +32,7 @@
 			$UserAll = $mUser->findAll();
 			$ConfigAll = $mConfig->findAll();
 			
-			$Title = "NHÀ CUNG CẤP";
+			$Title = "CẤU HÌNH";
 			$Navigation = array(
 				array("ỨNG DỤNG", "/app"),
 				array("THIẾT LẬP", "/setting")

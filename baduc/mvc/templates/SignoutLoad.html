@@ -1,30 +1,29 @@
-<!DOCTYPE html> 
-<html>
-<head>
-	<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
-	<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>
-	<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.validate.min.js"/>
-	<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.validate.messages_vi.js"/>
-	
-	<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.jqcrypt.pack.js"></script>
-	<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/SigninLoad.js"/>
-</head>
-<body>
-	<div data-role="page" id="normal" class="type-interior">						
-		<span metal:use-macro="macros.xhtml/header"/>		
-		<div data-role="content">
-			<div class="content-primary">
-				<form id="FormSignin" tal:attributes="action '/signout/exe'" method="post">
-					<ul data-role="listview" data-theme="a" data-dividertheme="b">
-						<li data-role="list-divider" >BẠN CÓ CHẮC CHẮN THOÁT KHỎI HỆ THỐNG KHÔNG ?</li>						
-						
-						<button data-corners="false" type="submit" data-theme="c"  name="submit" value="submit-value">Thoát Khỏi Hệ Thống</button>
-					</ul>
-				</form>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span12 main">
+					<div class="signin-inner">
+						<form class="form-horizontal" tal:attributes="action '/signout/exe'" method="post">
+							<legend>Thoát khỏi hệ thống</legend>
+							<p>BẠN CÓ CHẮC CHẮN THOÁT KHỎI HỆ THỐNG KHÔNG ?</p>
+							<div class="control-group">
+								<div class="controls">
+									<button type="submit" class="btn" value="submit-value">Đồng ý</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
-			
-		</div>
-		<span metal:use-macro="macros.xhtml/footer"/>
-	</div>	
-</body>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>		
+	</body>
 </html>

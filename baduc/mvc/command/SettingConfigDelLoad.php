@@ -21,15 +21,21 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
-			$Config = $mConfig->find($IdConfig);			
-			$Title = mb_strtoupper("THIẾT LẬP / ".$Config->getParam()." / XÓA", 'UTF8');
+			$Config = $mConfig->find($IdConfig);
 			
+			$Title = mb_strtoupper($Config->getParam(), 'UTF8');
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("CẤU HÌNH", "/setting/config")
+			);
+						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			$request->setObject('Config', $Config);			
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', '/setting#config');
+			$request->setObject('Config', $Config);
+			$request->setObject('Navigation', $Navigation);			
 		}
 	}
 ?>

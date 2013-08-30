@@ -22,14 +22,19 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
 			$Term = $mTerm->find($IdTerm);
-			$Title = mb_strtoupper("THIẾT LẬP / ".$Term->getName()." / XÓA", 'UTF8');
-			
+			$Title = mb_strtoupper($Term->getName(), 'UTF8');
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("DANH MỤC THU", "/setting/termcollect")
+			);
+						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			$request->setObject('Term', $Term);			
+			$request->setObject('Term', $Term);
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', '/setting#collect');
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>

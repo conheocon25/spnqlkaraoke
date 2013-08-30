@@ -21,15 +21,21 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
-			$UserSelected = $mUser->find($IdUser);			
-			$Title = mb_strtoupper("THIẾT LẬP / ".$UserSelected->getName()." / XÓA", 'UTF8');
+			$UserSelected = $mUser->find($IdUser);
 			
+			$Title = mb_strtoupper($UserSelected->getName(), 'UTF8');
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("NGƯỜI DÙNG", "/setting/user")
+			);
+						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setObject('UserSelected', $UserSelected);
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', '/setting#User');
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>
