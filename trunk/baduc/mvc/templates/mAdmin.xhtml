@@ -44,7 +44,17 @@
 	<div metal:define-macro="Header">
 		<div class="navbar navbar-inverse">
 			<div class="navbar-inner">
-				<a class="brand" href="/app"><i class="icon-microphone" style="font-size:2em; color:white;"/> Hệ thống quản lý Karaoke Ba Đức</a>
+				<a class="brand" href="/app">
+					<!--
+					<i class="icon-microphone icon-circle" style="font-size:2em; color:white;"/> 
+					!-->
+					<span class="icon-stack">
+						<i class="icon-circle icon-stack-base"></i>
+						<i class="icon-microphone" style="color:blue;"></i>
+					</span>
+
+					Hệ thống quản lý Karaoke Ba Đức
+				</a>
 				<p class="navbar-text pull-right">
 					<a class="navbar-link" href="/signout/load"><span tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()" tal:content="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->getEmail()"/></a>
 				</p>
@@ -78,7 +88,7 @@
 	</div>
 							
 	<div metal:define-macro="Menu" class="menu">
-		<ul class="nav nav-list">			
+		<ul class="nav nav-list">
 			<li class="nav-header">THIẾT LẬP</li>																																						
 			<li tal:attributes="class php:ActiveAdmin=='Category'?'active':'disable'">
 				<a tal:attributes="href '/setting/category'" >

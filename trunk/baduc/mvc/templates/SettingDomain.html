@@ -21,6 +21,7 @@
 									<tr>
 										<th width="30">STT</th>
 										<th>TÊN</th>
+										<th width="120">PHÒNG</th>
 										<th width="30">XÓA</th>
 									</tr>
 								</thead>
@@ -30,14 +31,15 @@
 											<div tal:content="repeat/Domain/number" />
 										</td>
 										<td>
-											<a tal:attributes="href Domain/getURLUpdLoad">
-												<div tal:content="Domain/getName" />
-											</a>
-										</td>										
+											<a tal:attributes="href Domain/getURLUpdLoad"><div tal:content="Domain/getName" /></a>
+										</td>
 										<td>
-											<a class="btn" tal:attributes="href Domain/getURLDelLoad">
-												<span class="icon-remove"/>
+											<a class="btn" tal:attributes="href Domain/getURLTable">
+												<span tal:content="Domain/getTableAll/count"/>
 											</a>
+										</td>
+										<td>
+											<a class="btn" tal:attributes="href Domain/getURLDelLoad"><span class="icon-remove"/></a>
 										</td>
 									</tr>
 								</tbody>

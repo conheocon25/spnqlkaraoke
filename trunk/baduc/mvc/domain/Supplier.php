@@ -35,50 +35,22 @@ class Supplier extends Object{
 		
         parent::__construct( $id );
     }
-    function getId( ) {
-        return $this->id;
-    }	
-	function getIdPrint( ) {
-        return "s".$this->id;
-    }	
+    function getId( ) {return $this->id;}	
+		
+    function setName( $name ) {$this->name = $name;$this->markDirty();}
+    function getName( ) {return $this->name;}
 	
-    function setName( $name ) {
-        $this->name = $name;
-        $this->markDirty();
-    }
-    function getName( ) {
-        return $this->name;
-    }
-	function getPhone( ) {
-        return $this->phone;
-    }
-    function setPhone( $phone ) {
-        $this->phone = $phone;
-        $this->markDirty();
-    }
-	function setAddress( $address ) {
-        $this->address = $address;
-        $this->markDirty();
-    }
-    function getAddress( ) {
-        return $this->address;
-    }
+	function getPhone( ) {return $this->phone;}
+    function setPhone( $phone ) {$this->phone = $phone;$this->markDirty();}
 	
-	function setNote( $Note ) {
-        $this->note = $Note;
-        $this->markDirty();
-    }
-	function getNote( ) {
-        return $this->note;
-    }
+	function setAddress( $address ) {$this->address = $address;$this->markDirty();}
+    function getAddress( ) {return $this->address;}
 	
-	function setDebt( $Debt ) {
-        $this->debt = $Debt;
-        $this->markDirty();
-    }
-	function getDebt( ){
-        return $this->debt;
-    }
+	function setNote( $Note ) {$this->note = $Note;$this->markDirty();}
+	function getNote( ) {return $this->note;}
+	
+	function setDebt( $Debt ) {$this->debt = $Debt; $this->markDirty();}
+	function getDebt( ){return $this->debt;}
 	
 	//--------------------------------------------------------	
 	//TÍNH CÔNG NỢ
@@ -212,7 +184,7 @@ class Supplier extends Object{
 	}
 	
 	//Lấy về danh sách các tài nguyên nhà cung cấp có
-	function getResources() {
+	function getResourceAll() {
 		$mResource = new \MVC\Mapper\Resource();
 		$Resources = $mResource->findBySupplier(array($this->getId()));
 		return $Resources;
@@ -228,18 +200,14 @@ class Supplier extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL SETTING.SUPPLIER
 	//-------------------------------------------------------------------------------	
-	function getURL(){return "/setting/resource#".$this->getId();}
+	function getURLResource(){return "/setting/supplier/".$this->getId();}
 		
 	function getURLUpdLoad(){return "/setting/supplier/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){return "/setting/supplier/".$this->getId()."/upd/exe";}
 	
 	function getURLDelLoad(){return "/setting/supplier/".$this->getId()."/del/load";}
 	function getURLDelExe(){return "/setting/supplier/".$this->getId()."/del/exe";}
-	
-	function getURLResource(){		
-		return "/setting/supplier#".$this->getIdPrint();
-	}
-	
+			
 	function getURLResourceInsLoad(){return "/setting/supplier/".$this->getId()."/ins/load";}
 	function getURLResourceInsExe(){return "/setting/supplier/".$this->getId()."/ins/exe";}
 	

@@ -1,43 +1,62 @@
-<!DOCTYPE html> 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
 	</head>
-<body>	
-	<div id="main" data-role="page" class="type-interior" />
-	<div tal:repeat="Domain Domains" tal:attributes="id Domain/getIdPrint" data-role="page" class="domain type-interior">
-		<span metal:use-macro="macros.xhtml/header"/>
-		<div data-role="content">
-			<div class="content-primary">				
-				<ul data-role="listview">
-					<li data-role="list-divider" tal:content="php:'THIẾT LẬP / ' . mb_strtoupper(Domain->getName(), 'UTF8')"/>
-					<li tal:repeat="Table Domain/getTables">
-						<a data-ajax="false" tal:attributes="href Table/getURLUpdLoad">
-							<span tal:content="repeat/Table/number" />. <span tal:content="Table/getName" />
-							<span class="ui-li-count" tal:content="Table/getTypePrint" />
-						</a>
-						<a tal:attributes="href Table/getURLDelLoad" data-theme="c" data-icon="delete" />
-					</li>
-					<li>
-						<a data-ajax="false" tal:attributes="href Domain/getURLTableInsLoad" data-theme="c">Thêm mới ...</a>
-						<a data-ajax="false" tal:attributes="href Domain/getURLTableInsLoad" data-theme="c" data-icon="plus" />
-					</li>
-				</ul>
+	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="row-fluid">
+					<div class="span3">
+						<div class="menu">
+							<ul class="nav nav-list">
+								<li class="nav-header">KHU VỰC</li>
+								<li tal:repeat="Domain1 DomainAll" tal:attributes="class php:Domain1->getId()==Domain->getId()?'active':'disable'">
+									<a tal:attributes="href Domain1/getURLTable">
+										<i class="icon-map-marker" /><span tal:content="Domain1/getName"/>
+										<span class="badge badge-info pull-right" tal:content="Domain1/getTableAll/count"/>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="span9">												
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>							
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th width="30">STT</th>
+										<th>TÊN</th>										
+										<th width="30">XÓA</th>
+									</tr>
+								</thead>								
+								<tbody>
+									<tr tal:repeat="Table TableAll">
+										<td><div tal:content="repeat/Table/number" /></td>
+										<td><a tal:attributes="href Table/getURLUpdLoad"><div tal:content="Table/getName"/></a></td>
+										<td>
+											<a class="btn" tal:attributes="href Table/getURLDelLoad"><span class="icon-remove"/></a>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="4" align="center">
+											<a class="btn" tal:attributes="href Domain/getURLTableInsLoad"><span class="icon-plus"/>Thêm mới</a>
+										</td>
+									</tr>
+								</tfoot>								
+							</table>								
+							<span metal:use-macro="mAdmin.xhtml/PageBar"/>							
+						</div>						
+					</div>
+				</div>
 			</div>
-			<div class="content-secondary">
-				<ul data-role="listview" data-theme="c" data-dividertheme="d">
-					<li data-role="list-divider" tal:content="string:CÁC KHU VỰC" />
-					<li tal:repeat="Domain1 Domains1" tal:attributes="data-theme php: Domain1->getId()==Domain->getId() ? 'a' : 'c'">
-						<a tal:attributes="href Domain1/getURLTable" data-transition="none">
-							<span tal:content="repeat/Domain1/number" />. <span tal:content="Domain1/getName" />
-						</a>
-					</li>
-				</ul>
-				<a data-corners="false" data-ajax="false" tal:attributes="href Domain/getURLUpdLoad" data-role="button" data-icon="edit" data-theme="c" ajax-data="false">Cập nhật</a>
-			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
 		</div>
-		<span metal:use-macro="macros.xhtml/footer"/>
-	</div>	
-</body>
+	</body>
 </html>
