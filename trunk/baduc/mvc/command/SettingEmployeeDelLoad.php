@@ -22,14 +22,20 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
 			$Employee = $mEmployee->find($IdEmployee);			
-			$Title = mb_strtoupper("THIẾT LẬP / ".$Employee->getName()." / XÓA", 'UTF8');
+			
+			$Title = mb_strtoupper($Employee->getName(), 'UTF8');			
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("NHÂN VIÊN", "/setting/employee")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			$request->setObject('Employee', $Employee);			
-			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', '/setting#employee');
+			$request->setObject('Employee', $Employee);	
+			$request->setObject('Navigation', $Navigation);	
+			$request->setProperty('Title', $Title);			
 		}
 	}
 ?>

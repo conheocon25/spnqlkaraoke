@@ -25,14 +25,21 @@
 			//-------------------------------------------------------------	
 			$Category = $mCategory->find($IdCategory);
 			$Course = $mCourse->find($IdCourse);			
-			$Title = mb_strtoupper("THIẾT LẬP / ".$Category->getName()." / ".$Course->getName()." / XÓA",'UTF8');
+			
+			$Title = mb_strtoupper($Course->getName(), 'UTF8');
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("DANH MỤC MÓN", "/setting/category"),
+				array(mb_strtoupper($Category->getName(), 'UTF8'), $Category->getURLCourse())
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setObject('Course', $Course);
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', '/setting#category');
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>

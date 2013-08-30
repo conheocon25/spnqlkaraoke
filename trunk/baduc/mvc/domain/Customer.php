@@ -131,10 +131,10 @@ class Customer extends Object{
 	}
 	
 	function getURLDelLoad(){		
-		return "/setting/customer/"."/".$this->getId()."/del/load";
+		return "/setting/customer/".$this->getId()."/del/load";
 	}
 	function getURLDelExe(){
-		return "/setting/customer/"."/".$this->getId()."/del/exe";
+		return "/setting/customer/".$this->getId()."/del/exe";
 	}
 	function getURLBarcode(){
 		return "/setting/customer/".$this->getId()."/barcode";

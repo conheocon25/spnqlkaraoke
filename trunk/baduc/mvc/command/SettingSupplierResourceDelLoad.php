@@ -26,14 +26,20 @@
 			$Supplier = $mSupplier->find($IdSupplier);
 			$Resource = $mResource->find($IdResource);
 			
-			$Title = mb_strtoupper("THIẾT LẬP / ".$Supplier->getName()." / ".$Resource->getName()." / XÓA", 'UTF8');
-			
+			$Title = mb_strtoupper($Resource->getName(), 'UTF8');
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("NHÀ CUNG CẤP", "/setting/supplier"),
+				array(mb_strtoupper($Supplier->getName(), 'UTF8'), $Supplier->getURLResource())
+			);
+									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			$request->setObject('Resource', $Resource);			
+			$request->setObject('Resource', $Resource);
 			$request->setProperty('Title', $Title);
-			$request->setProperty("URLHeader", $Supplier->getURLResource() );
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>

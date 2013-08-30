@@ -22,14 +22,20 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
 			$Category = $mCategory->find($IdCategory);			
-			$Title = mb_strtoupper("THIẾT LẬP / ".$Category->getName()." / XÓA", 'UTF8');
+			
+			$Title = mb_strtoupper($Category->getName(), 'UTF8');
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("DANH MỤC MÓN", "/setting/category")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			$request->setObject('Category', $Category);			
+			$request->setObject('Category', $Category);
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', '/setting#category');
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>
