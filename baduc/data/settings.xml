@@ -14,10 +14,8 @@
 		</command>		
 		<command name="SignoutLoad"><view>SignoutLoad</view></command>
 		<command name="SignoutExe"><view>SignoutExe</view><status value="CMD_OK"><forward>Home</forward></status></command>				
-		<command name="App"><view>App</view></command>		
-		<command name="RegisterExe" type="public"><view>RegisterExe</view><status value="CMD_OK"><forward>Home</forward></status></command>		
-		<command name="FindCustomer" type="public"><view>FindCustomer</view></command>
-		
+		<command name="App"><view>App</view></command>
+				
 		<!-- ============================================================================== -->
 		<!-- GLOBAL			 																-->
 		<!-- ============================================================================== -->
@@ -168,43 +166,47 @@
 		<!-- ============================================================================== -->
 		<!-- SETTING.CUSTOMER	 															-->
 		<!-- ============================================================================== -->		
+		<command name="SettingCustomer"><view>SettingCustomer</view></command>
 		<command name="SettingCustomerInsLoad"><view>SettingCustomerInsLoad</view></command>
-		<command name="SettingCustomerInsExe"><view>SettingCustomerInsExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingCustomerInsExe"><view>SettingCustomerInsExe</view><status value="CMD_OK"><forward>SettingCustomer</forward></status></command>
 		<command name="SettingCustomerUpdLoad"><view>SettingCustomerUpdLoad</view></command>
-		<command name="SettingCustomerUpdExe"><view>SettingCustomerUpdExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingCustomerUpdExe"><view>SettingCustomerUpdExe</view><status value="CMD_OK"><forward>SettingCustomer</forward></status></command>
 		<command name="SettingCustomerDelLoad"><view>SettingCustomerDelLoad</view></command>
-		<command name="SettingCustomerDelExe"><view>SettingCustomerDelExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingCustomerDelExe"><view>SettingCustomerDelExe</view><status value="CMD_OK"><forward>SettingCustomer</forward></status></command>
 		<command name="SettingCustomerBarcode"><view>SettingCustomerBarcode</view></command>
 		
 		<!-- ============================================================================== -->
 		<!-- SETTING.EMPLOYEE	 															-->
 		<!-- ============================================================================== -->		
+		<command name="SettingEmployee"><view>SettingEmployee</view></command>
 		<command name="SettingEmployeeInsLoad"><view>SettingEmployeeInsLoad</view></command>
-		<command name="SettingEmployeeInsExe"><view>SettingEmployeeInsExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>		
+		<command name="SettingEmployeeInsExe"><view>SettingEmployeeInsExe</view><status value="CMD_OK"><forward>SettingEmployee</forward></status></command>		
 		<command name="SettingEmployeeUpdLoad"><view>SettingEmployeeUpdLoad</view></command>
-		<command name="SettingEmployeeUpdExe"><view>SettingEmployeeUpdExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>		
+		<command name="SettingEmployeeUpdExe"><view>SettingEmployeeUpdExe</view><status value="CMD_OK"><forward>SettingEmployee</forward></status></command>		
 		<command name="SettingEmployeeDelLoad"><view>SettingEmployeeDelLoad</view></command>
-		<command name="SettingEmployeeDelExe"><view>SettingEmployeeDelExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingEmployeeDelExe"><view>SettingEmployeeDelExe</view><status value="CMD_OK"><forward>SettingEmployee</forward></status></command>
 		
 		<!-- ============================================================================== -->
 		<!-- SETTING.USER	 																-->
 		<!-- ============================================================================== -->		
+		<command name="SettingUser"><view>SettingUser</view></command>
 		<command name="SettingUserInsLoad"><view>SettingUserInsLoad</view></command>
-		<command name="SettingUserInsExe"><view>SettingUserInsExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingUserInsExe"><view>SettingUserInsExe</view><status value="CMD_OK"><forward>SettingUser</forward></status></command>
 		<command name="SettingUserUpdLoad"><view>SettingUserUpdLoad</view></command>
-		<command name="SettingUserUpdExe"><view>SettingUserUpdExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingUserUpdExe"><view>SettingUserUpdExe</view><status value="CMD_OK"><forward>SettingUser</forward></status></command>
 		<command name="SettingUserDelLoad"><view>SettingUserDelLoad</view></command>
-		<command name="SettingUserDelExe"><view>SettingUserDelExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingUserDelExe"><view>SettingUserDelExe</view><status value="CMD_OK"><forward>SettingUser</forward></status></command>
 
 		<!-- ============================================================================== -->
 		<!-- SETTING.DOMAIN		 															-->
 		<!-- ============================================================================== -->
+		<command name="SettingDomain"><view>SettingDomain</view></command>
 		<command name="SettingDomainInsLoad"><view>SettingDomainInsLoad</view></command>
-		<command name="SettingDomainInsExe"><view>SettingDomainInsExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingDomainInsExe"><view>SettingDomainInsExe</view><status value="CMD_OK"><forward>SettingDomain</forward></status></command>
 		<command name="SettingDomainUpdLoad"><view>SettingDomainUpdLoad</view></command>
-		<command name="SettingDomainUpdExe"><view>SettingDomainUpdExe</view><status value="CMD_OK"><forward>SettingDomainTable</forward></status></command>
+		<command name="SettingDomainUpdExe"><view>SettingDomainUpdExe</view><status value="CMD_OK"><forward>SettingDomain</forward></status></command>
 		<command name="SettingDomainDelLoad"><view>SettingDomainDelLoad</view></command>
-		<command name="SettingDomainDelExe"><view>SettingDomainDelExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingDomainDelExe"><view>SettingDomainDelExe</view><status value="CMD_OK"><forward>SettingDomain</forward></status></command>
 				
 		<!-- ============================================================================== -->
 		<!-- SETTING.DOMAIN.TABLE	 														-->
@@ -220,12 +222,13 @@
 		<!-- ============================================================================== -->
 		<!-- SETTING.UNIT	 															-->
 		<!-- ============================================================================== -->		
+		<command name="SettingUnit"><view>SettingUnit</view></command>
 		<command name="SettingUnitInsLoad"><view>SettingUnitInsLoad</view></command>
-		<command name="SettingUnitInsExe"><view>SettingUnitInsExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingUnitInsExe"><view>SettingUnitInsExe</view><status value="CMD_OK"><forward>SettingUnit</forward></status></command>
 		<command name="SettingUnitUpdLoad"><view>SettingUnitUpdLoad</view></command>
-		<command name="SettingUnitUpdExe"><view>SettingUnitUpdExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingUnitUpdExe"><view>SettingUnitUpdExe</view><status value="CMD_OK"><forward>SettingUnit</forward></status></command>
 		<command name="SettingUnitDelLoad"><view>SettingUnitDelLoad</view></command>
-		<command name="SettingUnitDelExe"><view>SettingUnitDelExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingUnitDelExe"><view>SettingUnitDelExe</view><status value="CMD_OK"><forward>SettingUnit</forward></status></command>
 		
 		<!-- ============================================================================== -->
 		<!-- SETTING.CONFIG	 																-->
@@ -241,19 +244,20 @@
 		<!-- ============================================================================== -->
 		<!-- SETTING.CATEGORY	 															-->
 		<!-- ============================================================================== -->		
+		<command name="SettingCategory"><view>SettingCategory</view></command>
 		<command name="SettingCategoryInsLoad"><view>SettingCategoryInsLoad</view></command>
-		<command name="SettingCategoryInsExe"><view>SettingCategoryInsExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingCategoryInsExe"><view>SettingCategoryInsExe</view><status value="CMD_OK"><forward>SettingCategory</forward></status></command>
 		<command name="SettingCategoryUpdLoad"><view>SettingCategoryUpdLoad</view></command>
-		<command name="SettingCategoryUpdExe"><view>SettingCategoryUpdExe</view><status value="CMD_OK"><forward>SettingCategoryCourse</forward></status></command>
+		<command name="SettingCategoryUpdExe"><view>SettingCategoryUpdExe</view><status value="CMD_OK"><forward>SettingCategory</forward></status></command>
 		<command name="SettingCategoryDelLoad"><view>SettingCategoryDelLoad</view></command>
-		<command name="SettingCategoryDelExe"><view>SettingCategoryDelExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingCategoryDelExe"><view>SettingCategoryDelExe</view><status value="CMD_OK"><forward>SettingCategory</forward></status></command>
 				
 		<!-- ============================================================================== -->
 		<!-- SETTING.CATEGORY.COURSE	 													-->
 		<!-- ============================================================================== -->
 		<command name="SettingCategoryCourse"><view>SettingCategoryCourse</view></command>
 		<command name="SettingCategoryCourseInsLoad"><view>SettingCategoryCourseInsLoad</view></command>
-		<command name="SettingCategoryCourseInsExe"><view>SettingCategoryCourseInsExe</view><status value="CMD_OK"><forward>SettingCategoryCourse</forward></status></command>		
+		<command name="SettingCategoryCourseInsExe"><view>SettingCategoryCourseInsExe</view><status value="CMD_OK"><forward>SettingCategoryCourse</forward></status></command>
 		<command name="SettingCategoryCourseUpdLoad"><view>SettingCategoryCourseUpdLoad</view></command>
 		<command name="SettingCategoryCourseUpdExe"><view>SettingCategoryCourseUpdExe</view><status value="CMD_OK"><forward>SettingCategoryCourse</forward></status></command>		
 		<command name="SettingCategoryCourseDelLoad"><view>SettingCategoryCourseDelLoad</view></command>
@@ -273,32 +277,35 @@
 		<!-- ============================================================================== -->
 		<!-- SETTING.SUPPLIER	 															-->
 		<!-- ============================================================================== -->		
+		<command name="SettingSupplier"><view>SettingSupplier</view></command>
 		<command name="SettingSupplierInsLoad"><view>SettingSupplierInsLoad</view></command>
-		<command name="SettingSupplierInsExe"><view>SettingSupplierInsExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingSupplierInsExe"><view>SettingSupplierInsExe</view><status value="CMD_OK"><forward>SettingSupplier</forward></status></command>
 		<command name="SettingSupplierUpdLoad"><view>SettingSupplierUpdLoad</view></command>
-		<command name="SettingSupplierUpdExe"><view>SettingSupplierUpdExe</view><status value="CMD_OK"><forward>SettingSupplierResource</forward></status></command>
+		<command name="SettingSupplierUpdExe"><view>SettingSupplierUpdExe</view><status value="CMD_OK"><forward>SettingSupplier</forward></status></command>
 		<command name="SettingSupplierDelLoad"><view>SettingSupplierDelLoad</view></command>
-		<command name="SettingSupplierDelExe"><view>SettingSupplierDelExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingSupplierDelExe"><view>SettingSupplierDelExe</view><status value="CMD_OK"><forward>SettingSupplier</forward></status></command>
 		
 		<!-- ============================================================================== -->
-		<!-- SETTING.TERM	 															-->
-		<!-- ============================================================================== -->		
-		<command name="SettingTermInsLoad"><view>SettingTermInsLoad</view></command>
-		<command name="SettingTermInsExe"><view>SettingTermInsExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
-		<command name="SettingTermUpdLoad"><view>SettingTermUpdLoad</view></command>
-		<command name="SettingTermUpdExe"><view>SettingTermUpdExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
-		<command name="SettingTermDelLoad"><view>SettingTermDelLoad</view></command>
-		<command name="SettingTermDelExe"><view>SettingTermDelExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<!-- SETTING.TERM	 																-->
+		<!-- ============================================================================== -->
+		<command name="SettingTermPaid"><view>SettingTermPaid</view></command>
+		<command name="SettingTermPaidInsLoad"><view>SettingTermPaidInsLoad</view></command>
+		<command name="SettingTermPaidInsExe"><view>SettingTermPaidInsExe</view><status value="CMD_OK"><forward>SettingTermPaid</forward></status></command>
+		<command name="SettingTermPaidUpdLoad"><view>SettingTermPaidUpdLoad</view></command>
+		<command name="SettingTermPaidUpdExe"><view>SettingTermPaidUpdExe</view><status value="CMD_OK"><forward>SettingTermPaid</forward></status></command>
+		<command name="SettingTermPaidDelLoad"><view>SettingTermPaidDelLoad</view></command>
+		<command name="SettingTermPaidDelExe"><view>SettingTermPaidDelExe</view><status value="CMD_OK"><forward>SettingTermPaid</forward></status></command>
 		
 		<!-- ============================================================================== -->
-		<!-- SETTING.TERM.COLLECT	 															-->
+		<!-- SETTING.TERM.COLLECT	 														-->
 		<!-- ============================================================================== -->		
+		<command name="SettingTermCollect"><view>SettingTermCollect</view></command>
 		<command name="SettingTermCollectInsLoad"><view>SettingTermCollectInsLoad</view></command>
-		<command name="SettingTermCollectInsExe"><view>SettingTermCollectInsExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingTermCollectInsExe"><view>SettingTermCollectInsExe</view><status value="CMD_OK"><forward>SettingTermCollect</forward></status></command>
 		<command name="SettingTermCollectUpdLoad"><view>SettingTermCollectUpdLoad</view></command>
-		<command name="SettingTermCollectUpdExe"><view>SettingTermCollectUpdExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingTermCollectUpdExe"><view>SettingTermCollectUpdExe</view><status value="CMD_OK"><forward>SettingTermCollect</forward></status></command>
 		<command name="SettingTermCollectDelLoad"><view>SettingTermCollectDelLoad</view></command>
-		<command name="SettingTermCollectDelExe"><view>SettingTermCollectDelExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
+		<command name="SettingTermCollectDelExe"><view>SettingTermCollectDelExe</view><status value="CMD_OK"><forward>SettingTermCollect</forward></status></command>
 										
 		<!-- ============================================================================== -->
 		<!-- SETTING.SUPPLIER.RESOURCE														-->
@@ -310,24 +317,6 @@
 		<command name="SettingSupplierResourceUpdExe"><view>SettingSupplierResourceUpdExe</view><status value="CMD_OK"><forward>SettingSupplierResource</forward></status></command>
 		<command name="SettingSupplierResourceDelLoad"><view>SettingSupplierResourceDelLoad</view></command>
 		<command name="SettingSupplierResourceDelExe"><view>SettingSupplierResourceDelExe</view><status value="CMD_OK"><forward>SettingSupplierResource</forward></status></command>		
-		
-		<!-- ============================================================================== -->
-		<!-- SETTING.CATEGORY	 															-->
-		<!-- ============================================================================== -->
-		<command name="SettingStoreInsLoad"><view>SettingStoreInsLoad</view></command>
-		<command name="SettingStoreInsExe"><view>SettingStoreInsExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
-		<command name="SettingStoreUpdLoad"><view>SettingStoreUpdLoad</view></command>
-		<command name="SettingStoreUpdExe"><view>SettingStoreUpdExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
-		<command name="SettingStoreDelLoad"><view>SettingStoreDelLoad</view></command>
-		<command name="SettingStoreDelExe"><view>SettingStoreDelExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
-								
-		<!-- ============================================================================== -->
-		<!-- SETTING.INFO		 															-->
-		<!-- ============================================================================== -->		
-		<command name="SettingInfoPasswdLoad"><view>SettingInfoPasswdLoad</view></command>
-		<command name="SettingInfoPasswdExe"><view>SettingInfoPasswdExe</view><status value="CMD_OK"><forward>SignoutExe</forward></status></command>
-		<command name="SettingInfoUpdLoad"><view>SettingInfoUpdLoad</view></command>
-		<command name="SettingInfoUpdExe"><view>SettingInfoUpdExe</view><status value="CMD_OK"><forward>Setting</forward></status></command>
 												
 		<!-- ============================================================================== -->
 		<!-- IMPORT				 															-->

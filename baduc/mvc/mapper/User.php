@@ -29,7 +29,8 @@ class User extends Mapper implements \MVC\Domain\UserFinder {
 		$checkStmt = sprintf("select distinct id from %s where email=? and pass=?", $tblUser);
 		$checkBarcodeStmt = sprintf("select distinct id from %s where code=?", $tblUser);
 		$checkEmailStmt = sprintf("select distinct id from %s where email=?", $tblUser);
-				
+		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblUser);
+		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
@@ -38,6 +39,7 @@ class User extends Mapper implements \MVC\Domain\UserFinder {
 		$this->checkStmt = self::$PDO->prepare($checkStmt);
 		$this->checkBarcodeStmt = self::$PDO->prepare($checkBarcodeStmt);
 		$this->checkEmailStmt = self::$PDO->prepare($checkEmailStmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
 
     } 
     function getCollection( array $raw ) {
@@ -87,8 +89,7 @@ class User extends Mapper implements \MVC\Domain\UserFinder {
     protected function doUpdate( \MVC\Domain\Object $object ) {
         $values = array( 
 			$object->getName(),
-			$object->getEmail(),
-			//$this->createPass($object->getPass()),
+			$object->getEmail(),			
 			$object->getPass(),
 			$object->getGender(),			
 			$object->getNote(),			
@@ -109,9 +110,7 @@ class User extends Mapper implements \MVC\Domain\UserFinder {
     function selectStmt() {return $this->selectStmt;}	
     function selectAllStmt() {return $this->selectAllStmt;}
 		
-	function check($name, $pass) {
-		$repass = $this->createPass($pass);
-		$values = array($name, $repass);	
+	function check($values) {		
         $this->checkStmt->execute( $values );
         $result = $this->checkStmt->fetchAll();		
 		return @$result[0][0];
@@ -129,12 +128,20 @@ class User extends Mapper implements \MVC\Domain\UserFinder {
 		return $Encrypt->setData($pass);
 	}
 	
-	function checkEmail( $values ) {	
+	function checkEmail( $values ) {
+		//print_r($values);
         $this->checkEmailStmt->execute( $values );
 		$result = $this->checkEmailStmt->fetchAll();		
 		if (!isset($result) || $result==null)
 			return null;        
         return $result[0][0];
+    }
+	
+	function findByPage( $values ) {		
+		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new SupplierCollection( $this->findByPageStmt->fetchAll(), $this );
     }
 }
 ?>

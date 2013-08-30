@@ -1,6 +1,6 @@
 <?php		
 	namespace MVC\Command;	
-	class SettingConfig extends Command {
+	class SettingDomain extends Command {
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");
 			//-------------------------------------------------------------
@@ -32,24 +32,24 @@
 			$UserAll = $mUser->findAll();
 			$ConfigAll = $mConfig->findAll();
 			
-			$Title = "NHÀ CUNG CẤP";
+			$Title = "KHU VỰC";
 			$Navigation = array(
 				array("ỨNG DỤNG", "/app"),
 				array("THIẾT LẬP", "/setting")
 			);
 			if (!isset($Page)) $Page=1;
 			$Config = $mConfig->findByName("ROW_PER_PAGE");
-			$ConfigAll1 = $mConfig->findByPage(array($Page, $Config->getValue() ));
-			$PN = new \MVC\Domain\PageNavigation($ConfigAll->count(), $Config->getValue(), "/setting/config" );
+			$DomainAll1 = $mDomain->findByPage(array($Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($DomainAll->count(), $Config->getValue(), "/setting/domain" );
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
 			$request->setProperty('Title', $Title);
-			$request->setProperty('ActiveAdmin', 'Config');
+			$request->setProperty('ActiveAdmin', 'Domain');
 			$request->setProperty('Page', $Page);
 			$request->setObject('Navigation', $Navigation);
-			$request->setObject('ConfigAll1', $ConfigAll1);
+			$request->setObject('DomainAll1', $DomainAll1);
 			$request->setObject('PN', $PN);
 			
 			$request->setObject('CategoryAll', $CategoryAll);
