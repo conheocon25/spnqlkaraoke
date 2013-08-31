@@ -15,18 +15,22 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mUnit = new \MVC\Mapper\Unit();
-			
+						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$Title = "THIẾT LẬP / ĐƠN VỊ TÍNH / THÊM MỚI";
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("ĐƠN VỊ TÍNH", "/setting/unit")
+			);
 						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setProperty('Title', $Title);			
-			$request->setProperty('URLHeader', '/setting#unit');
+			$request->setProperty('Title', $Title);
+			$request->setObject('Navigation', $Navigation);						
 		}
 	}
 ?>

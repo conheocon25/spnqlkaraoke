@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class SettingTermInsLoad extends Command {
+	class SettingTermPaidInsLoad extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -20,13 +20,18 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------										
-			$Title = "THIẾT LẬP / CHI PHÍ / THÊM MỚI";
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("DANH MỤC CHI", "/setting/termpaid")
+			);
 						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', '/setting#term');
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>

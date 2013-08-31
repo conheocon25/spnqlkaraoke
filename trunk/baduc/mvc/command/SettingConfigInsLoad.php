@@ -19,14 +19,19 @@
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------
-			$Title = "THIẾT LẬP / CẤU HÌNH / THÊM MỚI";
-						
+			//-------------------------------------------------------------			
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("CẤU HÌNH", "/setting/config")
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setProperty('Title', $Title);			
-			$request->setProperty('URLHeader', '/setting#config');
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>
