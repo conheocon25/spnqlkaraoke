@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class SettingTermUpdExe extends Command {
+	class SettingTermPaidUpdLoad extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -12,8 +12,6 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$IdTerm = $request->getProperty('IdTerm');
-			$Name = $request->getProperty('Name');
-			$Type = $request->getProperty('Type');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -22,20 +20,21 @@
 								
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------
-			if (!isset($Name))
-				return self::statuses('CMD_OK');
-				
+			//-------------------------------------------------------------							
 			$Term = $mTerm->find($IdTerm);
-			$Term->setName($Name);
-			$Term->setType($Type);
-			$mTerm->update($Term);
-						
+			$Title = mb_strtoupper($Term->getName(), 'UTF8');			
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("DANH MỤC CHI", "/setting/termpaid")
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------			
-			
-			return self::statuses('CMD_OK');
+			//-------------------------------------------------------------						
+			$request->setObject('Term', $Term);			
+			$request->setProperty('Title', $Title);
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>

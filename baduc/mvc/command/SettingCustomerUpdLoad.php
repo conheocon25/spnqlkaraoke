@@ -23,7 +23,12 @@
 			//-------------------------------------------------------------							
 			$Customer = $mCustomer->find($IdCustomer);
 			$Customers = $mCustomer->findAll();			
-			$Title = mb_strtoupper("THIẾT LẬP / ".$Customer->getName()." / CẬP NHẬT", 'UTF8');
+			$Title = mb_strtoupper($Customer->getName(), 'UTF8');
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("KHÁCH HÀNG", "/setting/customer")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -31,7 +36,7 @@
 			$request->setObject('Customer', $Customer);
 			$request->setObject('Customers', $Customers);
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', "/setting#customer");
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>

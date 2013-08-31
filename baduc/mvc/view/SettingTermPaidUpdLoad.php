@@ -1,5 +1,5 @@
 <?php
 	require_once("mvc/base/Viewer.php");
-	$Viewer = new Viewer("mvc/templates/SettingTermUpdLoad.html");
+	$Viewer = new Viewer("mvc/templates/SettingTermPaidUpdLoad.html");
 	echo $Viewer->html();
 ?>
