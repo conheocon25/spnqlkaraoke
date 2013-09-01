@@ -20,16 +20,18 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------										
-			$Title = "THIẾT LẬP / NHÀ CUNG CẤP / THÊM";
-			$Suppliers = $mSupplier->findAll();
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("NHÀ CUNG CẤP", "/setting/supplier")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', "/setting#supplier");
-			$request->setObject('Suppliers', $Suppliers);
-			
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>

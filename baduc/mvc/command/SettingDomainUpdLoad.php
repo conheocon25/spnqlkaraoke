@@ -22,14 +22,19 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
 			$Domain = $mDomain->find($IdDomain);			
-			$Title = mb_strtoupper("THIẾT LẬP / ".$Domain->getName()." / CẬP NHẬT", 'UTF8');
+			$Title = mb_strtoupper($Domain->getName(), 'UTF8');
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("KHU VỰC", "/setting/domain")
+			);
 
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setObject('Domain', $Domain);			
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', '/setting#domain');
+			$request->setObject('Navigation', $Navigation);			
 		}
 	}
 ?>

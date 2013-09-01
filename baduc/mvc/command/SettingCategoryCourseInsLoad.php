@@ -23,17 +23,25 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------	
-			$Units = $mUnit->findAll();
+			$UnitAll = $mUnit->findAll();
 			$Category = $mCategory->find($IdCategory);
-			$Title = mb_strtoupper("THIẾT LẬP / ".$Category->getName()." / THÊM MÓN",'UTF8');
+			
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("DANH MỤC MÓN", "/setting/category"),
+				array(mb_strtoupper($Category->getName(), 'UTF8'), $Category->getURLCourse())
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setProperty("Title", $Title);
-			$request->setProperty("URLHeader", $Category->getURLCourse() );
-			$request->setObject("Units", $Units);
-			$request->setObject("Category", $Category);			
+			$request->setObject("Navigation", $Navigation);
+			
+			$request->setObject("UnitAll", $UnitAll);
+			$request->setObject("Category", $Category);
 						
 		}
 	}

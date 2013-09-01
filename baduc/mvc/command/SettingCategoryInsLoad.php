@@ -20,13 +20,18 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------										
-			$Title = "THIẾT LẬP / DANH MỤC MÓN / THÊM MỚI";
-						
+			$Title = "THÊM MỚI";			
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("DANH MỤC MÓN", "/setting/category")
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', '/setting#category');
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>
