@@ -24,21 +24,24 @@
 			//-------------------------------------------------------------
 			$DomainAll = $mDomain->findAll();
 			$Domain = $mDomain->find($IdDomain);
+			if (!isset($Domain)){
+				$Domain = $DomainAll->current();
+				$IdDomain = $Domain->getId();
+			}
 			
-			$Tables1 = $mTable->findAllGuest(null);
-			$Tables2 = $mTable->findAllNonGuest(null);
-															
+			$Title = mb_strtoupper($Domain->getName(), 'UTF8');
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("BÁN HÀNG", "/selling")				
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------									
-			$request->setProperty('URLHeader', '/app');
+			//-------------------------------------------------------------												
 			$request->setObject("Domain", $Domain);
 			$request->setObject("DomainAll", $DomainAll);
-			$request->setObject("Tables1", $Tables1);
-			$request->setObject("Tables2", $Tables2);
-			
-			$request->setProperty('Custom1', $Tables1->count());
-			$request->setProperty('Custom2', $Tables2->count());
+			$request->setProperty("Title", $Title);
+			$request->setObject("Navigation", $Navigation);
 		}
 	}
 ?>

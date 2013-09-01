@@ -144,17 +144,12 @@ class Supplier extends Object{
 	
 			
 	//Lấy về danh sách các đơn hàng
-	function getOrders(){
+	function getOrderAll(){
 		$mOrderImport = new \MVC\Mapper\OrderImport();
-		$Orders = $mOrderImport->findBy(array($this->getId()));
-		return $Orders;
+		$OrderAll = $mOrderImport->findBy(array($this->getId()));
+		return $OrderAll;
 	}
-	function getOrdersTop10(){
-		$mOrderImport = new \MVC\Mapper\OrderImport();
-		$Orders = $mOrderImport->findByTop10(array($this->getId()));
-		return $Orders;
-	}
-	
+		
 	function getOrdersTracking(){
 		if (!isset($this->OrdersTracking)){
 			$Session = \MVC\Base\SessionRegistry::instance();
