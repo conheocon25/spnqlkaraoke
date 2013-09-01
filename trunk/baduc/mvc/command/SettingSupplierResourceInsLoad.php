@@ -25,7 +25,14 @@
 			//-------------------------------------------------------------	
 			$Units = $mUnit->findAll();
 			$Supplier = $mSupplier->find($IdSupplier);			
-			$Title = "THIẾT LẬP / NHÀ CUNG CẤP / ".mb_strtoupper($Supplier->getName(),'UTF8')." / THÊM NGUYÊN LIỆU";
+			
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("NHÀ CUNG CẤP", "/setting/supplier"),
+				array(mb_strtoupper($Supplier->getName(), 'UTF8'), $Supplier->getURLResource())
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -33,7 +40,7 @@
 			$request->setObject("Units", $Units);
 			$request->setObject("Supplier", $Supplier);			
 			$request->setProperty("Title", $Title);
-			$request->setProperty("URLHeader", $Supplier->getURLResource() );
+			$request->setObject("Navigation", $Navigation);
 		}
 	}
 ?>

@@ -20,14 +20,18 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------										
-			$Title = "THIẾT LẬP / NHÂN VIÊN / THÊM";
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("NGƯỜI DÙNG", "/setting/user")
+			);
 						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', '/setting#User');
-						
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>

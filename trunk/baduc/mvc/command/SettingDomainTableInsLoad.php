@@ -24,14 +24,21 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------	
 			$Domain = $mDomain->find($IdDomain);			
-			$Title = "THIẾT LẬP / ".mb_strtoupper($Domain->getName(),'UTF8')." / THÊM PHÒNG";
+			
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("KHU VỰC", "/setting/domain"),
+				array(mb_strtoupper($Domain->getName(), 'UTF8'), $Domain->getURLTable())
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setObject("Domain", $Domain);			
 			$request->setProperty("Title", $Title);
-			$request->setProperty('URLHeader', $Domain->getURLTable());
+			$request->setObject("Navigation", $Navigation);
 		}
 	}
 ?>
