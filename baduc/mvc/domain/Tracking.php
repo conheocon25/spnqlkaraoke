@@ -238,8 +238,22 @@ class Tracking extends Object{
 	function getCustomerNewDebt($IdCustomer){return \abs($this->getCustomerOldDebt($IdCustomer)) + $this->getCustomerDebtSessionAllValue($IdCustomer) - $this->getCustomerCollectAllValue($IdCustomer);}
 	function getCustomerNewDebtPrint($IdCustomer){$N = new \MVC\Library\Number( $this->getCustomerNewDebt($IdCustomer) );return $N->formatCurrency()." đ";}	
 	function getCustomerNewDebtStrPrint($IdCustomer){$N = new \MVC\Library\Number( $this->getCustomerNewDebt($IdCustomer) );return $N->readDigit();}	
+	
 	//CÁC LIÊN KẾT CỦA CÁC NGÀY TRONG THÁNG
-	function getURLDayAll(){$Data = array();$Date = $this->getDateStart();$EndDate = $this->getDateEnd();while (strtotime($Date) <= strtotime($EndDate)){$Data[] = array(\date("d/m", strtotime($Date)),"/report/selling/".$Date."/detail");$Date = \date("Y-m-d", strtotime("+1 day", strtotime($Date)));}return $Data;}
+	function getURLDayAll(){
+		$Data = array();
+		$Date = $this->getDateStart();
+		$EndDate = $this->getDateEnd();
+		while (strtotime($Date) <= strtotime($EndDate)){
+			$Data[] = array(
+					\date("d/m", strtotime($Date)),
+					"/report/selling/".$Date."/detail",
+					"/report/import/".$Date."/detail",
+					"/report/collect/".$Date."/detail",
+					"/report/paid/".$Date."/detail"
+			);
+			$Date = \date("Y-m-d", strtotime("+1 day", strtotime($Date)));}return $Data;
+		}
 	
 	//-------------------------------------------------------------------------------
 	//LƯƠNG NHÂN VIÊN

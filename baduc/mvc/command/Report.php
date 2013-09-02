@@ -17,14 +17,17 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$Tracks = $mTracking->findAll();
-			$Title = "BÁO CÁO";
+			$Title = "BÁO CÁO";			
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setProperty('Title', $Title);			
-			$request->setProperty('URLHeader', "/app");
+			$request->setProperty('Title', $Title);						
 			$request->setObject('Tracks', $Tracks);
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>

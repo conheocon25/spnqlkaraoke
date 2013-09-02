@@ -16,36 +16,29 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mTracking = new \MVC\Mapper\Tracking();
-			$mTermPaid = new \MVC\Mapper\TermPaid();
-			$mTermCollect = new \MVC\Mapper\TermCollect();
-			$mCustomer = new \MVC\Mapper\Customer();
-			$mSupplier = new \MVC\Mapper\Supplier();
-									
+			$mTracking = new \MVC\Mapper\Tracking();			
+												
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$Tracking = $mTracking->find($IdTrack);
 			$TrackingAll = $mTracking->findAll();
-			$TermPaidAll = $mTermPaid->findAll();
-			$TermCollectAll = $mTermCollect->findAll();
-			$SupplierAll = $mSupplier->findAll();
-			$CustomerAll = $mCustomer->findAll();
-			
+						
 			$DateCurrent = 'THÁNG '.\date("m/Y", strtotime($Tracking->getDateStart()));
+			$Title = $Tracking->getName();
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("BÁO CÁO", "/report")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
 			$request->setProperty('DateCurrent', $DateCurrent);
-			$request->setProperty('URLHeader', "/report");			
+			$request->setProperty('Title', $Title);
+			$request->setObject('Navigation', $Navigation);
 			$request->setObject('TrackingAll', $TrackingAll);
-			$request->setObject('Tracking', $Tracking);
-			$request->setObject('CustomerAll', $CustomerAll);
-			$request->setObject('TermPaidAll', $TermPaidAll);
-			$request->setObject('TermCollectAll', $TermCollectAll);
-			$request->setObject('SupplierAll', $SupplierAll);
-			
+			$request->setObject('Tracking', $Tracking);						
 		}
 	}
 ?>
