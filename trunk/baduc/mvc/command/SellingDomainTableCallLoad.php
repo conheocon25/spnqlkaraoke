@@ -13,6 +13,7 @@
 			//-------------------------------------------------------------
 			$IdDomain = $request->getProperty("IdDomain");
 			$IdTable = $request->getProperty("IdTable");
+			$IdCategory = $request->getProperty("IdCategory");
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -25,40 +26,33 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$Categories = $mCategory->findAll();
-			$Categories1 = $mCategory->findAll();
-			$CoursesTop20 = $mCourse->findTop20(null);
-			$Table = $mTable->find($IdTable);			
-			$Title = mb_strtoupper("CHỌN DANH MỤC MÓN", 'UTF8');
+			$CategoryAll = $mCategory->findAll();
+			if (!isset($IdCategory))
+				$Category = $CategoryAll->current();
+			else
+				$Category = $mCategory->find($IdCategory);
 						
-			$Session = $Table->getSessionActive();
-			if (!isset($Session)){
-				$NewDomainSession = new \MVC\Domain\Session(
-					null,
-					$IdTable, 
-					1, 
-					1,
-					null,
-					null,					
-					"",
-					"Chưa",
-					0,
-					0,
-					0
-				);
-				$mSession->insert($NewDomainSession);
-			}else{
-					
-			}
+			$Table = $mTable->find($IdTable);			
+			$Domain = $Table->getDomain();
+			$URLCallLoad = $Table->getURLCallLoad();
+			$URLCall = $Table->getURLCallExe();
+						
+			$Title = mb_strtoupper($Category->getName(), 'UTF8')." GỌI";
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("BÁN HÀNG", "/selling"),
+				array(mb_strtoupper($Domain->getName(), 'UTF8'), $Domain->getURLSelling())
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
-			$request->setProperty("URLHeader", $Table->getURLDetail());
-			
-			$request->setObject("Categories", $Categories);
-			$request->setObject("Categories1", $Categories1);
-			$request->setObject("CoursesTop20", $CoursesTop20);
+			//-------------------------------------------------------------			
+			$request->setProperty("URLCall", $URLCall);
+			$request->setProperty("URLCallLoad", $URLCallLoad);
+			$request->setProperty("Title", $Title);
+			$request->setObject("Navigation", $Navigation);
+			$request->setObject("Category", $Category);
+			$request->setObject("CategoryAll", $CategoryAll);			
 			$request->setObject('Table', $Table);
 		}
 	}

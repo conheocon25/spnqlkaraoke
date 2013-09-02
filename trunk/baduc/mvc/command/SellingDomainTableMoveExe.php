@@ -12,7 +12,7 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------			
 			$IdTable1 = $request->getProperty("IdTable");
-			$IdTable2 = $request->getProperty("IdTable1");
+			$IdTable2 = $request->getProperty("IdTableMove");
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -29,31 +29,9 @@
 			
 			//Chuyển Session2 sang qua Session1
 			$Session1 = $Table1->getSessionActive();
-			$Session2 = $Table2->getSessionActive();
-			$Session1->setIdTable($IdTable2);			
+			$Session1->setIdTable($IdTable2);
 			$mSession->update($Session1);
-			
-			/*	
-			if( isset($Session2) ){
-				$mSession->delete(array($Session2->getId()));
-			}
-			
-			
-			$NewSession = new \MVC\Domain\Session(
-				null,
-				$IdTable1, 
-				1, 
-				1, 
-				null,
-				null,					
-				"",
-				"Chưa",
-				0,
-				0,
-				0
-			);
-			$mSession->insert($NewSession);
-			*/									
+													
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------

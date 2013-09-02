@@ -324,11 +324,11 @@ class Session extends Object{
 		$num = new Number($this->getValue());
 		return $num->readDigit()." đồng";
 	}
-	
+		
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLCheckoutLoad(){		
+	function getURLCheckoutLoad(){
 		$Domain = $this->getTable()->getDomain();
 		return "/selling/".$Domain->getId()."/".$this->getIdTable()."/".$this->getId()."/checkout/load";
     }

@@ -28,14 +28,22 @@
 			$Session = $mSession->find($IdSession);
 			$Domain = $mDomain->find($IdDomain);
 			$Table = $mTable->find($IdTable);
-												
-			$Title = mb_strtoupper("BÁN HÀNG / ".$Domain->getName()." / ".$Table->getName()." / ".$Session->getDateTimePrint(), 'UTF8');
+															
+			$Title = $Session->getDateTimePrint();
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("BÁN HÀNG", "/selling"),
+				array(mb_strtoupper($Domain->getName(), 'UTF8'), $Domain->getURLSelling()),
+				array(mb_strtoupper($Table->getName(), 'UTF8'), $Domain->getURLSelling()),
+				array("SỔ", $Table->getURLLog())
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
 			$request->setObject("Session", $Session);			
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', $Table->getURLLog() );
+			$request->setObject("Navigation", $Navigation);
 		}
 	}
 ?>

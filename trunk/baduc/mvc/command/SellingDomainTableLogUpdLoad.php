@@ -31,14 +31,21 @@
 			$Table = $mTable->find($IdTable);			
 			$Customers = $mCustomer->findAll();
 						
-			$Title = mb_strtoupper("BÁN HÀNG / ".$Domain->getName()." / ".$Table->getName()." / CẬP NHẬT", 'UTF8');	
+			//$Title = mb_strtoupper("BÁN HÀNG / ".$Domain->getName()." / ".$Table->getName()." / CẬP NHẬT", 'UTF8');
+			$Title = $Session->getDateTimePrint();
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("BÁN HÀNG", "/selling"),
+				array("SỔ", $Table->getURLLog())
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
 			$request->setObject("Session", $Session);			
 			$request->setObject("Customers", $Customers);
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', $Table->getURLDetail() );
+			$request->setObject("Navigation", $Navigation);
 		}
 	}
 ?>

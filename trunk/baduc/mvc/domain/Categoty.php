@@ -17,7 +17,8 @@ class Category extends Object{
 		$this->Picture = $Picture;
         parent::__construct( $Id );
     }
-    function getId() {return $this->Id;}		
+    function getId() {return $this->Id;}
+	function getIdPrint() {return "c".$this->Id;}
 	
     function setName( $Name ) {$this->Name = $Name;$this->markDirty();}   
 	function getName( ) {return $this->Name;}

@@ -25,27 +25,14 @@ class SessionDetail extends Object{
 	function setId( $Id) {
         $this->Id = $Id;
     }
-    function getId( ) {
-        return $this->Id;
-    }
-	function getIdPrint( ) {
-        return "SessionDetail".$this->Id;
-    }
+    function getId( ) {return $this->Id;}
+	function getIdPrint( ) {return "SessionDetail".$this->Id;}
 	
-	function setId1( $Id1) {
-        $this->Id1 = $Id1;
-    }
-    function getId1( ) {
-        return $this->Id1;
-    }
+	function setId1( $Id1) {$this->Id1 = $Id1;}
+    function getId1( ) {return $this->Id1;}
 		
-	function setIdSession( $IdSession ) {
-        $this->IdSession = $IdSession;
-        $this->markDirty();
-    }
-	function getIdSession( ) {
-        return $this->IdSession;
-    }
+	function setIdSession( $IdSession ) {$this->IdSession = $IdSession;$this->markDirty();}
+	function getIdSession( ) {return $this->IdSession;}
 	
 	function getSession( ) {
 		if (!isset($this->Session)){
@@ -122,13 +109,13 @@ class SessionDetail extends Object{
 		$Session = $this->getSession();
 		$Table = $Session->getTable();
 		$Domain = $Table->getDomain();		
-		return "/selling/".$Domain->getId()."/".$Table->getId()."/detail/".$this->getId()."/upd/load";
+		return "/selling/".$Domain->getId()."/".$Table->getId()."/".$Session->getId()."/".$this->getId()."/upd/load";
     }
 	function getURLUpdExe(){		
 		$Session = $this->getSession();
 		$Table = $Session->getTable();
 		$Domain = $Table->getDomain();		
-		return "/selling/".$Domain->getId()."/".$Table->getId()."/detail/".$this->getId()."/upd/exe";
+		return "/selling/".$Domain->getId()."/".$Table->getId()."/".$Session->getId()."/".$this->getId()."/upd/exe";
     }
 	
 	function getURLDelLoad(){			

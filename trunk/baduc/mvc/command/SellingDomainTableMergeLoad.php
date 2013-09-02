@@ -19,23 +19,27 @@
 			//-------------------------------------------------------------			
 			$mDomain = new \MVC\Mapper\Domain();
 			$mTable = new \MVC\Mapper\Table();
-			
-			
+						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------						
+			//-------------------------------------------------------------									
+			$TableAll = $mTable->findAll();
 			$Table = $mTable->find($IdTable);
-			$Domains = $mDomain->findAll();
-			
-			$Title = mb_strtoupper("GOM BÀN ".$Table->getName()." VỚI", 'UTF8');
+			$Domain = $mDomain->find($IdDomain);
+									
+			$Title = mb_strtoupper($Table->getName(), 'UTF8')." GOM ĐẾN";
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("BÁN HÀNG", "/selling"),
+				array(mb_strtoupper($Domain->getName(), 'UTF8'), $Domain->getURLSelling())
+			);
 	
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
+			$request->setObject('TableAll', $TableAll);
 			$request->setObject('Table', $Table);
-			$request->setObject('Domains', $Domains);
-			$request->setProperty('URLHeader', $Table->getURLDetail() );
-			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 		}
 	}

@@ -29,14 +29,19 @@
 			$Domain = $mDomain->find($IdDomain);
 			$Table = $mTable->find($IdTable);
 									
-			$Title = mb_strtoupper("BÁN HÀNG / ".$Domain->getName()." / ".$Table->getName()." / XÓA NHẬT KÍ", 'UTF8');
+			$Title = $Session->getDateTimePrint();
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("BÁN HÀNG", "/selling"),
+				array("SỔ", $Table->getURLLog())
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
 			$request->setObject("Session", $Session);						
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', $Table->getURLLog() );
+			$request->setObject("Navigation", $Navigation);
 		}
 	}
 ?>
