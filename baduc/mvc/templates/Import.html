@@ -30,7 +30,9 @@
 								<thead>
 									<tr>
 										<th width="30">STT</th>
-										<th>TÊN</th>										
+										<th>TÊN</th>
+										<th width="120">GIÁ TRỊ</th>
+										<th width="30">IN</th>
 										<th width="30">XÓA</th>
 									</tr>
 								</thead>								
@@ -38,6 +40,16 @@
 									<tr tal:repeat="Order OrderAll">
 										<td><div tal:content="repeat/Order/number" /></td>
 										<td><a tal:attributes="href Order/getURLUpdLoad"><div tal:content="Order/getDatePrint"/></a></td>
+										<td>
+											<a tal:attributes="href Order/getURLDetail">
+												<div tal:content="Order/getValuePrint"/>
+											</a>
+										</td>
+										<td>
+											<a class="btn" target="blank" tal:attributes="href Order/getURLPrint">
+												<i class="icon-print"/>
+											</a>
+										</td>
 										<td>
 											<a class="btn" tal:attributes="href Order/getURLDelLoad"><span class="icon-remove"/></a>
 										</td>
