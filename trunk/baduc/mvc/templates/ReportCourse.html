@@ -27,7 +27,7 @@
 				<th width="15%" align="right"><B>SỐ LƯỢNG</B></th>
 				<th width="15%" align="right"><B>PHẦN TRĂM</B></th>
 			</tr>
-			<tr tal:repeat="Course Category/getCourses">
+			<tr tal:repeat="Course Category/getCourseAll">
 				<td align="center" tal:content="repeat/Course/number" />
 				<td align="left" tal:content="Course/getName" />
 				<td align="left" tal:content="Course/getUnit" />
