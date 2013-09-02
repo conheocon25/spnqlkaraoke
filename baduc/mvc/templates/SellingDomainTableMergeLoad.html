@@ -1,34 +1,37 @@
-<!DOCTYPE html> 
-<html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/SellingDomainTableMergeLoad.js"/>
-	</head>
-<body>
-	<div data-role="page" class="type-interior">
-		<span metal:use-macro="macros.xhtml/header"/>
-		<div data-role="content">
-			<div class="content-primary TitleTable" tal:attributes="alt Table/getURLMergeExe">
-				<div class="TitleTable" tal:attributes="alt Table/getURLMoveExe" data-role="collapsible" data-collapsed="false" data-theme="e" data-content-theme="d">
-					<h3 tal:content="php:'GOM ' . mb_strtoupper(Table->getName(),'UTF8') . ' VỚI'" />
-					<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" tal:repeat="Domain Domains">
-						<h3 tal:content="Domain/getName" tal:condition="Domain/getGuestTables/count"/>
-						<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="d" tal:condition="Domain/getGuestTables/count">
-							<li class="Table" tal:repeat="Table1 Domain/getGuestTables" tal:attributes="alt Table1/getId">
-								<span tal:condition="php: (Table1->getName() != Table->getName())? true : false">
-									<a href="#"><span tal:content="Table1/getName"/></a>
-								</span>						
-							</li>
-						</ul>
-					</div>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span3" />
+				<div class="span9 main">
+					<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+					<form class="form-horizontal" tal:attributes="action Table/getURLMergeExe" method="post">
+						<div class="control-group">
+							<label class="control-label" for="IdTableMerge">Gom với bàn</label>
+							<div class="controls">
+								<select name="IdTableMerge" id="IdTableMerge">
+									<option tal:repeat="Table TableAll" tal:attributes="value Table/getId">
+										<span tal:content="Table/getDomain/getName" /> / <span tal:content="Table/getName" />
+									</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<button type="submit" class="btn" value="submit-value">Đồng ý</button>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
-			<div class="content-secondary">
-				
-			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
 		</div>
-		<span metal:use-macro="macros.xhtml/footer"/>
-	</div>
-</body>
+	</body>
 </html>
