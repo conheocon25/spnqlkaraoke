@@ -6,8 +6,8 @@ class R2C extends Mapper implements \MVC\Domain\R2CFinder{
 
     function __construct() {
         parent::__construct();
-		$tblR2C = "k3d_r2c";
-		$tblSessionDetail = "k3d_session_detail";
+		$tblR2C = "baduc_r2c";
+		$tblSessionDetail = "baduc_session_detail";
 		
 		$selectAllStmt = sprintf("select * from %s", $tblR2C);
 		$selectStmt = sprintf("select * from %s where id=?", $tblR2C);
