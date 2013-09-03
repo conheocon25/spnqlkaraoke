@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 02, 2013 at 11:42 PM
+-- Generation Time: Sep 03, 2013 at 10:04 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -16,7 +16,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `baduc_business`
+-- Database: `qlkao_db`
 --
 
 -- --------------------------------------------------------
@@ -143,7 +143,7 @@ INSERT INTO `baduc_config` (`id`, `param`, `value`) VALUES
 (4, 'PRICE_HOUR_VIP_2', '100000'),
 (5, 'DISCOUNT', '0'),
 (6, 'ROW_PER_PAGE', '12'),
-(7, 'GUEST_VISIT', '52');
+(7, 'GUEST_VISIT', '69');
 
 -- --------------------------------------------------------
 
@@ -306,14 +306,14 @@ CREATE TABLE IF NOT EXISTS `baduc_guest` (
   `exit_time` varchar(32) CHARACTER SET latin1 NOT NULL,
   `agent` varchar(16) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `baduc_guest`
 --
 
 INSERT INTO `baduc_guest` (`id`, `ip`, `entry_time`, `exit_time`, `agent`) VALUES
-(2, '192.168.1.3', '1378157743', '1378161343', '192.168.1.3');
+(3, '192.168.1.3', '1378191087', '1378194687', '192.168.1.3');
 
 -- --------------------------------------------------------
 
@@ -1215,7 +1215,7 @@ INSERT INTO `baduc_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`
 (435, 2, 3, 1, '2013-05-20 23:20:00', '2013-05-21 00:20:00', '', 1, 0, 0, 0, 0, 266000),
 (436, 16, 3, 1, '2013-05-20 23:20:00', '2013-05-21 00:50:00', '', 1, 0, 0, 0, 0, 332000),
 (437, 17, 3, 1, '2013-05-21 00:02:00', '2013-05-21 01:50:00', '', 1, 0, 0, 0, 0, 276000),
-(438, 1, 1, 1, '2013-08-09 00:53:24', '2013-08-09 03:53:24', '', 0, 0, 0, 0, 0, 516000),
+(438, 1, 1, 1, '2013-09-03 10:30:00', '2013-09-03 14:00:00', '', 0, 0, 0, 0, 0, 491000),
 (440, 17, 1, 1, '2013-08-11 01:11:39', '2013-08-11 01:11:39', '', 0, 0, 0, 0, 0, 94000);
 
 -- --------------------------------------------------------
@@ -2795,11 +2795,11 @@ CREATE TABLE IF NOT EXISTS `baduc_user` (
 --
 
 INSERT INTO `baduc_user` (`id`, `name`, `email`, `pass`, `gender`, `note`, `datecreate`, `dateupdate`, `dateactivity`, `type`, `code`) VALUES
-(1, 'Bùi Thanh Tuấn', 'tuanbuithanh@gmail.com', 'WHa3/wsMpuVHlDy+Y8Zb+EDkccANR4eKdzU9/dqLRUc=', 0, ' ', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, ''),
-(2, 'Lê Nguyễn Đông Khoa', 'lekhoa.bdc@gmail.com', '4aIQRD5DnZ6ldCCLQW5ZSbTm1IJXdcBpP1etD4skjtE=', 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, ''),
-(3, 'Phan Xuân Mai', 'maiphan.bdc@gmail.com', 'Kx1jCI73HL/fdXg/DUpqY/90QojXI7Uz9cHxel7HXkk=', 1, ' ', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, ''),
-(4, 'Phan Lê Hữu Phúc', 'phucphan.bdc@gmail.com', 'WHa3/wsMpuVHlDy+Y8Zb+EDkccANR4eKdzU9/dqLRUc=', 0, '', '2013-04-07 18:54:16', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, ''),
-(5, 'Lê Quang Minh', 'minhle.bdc@gmail.com', 'WHa3/wsMpuVHlDy+Y8Zb+EDkccANR4eKdzU9/dqLRUc=', 0, '', '2013-05-21 02:21:20', '2013-05-21 02:21:20', '2013-05-21 02:21:20', 1, '');
+(1, 'Bùi Thanh Tuấn', 'tuanbuithanh@gmail.com', 'admin123456', 0, ' ', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, ''),
+(2, 'Lê Nguyễn Đông Khoa', 'lekhoa.bdc@gmail.com', '123456', 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, ''),
+(3, 'Phan Xuân Mai', 'maiphan.bdc@gmail.com', '123456', 1, ' ', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, ''),
+(4, 'Phan Lê Hữu Phúc', 'phucphan.bdc@gmail.com', '123456', 0, '', '2013-04-07 18:54:16', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, ''),
+(5, 'Lê Quang Minh', 'minhle.bdc@gmail.com', '123456', 0, '', '2013-05-21 02:21:20', '2013-05-21 02:21:20', '2013-05-21 02:21:20', 1, '');
 
 --
 -- Constraints for dumped tables
