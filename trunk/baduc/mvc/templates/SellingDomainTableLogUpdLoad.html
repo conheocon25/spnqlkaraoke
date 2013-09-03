@@ -4,6 +4,32 @@
 		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
 		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
 		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+		<script type="text/javascript">
+			/*<![CDATA[*/
+			$(function() {				
+				$('#DateTime').datetimepicker({
+					language:  'vi',
+					weekStart: 1,
+					todayBtn:  1,
+					autoclose: 1,
+					todayHighlight: 1,
+					startView: 2,
+					forceParse: 0,
+					showMeridian: 1
+				});
+				$('#DateTimeEnd').datetimepicker({
+					language:  'vi',
+					weekStart: 1,
+					todayBtn:  1,
+					autoclose: 1,
+					todayHighlight: 1,
+					startView: 2,
+					forceParse: 0,
+					showMeridian: 1
+				});
+			});
+			/*]]>*/
+		</script>
 	</head>	
 	<body>
 		<div class="container-fluid">
@@ -16,13 +42,13 @@
 						<div class="control-group">
 							<label class="control-label" for="DateTime">Bắt đầu</label>
 							<div class="controls">								
-								<input type="text" name="DateTime" id="DateTime" tal:attributes="value Session/getDateTime" />
+								<input type="text" name="DateTime" id="DateTime" tal:attributes="value Session/getDateTime" data-date-format="yyyy-mm-dd hh:ii"/>
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="DateTimeEnd">Kết thúc</label>
 							<div class="controls">								
-								<input type="text" name="DateTimeEnd" id="DateTimeEnd" tal:attributes="value Session/getDateTimeEnd" />
+								<input type="text" name="DateTimeEnd" id="DateTimeEnd" tal:attributes="value Session/getDateTimeEnd" data-date-format="yyyy-mm-dd hh:ii"/>
 							</div>
 						</div>
 						<div class="control-group">
