@@ -22,6 +22,7 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$UserSelected = $mUser->find($IdUser);
+			
 			$Title = mb_strtoupper($UserSelected->getName(), 'UTF8');
 			$Navigation = array(
 				array("ỨNG DỤNG", "/app"),

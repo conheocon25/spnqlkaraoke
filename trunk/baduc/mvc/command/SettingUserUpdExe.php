@@ -29,13 +29,7 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
 			$User = $mUser->find($IdUser);
-			if (isset($Pass)&&$Pass!=""){
-				$Encrypt = new \MVC\Library\Encrypted();
-				$Pass = $Encrypt->setData($Pass);
-			}else{
-				$Pass = $User->getPass();
-			}
-			
+						
 			$User->setName($Name);
 			$User->setEmail($Email);
 			$User->setPass($Pass);

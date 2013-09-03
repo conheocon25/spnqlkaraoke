@@ -25,16 +25,17 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------										
-			if (isset($Email) && isset($Pass)){
-				
-				//$IdUser = $mUser->check(array($Email, $Pass));
-				$IdUser = 1;				
-				if ($IdUser > 0){
+			if (isset($Email) && isset($Pass)){				
+				$IdUser = $mUser->check($Email, $Pass);				
+				if ($IdUser > 0){								
 					$User = $mUser->find($IdUser);
 					
 					$Session->setCurrentIdUser($IdUser);
 					$Session->setCurrentUser($User);
 					return self::statuses('CMD_OK');
+				}else{
+					$request->addFeedback("error");
+					return self::statuses('CMD_NO_AUTHOR');
 				}
 			}
 			//-------------------------------------------------------------

@@ -25,12 +25,12 @@ class User extends Mapper implements \MVC\Domain\UserFinder {
 				) 
 				values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", $tblUser);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblUser);
+		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblUser);
 		
 		$checkStmt = sprintf("select distinct id from %s where email=? and pass=?", $tblUser);
 		$checkBarcodeStmt = sprintf("select distinct id from %s where code=?", $tblUser);
 		$checkEmailStmt = sprintf("select distinct id from %s where email=?", $tblUser);
-		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblUser);
-		
+				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
@@ -89,7 +89,8 @@ class User extends Mapper implements \MVC\Domain\UserFinder {
     protected function doUpdate( \MVC\Domain\Object $object ) {
         $values = array( 
 			$object->getName(),
-			$object->getEmail(),			
+			$object->getEmail(),
+			//$this->createPass($object->getPass()),
 			$object->getPass(),
 			$object->getGender(),			
 			$object->getNote(),			
@@ -110,8 +111,8 @@ class User extends Mapper implements \MVC\Domain\UserFinder {
     function selectStmt() {return $this->selectStmt;}	
     function selectAllStmt() {return $this->selectAllStmt;}
 		
-	function check($values) {		
-        $this->checkStmt->execute( $values );
+	function check($name, $pass) {		
+        $this->checkStmt->execute( array($name, $pass) );
         $result = $this->checkStmt->fetchAll();		
 		return @$result[0][0];
     }
@@ -128,8 +129,7 @@ class User extends Mapper implements \MVC\Domain\UserFinder {
 		return $Encrypt->setData($pass);
 	}
 	
-	function checkEmail( $values ) {
-		//print_r($values);
+	function checkEmail( $values ) {	
         $this->checkEmailStmt->execute( $values );
 		$result = $this->checkEmailStmt->fetchAll();		
 		if (!isset($result) || $result==null)
@@ -141,7 +141,7 @@ class User extends Mapper implements \MVC\Domain\UserFinder {
 		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
 		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();
-        return new SupplierCollection( $this->findByPageStmt->fetchAll(), $this );
+        return new UserCollection( $this->findByPageStmt->fetchAll(), $this );
     }
 }
 ?>
