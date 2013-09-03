@@ -21,6 +21,7 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------										
 			$Title = "THÊM MỚI";
+			
 			$Navigation = array(
 				array("ỨNG DỤNG", "/app"),
 				array("THIẾT LẬP", "/setting"),
@@ -32,6 +33,7 @@
 			//-------------------------------------------------------------						
 			$request->setProperty('Title', $Title);
 			$request->setObject('Navigation', $Navigation);
+						
 		}
 	}
 ?>

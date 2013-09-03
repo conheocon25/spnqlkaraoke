@@ -27,14 +27,7 @@
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
-			if (isset($Pass)){
-				$Encrypt = new \MVC\Library\Encrypted();
-				$Pass = $Encrypt->setData($Pass);
-			}else{
-				$Pass = $User->getPass();
-			}
-			
+			//-------------------------------------------------------------									
 			$User = new \MVC\Domain\User(
 				null,				
 				$Name,
