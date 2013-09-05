@@ -98,7 +98,9 @@
 		
 		<!-- ============================================================================== -->
 		<!-- PAID.GENERAL		 															-->
-		<!-- ============================================================================== -->								
+		<!-- ============================================================================== -->
+		<command name="Paid"><view>Paid</view></command>
+		
 		<command name="PaidGeneral"><view>PaidGeneral</view></command>
 		<command name="PaidGeneralInsLoad"><view>PaidGeneralInsLoad</view></command>
 		<command name="PaidGeneralInsExe"><view>PaidGeneralInsExe</view><status value="CMD_OK"><forward>PaidGeneral</forward></status></command>
