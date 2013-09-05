@@ -15,8 +15,6 @@ class PaidPayRoll extends Mapper implements \MVC\Domain\PaidPayRollFinder{
 		$insertStmt = sprintf("insert into %s (idemployee, date, value_base, value_sub, value_pre, note) values(?,?,?,?,?,?)", $tblPaidPayRoll);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblPaidPayRoll);
 		$findByStmt = sprintf("select * from %s where idemployee = ? order by date DESC", $tblPaidPayRoll);
-		$findByTop10Stmt = sprintf("select * from %s where idemployee = ? order by date DESC LIMIT 10", $tblPaidPayRoll);
-		
 		$findByTrackingStmt = sprintf(
 			"select
 				*
@@ -28,15 +26,23 @@ class PaidPayRoll extends Mapper implements \MVC\Domain\PaidPayRollFinder{
 				date DESC
 			"
 		, $tblPaidPayRoll);
-						
+		$findByPageStmt = sprintf("
+							SELECT * 
+							FROM %s 							 
+							WHERE idemployee=:idemployee
+							ORDER BY date desc
+							LIMIT :start,:max
+				", $tblPaidPayRoll);
+		
+		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
-		$this->findByStmt = self::$PDO->prepare($findByStmt);
-		$this->findByTop10Stmt = self::$PDO->prepare($findByTop10Stmt);
-		$this->findByTrackingStmt = self::$PDO->prepare($findByTrackingStmt);		
+		$this->findByStmt = self::$PDO->prepare($findByStmt);		
+		$this->findByTrackingStmt = self::$PDO->prepare($findByTrackingStmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
     } 
     function getCollection( array $raw ) {
         return new PaidPayRollCollection( $raw, $this );
@@ -86,30 +92,27 @@ class PaidPayRoll extends Mapper implements \MVC\Domain\PaidPayRollFinder{
         $this->updateStmt->execute( $values );
     }
 
-	protected function doDelete(array $values) {
-        return $this->deleteStmt->execute( $values );
-    }
+	protected function doDelete(array $values) {return $this->deleteStmt->execute( $values );}
 
-    function selectStmt() {
-        return $this->selectStmt;
-    }
-    function selectAllStmt() {
-        return $this->selectAllStmt;
-    }
+    function selectStmt() {return $this->selectStmt;}
+    function selectAllStmt() {return $this->selectAllStmt;}
 	
 	function findBy($values ){
         $this->findByStmt->execute( $values );
         return new PaidPayRollCollection( $this->findByStmt->fetchAll(), $this );
     }
-	
-	function findByTop10($values ){
-        $this->findByTop10Stmt->execute( $values );
-        return new PaidPayRollCollection( $this->findByTop10Stmt->fetchAll(), $this );
-    }
-	
+			
 	function findByTracking($values ){
         $this->findByTrackingStmt->execute( $values );
         return new PaidPayRollCollection( $this->findByTrackingStmt->fetchAll(), $this );
+    }
+	
+	function findByPage( $values ) {		
+		$this->findByPageStmt->bindValue(':idemployee', $values[0], \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);		
+		$this->findByPageStmt->execute();
+        return new PaidPayRollCollection( $this->findByPageStmt->fetchAll(), $this );
     }
 	
 }

@@ -102,18 +102,12 @@ class Supplier extends Object{
 	//GET LISTs
 	//-------------------------------------------------------------------------------
 	
-	//Lấy về danh sách trả tiền
-	function getPaidsTop10(){		
+	//Lấy về danh sách trả tiền	
+	function getPaidAll(){		
 		$mSP = new \MVC\Mapper\PaidSupplier();
-		$paids = $mSP->findByTop10(array($this->getId()));
-		return $paids;
-	}
-	function getPaids(){
-		if (!isset($this->paids)){
-			$mSP = new \MVC\Mapper\PaidSupplier();
-			$this->paids = $mSP->findBy(array($this->getId()));
-		}
-		return $this->paids;
+		$PaidAll = $mSP->findBy(array($this->getId()));
+		
+		return $PaidAll;
 	}
 	function getPaidsTracking(){
 		if (!isset($this->PaidsTracking)){
