@@ -1,40 +1,50 @@
-<!DOCTYPE html> 
-<html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/PaidOtherListUpdLoad.js"/>
-	</head>
-<body>	
-	<div data-role="page" class="category type-interior">		
-		<span metal:use-macro="macros.xhtml/header"/>
-		<div data-role="content">
-			<div class="content-primary">				
-				<form id="FormPaidOtherListUpdLoad" data-ajax="false" tal:attributes="action Paid/getURLUpdExe" method="post">
-					<ul data-role="listview" data-theme="c" data-dividertheme="b">
-						<li data-role="list-divider" tal:content="Title" />
-						<li data-role="fieldcontain">
-							<label for="Date">Ngày:</label>
-							<input class="required" name="Date" id="Date" tal:attributes="value Paid/getDate" />
-						</li>
-						<li data-role="fieldcontain">
-							<label for="Value" class="text">Giá trị:</label>
-							<input class="required" id="Value" name="Value" type="text" tal:attributes="value Paid/getValue"/>
-						</li>
-						<li data-role="fieldcontain">
-							<label for="Note" class="text">Diễn giải:</label>
-							<textarea cols="40" rows="8" name="Note" id="Note" data-mini="true" tal:content="Paid/getNote"/>
-						</li>
-						<button data-corners="false" type="submit" data-theme="c"  data-icon="edit" name="submit" value="submit-value">Cập nhật</button>
-					</ul>
-				</form>
-
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+		<script type="text/javascript">
+			/*<![CDATA[*/
+			$(function() {$('#Date').datepicker();});
+			/*]]>*/
+		</script>
+	</head>	
+	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span3" />
+				<div class="span9 main">
+					<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+					<form class="form-horizontal" tal:attributes="action Paid/getURLUpdExe" method="post">
+						<div class="control-group">
+							<label class="control-label" for="DateStart">Ngày</label>
+							<div class="controls">
+								<input id="DateStart" name="DateStart" type="text" data-date-format="yyyy-mm-dd" tal:attributes="value Paid/getDate"/>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Value">Giá trị</label>
+							<div class="controls">
+								<input id="Value" name="Value" type="text" tal:attributes="value Paid/getValue" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Note">Diễn giải</label>
+							<div class="controls">
+								<input id="Note" name="Note" type="text" tal:attributes="value Paid/getNote" />
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<button type="submit" class="btn btn-primary" value="submit-value">Cập nhật</button>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
-			<div class="content-secondary">
-				
-			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
 		</div>
-		<span metal:use-macro="macros.xhtml/footer"/>
-	</div>
-</body>
+	</body>
 </html>
