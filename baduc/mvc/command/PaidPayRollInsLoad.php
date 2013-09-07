@@ -22,14 +22,19 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
-			$Employee = $mEmployee->find($IdEmployee);			
-			$Title = mb_strtoupper("CHI PHÍ / LƯƠNG ".$Employee->getName()." / THÊM", 'UTF8');
+			$Employee = $mEmployee->find($IdEmployee);						
+			$Title = mb_strtoupper($Employee->getName(), 'UTF8');
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("KHOẢN CHI", "/paid"),
+				array("LƯƠNG", "/paid/payroll")
+			);
 						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', $Employee->getURLPPR() );
+			$request->setObject('Navigation', $Navigation);
 			$request->setObject('Employee', $Employee);
 		}
 	}

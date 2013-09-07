@@ -25,14 +25,20 @@
 			//-------------------------------------------------------------						
 			$Employee = $mEmployee->find($IdEmployee);
 			$PPR = $mPPR->find($IdPaid);
-			$Title = mb_strtoupper("CHI PHÍ / LƯƠNG ".$Employee->getName()." / ".$PPR->getDatePrint()." / XÓA", 'UTF8');
-						
+			
+			$Title = mb_strtoupper($Employee->getName(), 'UTF8');
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("KHOẢN CHI", "/paid"),
+				array("LƯƠNG", "/paid/payroll")
+			);
+									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			$request->setProperty('Title', $Title);
-			$request->setProperty('URLHeader', $Employee->getURLPaid());
+			$request->setProperty('Title', $Title);			
 			$request->setObject('PPR', $PPR);
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>

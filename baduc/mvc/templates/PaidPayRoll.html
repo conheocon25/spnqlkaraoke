@@ -30,25 +30,29 @@
 								<thead>
 									<tr>
 										<th width="30"><div class="text-center">STT</div></th>
-										<th width="120">NGÀY</th>
-										<th>DIỄN GIẢI</th>
-										<th width="120">CƠ BẢN</th>										
+										<th>NGÀY</th>
+										<th width="120"><div class="text-right">CƠ BẢN</div></th>
+										<th width="120"><div class="text-right">PHỤ CẤP</div></th>
+										<th width="120"><div class="text-right">TẠM ỨNG</div></th>
+										<th width="120"><div class="text-right">T.TIỀN</div></th>
 										<th width="30" />
 									</tr>
 								</thead>								
 								<tbody>
 									<tr tal:repeat="Paid Employee/getPayRollAll">
 										<td><div class="text-center" tal:content="repeat/Paid/number" /></td>
-										<td><a tal:attributes="href Paid/getURLUpdLoad"><div tal:content="Paid/getDatePrint"/></a></td>
-										<td><div tal:content="Paid/getNote"/></td>
+										<td><a tal:attributes="href Paid/getURLUpdLoad"><div tal:content="Paid/getDatePrint"/></a></td>										
 										<td><div class="text-right" tal:content="Paid/getValueBasePrint"/></td>
+										<td><div class="text-right" tal:content="Paid/getValueSubPrint"/></td>
+										<td><div class="text-right" tal:content="Paid/getValuePrePrint"/></td>
+										<td><div class="text-right" tal:content="Paid/getValueRealPrint"/></td>
 										<td><a class="btn" tal:attributes="href Paid/getURLDelLoad"><span class="icon-remove"/></a></td>
 									</tr>
 								</tbody>
 								<tfoot>
 									<tr>
 										<td colspan="3" align="center">
-											<a class="btn" tal:attributes="href Employee/getURLPPRInsLoad"><span class="icon-plus"/>Thêm mới</a>
+											<a class="btn btn-primary" tal:attributes="href Employee/getURLPPRInsLoad"><span class="icon-plus"/>Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>								
