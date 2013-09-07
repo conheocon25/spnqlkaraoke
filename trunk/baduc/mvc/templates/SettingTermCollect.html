@@ -26,7 +26,7 @@
 								</thead>
 								<tbody>
 									<tr tal:repeat="Term TermCollectAll1">
-										<td width="32"><div tal:content="repeat/Term/number" /></td>
+										<td width="32"><div class="text-center" tal:content="repeat/Term/number" /></td>
 										<td>
 											<a tal:attributes="href Term/getURLUpdLoad">
 												<div tal:content="Term/getName" />
@@ -38,7 +38,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="4">
-											<a class="btn" href="/setting/termcollect/ins/load">
+											<a class="btn btn-primary" href="/setting/termcollect/ins/load">
 												<span class="icon-plus"/>Thêm mới
 											</a>
 										</td>

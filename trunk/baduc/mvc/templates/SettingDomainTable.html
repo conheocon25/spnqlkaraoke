@@ -29,14 +29,14 @@
 							<table class="table table-striped table-hover">
 								<thead>
 									<tr>
-										<th width="30">STT</th>
+										<th width="30"><div class="text-center">STT</div></th>
 										<th>TÊN</th>										
 										<th width="30">XÓA</th>
 									</tr>
 								</thead>								
 								<tbody>
 									<tr tal:repeat="Table TableAll">
-										<td><div tal:content="repeat/Table/number" /></td>
+										<td><div class="text-center" tal:content="repeat/Table/number" /></td>
 										<td><a tal:attributes="href Table/getURLUpdLoad"><div tal:content="Table/getName"/></a></td>
 										<td>
 											<a class="btn" tal:attributes="href Table/getURLDelLoad"><span class="icon-remove"/></a>
@@ -46,7 +46,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="4" align="center">
-											<a class="btn" tal:attributes="href Domain/getURLTableInsLoad"><span class="icon-plus"/>Thêm mới</a>
+											<a class="btn btn-primary" tal:attributes="href Domain/getURLTableInsLoad"><span class="icon-plus"/>Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>								

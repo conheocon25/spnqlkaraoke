@@ -19,7 +19,7 @@
 							<table class="table table-striped table-hover">
 								<thead>
 									<tr>
-										<th width="30">STT</th>
+										<th width="30"><div class="text-center">STT</div></th>
 										<th>TÊN</th>
 										<th width="120">SẢN PHẨM</th>
 										<th width="30">XÓA</th>
@@ -27,9 +27,7 @@
 								</thead>
 								<tbody>
 									<tr tal:repeat="Supplier SupplierAll1">
-										<td align="center">
-											<div tal:content="repeat/Supplier/number" />
-										</td>
+										<td><div class="text-center" tal:content="repeat/Supplier/number" /></td>
 										<td>
 											<a tal:attributes="href Supplier/getURLUpdLoad">
 												<div tal:content="Supplier/getName" />
@@ -50,7 +48,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="4" align="center">
-											<a class="btn" href="/setting/supplier/ins/load">
+											<a class="btn btn-primary" href="/setting/supplier/ins/load">
 												<span class="icon-plus"/>Thêm mới
 											</a>
 										</td>

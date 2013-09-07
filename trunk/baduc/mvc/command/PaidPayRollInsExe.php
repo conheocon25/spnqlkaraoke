@@ -15,6 +15,7 @@
 			$Date = $request->getProperty('Date');			
 			$ValueBase = $request->getProperty('ValueBase');
 			$ValueSub = $request->getProperty('ValueSub');
+			$ValuePre = $request->getProperty('ValuePre');
 			$Note = $request->getProperty('Note');
 						
 			//-------------------------------------------------------------
@@ -35,6 +36,7 @@
 				$Date,
 				$ValueBase,
 				$ValueSub,
+				$ValuePre,
 				$Note
 			);
 			$mPPR->Insert($PPR);

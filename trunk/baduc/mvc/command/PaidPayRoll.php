@@ -50,6 +50,7 @@
 			$request->setObject('EmployeeAll', $EmployeeAll);
 			$request->setObject('Employee', $Employee);
 			$request->setProperty('Title', $Title);
+			$request->setProperty('Page', $Page);
 			$request->setObject('Navigation', $Navigation);
 			$request->setObject('PN', $PN);
 		}

@@ -31,6 +31,9 @@
 			$DomainAll = $mDomain->findAll();
 			$CustomerAll = $mCustomer->findAll();
 			
+			$Title = "ỨNG DỤNG";
+			$Navigation = array();
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
@@ -39,6 +42,9 @@
 			$request->setObject("TermPaidAll", $TermPaidAll);
 			$request->setObject("SupplierAll", $SupplierAll);
 			$request->setObject("CustomerAll", $CustomerAll);
+
+			$request->setProperty("Title", $Title);
+			$request->setObject("Navigation", $Navigation);
 		}
 	}
 ?>
