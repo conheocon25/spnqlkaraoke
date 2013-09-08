@@ -249,8 +249,8 @@ class Tracking extends Object{
 					\date("d/m", strtotime($Date)),
 					"/report/selling/".$Date."/detail",
 					"/report/import/".$Date."/detail",
-					"/report/collect/".$Date."/detail",
-					"/report/paid/".$Date."/detail"
+					"/report/paid/".$Date."/detail",
+					"/report/collect/".$Date."/detail"
 			);
 			$Date = \date("Y-m-d", strtotime("+1 day", strtotime($Date)));}return $Data;
 		}
