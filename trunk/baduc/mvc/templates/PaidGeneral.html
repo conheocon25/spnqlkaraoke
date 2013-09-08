@@ -11,7 +11,16 @@
 			<div class="row-fluid">
 				<div class="row-fluid">
 					<div class="span3">
-						
+						<div class="menu">
+							<ul class="nav nav-list">
+								<li class="nav-header">DANH MỤC</li>								
+								<li tal:repeat="Term1 TermAll" tal:attributes="class php:Term1->getId()==Term->getId()?'active':'disable'">
+									<a tal:attributes="href Term1/getURLDetail">
+										<i class="icon-tag"/> <span tal:content="Term1/getName" />
+									</a>
+								</li>								
+							</ul>
+						</div>
 					</div>
 					<div class="span9">												
 						<div class="content">

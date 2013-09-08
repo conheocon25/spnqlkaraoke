@@ -176,6 +176,8 @@ RewriteRule ^collect/customer/([0-9]+)/([0-9]+)/del/exe$		?cmd=CollectCustomerDe
 #---------------------------------------------------------------------------------------------------------------------------
 # COLLECT.GENERAL
 #---------------------------------------------------------------------------------------------------------------------------
+RewriteRule ^collect$ 										?cmd=Collect [L]
+RewriteRule ^collect/general$ 								?cmd=CollectGeneral [L]
 RewriteRule ^collect/general/([0-9]+)$ 						?cmd=CollectGeneral&IdTerm=$1 [L]
 RewriteRule ^collect/general/([0-9]+)/page/([0-9]+)$ 		?cmd=CollectGeneral&IdTerm=$1&Page=$2 [L]
 RewriteRule ^collect/general/([0-9]+)/ins/load$				?cmd=CollectGeneralInsLoad&IdTerm=$1 [L]

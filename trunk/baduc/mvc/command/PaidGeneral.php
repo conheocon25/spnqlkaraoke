@@ -46,6 +46,7 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setObject('Term', $Term);
+			$request->setObject('TermAll', $TermAll);
 			$request->setObject('PaidAll', $PaidAll);
 			$request->setObject('PN', $PN);
 			$request->setProperty('Page', $Page);
