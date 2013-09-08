@@ -1,6 +1,6 @@
 <?php		
 	namespace MVC\Command;	
-	class ReportPaidDetail extends Command{
+	class ReportCollectGeneral extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -10,27 +10,22 @@
 														
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
-			//-------------------------------------------------------------						
-			$Date = $request->getProperty('Date');
-			
-			//-------------------------------------------------------------
-			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------						
-			$mPaid = new \MVC\Mapper\PaidGeneral();
+			//-------------------------------------------------------------			
+			$IdTrack = $request->getProperty('IdTrack');
 						
 			//-------------------------------------------------------------
-			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------									
-			$Title = "CÁC KHOẢN CHI";
-			$PaidAll = $mPaid->findByTracking(array($Date, $Date));
-			$Sum = 0;
-			while ($PaidAll->valid()){
-				$Paid = $PaidAll->current();
-				$Sum += $Paid->getValue();
-				$PaidAll->next();
-			}
-			$NSum = new \MVC\Library\Number($Sum);
+			//MAPPER DỮ LIỆU
+			//-------------------------------------------------------------			
+			$mTracking = new \MVC\Mapper\Tracking();
+			$mCollect = new \MVC\Mapper\CollectGeneral();
+			$mTerm = new \MVC\Mapper\TermCollect();
 			
+			//-------------------------------------------------------------
+			//XỬ LÝ CHÍNH
+			//-------------------------------------------------------------
+			$Tracking = $mTracking->find($IdTrack);
+			$TermAll = $mTerm->findAll();
+			$Title = "TỔNG HỢP THU THÁNG ".\date("m", strtotime($Tracking->getDateStart()))."/".\date("Y", strtotime($Tracking->getDateStart()));
 			$DateCurrent = "Vĩnh Long, ngày ".\date("d")." tháng ".\date("m")." năm ".\date("Y");
 			
 			//-------------------------------------------------------------
@@ -38,8 +33,8 @@
 			//-------------------------------------------------------------									
 			$request->setProperty('Title', $Title);
 			$request->setProperty('DateCurrent', $DateCurrent);
-			$request->setProperty('Sum', $NSum->formatCurrency()." đ" );
-			$request->setObject('PaidAll', $PaidAll);
+			$request->setObject('Tracking', $Tracking);
+			$request->setObject('TermAll', $TermAll);
 		}
 	}
 ?>

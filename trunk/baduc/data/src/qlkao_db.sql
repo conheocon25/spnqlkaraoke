@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 03, 2013 at 10:04 AM
+-- Generation Time: Sep 08, 2013 at 08:37 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -110,14 +110,15 @@ CREATE TABLE IF NOT EXISTS `baduc_collect_general` (
   `note` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `baduc_collect_1` (`id_term`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `baduc_collect_general`
 --
 
 INSERT INTO `baduc_collect_general` (`id`, `id_term`, `date`, `value`, `note`) VALUES
-(5, 2, '2013-05-18', 10, 'd');
+(5, 2, '2013-05-20', 10111, 'ddddd'),
+(6, 2, '2013-09-08', 1, 'thử nghiệm');
 
 -- --------------------------------------------------------
 
@@ -143,7 +144,7 @@ INSERT INTO `baduc_config` (`id`, `param`, `value`) VALUES
 (4, 'PRICE_HOUR_VIP_2', '100000'),
 (5, 'DISCOUNT', '0'),
 (6, 'ROW_PER_PAGE', '12'),
-(7, 'GUEST_VISIT', '69');
+(7, 'GUEST_VISIT', '109');
 
 -- --------------------------------------------------------
 
@@ -306,14 +307,14 @@ CREATE TABLE IF NOT EXISTS `baduc_guest` (
   `exit_time` varchar(32) CHARACTER SET latin1 NOT NULL,
   `agent` varchar(16) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `baduc_guest`
 --
 
 INSERT INTO `baduc_guest` (`id`, `ip`, `entry_time`, `exit_time`, `agent`) VALUES
-(3, '192.168.1.3', '1378191087', '1378194687', '192.168.1.3');
+(5, '192.168.1.3', '1378665438', '1378669038', '192.168.1.3');
 
 -- --------------------------------------------------------
 
@@ -681,7 +682,7 @@ CREATE TABLE IF NOT EXISTS `baduc_paid_general` (
   `note` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `baduc_paid_1` (`id_term`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=89 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=90 ;
 
 --
 -- Dumping data for table `baduc_paid_general`
@@ -753,7 +754,7 @@ INSERT INTO `baduc_paid_general` (`id`, `id_term`, `date`, `value`, `note`) VALU
 (76, 10, '2013-05-13', 85000, 'Tiền chợ\r\n'),
 (77, 10, '2013-05-14', 74500, 'Tiền chợ'),
 (78, 11, '2013-05-12', 141000, 'Mua chổi+cây lau nhà'),
-(79, 3, '2013-04-30', 5600000, 'Thuế TTĐB'),
+(79, 3, '2013-04-30', 5600001, 'Thuế TTĐB'),
 (80, 12, '2013-04-30', 3250000, 'chi tiền đầu chai cho NV'),
 (81, 10, '2013-05-15', 221000, ''),
 (82, 10, '2013-05-16', 106000, ''),
@@ -779,12 +780,16 @@ CREATE TABLE IF NOT EXISTS `baduc_paid_pay_roll` (
   `note` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `baduc_paid_pay_roll_1` (`idemployee`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `baduc_paid_pay_roll`
 --
 
+INSERT INTO `baduc_paid_pay_roll` (`id`, `idemployee`, `date`, `value_base`, `value_sub`, `value_pre`, `note`) VALUES
+(1, 2, '2013-09-10', 21, 31, 41, ''),
+(2, 2, '2013-09-08', 2, 3, 4, NULL),
+(4, 2, '2013-09-01', 1, 2, 3, 'a');
 
 -- --------------------------------------------------------
 
@@ -1216,7 +1221,7 @@ INSERT INTO `baduc_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`
 (436, 16, 3, 1, '2013-05-20 23:20:00', '2013-05-21 00:50:00', '', 1, 0, 0, 0, 0, 332000),
 (437, 17, 3, 1, '2013-05-21 00:02:00', '2013-05-21 01:50:00', '', 1, 0, 0, 0, 0, 276000),
 (438, 1, 1, 1, '2013-09-03 10:30:00', '2013-09-03 14:00:00', '', 0, 0, 0, 0, 0, 491000),
-(440, 17, 1, 1, '2013-08-11 01:11:39', '2013-08-11 01:11:39', '', 0, 0, 0, 0, 0, 94000);
+(440, 17, 1, 1, '2013-08-11 01:11:39', '2013-08-11 01:55:00', '', 0, 0, 0, 0, 0, 159000);
 
 -- --------------------------------------------------------
 

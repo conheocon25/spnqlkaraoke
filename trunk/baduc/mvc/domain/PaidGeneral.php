@@ -47,7 +47,7 @@ class PaidGeneral extends Object{
 	
 	function setIdTerm( $IdTerm ) {$this->IdTerm = $IdTerm;$this->markDirty();}
     function getIdTerm( ) {return $this->IdTerm;}
-	function getTerm( ) {$mTerm = new \MVC\Mapper\Term();$Term = $mTerm->find($this->IdTerm);return $Term;}
+	function getTerm( ) {$mTerm = new \MVC\Mapper\TermPaid();$Term = $mTerm->find($this->IdTerm);return $Term;}
     
 	function setValue( $Value ) {$this->Value = $Value;$this->markDirty();}	
 	function getValue( ) {if (!isset($this->Value))return 0;return $this->Value;}

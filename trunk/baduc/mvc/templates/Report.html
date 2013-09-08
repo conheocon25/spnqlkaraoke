@@ -28,23 +28,19 @@
 								<thead>
 									<tr>
 										<th width="32px">STT</th>
-										<th>THÁNG </th>										
-										<th width="120">
-											CHI TIẾT
-										</th>
-										<th width="32">XÓA</th>
+										<th>THÁNG </th>																				
+										<th width="32" />
 									</tr>
 								</thead>
 								<tbody>
 									<tr tal:repeat="Track Tracks">
 										<td><div class="text-center" tal:content="repeat/Track/number" /></td>
-										<td><span tal:content="Track/getName" /></td>
-										<td><a tal:attributes="href Track/getURLView">Xem</a>	</td>
+										<td><a tal:attributes="href Track/getURLView"><span tal:content="Track/getName" /></a></td>										
 										<td><a class="btn" tal:attributes="href Track/getURLDelLoad"><span class="icon-remove"/></a></td>
 									</tr>
 								</tbody>
 							</table>
-							<a class="btn" tal:attributes="href '/report/ins/load'">
+							<a class="btn btn-primary" tal:attributes="href '/report/ins/load'">
 								<span class="icon-plus"/>Thêm mới
 							</a>
 						</div>
