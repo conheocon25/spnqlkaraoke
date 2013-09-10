@@ -43,18 +43,36 @@
 	<!-- HEADER																	  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="Header">
-		<div class="navbar navbar-inverse">
+		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
-				<a class="brand" href="/app">					
-					<span class="icon-stack">
-						<i class="icon-circle icon-stack-base"></i>
-						<i class="icon-music" style="color:blue;"></i>
-					</span>
-					Hệ thống quản lý Karaoke
-				</a>
-				<p class="navbar-text pull-right">
-					<a class="navbar-link" href="/signout/load"><span tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()" tal:content="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->getEmail()"/></a>
-				</p>
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand scroller" href="http://www.quanly-karaoke.com">
+						<img src="/data/images/logo/spn_kara.png" width="100" alt="logo"/>
+					</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav pull-right">
+							<li><a href="#" class="scroller" data-section="#features">Tính năng</a></li>
+							<li><a href="#" class="scroller" data-section="#pricing">Giá</a></li>
+							<li><a href="#" class="scroller" data-section="#footer">Liên hệ</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Ứng dụng SPN <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Hệ thống quản lý quán Cafe</a></li>
+									<li><a href="#">Hệ thống quản lý khách sạn</a></li>
+									<li><a href="#">Hệ thống quản lý khách sạn</a></li>
+									<li><a href="#">Hệ thống quản trị nội dung Website</a></li>
+								</ul>
+							</li>
+							<li><a class="btn-header" href="#">Đăng kí</a></li>
+							<li><a class="btn-header" href="/signin/load">Đăng nhập</a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
