@@ -2,9 +2,12 @@
 namespace MVC\Domain;
 if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
 	require_once( "mvc/mapper/App.php" );
-	require_once( "mvc/mapper/User.php" );		
-	require_once( "mvc/mapper/Category.php" );
-	require_once( "mvc/mapper/Guest.php");	
+	require_once( "mvc/mapper/User.php" );
+	require_once( "mvc/mapper/Config.php" );
+	require_once( "mvc/mapper/Album.php" );
+	require_once( "mvc/mapper/CategoryNews.php" );
+	require_once( "mvc/mapper/News.php" );
+	require_once( "mvc/mapper/Guest.php");
 }
 
 class HelperFactory {
