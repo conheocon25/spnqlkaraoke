@@ -12,6 +12,19 @@ RewriteRule ^change/pass/load$ 		?cmd=ChangePassLoad [L]
 RewriteRule ^change/pass/exe$ 		?cmd=ChangePassExe [L]
 
 #---------------------------------------------------------------------------------------------------------------------------
-# APP
+# SETTING
 #---------------------------------------------------------------------------------------------------------------------------
-RewriteRule ^app$ 													?cmd=App [L]
+RewriteRule ^setting$ 												?cmd=Setting [L]
+
+#---------------------------------------------------------------------------------------------------------------------------
+# SETTING.CATEGORY.NEWS
+#---------------------------------------------------------------------------------------------------------------------------
+RewriteRule ^setting/category/news$ 								?cmd=SettingCategoryNews [L]
+RewriteRule ^setting/category/news/page/([0-9])$ 					?cmd=SettingCategoryNews&Page=$1 [L]
+
+RewriteRule ^setting/category/news/ins/load$ 						?cmd=SettingCategoryNewsInsLoad [L]
+RewriteRule ^setting/category/news/ins/exe$ 						?cmd=SettingCategoryNewsInsExe [L]
+RewriteRule ^setting/category/news/([0-9])/upd/load$ 				?cmd=SettingCategoryNewsUpdLoad&IdCategory=$1 [L]
+RewriteRule ^setting/category/news/([0-9])/upd/exe$ 				?cmd=SettingCategoryNewsUpdExe&IdCategory=$1 [L]
+RewriteRule ^setting/category/news/([0-9])/del/load$ 				?cmd=SettingCategoryNewsDelLoad&IdCategory=$1 [L]
+RewriteRule ^setting/category/news/([0-9])/del/exe$ 				?cmd=SettingCategoryNewsDelExe&IdCategory=$1 [L]
