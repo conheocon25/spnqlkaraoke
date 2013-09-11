@@ -45,7 +45,7 @@ class Viewer {
 		$pdf->AddPage();
 		$pdf->SetFont('arial', 'N', 10);					
 		$pdf->writeHTML($html, true, false, true, false, '');
-		$Out = $pdf->Output("print_BDC.pdf", 'I');
+		$Out = $pdf->Output("print.pdf", 'I');
 		unset($pdf);
 		return $Out;
 	}
