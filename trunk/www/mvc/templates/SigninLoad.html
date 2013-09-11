@@ -7,7 +7,7 @@
 	<body>
 		<div id="container">
             <div id="logo">
-                <img src="/mvc/templates/theme/cms/img/logo.png" alt="logo"/>
+                <img src="/mvc/templates/theme/cms/img/SCMS.png" alt="logo"/>
             </div>
             <div id="user">
                 <div class="avatar">
@@ -15,12 +15,12 @@
                     <img src="/mvc/templates/theme/cms/img/av1_1.jpg"/>
                 </div>
                 <div class="text">
-                    <h4>Xin chào,<span class="user_name"></span></h4>
+                    <h4>Đang xác thực <span class="user_name"></span></h4>
                 </div>
             </div>
             <div id="loginbox">
 				<form id="loginform" action="/signin/exe" method="post">
-    				<p>Đăng nhập hệ thống quản trị</p>
+    				<h4>Hệ thống quản trị Website</h4>
                     <div class="input-group input-sm">
                         <span class="input-group-addon"><i class="icon-user"></i></span><input class="form-control" name="Email" id="username" placeholder="Email" type="text"/>
                     </div>
@@ -28,14 +28,19 @@
                         <span class="input-group-addon"><i class="icon-lock"></i></span><input class="form-control" name="Pass" id="password" placeholder="Mật khẩu" type="password"/>
                     </div>
                     <div class="form-actions clearfix">
-                        <div class="pull-left">
+                        <!--
+						<div class="pull-left">
                             <a class="flip-link to-register blue">Tạo tài khoản mới</a>
                         </div>
+						-->
                         <div class="pull-right">
                             <a class="flip-link to-recover grey">Quên mật khẩu?</a>
                         </div>
                         <input class="btn btn-block btn-primary btn-default" value="Đăng nhập" type="submit"/>
+						
+						<p><img src="/mvc/templates/theme/cms/img/SPNSoft.png"/> &#0169;</p>
                     </div>
+					<!--
                     <div class="footer-login">
                         <div class="pull-left text">
                             Tài khoản khác
@@ -46,23 +51,26 @@
                             <a class="btn btn-google-plus" href="#"><i class="icon-google-plus"></i></a>
                         </div>
                     </div>
-
+					-->
                 </form>
                 <form id="recoverform" action="#">
-    				<p>Enter your e-mail address below and we will send you instructions how to recover a password.</p>
+    				<p>Nhập email bên dưới và chúng tôi sẽ xác nhận để phục hồi mật khẩu cho bạn</p>
     				<div class="input-group">
                         <span class="input-group-addon"><i class="icon-envelope"></i></span><input class="form-control" placeholder="E-mail address" type="text"/>
                     </div>
                     <div class="form-actions clearfix">
                         <div class="pull-left">
-                            <a class="grey flip-link to-login">Click to login</a>
+                            <a class="grey flip-link to-login">Đăng nhập</a>
                         </div>
+						<!--
                         <div class="pull-right">
                             <a class="blue flip-link to-register">Create new account</a>
                         </div>
-                        <input class="btn btn-block btn-inverse" value="Recover" type="submit"/>
+						-->
+                        <input class="btn btn-block btn-inverse" value="Phục hồi" type="submit"/>
                     </div>
                 </form>
+				<!--
                 <form id="registerform" action="#">
                     <p>Enter information required to register:</p>
                     <div class="input-group">
@@ -87,6 +95,7 @@
                         <input class="btn btn-block btn-success" value="Register" type="submit"/>
                     </div>
                 </form>
+				-->
             </div>
         </div>
 		
