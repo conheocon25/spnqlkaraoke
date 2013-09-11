@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="row-fluid">
+					<div class="span3">
+						<div class="menu">
+							<ul class="nav nav-list">
+								<li class="nav-header">NHÀ CUNG CẤP</li>
+								<li tal:repeat="Supplier1 SupplierAll" tal:attributes="class php:Supplier1->getId()==Supplier->getId()?'active':'disable'">
+									<a tal:attributes="href Supplier1/getURLPaid">
+										<i class="icon-truck" /><span tal:content="Supplier1/getName"/>
+										<span class="badge badge-info pull-right" tal:content="Supplier1/getPaidAll/count"/>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="span9">												
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th width="30"><div class="text-center">STT</div></th>
+										<th width="120">NGÀY</th>
+										<th>DIỄN GIẢI</th>
+										<th width="120"><div class="text-right">GIÁ TRỊ</div></th>
+										<th width="30" />
+									</tr>
+								</thead>								
+								<tbody>
+									<tr tal:repeat="Paid Supplier/getPaidAll">
+										<td><div class="text-center" tal:content="repeat/Paid/number" /></td>
+										<td><a tal:attributes="href Paid/getURLUpdLoad"><div tal:content="Paid/getDatePrint"/></a></td>
+										<td><div tal:content="Paid/getNote"/></td>
+										<td><div class="text-right" tal:content="Paid/getValuePrint"/></td>
+										<td><a class="btn" tal:attributes="href Paid/getURLDelLoad"><span class="icon-remove"/></a></td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="5" align="center">
+											<a class="btn btn-primary" tal:attributes="href Supplier/getURLPaidInsLoad"><span class="icon-plus"/>Thêm mới</a>
+										</td>
+									</tr>
+								</tfoot>								
+							</table>								
+							<span metal:use-macro="mAdmin.xhtml/PageBar"/>
+						</div>						
+					</div>
+				</div>
+			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>
+	</body>
+</html>

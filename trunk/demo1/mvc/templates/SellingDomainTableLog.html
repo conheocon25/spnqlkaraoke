@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="row-fluid">
+					<div class="span3">
+						<!--
+						<div class="menu">
+							
+							<ul class="nav nav-list">
+								<li class="nav-header">DANH MỤC</li>
+								<li>
+									<a tal:attributes="">
+									Cập nhật thông tin
+								</li>
+							</ul>							
+						</div>
+						!-->
+					</div>
+					<div class="span9">												
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>							
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>										
+										<th width="30">STT</th>
+										<th width="120">THỜI GIAN</th>
+										<th>NHÂN VIÊN</th>
+										<th width="120">
+											<div class="text-right">
+												THÀNH TIỀN
+											</div>	
+										</th>
+										<th width="30">IN</th>
+										<th width="30">XÓA</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr tal:repeat="Session SessionAll">
+										<td><div tal:content="repeat/Session/number" /></td>										
+										<td>
+											<a tal:attributes="href Session/getURLDetail">
+												<div tal:content="Session/getDateTimePrint"/>
+											</a>
+										</td>
+										<td><div tal:content="Session/getUser/getName"/></td>
+										<td><div class="text-right" tal:content="Session/getValuePrint"/></td>
+										<td>
+											<a class="btn" target="blank" tal:attributes="href Session/getURLPrint"><span class="icon-print"/></a>
+										</td>
+										<td>
+											<a class="btn" tal:attributes="href Session/getURLDelLoad"><span class="icon-remove"/></a>
+										</td>
+									</tr>
+								</tbody>								
+							</table>
+							<span metal:use-macro="mAdmin.xhtml/PageBar"/>
+						</div>						
+					</div>
+				</div>
+			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>
+	</body>
+</html>
