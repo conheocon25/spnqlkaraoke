@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="row-fluid">
+					<div class="span3">
+						<div class="menu">
+							<ul class="nav nav-list">
+								<li class="nav-header">BÁO CÁO NHANH</li>
+								<li><a target="blank" tal:attributes="href '/report/selling/today/detail'">DOANH SỐ HÔM NAY</a></li>
+								<li><a target="blank" tal:attributes="href '/report/selling/yesterday/detail'">DOANH SỐ HÔM QUA</a></li>
+								<li><a target="blank" tal:attributes="href '/report/selling/thisweek/detail'">DOANH SỐ TUẦN NÀY</a></li>
+								<li><a target="blank" tal:attributes="href '/report/selling/lastweek/detail'">DOANH SỐ TUẦN TRƯỚC</a></li>								
+							</ul>
+						</div>
+					</div>
+					<div class="span9">
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th width="32px">STT</th>
+										<th>THÁNG </th>																				
+										<th width="32" />
+									</tr>
+								</thead>
+								<tbody>
+									<tr tal:repeat="Track Tracks">
+										<td><div class="text-center" tal:content="repeat/Track/number" /></td>
+										<td><a tal:attributes="href Track/getURLView"><span tal:content="Track/getName" /></a></td>										
+										<td><a class="btn" tal:attributes="href Track/getURLDelLoad"><span class="icon-remove"/></a></td>
+									</tr>
+								</tbody>
+							</table>
+							<a class="btn btn-primary" tal:attributes="href '/report/ins/load'">
+								<span class="icon-plus"/>Thêm mới
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>
+	</body>
+</html>
