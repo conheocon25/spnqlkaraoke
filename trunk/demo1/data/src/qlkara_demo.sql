@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.9
+-- version 4.0.5
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Sep 11, 2013 at 10:54 AM
--- Server version: 5.5.8
--- PHP Version: 5.3.5
+-- Client: localhost
+-- Généré le: Mer 11 Septembre 2013 à 17:21
+-- Version du serveur: 5.1.70-cll
+-- Version de PHP: 5.3.17
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,13 +17,13 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `qlkara_demo`
+-- Base de données: `qlkara_dbdemo`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_app`
+-- Structure de la table `demo1_app`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_app` (
@@ -43,16 +44,16 @@ CREATE TABLE IF NOT EXISTS `demo1_app` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `demo1_app`
+-- Contenu de la table `demo1_app`
 --
 
 INSERT INTO `demo1_app` (`id`, `name`, `phone`, `address`, `email`, `banner`, `prefix`, `alias`, `date_created`, `date_modified`, `date_activity`, `type`, `page_view`) VALUES
-(1, 'Karaoke Ba Đức', '0945 03 07 09', 'Phó Cơ Điều P3 - TPVL', '', 'data/images/banner/logo.png', 'demo1_', 'demo1_', '2012-06-30 17:00:00', '0000-00-00 00:00:00', '2012-12-26 07:28:02', 0, 0);
+(1, 'Karaoke Ba Đức', '0945 03 07 09', 'Phó Cơ Điều P3 - TPVL', '', 'data/images/banner/logo.png', 'demo1_', 'demo1_', '2012-06-30 10:00:00', '0000-00-00 00:00:00', '2012-12-26 00:28:02', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_category`
+-- Structure de la table `demo1_category`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_category` (
@@ -63,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `demo1_category` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 --
--- Dumping data for table `demo1_category`
+-- Contenu de la table `demo1_category`
 --
 
 INSERT INTO `demo1_category` (`id`, `name`, `picture`) VALUES
@@ -75,7 +76,7 @@ INSERT INTO `demo1_category` (`id`, `name`, `picture`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_collect_customer`
+-- Structure de la table `demo1_collect_customer`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_collect_customer` (
@@ -88,18 +89,10 @@ CREATE TABLE IF NOT EXISTS `demo1_collect_customer` (
   KEY `demo1_customer_collect_1` (`idcustomer`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
---
--- Dumping data for table `demo1_collect_customer`
---
-
-INSERT INTO `demo1_collect_customer` (`id`, `idcustomer`, `date`, `value`, `note`) VALUES
-(2, 15, '2013-05-18', 1000001, 'Trả lần 1, lẻ 1 đồng'),
-(3, 17, '2013-05-01', 2087000, 'thanh toán nợ cũ');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_collect_general`
+-- Structure de la table `demo1_collect_general`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_collect_general` (
@@ -113,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `demo1_collect_general` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `demo1_collect_general`
+-- Contenu de la table `demo1_collect_general`
 --
 
 INSERT INTO `demo1_collect_general` (`id`, `id_term`, `date`, `value`, `note`) VALUES
@@ -123,7 +116,7 @@ INSERT INTO `demo1_collect_general` (`id`, `id_term`, `date`, `value`, `note`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_config`
+-- Structure de la table `demo1_config`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_config` (
@@ -134,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `demo1_config` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `demo1_config`
+-- Contenu de la table `demo1_config`
 --
 
 INSERT INTO `demo1_config` (`id`, `param`, `value`) VALUES
@@ -144,12 +137,12 @@ INSERT INTO `demo1_config` (`id`, `param`, `value`) VALUES
 (4, 'PRICE_HOUR_VIP_2', '100000'),
 (5, 'DISCOUNT', '0'),
 (6, 'ROW_PER_PAGE', '12'),
-(7, 'GUEST_VISIT', '125');
+(7, 'GUEST_VISIT', '133');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_course`
+-- Structure de la table `demo1_course`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_course` (
@@ -168,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `demo1_course` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=148 ;
 
 --
--- Dumping data for table `demo1_course`
+-- Contenu de la table `demo1_course`
 --
 
 INSERT INTO `demo1_course` (`id`, `idcategory`, `name`, `shortname`, `unit`, `price1`, `price2`, `price3`, `price4`, `picture`) VALUES
@@ -219,7 +212,7 @@ INSERT INTO `demo1_course` (`id`, `idcategory`, `name`, `shortname`, `unit`, `pr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_customer`
+-- Structure de la table `demo1_customer`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_customer` (
@@ -235,23 +228,16 @@ CREATE TABLE IF NOT EXISTS `demo1_customer` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
--- Dumping data for table `demo1_customer`
+-- Contenu de la table `demo1_customer`
 --
 
 INSERT INTO `demo1_customer` (`id`, `name`, `type`, `card`, `phone`, `address`, `note`, `discount`) VALUES
-(1, 'Khách Hàng Vãng Lai', 0, '893970784300', '0945030709', '', '', 0),
-(12, 'Lê Hồng Đức', 1, '893970784301', '0918585203', 'Cty TNHH MTV Ba Đức Vĩnh Long', 'Giám Đốc', 0),
-(13, 'Nguyễn Quang Minh', 0, '893970784302', '', '', '', 0),
-(14, 'Phan Thanh Phong', 0, '893970784303', '', '', 'Toàn', 0),
-(15, 'Phạm Minh Tuấn Anh', 0, '893970784304', '', 'Vĩnh Long', 'Kế Toán', 0),
-(16, 'Lê Nguyễn Đông Khoa', 1, '893970784305', '0945030709', 'Cty TNHH MTV Ba Đức Vĩnh Long', 'P. GĐ', 0),
-(17, 'Lê Thành Tâm', 0, '893970784306', '', '', '', 0),
-(18, 'Cường Cầu Đôi', 0, '893970784307', '', 'Cầu Đôi', '', 0);
+(1, 'Khách Hàng Vãng Lai', 0, '893970784300', '0945030709', '', '', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_domain`
+-- Structure de la table `demo1_domain`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_domain` (
@@ -261,18 +247,18 @@ CREATE TABLE IF NOT EXISTS `demo1_domain` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `demo1_domain`
+-- Contenu de la table `demo1_domain`
 --
 
 INSERT INTO `demo1_domain` (`id`, `name`) VALUES
 (1, 'KHU A'),
 (2, 'KHU B'),
-(3, 'KHU VIP');
+(3, 'KHU C');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_employee`
+-- Structure de la table `demo1_employee`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_employee` (
@@ -286,18 +272,16 @@ CREATE TABLE IF NOT EXISTS `demo1_employee` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `demo1_employee`
+-- Contenu de la table `demo1_employee`
 --
 
 INSERT INTO `demo1_employee` (`id`, `name`, `job`, `gender`, `phone`, `address`) VALUES
-(1, 'Phan Xuân Mai', '', 1, '0946 915 700', 'Cao Lãnh - Đồng Tháp'),
-(2, 'Phan Lê Hữu Phúc', '', 0, '0986 468 896', 'Cao Lãnh, Đồng Tháp'),
-(3, 'Nguyễn Văn A', 'Quản lý', 1, '11224', 'Trà Vinh');
+(1, 'Phan Văn A', '', 1, '0945.... ..', 'Vĩnh LOng');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_guest`
+-- Structure de la table `demo1_guest`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_guest` (
@@ -307,17 +291,19 @@ CREATE TABLE IF NOT EXISTS `demo1_guest` (
   `exit_time` varchar(32) CHARACTER SET latin1 NOT NULL,
   `agent` varchar(16) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `demo1_guest`
+-- Contenu de la table `demo1_guest`
 --
 
+INSERT INTO `demo1_guest` (`id`, `ip`, `entry_time`, `exit_time`, `agent`) VALUES
+(8, '113.161.196.216', '1378893345', '1378896945', '123.30.182.76');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_order_import`
+-- Structure de la table `demo1_order_import`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_order_import` (
@@ -330,7 +316,7 @@ CREATE TABLE IF NOT EXISTS `demo1_order_import` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=124 ;
 
 --
--- Dumping data for table `demo1_order_import`
+-- Contenu de la table `demo1_order_import`
 --
 
 INSERT INTO `demo1_order_import` (`id`, `idsupplier`, `date`, `description`) VALUES
@@ -432,7 +418,7 @@ INSERT INTO `demo1_order_import` (`id`, `idsupplier`, `date`, `description`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_order_import_detail`
+-- Structure de la table `demo1_order_import_detail`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_order_import_detail` (
@@ -447,7 +433,7 @@ CREATE TABLE IF NOT EXISTS `demo1_order_import_detail` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=209 ;
 
 --
--- Dumping data for table `demo1_order_import_detail`
+-- Contenu de la table `demo1_order_import_detail`
 --
 
 INSERT INTO `demo1_order_import_detail` (`id`, `idorder`, `idresource`, `count`, `price`) VALUES
@@ -646,7 +632,7 @@ INSERT INTO `demo1_order_import_detail` (`id`, `idorder`, `idresource`, `count`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_paid_customer`
+-- Structure de la table `demo1_paid_customer`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_paid_customer` (
@@ -660,7 +646,7 @@ CREATE TABLE IF NOT EXISTS `demo1_paid_customer` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
--- Dumping data for table `demo1_paid_customer`
+-- Contenu de la table `demo1_paid_customer`
 --
 
 INSERT INTO `demo1_paid_customer` (`id`, `idcustomer`, `date`, `value`, `note`) VALUES
@@ -669,7 +655,7 @@ INSERT INTO `demo1_paid_customer` (`id`, `idcustomer`, `date`, `value`, `note`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_paid_general`
+-- Structure de la table `demo1_paid_general`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_paid_general` (
@@ -683,7 +669,7 @@ CREATE TABLE IF NOT EXISTS `demo1_paid_general` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=89 ;
 
 --
--- Dumping data for table `demo1_paid_general`
+-- Contenu de la table `demo1_paid_general`
 --
 
 INSERT INTO `demo1_paid_general` (`id`, `id_term`, `date`, `value`, `note`) VALUES
@@ -765,7 +751,7 @@ INSERT INTO `demo1_paid_general` (`id`, `id_term`, `date`, `value`, `note`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_paid_pay_roll`
+-- Structure de la table `demo1_paid_pay_roll`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_paid_pay_roll` (
@@ -781,7 +767,7 @@ CREATE TABLE IF NOT EXISTS `demo1_paid_pay_roll` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `demo1_paid_pay_roll`
+-- Contenu de la table `demo1_paid_pay_roll`
 --
 
 INSERT INTO `demo1_paid_pay_roll` (`id`, `idemployee`, `date`, `value_base`, `value_sub`, `value_pre`, `note`) VALUES
@@ -792,7 +778,7 @@ INSERT INTO `demo1_paid_pay_roll` (`id`, `idemployee`, `date`, `value_base`, `va
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_paid_supplier`
+-- Structure de la table `demo1_paid_supplier`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_paid_supplier` (
@@ -806,7 +792,7 @@ CREATE TABLE IF NOT EXISTS `demo1_paid_supplier` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 --
--- Dumping data for table `demo1_paid_supplier`
+-- Contenu de la table `demo1_paid_supplier`
 --
 
 INSERT INTO `demo1_paid_supplier` (`id`, `idsupplier`, `date`, `value`, `note`) VALUES
@@ -826,7 +812,7 @@ INSERT INTO `demo1_paid_supplier` (`id`, `idsupplier`, `date`, `value`, `note`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_r2c`
+-- Structure de la table `demo1_r2c`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_r2c` (
@@ -841,7 +827,7 @@ CREATE TABLE IF NOT EXISTS `demo1_r2c` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=52 ;
 
 --
--- Dumping data for table `demo1_r2c`
+-- Contenu de la table `demo1_r2c`
 --
 
 INSERT INTO `demo1_r2c` (`id`, `id_course`, `id_resource`, `value1`, `value2`) VALUES
@@ -873,7 +859,7 @@ INSERT INTO `demo1_r2c` (`id`, `id_course`, `id_resource`, `value1`, `value2`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_resource`
+-- Structure de la table `demo1_resource`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_resource` (
@@ -888,7 +874,7 @@ CREATE TABLE IF NOT EXISTS `demo1_resource` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=77 ;
 
 --
--- Dumping data for table `demo1_resource`
+-- Contenu de la table `demo1_resource`
 --
 
 INSERT INTO `demo1_resource` (`id`, `idsupplier`, `name`, `unit`, `price`, `description`) VALUES
@@ -954,7 +940,7 @@ INSERT INTO `demo1_resource` (`id`, `idsupplier`, `name`, `unit`, `price`, `desc
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_session`
+-- Structure de la table `demo1_session`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_session` (
@@ -978,18 +964,18 @@ CREATE TABLE IF NOT EXISTS `demo1_session` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=441 ;
 
 --
--- Dumping data for table `demo1_session`
+-- Contenu de la table `demo1_session`
 --
 
 INSERT INTO `demo1_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, `datetimeend`, `note`, `status`, `discount_value`, `discount_percent`, `surtax`, `payment`, `value`) VALUES
 (390, 1, 1, 1, '2013-05-11 22:34:00', '2013-05-12 00:55:00', '', 1, 0, 0, 0, 0, 0),
-(438, 1, 1, 1, '2013-09-03 10:30:00', '2013-09-03 14:00:00', '', 0, 0, 0, 0, 0, 491000),
+(438, 1, 1, 1, '2013-09-03 10:30:00', '2013-09-03 14:00:00', '', 1, 0, 0, 0, 0, 491000),
 (440, 17, 1, 1, '2013-08-11 01:11:39', '2013-08-11 01:55:00', '', 0, 0, 0, 0, 0, 159000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_session_detail`
+-- Structure de la table `demo1_session_detail`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_session_detail` (
@@ -1004,7 +990,7 @@ CREATE TABLE IF NOT EXISTS `demo1_session_detail` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1827 ;
 
 --
--- Dumping data for table `demo1_session_detail`
+-- Contenu de la table `demo1_session_detail`
 --
 
 INSERT INTO `demo1_session_detail` (`id`, `idsession`, `idcourse`, `count`, `price`) VALUES
@@ -1023,7 +1009,7 @@ INSERT INTO `demo1_session_detail` (`id`, `idsession`, `idcourse`, `count`, `pri
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_store`
+-- Structure de la table `demo1_store`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_store` (
@@ -1034,7 +1020,7 @@ CREATE TABLE IF NOT EXISTS `demo1_store` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `demo1_store`
+-- Contenu de la table `demo1_store`
 --
 
 INSERT INTO `demo1_store` (`id`, `name`, `note`) VALUES
@@ -1043,7 +1029,7 @@ INSERT INTO `demo1_store` (`id`, `name`, `note`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_supplier`
+-- Structure de la table `demo1_supplier`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_supplier` (
@@ -1057,21 +1043,21 @@ CREATE TABLE IF NOT EXISTS `demo1_supplier` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 --
--- Dumping data for table `demo1_supplier`
+-- Contenu de la table `demo1_supplier`
 --
 
 INSERT INTO `demo1_supplier` (`id`, `name`, `phone`, `address`, `note`, `debt`) VALUES
-(1, 'ĐL Nước Đá', '0703456456', 'Trí Phường 4', 'Cung cấp nước đá', 0),
-(6, 'Coop Mart', '070', 'Vĩnh Long', 'Cung cấp mọi thứ', 0),
-(8, 'Nhà PP Đoan Trang', '0703 822 227 - ', '64/6N Trần Phú P4 TP Vĩnh Long', '', 0),
+(1, 'ĐL Nước Đá', '0700.....', 'Vĩnh Long', 'Cung cấp nước đá', 0),
+(6, 'Coop Mart Vĩnh Long', '070 d', 'Vĩnh Long', 'Cung cấp mọi thứ', 0),
+(8, 'Nhà Nước Đóng Chai', '0703 0000.513', 'TP Vĩnh Long', '', 0),
 (9, 'KHÁC', '', '', '', 0),
-(11, 'CH Tuấn', '', 'P4, TPVL', 'Cung cấp thực phẩm', 0),
-(12, 'Vựa Trái Cây', '', '', '', 0);
+(11, 'Cửa Hàng tạp hóa', '', 'TPVL', 'Cung cấp thực phẩm', 0),
+(12, 'Trái Cây', '', '', '', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_table`
+-- Structure de la table `demo1_table`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_table` (
@@ -1085,7 +1071,7 @@ CREATE TABLE IF NOT EXISTS `demo1_table` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=28 ;
 
 --
--- Dumping data for table `demo1_table`
+-- Contenu de la table `demo1_table`
 --
 
 INSERT INTO `demo1_table` (`id`, `iddomain`, `name`, `iduser`, `type`) VALUES
@@ -1103,7 +1089,7 @@ INSERT INTO `demo1_table` (`id`, `iddomain`, `name`, `iduser`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_term`
+-- Structure de la table `demo1_term`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_term` (
@@ -1114,7 +1100,7 @@ CREATE TABLE IF NOT EXISTS `demo1_term` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 --
--- Dumping data for table `demo1_term`
+-- Contenu de la table `demo1_term`
 --
 
 INSERT INTO `demo1_term` (`id`, `name`, `type`) VALUES
@@ -1129,7 +1115,7 @@ INSERT INTO `demo1_term` (`id`, `name`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_term_collect`
+-- Structure de la table `demo1_term_collect`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_term_collect` (
@@ -1139,17 +1125,17 @@ CREATE TABLE IF NOT EXISTS `demo1_term_collect` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `demo1_term_collect`
+-- Contenu de la table `demo1_term_collect`
 --
 
 INSERT INTO `demo1_term_collect` (`id`, `name`) VALUES
-(2, 'Phụ Phẩm'),
-(3, 'Đặc Biệt');
+(2, 'Linh Tinh'),
+(3, 'Thêm');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_tracking`
+-- Structure de la table `demo1_tracking`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_tracking` (
@@ -1161,7 +1147,7 @@ CREATE TABLE IF NOT EXISTS `demo1_tracking` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `demo1_tracking`
+-- Contenu de la table `demo1_tracking`
 --
 
 INSERT INTO `demo1_tracking` (`id`, `date_start`, `date_end`, `estate_rate`) VALUES
@@ -1176,7 +1162,7 @@ INSERT INTO `demo1_tracking` (`id`, `date_start`, `date_end`, `estate_rate`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_tracking_store`
+-- Structure de la table `demo1_tracking_store`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_tracking_store` (
@@ -1190,15 +1176,10 @@ CREATE TABLE IF NOT EXISTS `demo1_tracking_store` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `demo1_tracking_store`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_unit`
+-- Structure de la table `demo1_unit`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_unit` (
@@ -1208,7 +1189,7 @@ CREATE TABLE IF NOT EXISTS `demo1_unit` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 --
--- Dumping data for table `demo1_unit`
+-- Contenu de la table `demo1_unit`
 --
 
 INSERT INTO `demo1_unit` (`id`, `name`) VALUES
@@ -1232,7 +1213,7 @@ INSERT INTO `demo1_unit` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demo1_user`
+-- Structure de la table `demo1_user`
 --
 
 CREATE TABLE IF NOT EXISTS `demo1_user` (
@@ -1251,7 +1232,7 @@ CREATE TABLE IF NOT EXISTS `demo1_user` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `demo1_user`
+-- Contenu de la table `demo1_user`
 --
 
 INSERT INTO `demo1_user` (`id`, `name`, `email`, `pass`, `gender`, `note`, `datecreate`, `dateupdate`, `dateactivity`, `type`, `code`) VALUES
@@ -1260,7 +1241,7 @@ INSERT INTO `demo1_user` (`id`, `name`, `email`, `pass`, `gender`, `note`, `date
 -- --------------------------------------------------------
 
 --
--- Table structure for table `www_category_news`
+-- Structure de la table `www_category_news`
 --
 
 CREATE TABLE IF NOT EXISTS `www_category_news` (
@@ -1272,7 +1253,7 @@ CREATE TABLE IF NOT EXISTS `www_category_news` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `www_category_news`
+-- Contenu de la table `www_category_news`
 --
 
 INSERT INTO `www_category_news` (`id`, `name`, `key`, `order`) VALUES
@@ -1281,7 +1262,7 @@ INSERT INTO `www_category_news` (`id`, `name`, `key`, `order`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `www_config`
+-- Structure de la table `www_config`
 --
 
 CREATE TABLE IF NOT EXISTS `www_config` (
@@ -1292,7 +1273,7 @@ CREATE TABLE IF NOT EXISTS `www_config` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `www_config`
+-- Contenu de la table `www_config`
 --
 
 INSERT INTO `www_config` (`id`, `param`, `value`) VALUES
@@ -1302,7 +1283,7 @@ INSERT INTO `www_config` (`id`, `param`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `www_guest`
+-- Structure de la table `www_guest`
 --
 
 CREATE TABLE IF NOT EXISTS `www_guest` (
@@ -1315,7 +1296,7 @@ CREATE TABLE IF NOT EXISTS `www_guest` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `www_guest`
+-- Contenu de la table `www_guest`
 --
 
 INSERT INTO `www_guest` (`id`, `ip`, `entry_time`, `exit_time`, `agent`) VALUES
@@ -1324,7 +1305,7 @@ INSERT INTO `www_guest` (`id`, `ip`, `entry_time`, `exit_time`, `agent`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `www_user`
+-- Structure de la table `www_user`
 --
 
 CREATE TABLE IF NOT EXISTS `www_user` (
@@ -1343,84 +1324,84 @@ CREATE TABLE IF NOT EXISTS `www_user` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `www_user`
+-- Contenu de la table `www_user`
 --
 
 INSERT INTO `www_user` (`id`, `name`, `email`, `pass`, `gender`, `note`, `datecreate`, `dateupdate`, `dateactivity`, `type`, `code`) VALUES
 (1, 'Bùi Thanh Tuấn', 'tuanbuithanh@gmail.com', 'admin123456', 0, ' ', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, ''),
 (2, 'Lê Nguyễn Đông Khoa', 'lekhoa.bdc@gmail.com', '123456', 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, ''),
 (3, 'Phan Xuân Mai', 'maiphan.bdc@gmail.com', '123456', 1, ' ', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, ''),
-(4, 'Phan Lê Hữu Phúc', 'phucphan.bdc@gmail.com', '123456', 0, '', '2013-04-07 18:54:16', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, ''),
-(5, 'Lê Quang Minh', 'minhle.bdc@gmail.com', '123456', 0, '', '2013-05-21 02:21:20', '2013-05-21 02:21:20', '2013-05-21 02:21:20', 1, '');
+(4, 'Phan Lê Hữu Phúc', 'phucphan.bdc@gmail.com', '123456', 0, '', '2013-04-07 11:54:16', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, ''),
+(5, 'Lê Quang Minh', 'minhle.bdc@gmail.com', '123456', 0, '', '2013-05-20 19:21:20', '2013-05-20 19:21:20', '2013-05-20 19:21:20', 1, '');
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables exportées
 --
 
 --
--- Constraints for table `demo1_collect_customer`
+-- Contraintes pour la table `demo1_collect_customer`
 --
 ALTER TABLE `demo1_collect_customer`
   ADD CONSTRAINT `demo1_customer_collect_1` FOREIGN KEY (`idcustomer`) REFERENCES `demo1_customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `demo1_collect_general`
+-- Contraintes pour la table `demo1_collect_general`
 --
 ALTER TABLE `demo1_collect_general`
   ADD CONSTRAINT `demo1_collect_general_1` FOREIGN KEY (`id_term`) REFERENCES `demo1_term_collect` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `demo1_course`
+-- Contraintes pour la table `demo1_course`
 --
 ALTER TABLE `demo1_course`
   ADD CONSTRAINT `demo1_course_1` FOREIGN KEY (`idcategory`) REFERENCES `demo1_category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `demo1_order_import`
+-- Contraintes pour la table `demo1_order_import`
 --
 ALTER TABLE `demo1_order_import`
   ADD CONSTRAINT `demo1_order_import_1` FOREIGN KEY (`idsupplier`) REFERENCES `demo1_supplier` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `demo1_order_import_detail`
+-- Contraintes pour la table `demo1_order_import_detail`
 --
 ALTER TABLE `demo1_order_import_detail`
   ADD CONSTRAINT `demo1_order_import_detail_1` FOREIGN KEY (`idorder`) REFERENCES `demo1_order_import` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `demo1_order_import_detail_2` FOREIGN KEY (`idresource`) REFERENCES `demo1_resource` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `demo1_paid_customer`
+-- Contraintes pour la table `demo1_paid_customer`
 --
 ALTER TABLE `demo1_paid_customer`
   ADD CONSTRAINT `demo1_customer_paid_1` FOREIGN KEY (`idcustomer`) REFERENCES `demo1_customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `demo1_paid_general`
+-- Contraintes pour la table `demo1_paid_general`
 --
 ALTER TABLE `demo1_paid_general`
   ADD CONSTRAINT `demo1_paid_general_1` FOREIGN KEY (`id_term`) REFERENCES `demo1_term` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `demo1_paid_supplier`
+-- Contraintes pour la table `demo1_paid_supplier`
 --
 ALTER TABLE `demo1_paid_supplier`
   ADD CONSTRAINT `demo1_supplier_paid_1` FOREIGN KEY (`idsupplier`) REFERENCES `demo1_supplier` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `demo1_r2c`
+-- Contraintes pour la table `demo1_r2c`
 --
 ALTER TABLE `demo1_r2c`
   ADD CONSTRAINT `demo1_r2c_1` FOREIGN KEY (`id_course`) REFERENCES `demo1_course` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `demo1_r2c_2` FOREIGN KEY (`id_resource`) REFERENCES `demo1_resource` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `demo1_resource`
+-- Contraintes pour la table `demo1_resource`
 --
 ALTER TABLE `demo1_resource`
   ADD CONSTRAINT `demo1_resource_1` FOREIGN KEY (`idsupplier`) REFERENCES `demo1_supplier` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `demo1_session`
+-- Contraintes pour la table `demo1_session`
 --
 ALTER TABLE `demo1_session`
   ADD CONSTRAINT `demo1_session_1` FOREIGN KEY (`idtable`) REFERENCES `demo1_table` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1428,14 +1409,18 @@ ALTER TABLE `demo1_session`
   ADD CONSTRAINT `demo1_session_3` FOREIGN KEY (`idcustomer`) REFERENCES `demo1_customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `demo1_session_detail`
+-- Contraintes pour la table `demo1_session_detail`
 --
 ALTER TABLE `demo1_session_detail`
   ADD CONSTRAINT `demo1_session_detail_1` FOREIGN KEY (`idsession`) REFERENCES `demo1_session` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `demo1_session_detail_2` FOREIGN KEY (`idcourse`) REFERENCES `demo1_course` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `demo1_table`
+-- Contraintes pour la table `demo1_table`
 --
 ALTER TABLE `demo1_table`
   ADD CONSTRAINT `demo1_table_1` FOREIGN KEY (`iddomain`) REFERENCES `demo1_domain` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
