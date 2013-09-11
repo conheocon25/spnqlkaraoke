@@ -12,8 +12,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$CodeCaptcha = $request->getProperty('CodeCaptcha');
-			
+						
 			$Email = $request->getProperty('inputEmail');
 			$Name = $request->getProperty('inputName');			
 			$Address = $request->getProperty('inputCity');			
@@ -24,13 +23,12 @@
 			//-------------------------------------------------------------
 			$mUser = new \MVC\Mapper\User();
 			
-			$OldCodeCaptcha = $Session->getCurrentCaptcha();
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
 			
-			if ($OldCodeCaptcha == $CodeCaptcha)
-			{				
+							
 				if ($Email != ""){				
 					//lấy ngày hiện tại
 					$Today = \getdate();
@@ -47,7 +45,7 @@
 					return self::statuses('CMD_OK');
 				}
 				return self::statuses('CMD_NO_AUTHOR');
-			}
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
