@@ -13,9 +13,10 @@
 			<status value="CMD_NO_AUTHOR"><forward>Home</forward></status>
 		</command>		
 		<command name="SignoutLoad"><view>SignoutLoad</view></command>
-		<command name="SignoutExe"><view>SignoutExe</view><status value="CMD_OK"><forward>Home</forward></status></command>				
+		<command name="SignoutExe"><view>SignoutExe</view><status value="CMD_OK"><forward>Home</forward></status></command>						
 		<command name="Setting"><view>Setting</view></command>
-				
+		
+		<command name="ContactInsExe"><view>ContactInsExe</view><status value="CMD_OK"><forward>Home</forward></status></command>				
 		<!-- ============================================================================== -->
 		<!-- GLOBAL			 																-->
 		<!-- ============================================================================== -->		

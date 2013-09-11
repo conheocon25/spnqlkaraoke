@@ -10,6 +10,7 @@ RewriteRule ^signout/load$ 			?cmd=SignoutLoad [L]
 RewriteRule ^signout/exe$ 			?cmd=SignoutExe [L]
 RewriteRule ^change/pass/load$ 		?cmd=ChangePassLoad [L]
 RewriteRule ^change/pass/exe$ 		?cmd=ChangePassExe [L]
+RewriteRule ^contact/ins/exe$ 		?cmd=ContactInsExe [L]
 
 #---------------------------------------------------------------------------------------------------------------------------
 # SETTING
