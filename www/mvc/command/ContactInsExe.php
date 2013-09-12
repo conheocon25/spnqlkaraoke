@@ -17,18 +17,18 @@
 			$Name = $request->getProperty('inputName');			
 			$Address = $request->getProperty('inputCity');			
 			$Subject = $request->getProperty('Subject');
-			$Comment = $request->getProperty('inputComment');						
+			$Comment = $request->getProperty('comments');	
+
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mUser = new \MVC\Mapper\User();
-			
+					
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
 			
-							
 				if ($Email != ""){				
 					//lấy ngày hiện tại
 					$Today = \getdate();
@@ -44,12 +44,12 @@
 					$mMail->SendMail( $AdminMailName, $AdminMail, 'tuanbuithanh@gmail.com', $MailSubject, $MailContent);
 					return self::statuses('CMD_OK');
 				}
-				return self::statuses('CMD_NO_AUTHOR');
+				return self::statuses('CMD_OK');
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			return self::statuses('CMD_OK');
+			
 		}
 	}
 ?>
