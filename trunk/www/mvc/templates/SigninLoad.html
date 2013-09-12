@@ -2,7 +2,9 @@
 <html lang="en">
 	<head>
 		<div metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
-		<div metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/cms/css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="/mvc/templates/theme/cms/css/font.awesome.css"/>
+        <link rel="stylesheet" type="text/css" href="/mvc/templates/theme/cms/css/unicorn.login.css"/>
 	</head>
 	<body>
 		<div id="container">
@@ -99,6 +101,8 @@
             </div>
         </div>
 		
-		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/theme/cms/js/signin.jquery.js"/> 
+        <script type="text/javascript" language="javascript" src="/mvc/templates/theme/cms/js/jquery.ui.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/theme/cms/js/signin.unicorn.js"/>
 	</body>
 </html>

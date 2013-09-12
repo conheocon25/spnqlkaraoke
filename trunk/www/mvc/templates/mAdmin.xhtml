@@ -25,103 +25,128 @@
 	<span metal:define-macro="IncludeCSS">	
 		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/cms/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="/mvc/templates/theme/cms/css/font.awesome.css"/>
-        <link rel="stylesheet" type="text/css" href="/mvc/templates/theme/cms/css/unicorn.login.css"/>
+		
+		<link rel="stylesheet" href="/mvc/templates/theme/cms/css/bootstrap.css"/>
+		<link rel="stylesheet" href="/mvc/templates/theme/cms/css/font-awesome.css"/>
+		<link rel="stylesheet" href="/mvc/templates/theme/cms/css/fullcalendar.css"/>
+		<link rel="stylesheet" href="/mvc/templates/theme/cms/css/jquery.css"/>	
+		<link rel="stylesheet" href="/mvc/templates/theme/cms/css/unicorn_002.css"/>
+		<link rel="stylesheet" href="/mvc/templates/theme/cms/css/unicorn.css" class="skin-color"/>
 	</span>
 	
 	<!-- ======================================================================== -->
 	<!-- JAVASCRIPT INCLUDE														  -->
 	<!-- ======================================================================== -->
 	<span metal:define-macro="IncludeJS">
-		<script type="text/javascript" language="javascript" src="/mvc/templates/theme/cms/js/jquery.js"/> 
-        <script type="text/javascript" language="javascript" src="/mvc/templates/theme/cms/js/jquery.ui.js"/>
-        <script type="text/javascript" language="javascript" src="/mvc/templates/theme/cms/js/unicorn.js"/>
+		<script src="/mvc/templates/theme/cms/js/excanvas.js"></script>
+		<script src="/mvc/templates/theme/cms/js/jquery_003.js"></script>
+		<script src="/mvc/templates/theme/cms/js/jquery-ui.js"></script>
+		<script src="/mvc/templates/theme/cms/js/bootstrap.js"></script>
+		<script src="/mvc/templates/theme/cms/js/jquery.js"></script>
+		<script src="/mvc/templates/theme/cms/js/jquery_005.js"></script>
+		<script src="/mvc/templates/theme/cms/js/jquery_006.js"></script>
+		<script src="/mvc/templates/theme/cms/js/fullcalendar.js"></script>
+		<script src="/mvc/templates/theme/cms/js/jquery_004.js"></script>
+		<script src="/mvc/templates/theme/cms/js/jquery_002.js"></script>
+		<script src="/mvc/templates/theme/cms/js/unicorn.js"></script>
+		<script src="/mvc/templates/theme/cms/js/unicorn_002.js"></script>
 	</span>
 	
 	<!-- ======================================================================== -->
 	<!-- HEADER																	  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="Header">
-		<div class="navbar navbar-inverse">
-			<div class="navbar-inner">
-				<a class="brand" href="/app">					
-					<span class="icon-stack">
-						<i class="icon-circle icon-stack-base"></i>
-						<i class="icon-music" style="color:blue;"></i>
-					</span>
-					Hệ thống quản lý Karaoke
-				</a>
-				<p class="navbar-text pull-right">
-					<a class="navbar-link" href="/signout/load"><span tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()" tal:content="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->getEmail()"/></a>
-				</p>
-			</div>
+		<div id="header">
+			<h1><a href="/setting"></a></h1>	
+			<a id="menu-trigger" href="#"><i class="icon-align-justify"></i></a>	
 		</div>
+		<div id="user-nav">
+            <ul style="width: auto; margin: 0px;" class="btn-group">
+                <li class="btn"><a href="/signout/load"><i class="icon-user"></i> <span class="text" tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()" tal:content="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->getEmail()"/></a></li>
+            </ul>
+        </div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- CONTENT HEADER															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="ContentHeader" id="content-header">
+		<h1>www.quanly-karaoke.com</h1>
+		<ul class="mini-stats box-3">
+			<li>
+				<div class="right">
+					<strong tal:content="php:@\MVC\Library\Statistic::getOnlinePrint()"/>
+					<i class="icon-user"/> Trực tuyến
+				</div>
+			</li>
+			<li>
+				<div class="right">
+					<strong tal:content="php:@\MVC\Library\Statistic::getCountPrint()"/>
+					<i class="icon-bar-chart"/> Lượt xem
+				</div>
+			</li>
+		</ul>
 	</div>
 	
 	<!-- ======================================================================== -->
 	<!-- LOCATION BAR															  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="LocationBar">
-		<div class="row-fluid">			
-			<ul class="span12 breadcrumb">
-				<li tal:repeat="Item Navigation">
-					<a tal:attributes="href php:Item[1]" tal:content="php:Item[0]" /> <span class="divider">/</span>
+		<div id="breadcrumb">
+			<i class="icon-gear"/>
+			<a tal:repeat="Item Navigation" tal:attributes="href php:Item[1]" tal:content="php:Item[0]" data-original-title="Về trang này" class="tip-bottom"/>
+			<a tal:content="Title" class="current"/>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- PAGE BAR																  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="PageBar" class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
+		<a class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default ui-state-disabled">Trang trước</a><a tal:repeat="P PN/getPages" tal:attributes="href P/getURL; class php:Page==P->getId()?'fg-button ui-button ui-state-default':'fg-button ui-button ui-state-default ui-state-disabled'" tal:content="P/getName"/><a class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default">Trang kế</a>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- MENU																	  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="Menu" class="menu">
+		<div id="sidebar">
+			<ul style="display: block;" tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isAdmin()">
+				<li class="active">
+					<a tal:attributes="href 'setting/category/news'">
+						<i class="icon-tags"></i> <span>Tin tức</span>
+					</a>
 				</li>
-				<li class="active" tal:content="Title"/>
+				<li>
+					<a tal:attributes="href 'setting/category/album'">
+						<i class="icon-tags"></i> <span>Album</span>
+					</a>
+				</li>
+				<li>
+					<a tal:attributes="href 'setting/customer'">
+						<i class="icon-user"></i> <span>Khách hàng</span>
+					</a>
+				</li>
+				<li>
+					<a tal:attributes="href 'setting/report'">
+						<i class="icon-book"></i> <span>Báo cáo</span>
+					</a>
+				</li>
+				<li>
+					<a tal:attributes="href '/setting/config'">
+						<i class="icon-gear"></i> <span>Cấu hình</span>
+					</a>
+				</li>
 			</ul>
 		</div>
 	</div>
 	
 	<!-- ======================================================================== -->
-	<!-- LOCATION BAR															  -->
-	<!-- ======================================================================== -->
-	<div metal:define-macro="PageBar" class="pagination">
-		<ul>
-			<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'disabled':'active'">
-				<a tal:attributes="href P/getURL" tal:content="P/getName" />
-			</li>
-		</ul>
-	</div>
-							
-	<div metal:define-macro="Menu" class="menu">
-		<ul class="nav nav-list">
-			<li class="nav-header">THIẾT LẬP</li>			
-			<ul class="nav nav-list" tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isAdmin()">				
-				<li>
-					<a tal:attributes="href 'setting/category/news'">
-						<i class="icon-tags" />TIN TỨC
-					</a>
-				</li>
-				<li>
-					<a tal:attributes="href 'setting/category/album'">
-						<i class="icon-tags" />ALBUM
-					</a>
-				</li>
-				<li>
-					<a tal:attributes="href 'setting/customer'">
-						<i class="icon-user" />KHÁCH HÀNG
-					</a>
-				</li>
-				<li>
-					<a tal:attributes="href 'setting/report'">
-						<i class="icon-book" />BÁO CÁO
-					</a>
-				</li>
-				<li>
-					<a tal:attributes="href '/setting/config'">
-						<i class="icon-gear" />CẤU HÌNH
-					</a>
-				</li>
-			</ul>
-			
-		</ul>
-	</div>
-	
-	<!-- ======================================================================== -->
 	<!-- FOOTER																	  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="Footer">
-		<div class="row-fluid footer">
-			<span class="label pull-right copyright">&#169; 2012 SPN</span>
+	<div metal:define-macro="Footer" class="row">
+		<div id="footer" class="col-xs-12">
+			<img src="data/images/logo/spn_2013.png"/>&#0169;
 		</div>
 	</div>	
 </body>
