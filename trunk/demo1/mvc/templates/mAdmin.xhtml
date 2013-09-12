@@ -49,11 +49,10 @@
 		<div class="navbar navbar-inverse">
 			<div class="navbar-inner">
 				<a class="brand" href="/app">					
-					<span class="icon-stack">
-						<i class="icon-circle icon-stack-base"></i>
-						<i class="icon-music" style="color:blue;"></i>
-					</span>
-					Hệ thống quản lý Karaoke Demo 1
+					<img src="/data/images/logo/spn_kara.png" width="190" alt="logo"/>
+					<p style="font-size: 12px; margin-top:10px; margin-left:10px;">
+						Hệ thống quản lý Karaoke Demo 1
+					</p>
 				</a>
 				<p class="navbar-text pull-right">
 					<a class="navbar-link" href="/signout/load"><span tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()" tal:content="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->getEmail()"/></a>
