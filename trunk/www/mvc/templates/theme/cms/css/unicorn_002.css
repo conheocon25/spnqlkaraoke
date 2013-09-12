@@ -2331,13 +2331,17 @@ div.dataTables_wrapper .ui-widget-header {
 }
 .table th {
   height: auto;
-  font-size: 10px;
+  font-size: 11px;
   padding: 5px 10px 2px;
   border-bottom: 0;
   text-align: center;
   color: #666666;
   vertical-align: middle !important;
 }
+.table th .my-ico {
+	font-size: 15px;
+}
+
 .table tr.checked td {
   background-color: #FFFFE3 !important;
 }

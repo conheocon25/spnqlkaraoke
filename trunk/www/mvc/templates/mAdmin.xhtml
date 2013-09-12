@@ -103,7 +103,9 @@
 	<!-- PAGE BAR																  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="PageBar" class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
-		<a class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default ui-state-disabled">Trang trước</a><a tal:repeat="P PN/getPages" tal:attributes="href P/getURL; class php:Page==P->getId()?'fg-button ui-button ui-state-default':'fg-button ui-button ui-state-default ui-state-disabled'" tal:content="P/getName"/><a class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default">Trang kế</a>
+		<a class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default ui-state-disabled"><i class="icon-angle-left"/>
+		</a><a tal:repeat="P PN/getPages" tal:attributes="href P/getURL; class php:Page==P->getId()?'fg-button ui-button ui-state-default':'fg-button ui-button ui-state-default ui-state-disabled'" tal:content="P/getName">
+		</a><a class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default"><i class="icon-angle-right"/></a>
 	</div>
 	
 	<!-- ======================================================================== -->
