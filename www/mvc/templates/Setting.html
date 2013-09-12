@@ -1,39 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html style="overflow-y:hidden;" lang="en">
 	<head>
-		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
-		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
-		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+		<div metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<div metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
 	</head>
-	<body>
-		<div class="container-fluid">
-			<span metal:use-macro="mAdmin.xhtml/Header"/>
-			<div class="row-fluid">
-				<div class="row-fluid">
-					<div class="span3">
-						<span metal:use-macro="mAdmin.xhtml/Menu"/>
-						<BR/>
-						<div class="menu">
-							<ul class="nav nav-list">
-								<li class="nav-header">THỐNG KÊ</li>
-								<li>									
-									<i class="icon-user" /> <span tal:content="php:@\MVC\Library\Statistic::getOnlinePrint()"/> trực tuyến
-								</li>
-								<li>									
-									<i class="icon-bar-chart" /> <span class="bubble" tal:content="php:@\MVC\Library\Statistic::getCountPrint()"/> lượt xem
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="span9">
-						<div class="content">
-							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
-							<center><img src="/data/images/bg_manager.jpg" width="50%" style="opacity:.25;"/></center>
-						</div>
-					</div>
-				</div>
+	
+	<body data-menu-position="closed">
+		<div metal:use-macro="mAdmin.xhtml/Header"/>
+		<div metal:use-macro="mAdmin.xhtml/Menu"/>
+		<div id="content">
+			<div metal:use-macro="mAdmin.xhtml/ContentHeader"/>
+			<div metal:use-macro="mAdmin.xhtml/LocationBar"/>
+			<div class="container-fluid">
+				<center>
+					<h1>Hệ thống quản trị nội dung</h1>
+					<h4>www.quanly-karaoke.com</h4>
+				</center>
 			</div>
-			<span metal:use-macro="mAdmin.xhtml/Footer"/>
 		</div>
+		<div metal:use-macro="mAdmin.xhtml/Footer"/>
+		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
 	</body>
 </html>
