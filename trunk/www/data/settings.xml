@@ -16,7 +16,7 @@
 		<command name="SignoutExe"><view>SignoutExe</view><status value="CMD_OK"><forward>Home</forward></status></command>						
 		<command name="Setting"><view>Setting</view></command>
 		
-		<command name="ContactInsExe"><view>ContactInsExe</view><status value="CMD_OK"><forward>Home</forward></status></command>				
+		<command name="ContactInsExe" type="public"><view>ContactInsExe</view><status value="CMD_OK"><forward>Home</forward></status></command>				
 		<!-- ============================================================================== -->
 		<!-- GLOBAL			 																-->
 		<!-- ============================================================================== -->		
