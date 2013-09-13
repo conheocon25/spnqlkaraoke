@@ -36,6 +36,7 @@
 			$request->setObject('Category', $Category);
 			$request->setProperty('Title', $Title);
 			$request->setObject('Navigation', $Navigation);
+			$request->setObject("ActiveAdmin", 'CategoryNews');
 		}
 	}
 ?>
