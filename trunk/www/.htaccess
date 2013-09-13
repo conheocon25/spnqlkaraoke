@@ -23,6 +23,19 @@ RewriteRule ^setting$ 												?cmd=Setting [L]
 #---------------------------------------------------------------------------------------------------------------------------
 # SETTING.CATEGORY.NEWS
 #---------------------------------------------------------------------------------------------------------------------------
+RewriteRule ^setting/config$ 								?cmd=SettingConfig [L]
+RewriteRule ^setting/config/page/([0-9])$ 					?cmd=SettingConfig&Page=$1 [L]
+
+RewriteRule ^setting/config/ins/load$ 						?cmd=SettingConfigInsLoad [L]
+RewriteRule ^setting/config/ins/exe$ 						?cmd=SettingConfigInsExe [L]
+RewriteRule ^setting/config/([0-9])/upd/load$ 				?cmd=SettingConfigUpdLoad&IdConfig=$1 [L]
+RewriteRule ^setting/config/([0-9])/upd/exe$ 				?cmd=SettingConfigUpdExe&IdConfig=$1 [L]
+RewriteRule ^setting/config/([0-9])/del/load$ 				?cmd=SettingConfigDelLoad&IdConfig=$1 [L]
+RewriteRule ^setting/config/([0-9])/del/exe$ 				?cmd=SettingConfigDelExe&IdConfig=$1 [L]
+
+#---------------------------------------------------------------------------------------------------------------------------
+# SETTING.CATEGORY.NEWS
+#---------------------------------------------------------------------------------------------------------------------------
 RewriteRule ^setting/category/news$ 								?cmd=SettingCategoryNews [L]
 RewriteRule ^setting/category/news/page/([0-9])$ 					?cmd=SettingCategoryNews&Page=$1 [L]
 
