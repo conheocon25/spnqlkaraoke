@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class SettingCategoryNewsUpdLoad extends Command {
+	class SettingCategoryAlbumInsExe extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -10,32 +10,32 @@
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------			
-			$IdCategory = $request->getProperty('IdCategory');
+			//-------------------------------------------------------------						
+			$Name = $request->getProperty('Name');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mCategory = new \MVC\Mapper\CategoryNews();
-								
+			$mCategory = new \MVC\Mapper\CategoryAlbum();
+					
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------							
-			$Category = $mCategory->find($IdCategory);			
-			
-			$Title = mb_strtoupper($Category->getName(), 'UTF8');
-			$Navigation = array(
-				array("ỨNG DỤNG", "/home"),
-				array("THIẾT LẬP", "/setting"),
-				array("TIN TỨC", "/setting/category/news")
-			);
+			//-------------------------------------------------------------
+			if (!isset($Name)||$Name=="")
+				return self::statuses('CMD_OK');
+				
+			$Category = new \MVC\Domain\CategoryAlbum(
+				null,
+				$Name,
+				"abc",
+				0
+			);			
+			$mCategory->insert($Category);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------						
-			$request->setObject('Category', $Category);			
-			$request->setProperty('Title', $Title);
-			$request->setObject('Navigation', $Navigation);
+			//-------------------------------------------------------------			
+			return self::statuses('CMD_OK');
 		}
 	}
 ?>

@@ -65,6 +65,17 @@
 		<command name="SettingCategoryAlbumDelExe"><view>SettingCategoryAlbumDelExe</view><status value="CMD_OK"><forward>SettingCategoryAlbum</forward></status></command>
 
 		<!-- ============================================================================== -->
+		<!-- SETTING.CATEGORY.VIDEO	 													-->
+		<!-- ============================================================================== -->
+		<command name="SettingCategoryVideo"><view>SettingCategoryVideo</view></command>
+		<command name="SettingCategoryVideoInsLoad"><view>SettingCategoryVideoInsLoad</view></command>
+		<command name="SettingCategoryVideoInsExe"><view>SettingCategoryVideoInsExe</view><status value="CMD_OK"><forward>SettingCategoryVideo</forward></status></command>
+		<command name="SettingCategoryVideoUpdLoad"><view>SettingCategoryVideoUpdLoad</view></command>
+		<command name="SettingCategoryVideoUpdExe"><view>SettingCategoryVideoUpdExe</view><status value="CMD_OK"><forward>SettingCategoryVideo</forward></status></command>		
+		<command name="SettingCategoryVideoDelLoad"><view>SettingCategoryVideoDelLoad</view></command>
+		<command name="SettingCategoryVideoDelExe"><view>SettingCategoryVideoDelExe</view><status value="CMD_OK"><forward>SettingCategoryVideo</forward></status></command>
+		
+		<!-- ============================================================================== -->
 		<!-- SETTING.CUSTOMER			 													-->
 		<!-- ============================================================================== -->
 		<command name="SettingCustomer"><view>SettingCustomer</view></command>

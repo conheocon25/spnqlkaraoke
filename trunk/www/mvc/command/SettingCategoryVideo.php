@@ -1,6 +1,6 @@
 <?php		
 	namespace MVC\Command;	
-	class SettingCategoryNews extends Command {
+	class SettingCategoryVideo extends Command {
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");
 			//-------------------------------------------------------------
@@ -21,22 +21,22 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------									
-			$Title = "TIN TỨC";
+			$Title = "VIDEO";
 			$Navigation = array(
 				array("ỨNG DỤNG", "/home"),
 				array("THIẾT LẬP", "/setting")
 			);
 			if (!isset($Page)) $Page=1;
 			$Config = $mConfig->findByName("ROW_PER_PAGE");
-			$CategoryAll = $mCategoryNews->findAll();
-			$CategoryAll1 = $mCategoryNews->findByPage(array($Page, $Config->getValue() ));
+			$CategoryAll = $mCategoryVideo->findAll();
+			$CategoryAll1 = $mCategoryVideo->findByPage(array($Page, $Config->getValue() ));
 			$PN = new \MVC\Domain\PageNavigation($CategoryAll->count(), $Config->getValue(), "/setting/category/news" );
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
 			$request->setProperty('Title', $Title);
-			$request->setProperty('ActiveAdmin', 'CategoryNews');
+			$request->setProperty('ActiveAdmin', 'CategoryVideo');
 			$request->setProperty('Page', $Page);
 			$request->setObject('Navigation', $Navigation);
 			$request->setObject('CategoryAll1', $CategoryAll1);

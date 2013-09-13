@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class SettingCategoryNewsUpdLoad extends Command {
+	class SettingCategoryAlbumDelLoad extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -16,8 +16,8 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mCategory = new \MVC\Mapper\CategoryNews();
-								
+			$mCategory = new \MVC\Mapper\CategoryAlbum();
+					
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
@@ -26,15 +26,16 @@
 			$Title = mb_strtoupper($Category->getName(), 'UTF8');
 			$Navigation = array(
 				array("ỨNG DỤNG", "/home"),
-				array("THIẾT LẬP", "/setting"),
-				array("TIN TỨC", "/setting/category/news")
+				array("THIẾT LẬP", "/setting"),				
+				array("ALBUM", "/setting/category/album")
 			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------						
-			$request->setObject('Category', $Category);			
+			//-------------------------------------------------------------			
+			$request->setObject('Category', $Category);
 			$request->setProperty('Title', $Title);
+			$request->setProperty('ActiveAdmin', 'CategoryAlbum');
 			$request->setObject('Navigation', $Navigation);
 		}
 	}
