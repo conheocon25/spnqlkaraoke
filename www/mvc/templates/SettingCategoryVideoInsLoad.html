@@ -17,12 +17,19 @@
 						<div class="widget-box">
 							<div class="widget-title">
 								<span class="icon"><i class="icon-align-justify"></i></span>
-								<h5>XÓA</h5>
+								<h5>THÊM MỚI</h5>
 							</div>
 							<div class="widget-content nopadding">								
-								<form class="form-actions" tal:attributes="action Category/getURLDelExe" method="post">
-									<p>Bạn có chắc chắn muốn xóa ?</p>
-									<button type="submit" class="btn" value="submit-value"><span class="icon-remove"/>Xóa</button>
+								<form class="form-horizontal" action="/setting/category/video/ins/exe" method="post">
+									<div class="form-group">
+										<label class="control-label">Tên</label>
+										<div class="controls">
+											<input id="Name" name="Name" type="text" class="form-control input-sm"/>
+										</div>
+									</div>
+									<div class="form-actions">
+										<button class="btn btn-primary btn-sm" type="submit"><i class="icon-download-alt"/> Lưu</button>
+									</div>
 								</form>
 							</div>
 						</div>

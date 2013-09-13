@@ -22,7 +22,7 @@
 			//-------------------------------------------------------------										
 			$Title = "THÊM MỚI";			
 			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
+				array("ỨNG DỤNG", "/home"),
 				array("THIẾT LẬP", "/setting"),
 				array("DANH MỤC MÓN", "/setting/category")
 			);

@@ -114,27 +114,32 @@
 	<div metal:define-macro="Menu" class="menu">
 		<div id="sidebar">
 			<ul style="display: block;" tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isAdmin()">
-				<li class="active">
+				<li tal:attributes="class php: ActiveAdmin=='CategoryNews'?'active':''">
 					<a tal:attributes="href 'setting/category/news'">
 						<i class="icon-tags"></i> <span>Tin tức</span>
 					</a>
 				</li>
-				<li>
+				<li tal:attributes="class php: ActiveAdmin=='CategoryAlbum'?'active':''">
 					<a tal:attributes="href 'setting/category/album'">
 						<i class="icon-tags"></i> <span>Album</span>
 					</a>
 				</li>
-				<li>
+				<li tal:attributes="class php: ActiveAdmin=='CategoryVideo'?'active':''">
+					<a tal:attributes="href 'setting/category/video'">
+						<i class="icon-tags"></i> <span>Video</span>
+					</a>
+				</li>
+				<li tal:attributes="class php: ActiveAdmin=='Customer'?'active':''">
 					<a tal:attributes="href 'setting/customer'">
 						<i class="icon-user"></i> <span>Khách hàng</span>
 					</a>
 				</li>
-				<li>
+				<li tal:attributes="class php: ActiveAdmin=='Report'?'active':''">
 					<a tal:attributes="href 'setting/report'">
 						<i class="icon-book"></i> <span>Báo cáo</span>
 					</a>
 				</li>
-				<li>
+				<li tal:attributes="class php: ActiveAdmin=='Config'?'active':''">
 					<a tal:attributes="href '/setting/config'">
 						<i class="icon-gear"></i> <span>Cấu hình</span>
 					</a>
