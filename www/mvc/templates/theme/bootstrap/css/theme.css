@@ -402,6 +402,7 @@ input[type="color"]:focus,
 	list-style-type: none;
 	margin-left: 0px;
 	margin-top: 18px;
+	margin-bottom: 40px;
 }
 #pricing .price_wrapper .section ul.perks li {
 	padding: 3px 0px;
