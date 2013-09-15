@@ -6,6 +6,7 @@ require_once( "mvc/base/domain/DomainObject.php" );
 class Album extends Object{
 
     private $Id;
+	private $IdCategory;
 	private $Name;
     private $Time;
 	private $URL;
@@ -15,8 +16,11 @@ class Album extends Object{
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null, $Time=null, $URL=null, $Note=null, $Key=null){$this->Id = $Id;$this->Name = $Name;$this->Time = $Time;$this->URL = $URL;$this->Note = $Note; $this->Key = $Key; parent::__construct( $Id );}
+    function __construct( $Id=null, $IdCategory=null, $Name=null, $Time=null, $URL=null, $Note=null, $Key=null){$this->Id = $Id; $this->IdCategory = $IdCategory; $this->Name = $Name;$this->Time = $Time;$this->URL = $URL;$this->Note = $Note; $this->Key = $Key; parent::__construct( $Id );}
     function getId( ) {return $this->Id;}
+	
+	function setIdCategory( $IdCategory ){$this->IdCategory = $IdCategory;$this->markDirty();}
+    function getIdCategory( ) {return $this->IdCategory;}
 	
     function setName( $Name ){$this->Name = $Name;$this->markDirty();}
     function getName( ) {return $this->Name;}
@@ -40,18 +44,15 @@ class Album extends Object{
 	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
-	//-------------------------------------------------------------------------------
-	function getURLView(){return "thu-vien-anh/".$this->getKey();}
+	//-------------------------------------------------------------------------------		
+	function getURLUpdLoad(){	return "/setting/category/album/".$this->getIdCategory()."/".$this->getId()."/upd/load";}
+	function getURLUpdExe(){	return "/setting/category/album/".$this->getIdCategory()."/".$this->getId()."/upd/exe";}
 	
-	function getURLUpdLoad(){return "/app/album/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){return "/app/album/".$this->getId()."/upd/exe";}
-	
-	function getURLDelLoad(){return "/app/album/".$this->getId()."/del/load";}
-	function getURLDelExe(){return "/app/album/".$this->getId()."/del/exe";}
+	function getURLDelLoad(){	return "/setting/category/album/".$this->getIdCategory()."/".$this->getId()."/del/load";}
+	function getURLDelExe(){	return "/setting/category/album/".$this->getIdCategory()."/".$this->getId()."/del/exe";}
 			
 	//-------------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}
-	
 }
 ?>

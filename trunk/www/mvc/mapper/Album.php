@@ -9,9 +9,10 @@ class Album extends Mapper implements \MVC\Domain\AlbumFinder {
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY time DESC", $tblAlbum);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblAlbum);
-		$updateStmt = sprintf("update %s set name=?, url=?, note=?, time=?, `key`=? where id=?", $tblAlbum);
-		$insertStmt = sprintf("insert into %s ( name, url, note, `key`) values(?, ?, ?, ?)", $tblAlbum);
+		$updateStmt = sprintf("update %s set id_category=?, name=?, url=?, note=?, time=?, `key`=? where id=?", $tblAlbum);
+		$insertStmt = sprintf("insert into %s ( id_category, name, url, note, `key`) values(?, ?, ?, ?, ?)", $tblAlbum);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblAlbum);
+		$findByCategoryStmt = sprintf("select *  from %s where id_category=?", $tblAlbum);
 		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblAlbum);
 		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblAlbum);
 		
@@ -20,16 +21,16 @@ class Album extends Mapper implements \MVC\Domain\AlbumFinder {
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
+		$this->findByCategoryStmt = self::$PDO->prepare($findByCategoryStmt);
 		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);
 		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
     } 
-    function getCollection( array $raw ) {
-        return new AlbumCollection( $raw, $this );
-    }
+    function getCollection( array $raw ) {return new AlbumCollection( $raw, $this );}
 
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\Album(
 			$array['id'],
+			$array['id_category'],
 			$array['name'],
 			$array['time'],
 			$array['url'],
@@ -43,6 +44,7 @@ class Album extends Mapper implements \MVC\Domain\AlbumFinder {
 
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 
+			$object->getIdCategory(),
 			$object->getName(),
 			$object->getURL(),
 			$object->getNote(),
@@ -55,6 +57,7 @@ class Album extends Mapper implements \MVC\Domain\AlbumFinder {
     
     protected function doUpdate( \MVC\Domain\Object $object ) {
         $values = array( 
+			$object->getIdCategory(),
 			$object->getName(),
 			$object->getURL(),
 			$object->getNote(),
@@ -83,5 +86,11 @@ class Album extends Mapper implements \MVC\Domain\AlbumFinder {
 		$this->findByPageStmt->execute();
         return new AlbumCollection( $this->findByPageStmt->fetchAll(), $this );
     }
+	
+	function findByCategory( $values ){
+        $this->findByCategoryStmt->execute( $values );
+        return new AlbumCollection( $this->findByCategoryStmt->fetchAll(), $this);
+    }
+	
 }
 ?>

@@ -31,13 +31,19 @@ class CategoryAlbum extends Object{
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------
-	
+	function getAlbumAll(){
+		$mAlbum = new \MVC\Mapper\Album();
+		$AlbumAll = $mAlbum->findByCategory(array($this->getId()));
+		return $AlbumAll;
+	}
 	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){return "/tin-tuc/".$this->getkey();}
-			
+	function getURLView(){		return "/setting/category/album/".$this->getId();}
+	function getURLAlbumInsLoad(){		return "/setting/category/album/".$this->getId()."/ins/load";}
+	function getURLAlbumInsExe(){		return "/setting/category/album/".$this->getId()."/ins/exe";}
+	
 	function getURLUpdLoad(){	return "/setting/category/album/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){	return "/setting/category/album/".$this->getId()."/upd/exe";}
 			
