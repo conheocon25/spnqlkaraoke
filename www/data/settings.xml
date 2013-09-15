@@ -32,7 +32,7 @@
 		<command name="Report"><view>Report</view></command>
 		
 		<!-- ============================================================================== -->
-		<!-- SETTING.CONFIG 															-->
+		<!-- SETTING.CONFIG 																-->
 		<!-- ============================================================================== -->		
 		<command name="SettingConfig"><view>SettingConfig</view></command>
 		<command name="SettingConfigInsLoad"><view>SettingConfigInsLoad</view></command>
@@ -65,7 +65,7 @@
 		<command name="SettingNewsDelExe"><view>SettingNewsDelExe</view><status value="CMD_OK"><forward>SettingNews</forward></status></command>
 		
 		<!-- ============================================================================== -->
-		<!-- SETTING.CATEGORY.ALBUM	 													-->
+		<!-- SETTING.CATEGORY.ALBUM	 														-->
 		<!-- ============================================================================== -->
 		<command name="SettingCategoryAlbum"><view>SettingCategoryAlbum</view></command>
 		<command name="SettingCategoryAlbumInsLoad"><view>SettingCategoryAlbumInsLoad</view></command>
@@ -74,9 +74,21 @@
 		<command name="SettingCategoryAlbumUpdExe"><view>SettingCategoryAlbumUpdExe</view><status value="CMD_OK"><forward>SettingCategoryAlbum</forward></status></command>		
 		<command name="SettingCategoryAlbumDelLoad"><view>SettingCategoryAlbumDelLoad</view></command>
 		<command name="SettingCategoryAlbumDelExe"><view>SettingCategoryAlbumDelExe</view><status value="CMD_OK"><forward>SettingCategoryAlbum</forward></status></command>
-
+		
 		<!-- ============================================================================== -->
-		<!-- SETTING.CATEGORY.VIDEO	 													-->
+		<!-- SETTING.Album 																	-->
+		<!-- ============================================================================== -->		
+		<command name="SettingAlbum"><view>SettingAlbum</view></command>
+		<command name="SettingAlbumInsLoad"><view>SettingAlbumInsLoad</view></command>
+		<command name="SettingAlbumInsExe"><view>SettingAlbumInsExe</view><status value="CMD_OK"><forward>SettingAlbum</forward></status></command>
+		<command name="SettingAlbumUpdLoad"><view>SettingAlbumUpdLoad</view></command>
+		<command name="SettingAlbumUpdExe"><view>SettingAlbumUpdExe</view><status value="CMD_OK"><forward>SettingAlbum</forward></status></command>
+		<command name="SettingAlbumDelLoad"><view>SettingAlbumDelLoad</view></command>
+		<command name="SettingAlbumDelExe"><view>SettingAlbumDelExe</view><status value="CMD_OK"><forward>SettingAlbum</forward></status></command>
+		
+		
+		<!-- ============================================================================== -->
+		<!-- SETTING.CATEGORY.VIDEO	 														-->
 		<!-- ============================================================================== -->
 		<command name="SettingCategoryVideo"><view>SettingCategoryVideo</view></command>
 		<command name="SettingCategoryVideoInsLoad"><view>SettingCategoryVideoInsLoad</view></command>
@@ -85,6 +97,18 @@
 		<command name="SettingCategoryVideoUpdExe"><view>SettingCategoryVideoUpdExe</view><status value="CMD_OK"><forward>SettingCategoryVideo</forward></status></command>		
 		<command name="SettingCategoryVideoDelLoad"><view>SettingCategoryVideoDelLoad</view></command>
 		<command name="SettingCategoryVideoDelExe"><view>SettingCategoryVideoDelExe</view><status value="CMD_OK"><forward>SettingCategoryVideo</forward></status></command>
+		
+		<!-- ============================================================================== -->
+		<!-- SETTING.VIDEO 																	-->
+		<!-- ============================================================================== -->		
+		<command name="SettingVideo"><view>SettingVideo</view></command>
+		<command name="SettingVideoInsLoad"><view>SettingVideoInsLoad</view></command>
+		<command name="SettingVideoInsExe"><view>SettingVideoInsExe</view><status value="CMD_OK"><forward>SettingVideo</forward></status></command>
+		<command name="SettingVideoUpdLoad"><view>SettingVideoUpdLoad</view></command>
+		<command name="SettingVideoUpdExe"><view>SettingVideoUpdExe</view><status value="CMD_OK"><forward>SettingVideo</forward></status></command>
+		<command name="SettingVideoDelLoad"><view>SettingVideoDelLoad</view></command>
+		<command name="SettingVideoDelExe"><view>SettingVideoDelExe</view><status value="CMD_OK"><forward>SettingVideo</forward></status></command>
+		
 		
 		<!-- ============================================================================== -->
 		<!-- SETTING.CUSTOMER			 													-->

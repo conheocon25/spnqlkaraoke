@@ -7,7 +7,17 @@
 	
 	<body data-menu-position="closed">
 		<div metal:use-macro="mAdmin.xhtml/Header"/>
-		<div metal:use-macro="mAdmin.xhtml/Menu"/>
+		<div class="menu">
+			<div id="sidebar">
+				<ul style="display: block;">
+					<li tal:repeat="Category1 CategoryAll" tal:attributes="class php: Category->getId()==Category1->getId()?'active':''">
+						<a tal:attributes="href Category1/getURLView">
+							<i class="icon-tags"></i> <span tal:content="Category1/getName"/>
+						</a>
+					</li>					
+				</ul>
+			</div>
+		</div>
 		<div id="content">
 			<div metal:use-macro="mAdmin.xhtml/ContentHeader"/>
 			<div metal:use-macro="mAdmin.xhtml/LocationBar"/>
@@ -20,7 +30,7 @@
 								<h5>XÓA</h5>
 							</div>
 							<div class="widget-content">								
-								<form class="form-actions" tal:attributes="action Category/getURLDelExe" method="post">
+								<form class="form-actions" tal:attributes="action Video/getURLDelExe" method="post">
 									<div class="alert alert-danger alert-block">
 										<h4 class="alert-heading">Bạn có chắc chắn muốn xóa ?</h4>
 									</div>

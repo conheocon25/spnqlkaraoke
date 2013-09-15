@@ -31,7 +31,11 @@ class CategoryVideo extends Object{
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------
-	
+	function getVideoAll(){
+		$mVideo = new \MVC\Mapper\Video();
+		$VideoAll = $mVideo->findByCategory(array($this->getId()));
+		return $VideoAll;
+	}
 	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
@@ -43,7 +47,11 @@ class CategoryVideo extends Object{
 			
 	function getURLDelLoad(){	return "/setting/category/video/".$this->getId()."/del/load";}
 	function getURLDelExe(){	return "/setting/category/video/".$this->getId()."/del/exe";}
-		
+	
+	function getURLView(){		return "/setting/category/video/".$this->getId();}
+	function getURLVideoInsLoad(){		return "/setting/category/video/".$this->getId()."/ins/load";}
+	function getURLVideoInsExe(){		return "/setting/category/video/".$this->getId()."/ins/exe";}
+	
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}

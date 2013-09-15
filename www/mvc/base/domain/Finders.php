@@ -17,7 +17,10 @@ interface CategoryAlbumFinder  extends Finder {}
 interface AlbumFinder  extends Finder {}
 interface CategoryNewsFinder  extends Finder {}
 interface NewsFinder  extends Finder {}
+
 interface CategoryVideoFinder  extends Finder {}
+interface VideoFinder  extends Finder {}
+
 interface GuestFinder extends Finder {}
 
 ?>
