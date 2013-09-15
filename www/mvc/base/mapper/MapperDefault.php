@@ -4,6 +4,7 @@
 	$mNews 					= new \MVC\Mapper\News();
 	$mConfig				= new \MVC\Mapper\Config();
 	$mCategoryAlbum			= new \MVC\Mapper\CategoryAlbum();
+	$mAlbum					= new \MVC\Mapper\Album();
 	$mCategoryVideo			= new \MVC\Mapper\CategoryVideo();
 	$mVideo					= new \MVC\Mapper\Video();
 ?>
