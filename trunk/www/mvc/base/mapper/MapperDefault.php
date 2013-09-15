@@ -5,4 +5,5 @@
 	$mConfig				= new \MVC\Mapper\Config();
 	$mCategoryAlbum			= new \MVC\Mapper\CategoryAlbum();
 	$mCategoryVideo			= new \MVC\Mapper\CategoryVideo();
+	$mVideo					= new \MVC\Mapper\Video();
 ?>
