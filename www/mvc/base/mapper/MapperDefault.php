@@ -7,4 +7,5 @@
 	$mAlbum					= new \MVC\Mapper\Album();
 	$mCategoryVideo			= new \MVC\Mapper\CategoryVideo();
 	$mVideo					= new \MVC\Mapper\Video();
+	$mCustomer				= new \MVC\Mapper\Customer();
 ?>
