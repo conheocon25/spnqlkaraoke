@@ -41,6 +41,17 @@
 		<command name="SettingConfigUpdExe"><view>SettingConfigUpdExe</view><status value="CMD_OK"><forward>SettingConfig</forward></status></command>
 		<command name="SettingConfigDelLoad"><view>SettingConfigDelLoad</view></command>
 		<command name="SettingConfigDelExe"><view>SettingConfigDelExe</view><status value="CMD_OK"><forward>SettingConfig</forward></status></command>
+
+		<!-- ============================================================================== -->
+		<!-- SETTING.CUSTOMER 																-->
+		<!-- ============================================================================== -->
+		<command name="SettingCustomer"><view>SettingCustomer</view></command>
+		<command name="SettingCustomerInsLoad"><view>SettingCustomerInsLoad</view></command>
+		<command name="SettingCustomerInsExe"><view>SettingCustomerInsExe</view><status value="CMD_OK"><forward>SettingCustomer</forward></status></command>
+		<command name="SettingCustomerUpdLoad"><view>SettingCustomerUpdLoad</view></command>
+		<command name="SettingCustomerUpdExe"><view>SettingCustomerUpdExe</view><status value="CMD_OK"><forward>SettingCustomer</forward></status></command>
+		<command name="SettingCustomerDelLoad"><view>SettingCustomerDelLoad</view></command>
+		<command name="SettingCustomerDelExe"><view>SettingCustomerDelExe</view><status value="CMD_OK"><forward>SettingCustomer</forward></status></command>
 		
 		<!-- ============================================================================== -->
 		<!-- SETTING.CATEGORY.NEWS 															-->
