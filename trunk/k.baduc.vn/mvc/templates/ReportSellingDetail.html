@@ -1,0 +1,76 @@
+<body>
+	<BR/>
+	<table width="100%" border="0" cellpadding="2" >
+		<tr>			
+			<td width="50%" align="left"><B>KARAOKE BA ĐỨC</B></td>
+			<td width="50%" align="left"><B align="right" tal:content="Title" /></td>
+		</tr>
+		<tr>			
+			<td width="50%" align="left">ĐC: 67/26B Phó Cơ Điều, P.4, TP.VL</td>
+			<td width="50%" align="right">Lưu hành nội bộ</td>
+		</tr>
+		<tr>			
+			<td width="50%" align="left">ĐT: (0703) 828 555</td>
+			<td width="50%" align="left" />
+		</tr>
+	</table>	
+	<span tal:repeat="Data DataAll">
+	<br/>
+	<table tal:condition="php:Data[1]" width="100%" border="1" cellpadding="2" >
+		<tr>
+			<th align="left" colspan="5" width="100%"><H3>NGÀY <b tal:content="php:Data[0]" /></H3></th>
+		</tr>
+		<tr>
+			<th width="5%"><B>STT</B></th>
+			<th width="17%" align="left"><B>THỜI GIAN</B></th>			
+			<th width="15%" align="right"><B>NHÂN VIÊN</B></th>
+			<th width="12%" align="right" ><B>PHÒNG</B></th>
+			<th width="29%" align="left" ><B>GHI CHÚ</B></th>
+			<th width="11%" align="right"><B>PHIẾU NỢ</B></th>
+			<th width="11%" align="right"><B>THU ĐỦ</B></th>
+		</tr>
+		<tr tal:repeat="D php:Data[1]">
+			<td align="center" 	tal:content="php:D[0]" />
+			<td align="left" 	tal:content="php:D[1]" />			
+			<td align="right" 	tal:content="php:D[2]" />
+			<td align="right" 	tal:content="php:D[3]" />
+			<td align="left" 	tal:content="php:D[4]" />
+			<td align="right" 	tal:content="php:D[5]" />
+			<td align="right" 	tal:content="php:D[6]" />
+		</tr>
+		<tr>
+			<th align="right" colspan="5" width="78%"><H3>TỔNG</H3></th>
+			<th align="right" width="11%"><B tal:content="php:Data[2]"/></th>
+			<th align="right" width="11%"><B tal:content="php:Data[3]"/></th>
+		</tr>
+	</table>
+	</span>
+	
+	<table width="100%" border="0" cellpadding="2">
+		<tr>
+			<td width="65%" align="right"><h2>TỔNG CỘNG</h2></td>
+			<td width="35%" align="right"><h2 tal:content="php:NTotal->formatCurrency() . ' đ'"/></td>
+		</tr>
+		<tr>
+			<td width="100%" align="right">(<i tal:content="NTotal/readDigit" />)</td>
+		</tr>
+		<tr>
+			<td width="35%" align="center"></td>
+			<td width="30%" align="center" />
+			<td width="35%" align="center" tal:content="DateCurrent"/>
+		</tr>
+		<tr>
+			<td width="35%" align="center">BÁN HÀNG</td>
+			<td width="30%" align="center" />
+			<td width="35%" align="center">QUẢN LÝ</td>
+		</tr>
+		<tr><td width="35%" /><td width="30%" /><td width="35%" /></tr>
+		<tr><td width="35%" /><td width="30%" /><td width="35%" /></tr>
+		<tr><td width="35%" /><td width="30%" /><td width="35%" /></tr>
+		<tr>
+			<td width="35%" align="center"></td>
+			<td width="30%" align="center" />
+			<td width="35%" align="center" />
+		</tr>
+	</table>
+</body>
