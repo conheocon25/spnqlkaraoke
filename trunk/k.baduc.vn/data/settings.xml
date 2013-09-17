@@ -81,7 +81,7 @@
 		<command name="SellingDomainTableSessionDetailUpdLoad"><view>SellingDomainTableSessionDetailUpdLoad</view></command>
 		<command name="SellingDomainTableSessionDetailUpdExe"><status value="CMD_OK"><forward>SellingDomainTableLogDetail</forward></status><view>SellingDomainTableSessionDetailUpdExe</view></command>
 		<command name="SellingDomainTableSessionDetailDelLoad"><view>SellingDomainTableSessionDetailDelLoad</view></command>
-		<command name="SellingDomainTableSessionDetailDelExe"><status value="CMD_OK"><forward>SellingDomainTable</forward></status><view>SellingDomainTableSessionDetailDelExe</view></command>
+		<command name="SellingDomainTableSessionDetailDelExe"><status value="CMD_OK"><forward>SellingDomainTableLogDetail</forward></status><view>SellingDomainTableSessionDetailDelExe</view></command>
 		<command name="SellingDomainTableEvalLoad"><view>SellingDomainTableEvalLoad</view></command>
 		<command name="SellingDomainTableEvalExe"><status value="CMD_OK"><forward>SellingDomain</forward></status><view>SellingDomainTableEvalExe</view></command>
 		<command name="SellingDomainTableMoveLoad"><view>SellingDomainTableMoveLoad</view></command>

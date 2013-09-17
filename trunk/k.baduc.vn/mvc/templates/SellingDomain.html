@@ -49,30 +49,30 @@
 											<tr tal:repeat="Table Domain/getTableAll" tal:attributes="class php: Table->getSessionActive()!=null ? 'success':''">
 												<td><div tal:content="Table/getName" /></td>
 												<td align="right">
-													<a class="btn" tal:condition="Table/getSessionActive" tal:attributes="href Table/getSessionActive/getURLDetail">
+													<a tal:condition="Table/getSessionActive" tal:attributes="href Table/getSessionActive/getURLDetail">
 														<span tal:content="Table/getSessionActive/getValuePrint" />
 													</a>
 												</td>
-												<td>
-													<a class="btn" tal:condition="Table/getSessionActive" target="blank" tal:attributes="href Table/getSessionActive/getURLPrint"><span class="icon-print"/></a>
+												<td align="center">
+													<a tal:condition="Table/getSessionActive" target="blank" tal:attributes="href Table/getSessionActive/getURLPrint"><span class="icon-print"/></a>
 												</td>										
-												<td>
-													<a class="btn" tal:condition="not: Table/getSessionActive" tal:attributes="href Table/getURLCheckinExe"><span class="icon-arrow-right"/></a>
+												<td align="center">
+													<a tal:condition="not: Table/getSessionActive" tal:attributes="href Table/getURLCheckinExe"><span class="icon-arrow-right"/></a>
 												</td>
-												<td>
-													<a class="btn" tal:condition="Table/getSessionActive" tal:attributes="href Table/getSessionActive/getURLCheckoutExe"><span class="icon-arrow-left"/></a>
+												<td align="center">
+													<a tal:condition="Table/getSessionActive" tal:attributes="href Table/getSessionActive/getURLCheckoutExe"><span class="icon-arrow-left"/></a>
 												</td>
-												<td>
-													<a class="btn" tal:condition="Table/getSessionActive" tal:attributes="href Table/getURLCallLoad"><span class="icon-plus"/></a>
+												<td align="center">
+													<a tal:condition="Table/getSessionActive" tal:attributes="href Table/getURLCallLoad"><span class="icon-plus"/></a>
 												</td>
-												<td>
-													<a class="btn" tal:attributes="href Table/getURLLog"><span class="icon-edit"/></a>
+												<td align="center">
+													<a tal:attributes="href Table/getURLLog"><span class="icon-edit"/></a>
 												</td>
-												<td>
-													<a class="btn" tal:condition="Table/getSessionActive" tal:attributes="href Table/getURLMoveLoad"><span class="icon-move"/></a>
+												<td align="center">
+													<a tal:condition="Table/getSessionActive" tal:attributes="href Table/getURLMoveLoad"><span class="icon-move"/></a>
 												</td>
-												<td>
-													<a class="btn" tal:condition="Table/getSessionActive" tal:attributes="href Table/getURLMergeLoad"><span class="icon-resize-small"/></a>
+												<td align="center">
+													<a tal:condition="Table/getSessionActive" tal:attributes="href Table/getURLMergeLoad"><span class="icon-resize-small"/></a>
 												</td>
 											</tr>
 										</tbody>								
