@@ -121,14 +121,14 @@ class SessionDetail extends Object{
 	function getURLDelLoad(){			
 		$Session = $this->getSession();
 		$Table = $Session->getTable();
-		$Domain = $Table->getDomain();
-		return "/selling/".$Domain->getId()."/".$Table->getId()."/detail/".$this->getId()."/del/load";
+		$Domain = $Table->getDomain();		
+		return "/selling/".$Domain->getId()."/".$Table->getId()."/".$Session->getId()."/".$this->getId()."/del/load";
     }
 	function getURLDelExe(){		
 		$Session = $this->getSession();
 		$Table = $Session->getTable();
 		$Domain = $Table->getDomain();
-		return "/selling/".$Domain->getId()."/".$Table->getId()."/detail/".$this->getId()."/del/exe";
+		return "/selling/".$Domain->getId()."/".$Table->getId()."/".$Session->getId()."/".$this->getId()."/del/exe";
     }
 		
 	//---------------------------------------------------------------------------------	
