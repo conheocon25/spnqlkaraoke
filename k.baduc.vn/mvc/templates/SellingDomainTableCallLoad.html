@@ -59,8 +59,7 @@
 			</div>
 		</div>
 		<div metal:use-macro="mAdmin.xhtml/Footer"/>
-		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
-		<!--
+		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>		
 		<script type="text/javascript">
 			/*<![CDATA[*/
 			$('.Plus').click(function(){
@@ -82,8 +81,26 @@
 				$(this.parentNode.parentNode.childNodes[7]).html( Count);
 				
 			});
+						
+			$('.Minus').click(function(){
+				var URL = $(".Table").attr('alt');
+				var IdCourse = $(this).attr('alt');
+				var Count = $(this.parentNode.parentNode.childNodes[7]).html();
+								
+				URL = URL+"/"+IdCourse+"/minus";
+				
+				$.ajax({
+					type: "POST", 
+					async: false,
+					url: URL,
+					dataType: 'json',
+					success: function(data){
+						Count = data.Count;				
+					}
+				});		
+				$(this.parentNode.parentNode.childNodes[7]).html( Count);
+			});	
 			/*]]>*/
-		</script>
-		-->
+		</script>		
 	</body>
 </html>

@@ -30,8 +30,8 @@
 								<h5 tal:content="Title"/> 
 							</div>
 							<div class="widget-content nopadding">
-								<div role="grid" class="dataTables_wrapper">									
-									<table class="table table-bordered table-striped table-hover data-table">
+								<div role="grid" class="dataTables_wrapper">
+									<table class="table table-bordered table-hover data-table">
 										<thead>
 											<tr>										
 												<th><div class="text-left">PHÒNG</div></th>
@@ -46,7 +46,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr tal:repeat="Table Domain/getTableAll" tal:attributes="class php: Table->getSessionActive()!=null ? 'success':''">
+											<tr tal:repeat="Table Domain/getTableAll" tal:attributes="class php: Table->getSessionActive() ? 'success':''">
 												<td><div tal:content="Table/getName" /></td>
 												<td align="right">
 													<a tal:condition="Table/getSessionActive" tal:attributes="href Table/getSessionActive/getURLDetail">
@@ -86,6 +86,6 @@
 		</div>
 		<div metal:use-macro="mAdmin.xhtml/Footer"/>
 		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+		
 	</body>
 </html>							
-						

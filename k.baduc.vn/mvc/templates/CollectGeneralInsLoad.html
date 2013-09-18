@@ -2,13 +2,7 @@
 <html style="overflow-y:hidden;" lang="en">
 	<head>
 		<div metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
-		<div metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
-		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
-		<script type="text/javascript">
-			/*<![CDATA[*/
-			$(function() {$('#Date').datepicker();});
-			/*]]>*/
-		</script>
+		<div metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
 	</head>
 	
 	<body data-menu-position="closed">
@@ -55,6 +49,12 @@
 				</div>
 			</div>
 		</div>
-		<div metal:use-macro="mAdmin.xhtml/Footer"/>		
+		<div metal:use-macro="mAdmin.xhtml/Footer"/>
+		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+		<script type="text/javascript">
+			/*<![CDATA[*/
+				$('#Date').datepicker();
+			/*]]>*/
+		</script>
 	</body>
 </html>

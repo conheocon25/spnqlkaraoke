@@ -96,5 +96,30 @@
 		</div>
 		<div metal:use-macro="mAdmin.xhtml/Footer"/>
 		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+		<script type="text/javascript">
+			/*<![CDATA[*/				
+				$('#DateTime').datetimepicker({
+					language:  'vi',
+					weekStart: 1,
+					todayBtn:  1,
+					autoclose: 1,
+					todayHighlight: 1,
+					startView: 2,
+					forceParse: 0,
+					showMeridian: 1
+				});
+				
+				$('#DateTimeEnd').datetimepicker({
+					language:  'vi',
+					weekStart: 1,
+					todayBtn:  1,
+					autoclose: 1,
+					todayHighlight: 1,
+					startView: 2,
+					forceParse: 0,
+					showMeridian: 1
+				});
+			/*]]>*/
+		</script>
 	</body>
 </html>
