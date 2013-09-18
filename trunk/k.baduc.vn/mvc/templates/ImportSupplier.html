@@ -35,7 +35,8 @@
 										<thead>
 											<tr>
 												<th width="30">STT</th>
-												<th><div class="text-left">TÊN</div></th>
+												<th width="120"><div class="text-left">NGÀY</div></th>
+												<th><div class="text-left">DIỄN GIẢI</div></th>
 												<th width="160"><div class="text-right">GIÁ TRỊ</div></th>
 												<th width="30">IN</th>
 												<th width="30">XÓA</th>
@@ -45,6 +46,7 @@
 											<tr tal:repeat="Order OrderAll">
 												<td><div tal:content="repeat/Order/number" /></td>
 												<td><a tal:attributes="href Order/getURLUpdLoad"><div tal:content="Order/getDatePrint"/></a></td>
+												<td align="left"><div tal:content="Order/getDescription"/></td>
 												<td align="right">
 													<a tal:attributes="href Order/getURLDetail">
 														<div tal:content="Order/getValuePrint"/>

@@ -12,7 +12,7 @@
 				<ul style="display: block;">
 					<li tal:repeat="Employee1 EmployeeAll" tal:attributes="class php:Employee1->getId()==Employee->getId()?'active':'disable'">
 						<a tal:attributes="href Employee1/getURLPPR">
-							<i class="icon-truck" /><span tal:content="Employee1/getName"/>							
+							<i class="icon-user" /><span tal:content="Employee1/getName"/>							
 						</a>
 					</li>
 				</ul>
@@ -35,7 +35,7 @@
 										<thead>
 											<tr>
 												<th width="30"><div class="text-center">STT</div></th>
-												<th>NGÀY</th>
+												<th><div class="text-left">NGÀY</div></th>
 												<th width="120"><div class="text-right">CƠ BẢN</div></th>
 												<th width="120"><div class="text-right">PHỤ CẤP</div></th>
 												<th width="120"><div class="text-right">TẠM ỨNG</div></th>

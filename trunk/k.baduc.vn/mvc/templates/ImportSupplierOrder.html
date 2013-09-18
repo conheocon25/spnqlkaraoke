@@ -40,10 +40,15 @@
 										<thead>
 											<tr>
 												<th width="30">STT</th>
-												<th>TÊN</th>
+												<th><div class="text-left">TÊN</div></th>
 												<th width="120">
 													<div class="text-right">
 														SỐ LƯỢNG
+													</div>
+												</th>
+												<th width="120">
+													<div class="text-left">
+														ĐƠN VỊ
 													</div>
 												</th>
 												<th width="120">
@@ -63,13 +68,14 @@
 												<td><div tal:content="repeat/Detail/number" /></td>
 												<td><a tal:attributes="href Detail/getURLUpdLoad"><div tal:content="Detail/getResource/getName"/></a></td>
 												<td><div class="text-right" tal:content="Detail/getCountPrint"/></td>
+												<td><div class="text-left" tal:content="Detail/getResource/getUnit"/></td>
 												<td><div class="text-right" tal:content="Detail/getPricePrint"/></td>
 												<td><div class="text-right" tal:content="Detail/getValuePrint"/></td>
 											</tr>
 										</tbody>
 										<tfoot>
 											<tr>
-												<td colspan="4"><div class="text-right">TỔNG</div></td>
+												<td colspan="4"><div class="text-right">TỔNG CỘNG</div></td>
 												<td><div class="text-right" tal:content="OI/getValuePrint" /></td>
 											</tr>
 										</tfoot>

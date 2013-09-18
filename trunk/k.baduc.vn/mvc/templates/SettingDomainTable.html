@@ -35,7 +35,8 @@
 										<thead>
 											<tr role="row">
 												<th width="35">STT</th>
-												<th><div class="text-left">TÊN</div></th>												
+												<th><div class="text-left">TÊN</div></th>
+												<th width="150"><div class="text-left">LOẠI</div></th>
 												<th width="32"><i class="icon-refresh my-ico"/></th>
 												<th width="32"><i class="icon-trash my-ico"/></th>
 											</tr>
@@ -44,6 +45,7 @@
 											<tr tal:repeat="Table TableAll" class="gradeA odd">
 												<td align="center" tal:content="repeat/Table/number"/>
 												<td><a tal:attributes="href Table/getURLUpdLoad" tal:content="Table/getName"/></td>
+												<td align="left"><div tal:content="Table/getTypePrint"/></td>
 												<td align="center"><a tal:attributes="href Table/getURLUpdLoad"><i class="icon-pencil"/></a></td>
 												<td align="center"><a tal:attributes="href Table/getURLDelLoad"><i class="icon-remove"/></a></td>
 											</tr>
