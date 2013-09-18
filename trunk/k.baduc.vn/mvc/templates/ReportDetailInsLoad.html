@@ -3,17 +3,8 @@
 	<head>
 		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
 		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
-		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
-		<script type="text/javascript">
-			/*<![CDATA[*/
-			$(function() {
-				alert("co");
-				$('#DateStart').datepicker();
-				$('#DateEnd').datepicker();
-			});
-			/*]]>*/
-		</script>
-	</head>	
+	</head>
+	
 	<body>
 		<div class="container-fluid">
 			<span metal:use-macro="mAdmin.xhtml/Header"/>
@@ -36,13 +27,22 @@
 						</div>
 						<div class="control-group">
 							<div class="controls">
-								<button type="submit" class="btn" value="submit-value">Thêm mới</button>
+								<button type="button" class="btn" value="submit-value" id="click-hehe">Thêm mới</button>
 							</div>
 						</div>
+						
 					</form>
 				</div>
+				
 			</div>
 			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+			<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+			<script type="text/javascript">
+			/*<![CDATA[*/
+				$('#DateStart').datepicker();
+				$('#DateEnd').datepicker();
+			/*]]>*/
+		</script>
 		</div>
 	</body>
 </html>
