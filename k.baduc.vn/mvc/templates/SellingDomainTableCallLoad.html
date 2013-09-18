@@ -3,14 +3,6 @@
 	<head>
 		<div metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
 		<div metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
-		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>		
-		<script type="text/javascript">
-			/*<![CDATA[*/
-			$(function() {
-				alert("co");
-			});
-			/*]]>*/
-		</script>
 	</head>
 	
 	<body data-menu-position="closed">
@@ -66,6 +58,32 @@
 				</div>
 			</div>
 		</div>
-		<div metal:use-macro="mAdmin.xhtml/Footer"/>		
+		<div metal:use-macro="mAdmin.xhtml/Footer"/>
+		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+		<!--
+		<script type="text/javascript">
+			/*<![CDATA[*/
+			$('.Plus').click(function(){
+				var URL = $(".Table").attr('alt');
+				var IdCourse = $(this).attr('alt');
+				var Count = $(this.parentNode.parentNode.childNodes[7]).html();
+								
+				URL = URL+"/"+IdCourse+"/plus";
+				
+				$.ajax({
+					type: "POST", 
+					async: false,
+					url: URL,
+					dataType: 'json',
+					success: function(data){
+						Count = data.Count;				
+					}
+				});		
+				$(this.parentNode.parentNode.childNodes[7]).html( Count);
+				
+			});
+			/*]]>*/
+		</script>
+		-->
 	</body>
 </html>
