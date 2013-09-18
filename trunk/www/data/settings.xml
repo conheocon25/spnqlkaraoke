@@ -5,6 +5,7 @@
 		<!-- ============================================================================== -->		
 		<command name="DefaultCommand" type="public"><view>DefaultCommand</view><status value="CMD_OK"><forward>Home</forward></status></command>
 		<command name="Home" type="public"><view>Home</view></command>
+		<command name="Video" type="public"><view>Video</view></command>
 		<command name="SigninLoad" type="public"><view>SigninLoad</view></command>
 		
 		<command name="SigninExe" type="public">

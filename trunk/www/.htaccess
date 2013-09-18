@@ -12,6 +12,7 @@ RewriteRule ^change/pass/load$ 		?cmd=ChangePassLoad [L]
 RewriteRule ^change/pass/exe$ 		?cmd=ChangePassExe [L]
 
 RewriteRule ^home$ 					?cmd=Home [L]
+RewriteRule ^video$ 				?cmd=Video [L]
 RewriteRule ^contact/ins/exe$ 		?cmd=ContactInsExe [L]
 
 #---------------------------------------------------------------------------------------------------------------------------
