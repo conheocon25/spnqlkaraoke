@@ -7,19 +7,6 @@
 	
 	<body data-menu-position="closed">
 		<div metal:use-macro="mAdmin.xhtml/Header"/>
-		<div class="menu">
-			<div id="sidebar">
-				<ul style="display: block;">
-					<li tal:repeat="Track TrackingAll" tal:attributes="class php:Track->getId()==Tracking->getId()?'active':'disable'">
-						<a tal:attributes="href Track/getURLView">
-							<span tal:content="Track/getName" />
-						</a>
-					</li>
-					<li><a target="blank" tal:attributes="href Tracking/getURLCourse">CÁC MÓN</a></li>
-					<li><a target="blank" tal:attributes="href Tracking/getURLStore">TỔN KHO</a></li>
-				</ul>
-			</div>
-		</div>
 		<div id="content">
 			<div metal:use-macro="mAdmin.xhtml/ContentHeader"/>
 			<div metal:use-macro="mAdmin.xhtml/LocationBar"/>
@@ -32,6 +19,10 @@
 								<h5 tal:content="Title"/> 
 							</div>
 							<div class="widget-content nopadding">
+								<div role="grid" class="dataTables_wrapper">
+									<a target="blank" class="btn btn-primary" tal:attributes="href Tracking/getURLCourse">CÁC MÓN</a>
+									<a target="blank" class="btn btn-primary" tal:attributes="href Tracking/getURLStore">TỔN KHO</a>
+								</div>
 								<div role="grid" class="dataTables_wrapper">
 									<table class="table table-bordered table-striped table-hover data-table">
 										<thead>
