@@ -79,7 +79,7 @@
 	<!-- CONTENT HEADER															  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="ContentHeader" id="content-header">
-		<h1>Hệ thống quản lý Karaoke Ba Đức</h1>
+		<h1>HỆ THỐNG QUẢN LÝ KARAOKE BA ĐỨC</h1>
 		<ul class="mini-stats box-3">
 			<li>
 				<div class="right">
@@ -141,9 +141,37 @@
 					<a tal:attributes="href '/setting'"><i class="icon-gear" />THIẾT LẬP</a>
 				</li>
 			</ul>
-			<ul style="display: block;" tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isSeller()">				
+			<ul style="display: block;" tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isSeller()">
 				<li tal:attributes="class php:ActiveAdmin=='Selling'?'active':'disable'">
 					<a tal:attributes="href '/selling'"><i class="icon-shopping-cart" />BÁN HÀNG</a>
+				</li>
+				<li>
+					<a tal:attributes="href '/change/pass/load'"><i class="icon-key" />ĐỔI MẬT KHẨU</a>
+				</li>
+			</ul>
+			<ul style="display: block;" tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isManager()">
+				<li tal:attributes="class php:ActiveAdmin=='Selling'?'active':'disable'">
+					<a tal:attributes="href '/selling'"><i class="icon-shopping-cart" />BÁN HÀNG</a>
+				</li>
+				<li tal:attributes="class php:ActiveAdmin=='Import'?'active':'disable'">
+					<a tal:attributes="href '/import'"><i class="icon-truck" />NHẬP HÀNG</a>
+				</li>
+				<li tal:attributes="class php:ActiveAdmin=='TermPaid'?'active':'disable'">
+					<a tal:attributes="href '/paid'"><i class="icon-dollar" />KHOẢN CHI</a>
+				</li>
+				<li tal:attributes="class php:ActiveAdmin=='TermCollect'?'active':'disable'">
+					<a tal:attributes="href '/collect'"><i class="icon-dollar" />KHOẢN THU</a>
+				</li>
+				<li>
+					<a tal:attributes="href '/change/pass/load'"><i class="icon-key" />ĐỔI MẬT KHẨU</a>
+				</li>
+			</ul>
+			<ul style="display: block;" tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isViewer()">
+				<li tal:attributes="class php:ActiveAdmin=='Report'?'active':'disable'">
+					<a tal:attributes="href '/report'"><i class="icon-book" />BÁO CÁO</a>
+				</li>
+				<li>
+					<a tal:attributes="href '/change/pass/load'"><i class="icon-key" />ĐỔI MẬT KHẨU</a>
 				</li>
 			</ul>
 		</div>	
@@ -214,8 +242,10 @@
 	<!-- ======================================================================== -->
 	<div metal:define-macro="Footer" class="row">
 		<div id="footer" class="col-xs-12">
-			<img src="data/images/logo/spn_2013.png"/>&#0169;
+			<p class="pull-right" style="margin-right:20px;">
+				<img src="data/images/logo/spn_2013.png"/>&#0169;
+			</p>
 		</div>
-	</div>	
+	</div>
 </body>
 </html>

@@ -6,13 +6,13 @@
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
 			//-------------------------------------------------------------						
-			$Session = \MVC\Base\SessionRegistry::instance();
+			//$Session = \MVC\Base\SessionRegistry::instance();
 									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$IdTable = $request->getProperty("IdTable");
-						
+			$IdSession = $request->getProperty("IdSession");
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
@@ -24,7 +24,7 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
 			$Table = $mTable->find($IdTable);
-			$Session = $Table->getSessionActive();			
+			$Session = $mSession->find($IdSession);
 			
 			//Thanh toán đủ
 			$Session->setStatus(1);
