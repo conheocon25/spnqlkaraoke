@@ -536,13 +536,13 @@ a:hover {
   }
 }
 #content-header {
-  background-color: #f6f6f6;
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ffffff), to(#eceaf3));
-  background-image: -webkit-linear-gradient(top, #ffffff, 0%, #eceaf3, 100%);
-  background-image: -moz-linear-gradient(top, #ffffff 0%, #eceaf3 100%);
-  background-image: linear-gradient(to bottom, #ffffff 0%, #eceaf3 100%);
+  background-color: #7EBDFC;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ffffff), to(#7EBDFC));
+  background-image: -webkit-linear-gradient(top, #ffffff, 0%, #7EBDFC, 100%);
+  background-image: -moz-linear-gradient(top, #ffffff 0%, #7EBDFC 100%);
+  background-image: linear-gradient(to bottom, #ffffff 0%, #7EBDFC 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeceaf3', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#7EBDFC', GradientType=0);
   border-top-left-radius: 8px;
   height: 60px;
   padding-top: 5px;
@@ -557,11 +557,12 @@ a:hover {
   text-shadow: 0 1px 0 #ffffff;
   margin-left: 20px;
 }
-#content-header h1,
-#content-header > .btn-group {
-  margin-top: 10px;
+#content-header h1 {
+	margin-top: 15px;
+	font-size: 20px;
 }
 #content-header > .btn-group {
+  margin-top: 10px;
   float: right;
   right: 20px;
   position: absolute;
@@ -988,7 +989,24 @@ a:hover {
     width: auto;
   }
 }
-.widget-title,
+
+.widget-title {
+  background-color: #f5f4f9;
+  border-bottom: 1px solid #CDCDCD;
+  height: 36px;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#f5f4f9), to(#D6D6D6));
+  background-image: -webkit-linear-gradient(top, #f5f4f9, 0%, #D6D6D6, 100%);
+  background-image: -moz-linear-gradient(top, #f5f4f9 0%, #D6D6D6 100%);
+  background-image: linear-gradient(to bottom, #f5f4f9 0%, #D6D6D6 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f4f9', endColorstr='#D6D6D6', GradientType=0);
+  -webkit-box-shadow: 0 1px 0 #ffffff inset;
+  box-shadow: 0 1px 0 #ffffff inset;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
 .modal-header,
 .table th,
 div.dataTables_wrapper .ui-widget-header,
