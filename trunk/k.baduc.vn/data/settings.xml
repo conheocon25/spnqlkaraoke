@@ -49,6 +49,7 @@
 		<command name="ReportDetailDelLoad"><view>ReportDetailDelLoad</view></command>
 		<command name="ReportDetailDelExe"><status value="CMD_OK"><forward>Report</forward></status><view>ReportDetailDelExe</view></command>
 				
+		<command name="ReportCustomer"><view>ReportCustomer</view></command>
 		<command name="ReportCustomerDetail"><view>ReportCustomerDetail</view></command>
 		<command name="ReportCustomerGeneral"><view>ReportCustomerGeneral</view></command>
 		
