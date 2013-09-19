@@ -19,8 +19,12 @@
 		<!-- ============================================================================== -->
 		<!-- GLOBAL			 																-->
 		<!-- ============================================================================== -->
+		<command name="Selling"><view>Selling</view></command>
 		<command name="SellingDomain"><view>SellingDomain</view></command>
+		
 		<command name="Import"><view>Import</view></command>
+		<command name="ImportSupplier"><view>ImportSupplier</view></command>
+		
 		<command name="Paid"><view>Paid</view></command>
 		<command name="Report"><view>Report</view></command>
 		<command name="Setting"><view>Setting</view></command>
@@ -45,6 +49,7 @@
 		<command name="ReportDetailDelLoad"><view>ReportDetailDelLoad</view></command>
 		<command name="ReportDetailDelExe"><status value="CMD_OK"><forward>Report</forward></status><view>ReportDetailDelExe</view></command>
 				
+		<command name="ReportCustomer"><view>ReportCustomer</view></command>
 		<command name="ReportCustomerDetail"><view>ReportCustomerDetail</view></command>
 		<command name="ReportCustomerGeneral"><view>ReportCustomerGeneral</view></command>
 		
@@ -77,7 +82,7 @@
 		<command name="SellingDomainTableSessionDetailUpdLoad"><view>SellingDomainTableSessionDetailUpdLoad</view></command>
 		<command name="SellingDomainTableSessionDetailUpdExe"><status value="CMD_OK"><forward>SellingDomainTableLogDetail</forward></status><view>SellingDomainTableSessionDetailUpdExe</view></command>
 		<command name="SellingDomainTableSessionDetailDelLoad"><view>SellingDomainTableSessionDetailDelLoad</view></command>
-		<command name="SellingDomainTableSessionDetailDelExe"><status value="CMD_OK"><forward>SellingDomainTable</forward></status><view>SellingDomainTableSessionDetailDelExe</view></command>
+		<command name="SellingDomainTableSessionDetailDelExe"><status value="CMD_OK"><forward>SellingDomainTableLogDetail</forward></status><view>SellingDomainTableSessionDetailDelExe</view></command>
 		<command name="SellingDomainTableEvalLoad"><view>SellingDomainTableEvalLoad</view></command>
 		<command name="SellingDomainTableEvalExe"><status value="CMD_OK"><forward>SellingDomain</forward></status><view>SellingDomainTableEvalExe</view></command>
 		<command name="SellingDomainTableMoveLoad"><view>SellingDomainTableMoveLoad</view></command>

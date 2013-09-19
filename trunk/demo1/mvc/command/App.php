@@ -44,6 +44,7 @@
 			$request->setObject("CustomerAll", $CustomerAll);
 
 			$request->setProperty("Title", $Title);
+			$request->setProperty("ActiveAdmin", 'Admin');
 			$request->setObject("Navigation", $Navigation);
 		}
 	}

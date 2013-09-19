@@ -20,13 +20,16 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$Title = "ĐĂNG NHẬP HỆ THỐNG";
+			$Title = "THOÁT KHỎI HỆ THỐNG";
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app")				
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setProperty("Title", $Title);
-			$request->setProperty("URLHeader", '/app');
+			$request->setObject("Navigation", $Navigation);
 		}
 	}
 ?>

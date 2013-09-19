@@ -11,47 +11,29 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdSupplier = $request->getProperty('IdSupplier');
-			$Page = $request->getProperty('Page');
-			
+						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
 			$mSupplier = new \MVC\Mapper\Supplier();
-			$mOrder = new \MVC\Mapper\OrderImport();
-			$mConfig = new \MVC\Mapper\Config();
-			
+						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$SupplierAll = $mSupplier->findAll();
-			$Supplier = $mSupplier->find($IdSupplier);
-			if (!isset($Supplier)){
-				$Supplier = $SupplierAll->current();
-				$IdSupplier = $Supplier->getId();
-			}
-			
-			$Config = $mConfig->findByName('ROW_PER_PAGE');
-			if (!isset($Page)) $Page = 1;
-			$OrderAll = $mOrder->findByPage(array($IdSupplier, $Page, $Config->getValue() ));
-			$PN = new \MVC\Domain\PageNavigation( $Supplier->getOrderAll()->count(), $Config->getValue(), $Supplier->getURLImport());
-			
-			$Title = mb_strtoupper($Supplier->getName(), 'UTF8');
+												
+			$Title = "NHẬP HÀNG";
 			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
-				array("NHẬP HÀNG", "/import")				
+				array("ỨNG DỤNG", "/app")				
 			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setObject("SupplierAll", $SupplierAll);
-			$request->setObject("Supplier", $Supplier);
-			$request->setObject("OrderAll", $OrderAll);
-			$request->setObject("PN", $PN);
-						
-			$request->setProperty('Page', $Page);			
+												
 			$request->setProperty('Title', $Title );
+			$request->setProperty('ActiveAdmin', 'Import' );
 			$request->setObject("Navigation", $Navigation);
 			
 			return self::statuses('CMD_DEFAULT');

@@ -29,10 +29,12 @@
 			$Domain = $mDomain->find($IdDomain);
 			$Table = $mTable->find($IdTable);
 									
-			$Title = $Session->getDateTimePrint();
+			$Title = $Session->getDateTimePrint();			
 			$Navigation = array(
 				array("ỨNG DỤNG", "/app"),
 				array("BÁN HÀNG", "/selling"),
+				array(mb_strtoupper($Domain->getName(), 'UTF8'), $Domain->getURLSelling()),
+				array(mb_strtoupper($Table->getName(), 'UTF8'), $Domain->getURLSelling()),
 				array("SỔ", $Table->getURLLog())
 			);
 			
