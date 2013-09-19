@@ -12,28 +12,34 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
+			$IdCategoryVideo = $request->getProperty('IdCategoryVideo');
+			$MsgCaptcha = $request->getProperty('MsgCaptcha');
 			
-			$MsgCaptcha = $request->getProperty('MsgCaptcha');			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mCaptcha = new Captcha();
-			$mCaptcha->createImage();
-			$CaptchaSecurited = $mCaptcha->getSecurityCode();
-			$Session->setCurrentCaptcha($CaptchaSecurited);
+			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
 			
-			$CaptchaSecurity = $Session->getCurrentCaptcha();
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
 			$Title = "HỆ THỐNG QUẢN LÝ PHÒNG KARAOKE";
-						
+			$CategoryVideoAll = $mCategoryVideo->findAll();
+			$Category = $mCategoryVideo->find($IdCategoryVideo);
+			
+			$mCaptcha = new Captcha();			
+			$mCaptcha->createImage();
+			$CaptchaSecurited = $mCaptcha->getSecurityCode();
+			$Session->setCurrentCaptcha($CaptchaSecurited);			
+			$CaptchaSecurity = $Session->getCurrentCaptcha();
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			$request->setProperty("CaptchaSecurity", $CaptchaSecurited);		
-			$request->setProperty("MsgCaptcha", $MsgCaptcha);
+			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
+			$request->setObject("Category", $Category);
 			
+			$request->setProperty("CaptchaSecurity", $CaptchaSecurited);		
+			$request->setProperty("MsgCaptcha", $MsgCaptcha);					
 			$request->setProperty("Title", $Title);
 			$request->setProperty("URLHeader", '/signin/load');
 			

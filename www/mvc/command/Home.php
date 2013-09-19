@@ -17,6 +17,8 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
+			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
+			
 			$mCaptcha = new Captcha();
 			$mCaptcha->createImage();
 			$CaptchaSecurited = $mCaptcha->getSecurityCode();
@@ -27,6 +29,7 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
 			$Title = "HỆ THỐNG QUẢN LÝ PHÒNG KARAOKE";
+			$CategoryVideoAll = $mCategoryVideo->findAll();
 						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -36,6 +39,7 @@
 			
 			$request->setProperty("Title", $Title);
 			$request->setProperty("URLHeader", '/signin/load');
+			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
 			
 			return self::statuses('CMD_DEFAULT');
 		}
