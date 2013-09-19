@@ -40,7 +40,7 @@ class CategoryVideo extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){return "/tin-tuc/".$this->getkey();}
+	function getURLRead(){return "/video/".$this->getId();}
 			
 	function getURLUpdLoad(){	return "/setting/category/video/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){	return "/setting/category/video/".$this->getId()."/upd/exe";}

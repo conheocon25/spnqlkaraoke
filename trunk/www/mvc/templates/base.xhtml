@@ -62,18 +62,33 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Demo <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="/video">(1) Đăng nhập</a></li>
-									<li><a href="#">(2) Khu vực</a></li>									
-									<li><a href="#">(3) Bàn</a></li>
-									<li><a href="#">(4) Danh mục món</a></li>
-									<li><a href="#">(5) Bán hàng 1</a></li>
-									<li><a href="#">(6) Bán hàng 2</a></li>
-									<li><a href="#">(7) Bán hàng 3</a></li>
-									<li><a href="#">(8) Báo cáo</a></li>
+									<li tal:repeat="Category CategoryVideoAll">
+										<a tal:attributes="href Category/getURLRead" ><span tal:content="Category/getName"/></a>
+									</li>
 								</ul>
-							</li>							
+							</li>
 							<li><a class="btn-header" href="/signin/load">Đăng nhập</a></li>
 						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div metal:define-macro="HeaderVideo">
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand scroller" href="http://www.quanly-karaoke.com">
+						<img src="/data/images/logo/spn_kara.png" width="190" alt="logo"/>
+					</a>
+					<div class="nav-collapse collapse">
+						
 					</div>
 				</div>
 			</div>

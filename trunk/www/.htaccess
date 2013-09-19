@@ -12,13 +12,13 @@ RewriteRule ^change/pass/load$ 		?cmd=ChangePassLoad [L]
 RewriteRule ^change/pass/exe$ 		?cmd=ChangePassExe [L]
 
 RewriteRule ^home$ 					?cmd=Home [L]
-RewriteRule ^video$ 				?cmd=Video [L]
+RewriteRule ^video/([0-9])$ 		?cmd=Video&IdCategoryVideo=$1 [L]
 RewriteRule ^contact/ins/exe$ 		?cmd=ContactInsExe [L]
 
 #---------------------------------------------------------------------------------------------------------------------------
 # SETTING
 #---------------------------------------------------------------------------------------------------------------------------
-RewriteRule ^setting$ 												?cmd=Setting [L]
+RewriteRule ^setting$ 										?cmd=Setting [L]
 
 #---------------------------------------------------------------------------------------------------------------------------
 # SETTING.CUSTOMER

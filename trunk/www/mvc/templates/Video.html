@@ -30,7 +30,7 @@
 	</head>
 <body>
 	<a href="http://www.quanly-karaoke.com/#" class="scrolltop" style="display: none;"><span>&#8593;</span></a>
-	<div metal:use-macro="base.xhtml/Header"/>
+	<div metal:use-macro="base.xhtml/HeaderVideo"/>
 
     <div id="hero">
         <div class="container">
@@ -41,42 +41,38 @@
                         <!-- carousel items -->
                         <div class="carousel-inner">
                             <!-- slide -->
-                            <div class="item slide1 active">
+							<div class="item slide1 active">
                                 <div class="row">
                                     <div class="span6">
                                         <div class="img-polaroid">
-											<iframe width="100%" height="320" src="http://www.youtube.com/embed/AZtHZM8XYUQ" frameborder="0" allowfullscreen="true"></iframe>
+											<iframe width="100%" height="320" tal:attributes="src Category/getVideoAll/current/getURL" frameborder="0" allowfullscreen="true"></iframe>
 										</div>
                                     </div>
                                     <div class="span4">
-                                        <h1>Video Hướng dẫn sử dụng</h1>
-                                        <p>Ứng dụng có thể hoạt động trên Desktop, Tablet, Smartphone. Hay trên bất kỳ thiết bị nào có sử dụng Web Browser.</p>
+                                        <h1 tal:content="Category/getVideoAll/current/getName" />
+                                        <p tal:content="Category/getVideoAll/current/getNote" />
                                         <a href="#" class="btn btn-success btn-large">
                                             Dùng thử ngay bây giờ !
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <!-- slide -->
-                            <div class="item slide2">
+							
+                            <div class="item slide1" tal:repeat="Video Category/getVideoAll">
                                 <div class="row">
-                                    <div class="span4 animated fadeInUpBig">
-                                        <h1>Thuận tiện để theo dõi công việc, quản lý từ xa</h1>
-                                        <p>SKaraoke giúp bạn theo dõi, quản lý công việc bất cứ lúc nào, tại bất cứ nơi đâu.</p>
-                                        <a href="http://wbpreview.com/previews/WB0D95984/blog.html" class="btn btn-success btn-large">Dùng thử ngay bây giờ!</a>
-                                    </div>
-                                    <div class="span6 animated fadeInDownBig">
+                                    <div class="span6">
                                         <div class="img-polaroid">
-											<iframe width="100%" height="320" src="http://www.youtube.com/embed/AZtHZM8XYUQ" frameborder="0" allowfullscreen="true"></iframe>
+											<iframe width="100%" height="320" tal:attributes="src Video/getURL" frameborder="0" allowfullscreen="true"></iframe>
 										</div>
                                     </div>
+                                    <div class="span4">
+                                        <h1 tal:content="Video/getName" />
+                                        <p tal:content="Video/getNote"/>
+                                        <a href="#" class="btn btn-success btn-large">
+                                            Dùng thử ngay bây giờ !
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- slide -->
-                            <div class="item slide3 animated fadeInUpBig">
-                                <div class="img-polaroid">
-									<iframe width="100%" height="320" src="http://www.youtube.com/embed/AZtHZM8XYUQ" frameborder="0" allowfullscreen="true"></iframe>
-								</div>
                             </div>
                         </div>
                         <!-- Carousel nav -->
