@@ -1,0 +1,46 @@
+<body>
+	<BR/>
+	<div metal:use-macro="mAdmin.xhtml/ReportHeader"/>
+	<BR />
+	<table width="100%" border="1" cellpadding="2" >
+		<tr>			
+			<th width="10%" align="right"><B>NGÀY</B></th>
+			<th width="20%" align="left"><B>MỤC</B></th>
+			<th width="50%" align="left"><B>DIỄN GIẢI</B></th>
+			<th width="20%" align="right"><B>TỔNG TIỀN</B></th>
+		</tr>
+		<tr tal:repeat="Paid PaidAll">
+			<td align="right" tal:content="Paid/getDatePrint" />
+			<td align="left" tal:content="Paid/getTerm/getName" />
+			<td align="left" tal:content="Paid/getNote" />
+			<td align="right" tal:content="Paid/getValuePrint" />
+		</tr>
+		<tr>
+			<th align="right" colspan="3"><H3>TỔNG CỘNG</H3></th>
+			<th align="right">
+				<H3 tal:content="Sum" />
+			</th>
+		</tr>
+	</table>					
+		
+	<table width="100%" border="0" cellpadding="2" >
+		<tr>
+			<td width="35%" align="center"></td>
+			<td width="30%" align="center" />
+			<td width="35%" align="center" tal:content="DateCurrent" />
+		</tr>
+		<tr>
+			<td width="35%" align="center">NGƯỜI LẬP BẢNG</td>
+			<td width="30%" align="center" />
+			<td width="35%" align="center">GIÁM ĐỐC</td>
+		</tr>
+		<tr><td width="35%" /><td width="30%" /><td width="35%" /></tr>
+		<tr><td width="35%" /><td width="30%" /><td width="35%" /></tr>
+		<tr><td width="35%" /><td width="30%" /><td width="35%" /></tr>
+		<tr>
+			<td width="35%" align="center" />
+			<td width="30%" align="center" />
+			<td width="35%" align="center" />
+		</tr>
+	</table>
+</body>
