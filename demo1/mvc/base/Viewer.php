@@ -39,13 +39,13 @@ class Viewer {
 			
 		$html = $this->html();		
 		$pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-		$pdf->SetMargins(5, 12, 5);
+		$pdf->SetMargins(3, 3, 3);
 		$pdf->SetHeaderMargin(1);		
-		$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);			
+		$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 		$pdf->AddPage();
 		$pdf->SetFont('arial', 'N', 10);					
 		$pdf->writeHTML($html, true, false, true, false, '');
-		$Out = $pdf->Output("print.pdf", 'I');
+		$Out = $pdf->Output("print_BDC.pdf", 'I');
 		unset($pdf);
 		return $Out;
 	}

@@ -6,7 +6,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
 			//-------------------------------------------------------------						
-			$Session = \MVC\Base\SessionRegistry::instance();
+			//$Session = \MVC\Base\SessionRegistry::instance();
 									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
@@ -25,14 +25,22 @@
 			//-------------------------------------------------------------			
 			$Table = $mTable->find($IdTable);
 			$SD = $mSD->find($IdSessionDetail);
-			$Title = mb_strtoupper("BÁN HÀNG .../ ".$Table->getName()." / ".$SD->getCourse()->getName()." / XÓA", 'UTF8');
+			$Session = $SD->getSession();
+			
+			$Title = mb_strtoupper($SD->getCourse()->getName(), 'UTF8');			
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("BÁN HÀNG", "/selling"),
+				array("SỔ", $Table->getURLLog()),
+				array($Session->getDateTimePrint(), $Session->getURLDetail())
+			);
 						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
 			$request->setObject("SD", $SD);			
 			$request->setProperty('Title', $Title);			
-			$request->setProperty('URLHeader', $Table->getURLDetail() );			
+			$request->setObject("Navigation", $Navigation);
 		}
 	}
 ?>

@@ -18,30 +18,17 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$Title = "NHẬT KÍ BÁN HÀNG";
-			$arrTime = array(
-				"today"		=> 	@\MVC\Library\Date::rangeToday(),
-				"yesterday"	=>	@\MVC\Library\Date::rangeYesterday(),
-				"thisweek"	=>	@\MVC\Library\Date::rangeThisWeek(), 
-				"lastweek"	=>	@\MVC\Library\Date::rangeBeforeWeek(),
-				"thismonth"	=>	@\MVC\Library\Date::rangeThisMonth(),
-				"lastmonth"	=>	@\MVC\Library\Date::rangeBeforeMonth()
-			);
+			$Title = "NHẬT KÍ BÁN HÀNG";			
 			$Tracking = $mTracking->find($Type);
 			
-			$DateStart = $arrTime[$Type][0];
-			$DateEnd = $arrTime[$Type][1];
+			$DateStart = $Type;
+			$DateEnd = 	$Type;
 						
 			if (isset($Tracking)){
 				$DateStart = $Tracking->getDateStart();
 				$DateEnd = $Tracking->getDateEnd();
 			}
-			
-			if ( \strtotime($Type)== true){
-				$DateStart = $Type;
-				$DateEnd = $Type;
-			}
-						
+									
 			$Date = $DateStart;
 			$Total = 0;
 			$DataAll = array();						

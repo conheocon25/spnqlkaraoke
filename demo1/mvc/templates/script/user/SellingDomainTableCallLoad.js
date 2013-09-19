@@ -1,4 +1,5 @@
-﻿$(document).ready(function(){	
+﻿$(document).ready(function(){
+	alert("toi day");
 	$('.Plus').click(function(){
 		var URL = $(".Table").attr('alt');
 		var IdCourse = $(this).attr('alt');

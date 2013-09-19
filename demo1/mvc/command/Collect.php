@@ -28,6 +28,7 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------																		
 			$request->setProperty('Title', $Title );
+			$request->setProperty('ActiveAdmin', 'TermCollect' );
 			$request->setObject("Navigation", $Navigation);
 			
 			return self::statuses('CMD_DEFAULT');
