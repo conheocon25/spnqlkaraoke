@@ -7,7 +7,7 @@ class Unit extends Mapper implements \MVC\Domain\UnitFinder{
     function __construct() {
         parent::__construct();
 				
-		$tblUnit = "demo1_unit";
+		$tblUnit = "demo2_unit";
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY name", $tblUnit);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblUnit);
