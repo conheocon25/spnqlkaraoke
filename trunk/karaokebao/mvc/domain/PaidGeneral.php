@@ -47,7 +47,7 @@ class PaidGeneral extends Object{
 	
 	function setIdTerm( $IdTerm ) {$this->IdTerm = $IdTerm;$this->markDirty();}
     function getIdTerm( ) {return $this->IdTerm;}
-	function getTerm( ) {$mTerm = new \MVC\Mapper\TermPaid();$Term = $mTerm->find($this->IdTerm);return $Term;}
+	function getTerm( ) {$mTerm = new \MVC\Mapper\Term();$Term = $mTerm->find($this->IdTerm);return $Term;}
     
 	function setValue( $Value ) {$this->Value = $Value;$this->markDirty();}	
 	function getValue( ) {if (!isset($this->Value))return 0;return $this->Value;}
@@ -66,10 +66,10 @@ class PaidGeneral extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLUpdLoad(){return "/paid/general/".$this->getIdTerm()."/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){return "/paid/general/".$this->getIdTerm()."/".$this->getId()."/upd/exe";}
+	function getURLUpdLoad(){return "/money/paid/general/".$this->getIdTerm()."/".$this->getId()."/upd/load";}
+	function getURLUpdExe(){return "/money/paid/general/".$this->getIdTerm()."/".$this->getId()."/upd/exe";}
 	
-	function getURLDelLoad(){return "/paid/general/".$this->getIdTerm()."/".$this->getId()."/del/load";}
-	function getURLDelExe(){return "/paid/general/".$this->getIdTerm()."/".$this->getId()."/del/exe";}
+	function getURLDelLoad(){return "/money/paid/general/".$this->getIdTerm()."/".$this->getId()."/del/load";}
+	function getURLDelExe(){return "/money/paid/general/".$this->getIdTerm()."/".$this->getId()."/del/exe";}
 }
 ?>
