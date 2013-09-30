@@ -17,16 +17,14 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$Tracks = $mTracking->findAll();
-			$Title = "BÁO CÁO";			
-			$Navigation = array(
-				array("ỨNG DỤNG", "/app")
-			);
+			$Title = "BÁO CÁO";
+			$Navigation = array();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setProperty('Title', $Title);						
-			$request->setProperty('ActiveAdmin', 'Report');
+			$request->setProperty('Title', $Title);
+			$request->setProperty('ActiveAdmin', "Report");						
 			$request->setObject('Tracks', $Tracks);
 			$request->setObject('Navigation', $Navigation);
 		}

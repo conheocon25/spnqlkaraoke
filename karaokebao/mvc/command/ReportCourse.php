@@ -17,13 +17,14 @@
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
 			$mTracking = new \MVC\Mapper\Tracking();
-			$mCategory = new \MVC\Mapper\Category();
+			$mCourse = new \MVC\Mapper\Course();
+			$mDomain = new \MVC\Mapper\Domain();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$Tracking = $mTracking->find($IdTrack);
-			$CategoryAll = $mCategory->findAll();			
+			$CourseAll = $mCourse->findAll();						
 			$Title = "THỐNG KÊ GỌI MÓN ".\date("m/Y", strtotime( $Tracking->getDateStart() ));
 			
 			//-------------------------------------------------------------
@@ -31,7 +32,7 @@
 			//-------------------------------------------------------------									
 			$request->setProperty('Title', $Title);
 			$request->setObject('Tracking', $Tracking);
-			$request->setObject('CategoryAll', $CategoryAll);
+			$request->setObject('CourseAll', $CourseAll);
 		}
 	}
 ?>
