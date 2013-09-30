@@ -28,7 +28,6 @@
 			
 			$Title = mb_strtoupper($Course->getName(), 'UTF8');
 			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
 				array("THIẾT LẬP", "/setting"),
 				array("DANH MỤC MÓN", "/setting/category"),
 				array(mb_strtoupper($Category->getName(), 'UTF8'), $Category->getURLCourse())
