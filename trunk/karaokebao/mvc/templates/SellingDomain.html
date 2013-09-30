@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html style="overflow-y:hidden;" lang="en">
+	<head>
+		<div metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<div metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
+	</head>
+	
+	<body data-menu-position="closed">
+		<div metal:use-macro="mAdmin.xhtml/Header"/>
+		<div class="menu">
+			<div id="sidebar">
+				<ul style="display: block;">
+					<li tal:repeat="Domain1 DomainAll" tal:attributes="class php:Domain1->getId()==Domain->getId()?'active':'disable'">
+						<a tal:attributes="href Domain1/getURLSelling">
+							<i class="icon-shopping-cart" /><span tal:content="Domain1/getName"/>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="content">
+			<div metal:use-macro="mAdmin.xhtml/ContentHeader"/>
+			<div metal:use-macro="mAdmin.xhtml/LocationBar"/>
+			<div class="container-fluid">							
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon"><i class="icon-table"/></span>
+								<h5 tal:content="Title"/> 
+							</div>
+							<div class="widget-content nopadding">
+								<div role="grid" class="dataTables_wrapper">
+									<table class="table table-bordered table-hover data-table">
+										<thead>
+											<tr>										
+												<th><div class="text-left">PHÒNG</div></th>
+												<th width="120"><div class="text-right">PHIẾU</div></th>
+												<th width="60">IN</th>
+												<th width="60">VÀO</th>
+												<th width="60">RA</th>
+												<th width="60">GỌI</th>
+												<th width="60">SỔ</th>
+												<th width="60">DỜI</th>										
+												<th width="60">GOM</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr tal:repeat="Table Domain/getTableAll" tal:attributes="class php: Table->getSessionActive() ? 'success':''">
+												<td><div tal:content="Table/getName" /></td>
+												<td align="right">
+													<a tal:condition="Table/getSessionActive" tal:attributes="href Table/getSessionActive/getURLDetail">
+														<span tal:content="Table/getSessionActive/getValuePrint" />
+													</a>
+												</td>
+												<td align="center">
+													<a tal:condition="Table/getSessionActive" target="blank" tal:attributes="href Table/getSessionActive/getURLPrint"><span class="icon-print"/></a>
+												</td>										
+												<td align="center">
+													<a tal:condition="not: Table/getSessionActive" tal:attributes="href Table/getURLCheckinExe"><span class="icon-arrow-right"/></a>
+												</td>
+												<td align="center">
+													<a tal:condition="Table/getSessionActive" tal:attributes="href Table/getSessionActive/getURLCheckoutExe"><span class="icon-arrow-left"/></a>
+												</td>
+												<td align="center">
+													<a tal:condition="Table/getSessionActive" tal:attributes="href Table/getURLCallLoad"><span class="icon-plus"/></a>
+												</td>
+												<td align="center">
+													<a tal:attributes="href Table/getURLLog"><span class="icon-edit"/></a>
+												</td>
+												<td align="center">
+													<a tal:condition="Table/getSessionActive" tal:attributes="href Table/getURLMoveLoad"><span class="icon-move"/></a>
+												</td>
+												<td align="center">
+													<a tal:condition="Table/getSessionActive" tal:attributes="href Table/getURLMergeLoad"><span class="icon-resize-small"/></a>
+												</td>
+											</tr>
+										</tbody>								
+									</table>
+								</div>  
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div metal:use-macro="mAdmin.xhtml/Footer"/>
+		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+		
+	</body>
+</html>							
