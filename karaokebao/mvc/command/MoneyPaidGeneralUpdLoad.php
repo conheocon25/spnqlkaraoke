@@ -28,7 +28,6 @@
 			
 			$Title = $Paid->getDatePrint();
 			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
 				array("THU / CHI", "/money"),
 				array("KHOẢN CHI", "/money/paid/general")
 			);

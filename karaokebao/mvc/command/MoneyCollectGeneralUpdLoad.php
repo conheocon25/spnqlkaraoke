@@ -27,8 +27,7 @@
 			$Collect = $mCollect->find($IdCollect);
 			
 			$Title = $Collect->getDatePrint();						
-			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
+			$Navigation = array(				
 				array("THU / CHI", "/money"),
 				array("KHOẢN CHI", "/money/collect/general")
 			);

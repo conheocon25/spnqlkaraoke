@@ -21,12 +21,11 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
-			$Term = $mTerm->find($IdTerm);
-			
-			$Title = "Thêm Mới";			
+			$Term = $mTerm->find($IdTerm);			
+			$Title = "THÊM MỚI";
 			$Navigation = array(
-				array("Thu / Chi", "/money"),
-				array("Khoản Thu", "/money/collect/general")
+				array("THU / CHI", "/money"),
+				array("KHOẢN THU", "/money/collect/general")
 			);
 			
 			//-------------------------------------------------------------
