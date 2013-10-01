@@ -12,9 +12,9 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------			
 			$IdTerm = $request->getProperty('IdTerm');
-			$Date = $request->getProperty('Date');
-			$Value = $request->getProperty('Value');
-			$Note = $request->getProperty('Note');
+			$Date = $request->getProperty('Date1');
+			$Value = $request->getProperty('Value1');
+			$Note = $request->getProperty('Note1');
 						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -39,6 +39,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
+			$request->setProperty('Insert', 'true');
 			return self::statuses('CMD_OK');
 		}
 	}

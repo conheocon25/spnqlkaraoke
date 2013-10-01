@@ -108,20 +108,14 @@
 		<!-- ============================================================================== -->
 		<command name="Money"><view>Money</view></command>
 		
-		<command name="MoneyCollectGeneral"><view>MoneyCollectGeneral</view></command>
-		<command name="MoneyCollectGeneralInsLoad"><view>MoneyCollectGeneralInsLoad</view></command>
-		<command name="MoneyCollectGeneralInsExe"><view>MoneyCollectGeneralInsExe</view><status value="CMD_OK"><forward>MoneyCollectGeneral</forward></status></command>
-		<command name="MoneyCollectGeneralUpdLoad"><view>MoneyCollectGeneralUpdLoad</view></command>
-		<command name="MoneyCollectGeneralUpdExe"><view>MoneyCollectGeneralUpdExe</view><status value="CMD_OK"><forward>MoneyCollectGeneral</forward></status></command>
-		<command name="MoneyCollectGeneralDelLoad"><view>MoneyCollectGeneralDelLoad</view></command>
+		<command name="MoneyCollectGeneral"><view>MoneyCollectGeneral</view></command>		
+		<command name="MoneyCollectGeneralInsExe"><view>MoneyCollectGeneralInsExe</view><status value="CMD_OK"><forward>MoneyCollectGeneral</forward></status></command>		
+		<command name="MoneyCollectGeneralUpdExe"><view>MoneyCollectGeneralUpdExe</view><status value="CMD_OK"><forward>MoneyCollectGeneral</forward></status></command>		
 		<command name="MoneyCollectGeneralDelExe"><view>MoneyCollectGeneralDelExe</view><status value="CMD_OK"><forward>MoneyCollectGeneral</forward></status></command>
 				
-		<command name="MoneyPaidGeneral"><view>MoneyPaidGeneral</view></command>
-		<command name="MoneyPaidGeneralInsLoad"><view>MoneyPaidGeneralInsLoad</view></command>
-		<command name="MoneyPaidGeneralInsExe"><view>MoneyPaidGeneralInsExe</view><status value="CMD_OK"><forward>MoneyPaidGeneral</forward></status></command>
-		<command name="MoneyPaidGeneralUpdLoad"><view>MoneyPaidGeneralUpdLoad</view></command>
-		<command name="MoneyPaidGeneralUpdExe"><view>MoneyPaidGeneralUpdExe</view><status value="CMD_OK"><forward>MoneyPaidGeneral</forward></status></command>
-		<command name="MoneyPaidGeneralDelLoad"><view>MoneyPaidGeneralDelLoad</view></command>
+		<command name="MoneyPaidGeneral"><view>MoneyPaidGeneral</view></command>		
+		<command name="MoneyPaidGeneralInsExe"><view>MoneyPaidGeneralInsExe</view><status value="CMD_OK"><forward>MoneyPaidGeneral</forward></status></command>		
+		<command name="MoneyPaidGeneralUpdExe"><view>MoneyPaidGeneralUpdExe</view><status value="CMD_OK"><forward>MoneyPaidGeneral</forward></status></command>		
 		<command name="MoneyPaidGeneralDelExe"><view>MoneyPaidGeneralDelExe</view><status value="CMD_OK"><forward>MoneyPaidGeneral</forward></status></command>
 			
 		<!-- ============================================================================== -->
