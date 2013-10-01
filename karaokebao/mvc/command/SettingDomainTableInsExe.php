@@ -12,8 +12,8 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$IdDomain = $request->getProperty('IdDomain');
-			$Name = $request->getProperty('Name');
-			$Type= $request->getProperty('Type');
+			$Name = $request->getProperty('Name1');
+			$Type= $request->getProperty('Type1');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU

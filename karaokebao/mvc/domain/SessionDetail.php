@@ -10,7 +10,7 @@ class SessionDetail extends Object{
 	private $IdCourse;
 	private $Count;	
 	private $Price;
-	
+			
 	private $Course;
 	private $Session;
 
@@ -22,9 +22,8 @@ class SessionDetail extends Object{
 		$this->Price = $Price;
         parent::__construct( $Id );
     }
-	function setId( $Id) {
-        $this->Id = $Id;
-    }
+	
+	function setId( $Id) {$this->Id = $Id;}
     function getId( ) {return $this->Id;}
 	function getIdPrint( ) {return "SessionDetail".$this->Id;}
 	
@@ -42,13 +41,8 @@ class SessionDetail extends Object{
         return $this->Session;
     }
 	
-	function setIdCourse( $IdCourse ) {
-        $this->IdCourse = $IdCourse;
-        $this->markDirty();
-    }
-	function getIdCourse( ) {
-        return $this->IdCourse;
-    }		
+	function setIdCourse( $IdCourse ) {$this->IdCourse = $IdCourse;$this->markDirty();}
+	function getIdCourse( ) {return $this->IdCourse;}		
 	function getCourse( ) {
 		if (!isset($this->Course)){
 			$mCourse = new \MVC\Mapper\Course();
@@ -56,17 +50,9 @@ class SessionDetail extends Object{
 		}
         return $this->Course;
     }	
-    function setCount( $Count ) {
-        $this->Count = $Count;
-        $this->markDirty();
-    }   
-	function getCount( ) {
-        return $this->Count;
-    }
-	function getCountPrint( ) {
-        $num = new Number($this->Count);
-		return $num->formatCurrency();
-    }
+    function setCount( $Count ) {$this->Count = $Count;$this->markDirty();}   
+	function getCount( ) {return $this->Count;}
+	function getCountPrint( ) {$num = new Number($this->Count);return $num->formatCurrency();}
 	
 	function getCountExchange( $IdResource ) {
 		$mR2C = new \MVC\Mapper\R2C();
@@ -84,24 +70,24 @@ class SessionDetail extends Object{
         return (float)($this->Count)*$Rate;
     }
 	
-	function setPrice( $Price) {
-        $this->Price = $Price;
-    }
-	function getPrice( ) {
-        return $this->Price;
-    }
-	function getPricePrint( ) {
-        $num = new Number($this->Price);
-		return $num->formatCurrency();
-    }
+	function setPrice( $Price) {$this->Price = $Price;}
+	function getPrice( ) {return $this->Price;}
+	function getPricePrint( ) {$num = new Number($this->Price);return $num->formatCurrency();}
 	
-	function getValue( ) {
-        return $this->Price*$this->Count;
-    }
-	function getValuePrint( ) {
-        $num = new Number($this->getValue());
-		return $num->formatCurrency()." đ";
-    }
+	function getValue( ) {return $this->Price*$this->Count;}
+	function getValuePrint( ) {$num = new Number($this->getValue());return $num->formatCurrency()." đ";}
+	
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'IdSession'		=> $this->getIdSession(),
+			'IdCourse'		=> $this->getIdCourse(),
+			'Count'			=> $this->getCount(),			
+			'Price'			=> $this->getPrice()
+		);
+		return json_encode($json);
+	}
+	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
