@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class SettingTermDelExe extends Command {
+	class SettingTermPaidDelExe extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");
 			//-------------------------------------------------------------
@@ -26,7 +26,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			
+			$request->setProperty('Delete', 'true');
 			return self::statuses('CMD_OK');
 		}
 	}

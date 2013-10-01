@@ -11,16 +11,15 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$Name = $request->getProperty('Name');
-			$Gender = $request->getProperty('Gender');
-			$Job = $request->getProperty('Job');
-			$Phone = $request->getProperty('Phone');
-			$Address = $request->getProperty('Address');
+			$Name = $request->getProperty('Name1');
+			$Gender = $request->getProperty('Gender1');
+			$Job = $request->getProperty('Job1');
+			$Phone = $request->getProperty('Phone1');
+			$Address = $request->getProperty('Address1');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------
-												
+			//-------------------------------------------------------------												
 			$mEmployee = new \MVC\Mapper\Employee();
 			
 			//-------------------------------------------------------------
@@ -42,6 +41,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
+			$request->setProperty('Insert', 'true');
 			return self::statuses('CMD_OK');
 		}
 	}

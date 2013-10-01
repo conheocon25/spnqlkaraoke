@@ -12,7 +12,7 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$IdTerm = $request->getProperty('IdTerm');
-			$Name = $request->getProperty('Name');
+			$Name = $request->getProperty('Name2');
 						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -32,6 +32,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
+			$request->setProperty('Update', 'true');
 			return self::statuses('CMD_OK');
 		}
 	}

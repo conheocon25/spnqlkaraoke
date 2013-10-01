@@ -12,13 +12,13 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$IdUser = $request->getProperty('IdUser');
-			$Name = $request->getProperty('Name');
-			$Email = $request->getProperty('Email');
-			$Pass = $request->getProperty('Pass');
-			$Type = $request->getProperty('Type');
-			$Gender = $request->getProperty('Gender');
-			$Code = $request->getProperty('Code');
-			$Note = $request->getProperty('Note');
+			$Name = $request->getProperty('Name1');
+			$Email = $request->getProperty('Email1');
+			$Pass = $request->getProperty('Pass1');
+			$Type = $request->getProperty('Type1');
+			$Gender = $request->getProperty('Gender1');
+			$Code = $request->getProperty('Code1');
+			$Note = $request->getProperty('Note1');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -33,19 +33,20 @@
 				$Name,
 				$Email, 
 				$Pass,
-				$Gender,
+				1,//$Gender,
 				$Note,
 				null,	
 				null,
 				null,	
-				$Type,
-				$Code
+				1,//$Type,
+				1 //$Code
 			);
 			$mUser->insert($User);
 						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
+			$request->setProperty('Insert', 'true');
 			return self::statuses('CMD_OK');
 		}
 	}

@@ -12,8 +12,8 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$IdConfig = $request->getProperty('IdConfig');
-			$Param = $request->getProperty('Param');
-			$Value = $request->getProperty('Value');
+			$Param = $request->getProperty('Param2');
+			$Value = $request->getProperty('Value2');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -34,7 +34,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			
+			$request->setProperty('Update', 'true');
 			return self::statuses('CMD_OK');
 		}
 	}
