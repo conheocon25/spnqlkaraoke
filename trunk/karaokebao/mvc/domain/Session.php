@@ -19,7 +19,7 @@ class Session extends Object{
 	private $Surtax;
 	private $Payment;
 	private $Value;
-	
+			
 	private $Table;
 	private $Employee;
 
@@ -324,7 +324,26 @@ class Session extends Object{
 		$num = new Number($this->getValue());
 		return $num->readDigit()." đồng";
 	}
-		
+	
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'IdTable'		=> $this->getIdTable(),
+			'IdUser'		=> $this->getIdUser(),
+			'IdCustomer'	=> $this->getIdCustomer(),
+			'DateTime'		=> $this->getDateTime(),
+			'DateTimeEnd'	=> $this->getDateTimeEnd(),
+			'Note'			=> $this->getNote(),
+			'Status'		=> $this->getStatus(),
+			'DiscountValue'	=> $this->getDiscountValue(),
+			'DiscountPercent'	=> $this->getDiscountPercent(),
+			'Surtax'		=> $this->getSurtax(),
+			'Payment'		=> $this->getPayment(),
+			'Value'			=> $this->getValue()
+		);
+		return json_encode($json);
+	}
+	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------

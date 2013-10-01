@@ -22,6 +22,14 @@ class Domain extends Object{
 		
 	function setName($Name) {$this->Name = $Name;$this->markDirty();}
 	function getName() {return $this->Name;}
+	
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'Name'			=> $this->getName()	
+		);
+		return json_encode($json);
+	}
 			
 	//-------------------------------------------------------------------------------
 	//GET LIST

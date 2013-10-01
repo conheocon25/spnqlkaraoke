@@ -9,7 +9,7 @@ class CollectGeneral extends Object{
 	private $Date;
     private $Value;
 	private $Note;
-					
+							
 	//-------------------------------------------------------------------------
 	//Hàm khởi tạo và thiết lập các thuộc tính
 	//-------------------------------------------------------------------------
@@ -48,6 +48,17 @@ class CollectGeneral extends Object{
 	   
 	function setNote( $Note ) {$this->Note = $Note;$this->markDirty();}
 	function getNote( ) {		return $this->Note;}	
+	
+	public function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'IdTerm'		=> $this->getIdTerm(),
+		 	'Date'			=> $this->getDate(),
+		 	'Value'			=> $this->getValue(),
+		 	'Note'			=> $this->getNote()
+		);
+		return json_encode($json);
+	}
 	
 	/*--------------------------------------------------------------------*/
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}

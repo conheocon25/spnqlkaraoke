@@ -11,8 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$Name = $request->getProperty("Name");
-			$Type = $request->getProperty("Type");
+			$Name = $request->getProperty("Name2");
+			$Type = $request->getProperty("Type2");
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU

@@ -7,7 +7,7 @@ class TermPaid extends Object{
     private $Id;
 	private $Name;
 	private $Type;
-	
+			
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
@@ -31,6 +31,14 @@ class TermPaid extends Object{
         return "Bán ra";
     }
 	
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),			
+			'Name'			=> $this->getName()
+		);
+		return json_encode($json);
+	}
+	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------
@@ -41,11 +49,8 @@ class TermPaid extends Object{
 	}	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
-	//-------------------------------------------------------------------------------
-	function getURLUpdLoad(){return "/setting/termpaid/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){return "/setting/termpaid/".$this->getId()."/upd/exe";}
-	
-	function getURLDelLoad(){return "/setting/termpaid/".$this->getId()."/del/load";}
+	//-------------------------------------------------------------------------------	
+	function getURLUpdExe(){return "/setting/termpaid/".$this->getId()."/upd/exe";}	
 	function getURLDelExe(){return "/setting/termpaid/".$this->getId()."/del/exe";}
 	
 	function getURLDetail(){return "/money/paid/general/".$this->getId();}

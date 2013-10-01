@@ -7,7 +7,7 @@ class Tracking extends Object{
 	private $DateStart;
 	private $DateEnd;
 	private $EstateRate;
-	
+		
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
@@ -278,6 +278,15 @@ class Tracking extends Object{
 	function getPaidPayRollAllValue(){$Value = $this->getPaidPayRollAllValueBase() + $this->getPaidPayRollAllValueSub();return $Value;}	
 	function getPaidPayRollAllValuePrint(){$N = new \MVC\Library\Number( $this->getPaidPayRollAllValue() );return $N->formatCurrency()." đ";}
 	
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),			
+			'DateStart'		=> $this->getDateStart(),
+			'DateEnd'		=> $this->getDateEnd(),
+			'EstateRate'	=> $this->getEstateRate()
+		);
+		return json_encode($json);
+	}	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
