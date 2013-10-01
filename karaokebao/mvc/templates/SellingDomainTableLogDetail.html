@@ -12,11 +12,11 @@
 			<div metal:use-macro="mAdmin.xhtml/ContentHeader"/>
 			<div metal:use-macro="mAdmin.xhtml/LocationBar"/>
 			<div class="container-fluid">							
-				<div class="row">
-					<div class="col-xs-12">
+				<div class="row">		
+					<div class="col-12">
 						<div class="widget-box">
 							<div class="widget-title">
-								<span class="icon"><i class="icon-table"/></span>
+								<span class="icon"><i class="glyphicons-table"/></span>
 								<a tal:attributes="href Session/getURLUpdLoad"><h5>Click để cập nhật</h5></a>
 							</div>
 							<div class="widget-content nopadding">
@@ -39,41 +39,25 @@
 											<td><div  class="text-left" tal:content="Session/getValueHoursPrint"/></td>
 										</tr>
 									</table>
-									<table class="table table-bordered table-striped table-hover data-table">
+									<table class="table table-bordered table-striped table-hover">
 										<thead>
 											<tr>										
 												<th width="30">STT</th>
-												<th>TÊN MÓN</th>
-												<th width="120">
-													<div  class="text-right">
-														SỐ LƯỢNG
-													</div>
-												</th>
-												<th width="120">
-													<div class="text-right">
-														ĐƠN GIÁ
-													</div>
-												</th>
-												<th width="120">
-													<div class="text-right">
-														THÀNH TIỀN
-													</div>	
-												</th>
-												<th width="30">XÓA</th>
+												<th><div class="text-left">TÊN MÓN</div></th>
+												<th width="120"><div class="text-right">SỐ LƯỢNG</div></th>
+												<th width="120"><div class="text-right">ĐƠN GIÁ</div></th>
+												<th width="120"><div class="text-right">THÀNH TIỀN</div></th>
+												<th width="30"><i class="glyphicons-bin"/></th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr tal:repeat="Detail Session/getDetails">
 												<td><div tal:content="repeat/Detail/number" /></td>
-												<td>
-													<a tal:attributes="href Detail/getURLUpdLoad">
-														<span tal:content="Detail/getCourse/getName" />
-													</a>
-												</td>
+												<td><a tal:attributes="href Detail/getURLUpdLoad"><span tal:content="Detail/getCourse/getName" /></a></td>
 												<td><div class="text-right" tal:content="Detail/getCountPrint"/></td>
 												<td><div class="text-right" tal:content="Detail/getPricePrint"/></td>
 												<td><div class="text-right" tal:content="Detail/getValuePrint"/></td>
-												<td><a tal:attributes="href Detail/getURLDelLoad"><span class="icon-remove"/></a></td>
+												<td><a tal:attributes="href Detail/getURLDelLoad"><i class="glyphicons-remove_2"/></a></td>
 											</tr>
 										</tbody>
 										<tfoot>
@@ -82,8 +66,7 @@
 												<td><div class="text-right" tal:content="Session/getValuePrint"/></td>
 											</tr>
 										</tfoot>
-									</table>
-									
+									</table>									
 								</div>  
 							</div>
 						</div>

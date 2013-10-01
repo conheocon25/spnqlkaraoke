@@ -12,9 +12,9 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$IdPaid = $request->getProperty('IdPaid');
-			$Date = $request->getProperty('Date');
-			$Value = $request->getProperty('Value');
-			$Note = $request->getProperty('Note');
+			$Date = $request->getProperty('Date2');
+			$Value = $request->getProperty('Value2');
+			$Note = $request->getProperty('Note2');
 														
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -36,6 +36,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
+			$request->setProperty('Update', 'true');
 			return self::statuses('CMD_OK');
 		}
 	}

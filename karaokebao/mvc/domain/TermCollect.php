@@ -43,8 +43,7 @@ class TermCollect extends Object{
 	function getURLDelExe(){return "/setting/termcollect/".$this->getId()."/del/exe";}
 	
 	function getURLCollect(){return "/money/collect/general/".$this->getId();}
-	function getURLCollectInsLoad(){return "/money/collect/general/".$this->getId()."/ins/load";}
-	function getURLPaidInsExe(){return "/money/collect/general/".$this->getId()."/ins/exe";}
+	function getURLCollectInsExe(){return "/money/collect/general/".$this->getId()."/ins/exe";}
 		
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}

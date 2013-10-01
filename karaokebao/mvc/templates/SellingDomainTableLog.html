@@ -11,44 +11,35 @@
 			<div metal:use-macro="mAdmin.xhtml/ContentHeader"/>
 			<div metal:use-macro="mAdmin.xhtml/LocationBar"/>
 			<div class="container-fluid">							
-				<div class="row">
-					<div class="col-xs-12">
+				<div class="row">				
+					<div class="col-12">
 						<div class="widget-box">
-							<div class="widget-title">
-								<span class="icon"><i class="icon-table"/></span>
-								<h5 tal:content="Title"/> 
-							</div>
 							<div class="widget-content nopadding">
-								<div role="grid" class="dataTables_wrapper">
-									<table class="table table-bordered table-striped table-hover data-table">
-										<thead>
-											<tr>										
-												<th width="30">STT</th>
-												<th width="120">THỜI GIAN</th>
-												<th>NHÂN VIÊN</th>
-												<th width="120"><div class="text-right">THÀNH TIỀN</div></th>
-												<th width="30">IN</th>
-												<th width="30">XÓA</th>
-											</tr>
-										</thead>
-										<tbody role="alert" aria-live="polite" aria-relevant="all">
-											<tr tal:repeat="Session SessionAll">
-												<td><div tal:content="repeat/Session/number" /></td>										
-												<td><a tal:attributes="href Session/getURLDetail"><div tal:content="Session/getDateTimePrint"/></a></td>
-												<td><div tal:content="Session/getUser/getName"/></td>
-												<td><div class="text-right" tal:content="Session/getValuePrint"/></td>
-												<td><a target="blank" tal:attributes="href Session/getURLPrint"><span class="icon-print"/></a></td>
-												<td><a tal:attributes="href Session/getURLDelLoad"><span class="icon-remove"/></a></td>
-											</tr>
-										</tbody>								
-									</table>
-									<div class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
-										<div metal:use-macro="mAdmin.xhtml/Pagebar"/>
-									</div>
-								</div>  
-							</div>
+								<table class="table table-bordered table-striped table-hover">
+									<thead>
+										<tr>										
+											<th width="30">STT</th>
+											<th width="120"><div class="text-left">THỜI GIAN</div></th>
+											<th><div class="text-left">NHÂN VIÊN</div></th>
+											<th width="120"><div class="text-right">THÀNH TIỀN</div></th>
+											<th width="30">IN</th>
+											<th width="30">XÓA</th>
+										</tr>
+									</thead>
+									<tbody role="alert" aria-live="polite" aria-relevant="all">
+										<tr tal:repeat="Session SessionAll">
+											<td><div class="text-center" tal:content="repeat/Session/number" /></td>
+											<td><a tal:attributes="href Session/getURLDetail"><div tal:content="Session/getDateTimePrint"/></a></td>
+											<td><div tal:content="Session/getUser/getName"/></td>
+											<td><div class="text-right" tal:content="Session/getValuePrint"/></td>
+											<td align="center"><a target="blank" tal:attributes="href Session/getURLPrint"><span class="glyphicons-print"/></a></td>
+											<td align="center"><a tal:attributes="href Session/getURLDelLoad"><span class="glyphicons-remove_2"/></a></td>
+										</tr>
+									</tbody>								
+								</table>
+							</div>  
 						</div>
-					</div>
+					</div>				
 				</div>
 			</div>
 		</div>

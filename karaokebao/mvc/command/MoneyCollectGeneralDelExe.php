@@ -26,8 +26,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			return self::statuses('CMD_OK');
-			
+			$request->setProperty('Delete', 'true');
+			return self::statuses('CMD_OK');			
 		}
 	}
 ?>
