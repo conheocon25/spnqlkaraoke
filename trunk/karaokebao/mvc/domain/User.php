@@ -6,7 +6,7 @@ class User extends Object{
     private $Id;
 	private $Name;
 	private $Email;
-    private $Pass;    
+    private $Pass;
 	private $Gender;
 	private $Note;
 	private $DateCreate;

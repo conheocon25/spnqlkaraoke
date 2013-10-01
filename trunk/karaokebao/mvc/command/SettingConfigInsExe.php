@@ -11,8 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$Param = $request->getProperty('Param');
-			$Value = $request->getProperty('Value');
+			$Param = $request->getProperty('Param1');
+			$Value = $request->getProperty('Value1');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -35,6 +35,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
+			$request->setProperty('Insert', 'true');
 			return self::statuses('CMD_OK');
 		}
 	}

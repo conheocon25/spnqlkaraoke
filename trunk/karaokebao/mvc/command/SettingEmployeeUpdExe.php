@@ -12,11 +12,11 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$IdEmployee = $request->getProperty('IdEmployee');
-			$Name = $request->getProperty('Name');
-			$Gender = $request->getProperty('Gender');
-			$Job = $request->getProperty('Job');
-			$Phone = $request->getProperty('Phone');
-			$Address = $request->getProperty('Address');
+			$Name = $request->getProperty('Name2');
+			$Gender = $request->getProperty('Gender2');
+			$Job = $request->getProperty('Job2');
+			$Phone = $request->getProperty('Phone2');
+			$Address = $request->getProperty('Address2');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -39,6 +39,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
+			$request->setProperty('Update', 'true');
 			return self::statuses('CMD_OK');
 		}
 	}

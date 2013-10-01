@@ -12,8 +12,7 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$IdTerm = $request->getProperty('IdTerm');
-			$Name = $request->getProperty('Name');
-			$Type = $request->getProperty('Type');
+			$Name = $request->getProperty('Name2');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -26,14 +25,13 @@
 			if (!isset($Name)) return self::statuses('CMD_OK');
 				
 			$Term = $mTerm->find($IdTerm);
-			$Term->setName($Name);
-			$Term->setType($Type);
+			$Term->setName($Name);			
 			$mTerm->update($Term);
 						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			
+			$request->setProperty('Update', 'true');
 			return self::statuses('CMD_OK');
 		}
 	}

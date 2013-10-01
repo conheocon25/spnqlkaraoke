@@ -12,13 +12,13 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$IdUser = $request->getProperty('IdUser');
-			$Name = $request->getProperty('Name');
-			$Email = $request->getProperty('Email');
-			$Pass = $request->getProperty('Pass');
-			$Type = $request->getProperty('Type');
-			$Gender = $request->getProperty('Gender');
-			$Code = $request->getProperty('Code');
-			$Note = $request->getProperty('Note');
+			$Name = $request->getProperty('Name2');
+			$Email = $request->getProperty('Email2');
+			$Pass = $request->getProperty('Pass2');
+			$Type = $request->getProperty('Type2');
+			$Gender = $request->getProperty('Gender2');
+			$Code = $request->getProperty('Code2');
+			$Note = $request->getProperty('Note2');
 						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -42,6 +42,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
+			$request->setProperty('Update', 'true');
 			return self::statuses('CMD_OK');
 		}
 	}
