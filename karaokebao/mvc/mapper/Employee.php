@@ -23,9 +23,7 @@ class Employee extends Mapper implements \MVC\Domain\EmployeeFinder{
 		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
 			
     } 
-    function getCollection( array $raw ) {
-        return new EmployeeCollection( $raw, $this );
-    }
+    function getCollection( array $raw ) {return new EmployeeCollection( $raw, $this );}
 
     protected function doCreateObject( array $array ) {		
         $obj = new \MVC\Domain\Employee( 
@@ -39,9 +37,7 @@ class Employee extends Mapper implements \MVC\Domain\EmployeeFinder{
         return $obj;
     }
 	
-    protected function targetClass() {        
-		return "Employee";
-    }
+    protected function targetClass() {return "Employee";}
 
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 			

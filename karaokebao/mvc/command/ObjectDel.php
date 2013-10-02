@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class LoadO2J extends Command {
+	class ObjectDel extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");	
 			
@@ -23,12 +23,15 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$mMapper 	= \MVC\Domain\HelperFactory::getFinder($ObjectName);
-			$Obj 		= $mMapper->find($Id);
+			$Obj 		= $mMapper->delete(array($Id));
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
-			echo $Obj->toJSON();
+			//-------------------------------------------------------------						
+			$Session->setCurrentAction('Delete');
+			
+			$json = array('result' => "OK");
+			echo json_encode($json);
 		}
 	}
 ?>
