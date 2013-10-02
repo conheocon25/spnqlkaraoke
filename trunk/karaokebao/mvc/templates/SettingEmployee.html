@@ -54,7 +54,7 @@
 								<div class="modal-header">
 									<h3><i class="glyphicons-fast_food modal-icon"/>THÊM MỚI NHÂN VIÊN</h3>
 								</div>
-								<form action="/setting/employee/ins/exe" method="post" class="form-horizontal">
+								<div class="form-horizontal">
 									<div class="modal-body">
 										<div class="form-group">
 											<label class="control-label">Tên</label>
@@ -65,7 +65,7 @@
 										<div class="form-group">
 											<label class="control-label">Giới tính</label>
 											<div class="controls">
-												<select name="Gender1" id="Gender1" class="form-control input-sm">
+												<select name="Gender1" id="Gender1" class="form-control input-small">
 													<option value="0" >Nam</option>
 													<option value="1" >Nữ</option>
 												</select>
@@ -75,32 +75,32 @@
 											<div class="control-group">
 												<label class="control-label">Chức vụ</label>
 												<div class="controls">
-													<input id="Job1" name="Job1" type="text" class="form-control input-sm"/>
+													<input id="Job1" name="Job1" type="text" class="form-control input-small"/>
 												</div>
 											</div>
 										</div>	
 										<div class="form-group">
 											<div class="control-group">
-												<label class="control-label" for="Phone">Điện thoại</label>
+												<label class="control-label">Điện thoại</label>
 												<div class="controls">								
-													<input id="Phone1" name="Phone1" type="text" class="form-control input-sm"/>
+													<input id="Phone1" name="Phone1" type="text" class="form-control input-small"/>
 												</div>
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="control-group">
-												<label class="control-label" for="Address">Địa chỉ</label>
+												<label class="control-label">Địa chỉ</label>
 												<div class="controls">
-													<input id="Address1" name="Address1" type="text" class="form-control input-sm"/>
+													<input id="Address1" name="Address1" type="text" class="form-control input-small"/>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="modal-footer">
-										<button class="btn btn-primary btn-small" type="submit"><i class="glyphicons-download_alt"/> Lưu</button>
+										<button class="btn btn-primary btn-small" id="URLIns"><i class="glyphicons-download_alt"/> Lưu</button>
 										<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
 									</div>
-								</form>
+								</div>								
 							</div>
 						</div>
 					</div>
@@ -125,7 +125,7 @@
 											<div class="control-group">
 												<label class="control-label">Giới tính</label>
 												<div class="controls">
-													<select name="Gender2" id="Gender2" class="form-control input-sm">
+													<select name="Gender2" id="Gender2" class="form-control input-small">
 														<option value="0" >Nam</option>
 														<option value="1" >Nữ</option>
 													</select>
@@ -134,19 +134,19 @@
 											<div class="control-group">
 												<label class="control-label">Chức vụ</label>
 												<div class="controls">
-													<input id="Job2" name="Job2" type="text" class="form-control input-sm"/>
+													<input id="Job2" name="Job2" type="text" class="form-control input-small"/>
 												</div>
 											</div>										
 											<div class="control-group">
 												<label class="control-label">Điện thoại</label>
 												<div class="controls">								
-													<input id="Phone2" name="Phone2" type="text" class="form-control input-sm"/>
+													<input id="Phone2" name="Phone2" type="text" class="form-control input-small"/>
 												</div>
 											</div>										
 											<div class="control-group">
 												<label class="control-label">Địa chỉ</label>
 												<div class="controls">
-													<input id="Address2" name="Address2" type="text" class="form-control input-sm"/>
+													<input id="Address2" name="Address2" type="text" class="form-control input-small"/>
 												</div>
 											</div>
 										</div>
@@ -172,7 +172,7 @@
 									<p>Bạn có chắc muốn xóa mục này ?</p>
 								</div>
 								<div class="modal-footer">
-									<a class="btn btn-primary btn-small" id="remove-link" href="">Xóa</a>
+									<button class="btn btn-primary btn-small" id="remove-link">Xóa</button>
 									<a data-dismiss="modal" class="btn btn-default btn-small">Không</a>
 								</div>
 							</div>
@@ -185,10 +185,50 @@
 		</div>
 		<div metal:use-macro="mAdmin.xhtml/Footer"/>
 		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
-		<script type="text/javascript">/*<![CDATA[*/
+		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		
+			//-----------------------------------------------------------------------------------
+			//Delete 1 EMPLOYEEE
+			//Copy URL Item into DiaglogDelete for User commit	
+			//-----------------------------------------------------------------------------------
 			$('.remove-item').click(function(){
-				$('#remove-link').attr('href', $(this).attr('alt'));
+				$('#remove-link').attr('alt', $(this).attr('alt'));								
 			});
+			//Khi người dùng Click vào nút Remove-Link thì tiến  hành gọi Ajax xóa tự động
+			$('#remove-link').click(function(){				
+				var URL = $(this).attr('alt');
+				$.getJSON(URL, function(data) {
+					if (data.result == "OK"){
+						location.reload();
+					}
+				});
+			});
+		
+			//-----------------------------------------------------------------------------------
+			//Insert 1 EMPLOYEEE
+			$('#URLIns').click(function(){
+				var Data = [];
+				Data[0] = 'null';
+				Data[1] = $('#Name1').val();
+				Data[2] = $('#Gender1').val();
+				Data[3] = $('#Job1').val();
+				Data[4] = $('#Phone1').val();
+				Data[5] = $('#Address1').val();
+				Data[6] = '900000';
+														
+				var URL = "/object/ins/Employee";
+				$.ajax({
+					type: "POST",
+					data: {Data:Data},
+					url: URL,
+					success: function(msg){
+						//location.reload();
+					}
+				});				
+			});
+						
 			$('.update-item').click(function(){
 				//Load dữ liệu JSON về
 				var url = "/load/o2j/" + $(this).attr('data-name') + "/" + $(this).attr('data-id');
@@ -204,6 +244,9 @@
 				});
 			});
 		/*]]>*/</script>
+		
+		<!--
 		<div metal:use-macro="mAdmin.xhtml/AlertTools"/>
+		!-->
 	</body>
 </html>

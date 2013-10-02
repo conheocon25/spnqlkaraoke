@@ -41,6 +41,17 @@
 		
         parent::__construct( $Id );
     }
+	
+	function setArray( $Data ){
+        $this->Id = $Data[0];
+		$this->Name = $Data[1];
+		$this->Gender = $Data[2];
+		$this->Job = $Data[3];
+		$this->Phone = $Data[4];
+		$this->Address = $Data[5];
+		$this->SalaryBase = $Data[6];
+    }
+	
     function getId( ) {return $this->Id;}
 	function getIdPrint( ) {return "e".$this->Id;}
 		
@@ -113,9 +124,9 @@
 	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
-	//-------------------------------------------------------------------------------					
-	function getURLUpdExe(){return "/setting/employee/".$this->getId()."/upd/exe";}
-	function getURLDelExe(){return "/setting/employee/".$this->getId()."/del/exe";}
+	//-------------------------------------------------------------------------------
+	function getURLUpdExe(){return "/object/upd/Employee/".$this->getId();}
+	function getURLDelExe(){return "/object/del/Employee/".$this->getId();}
 		
 }
 ?>

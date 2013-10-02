@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class LoadO2J extends Command {
+	class ObjectIns extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");	
 			
@@ -13,7 +13,7 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$ObjectName = $request->getProperty('ObjectName');
-			$Id = $request->getProperty('Id');
+			$Data = $request->getProperty('Data');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -23,12 +23,16 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$mMapper 	= \MVC\Domain\HelperFactory::getFinder($ObjectName);
-			$Obj 		= $mMapper->find($Id);
+			$Domain		= \MVC\Domain\HelperFactory::getModel($ObjectName);
+			$Domain->setArray($Data);
+			$mMapper->insert($Domain);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			echo $Obj->toJSON();
+						
+			$json = array('result' => "OK");
+			echo json_encode($json);
 		}
 	}
 ?>
