@@ -23,6 +23,8 @@
 	<!-- CASCADING STYLE SHEETS INCLUDE											  -->
 	<!-- ======================================================================== -->
 	<span metal:define-macro="IncludeCSS">	
+		<link rel="stylesheet" href="/mvc/templates/theme/cms/css/icheck/flat/blue.css"/>
+		<link rel="stylesheet" href="/mvc/templates/theme/cms/css/select2.css"/>
 		<link rel="stylesheet" href="/mvc/templates/theme/cms/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="/mvc/templates/theme/cms/css/bootstrap-glyphicons.css"/>
 		<link rel="stylesheet" href="/mvc/templates/theme/cms/css/glyphicons-regular.css"/>
@@ -32,8 +34,6 @@
 		<link rel="stylesheet" href="/mvc/templates/theme/cms/css/custom.css"/>
 		<link rel="stylesheet" href="/mvc/templates/theme/cms/css/jquery.gritter.css"/>
 		<link rel="stylesheet" tal:attributes="href php:'/mvc/templates/theme/cms/css/unicorn.' . @\MVC\Base\SessionRegistry::instance()->getCurrentTheme() . '.css'" class="skin-color"/>
-		<link rel="stylesheet" href="/mvc/templates/theme/cms/css/icheck/flat/blue.css"/>
-		<link rel="stylesheet" href="/mvc/templates/theme/cms/css/select2.css"/>
 	</span>
 	
 	<!-- ======================================================================== -->
