@@ -112,12 +112,21 @@ class User extends Object{
 		);
 		return json_encode($json);
 	}
-	//-------------------------------------------------------------------------------
-	//DEFINE URL
-	//-------------------------------------------------------------------------------	
-	function getURLUpdExe(){	return "/setting/user/".$this->getId()."/upd/exe";}		
-	function getURLDelExe(){	return "/setting/user/".$this->getId()."/del/exe";}	
 	
+	function setArray( $Data ){
+        $this->Id 			= $Data[0];
+		$this->Name 		= $Data[1];
+		$this->Email 		= $Data[2];
+		$this->Pass 		= $Data[3];
+		$this->Gender 		= $Data[4];
+		$this->Note 		= $Data[5];
+		$this->DateCreate 	= $Data[6];
+		$this->DateUpdate 	= $Data[7];
+		$this->DateActivity = $Data[8];
+		$this->Type 		= $Data[9];
+		$this->Code 		= $Data[10];
+    }
+			
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}
 }

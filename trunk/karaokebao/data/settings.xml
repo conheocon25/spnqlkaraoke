@@ -122,7 +122,7 @@
 		<command name="MoneyPaidGeneralDelExe"><view>MoneyPaidGeneralDelExe</view><status value="CMD_OK"><forward>MoneyPaidGeneral</forward></status></command>
 			
 		<!-- ============================================================================== -->
-		<!-- SETTING.CUSTOMER	 															-->
+		<!-- SETTING																		-->
 		<!-- ============================================================================== -->
 		<command name="SettingCustomer"><view>SettingCustomer</view></command>				
 		<command name="SettingEmployee"><view>SettingEmployee</view></command>		
@@ -134,7 +134,7 @@
 		<command name="SettingCategory"><view>SettingCategory</view></command>				
 		<command name="SettingCategoryCourse"><view>SettingCategoryCourse</view></command>				
 		<command name="SettingTermPaid"><view>SettingTermPaid</view></command>				
-		<command name="SettingTermCollect"><view>SettingTermCollect</view></command>		
+		<command name="SettingTermCollect"><view>SettingTermCollect</view></command>
 																																								
 	</control>
 </options>

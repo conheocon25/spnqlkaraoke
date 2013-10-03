@@ -158,13 +158,7 @@ class Table extends Object{
 		$this->IdUser = $Data[3];
 		$this->Type = $Data[4];
     }
-	
-	//-------------------------------------------------------------------------------
-	//DEFINE SETTING URL
-	//-------------------------------------------------------------------------------		
-	function getURLUpdExe(){return "/setting/domain/".$this->getIdDomain()."/".$this->getId()."/upd/exe";}
-	function getURLDelExe(){return "/setting/domain/".$this->getIdDomain()."/".$this->getId()."/del/exe";}
-	
+		
 	//-------------------------------------------------------------------------------
 	//DEFINE SELLING URL
 	//-------------------------------------------------------------------------------	

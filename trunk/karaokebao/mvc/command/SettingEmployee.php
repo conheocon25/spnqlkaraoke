@@ -32,8 +32,7 @@
 			$ConfigAll = $mConfig->findAll();
 			
 			$Title = "NHÂN VIÊN";
-			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
+			$Navigation = array(				
 				array("THIẾT LẬP", "/setting")
 			);
 			
