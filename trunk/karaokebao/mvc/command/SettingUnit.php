@@ -49,7 +49,8 @@
 			$request->setProperty('Page', $Page);
 			$request->setObject('PN', $PN);
 			$request->setObject('Navigation', $Navigation);
-			$request->setObject('UnitAll1', $UnitAll1);
+			//Làm đỡ
+			$request->setObject('UnitAll1', $UnitAll);
 			
 			$request->setObject('CategoryAll', $CategoryAll);			
 			$request->setObject('DomainAll', $DomainAll);

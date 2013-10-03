@@ -203,10 +203,9 @@
 		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
 		
 		<script type="text/javascript">
-		/*<![CDATA[*/		
+		/*<![CDATA[*/
 			//-----------------------------------------------------------------------------------
-			//Delete 1 EMPLOYEEE
-			//Copy URL Item into DiaglogDelete for User commit	
+			//Delete 1 EMPLOYEEE			
 			//-----------------------------------------------------------------------------------
 			$('.remove-item').click(function(){
 				$('#URLDelButton').attr('alt', $(this).attr('data-id'));
@@ -251,7 +250,7 @@
 			//-----------------------------------------------------------------------------------
 			$('.update-item').click(function(){
 				//Load dữ liệu JSON về
-				var url = "/load/o2j/" + $(this).attr('data-name') + "/" + $(this).attr('data-id');
+				var url = "/object/load/Employee/" + $(this).attr('data-id');
 				
 				//Load dữ liệu JSON lên FORM
 				$('#update-link').attr('action', $(this).attr('alt'));

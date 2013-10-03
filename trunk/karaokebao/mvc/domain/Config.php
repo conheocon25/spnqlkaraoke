@@ -32,6 +32,13 @@ class Config extends Object{
 		);
 		return json_encode($json);
 	}
+	
+	function setArray( $Data ){
+        $this->Id = $Data[0];
+		$this->Param = $Data[1];		
+		$this->Value = $Data[2];
+    }
+	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------
@@ -39,9 +46,7 @@ class Config extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------			
-	function getURLUpdExe(){return "/setting/config/".$this->getId()."/upd/exe";}
-	function getURLDelExe(){return "/setting/config/".$this->getId()."/del/exe";}
-		
+			
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}
