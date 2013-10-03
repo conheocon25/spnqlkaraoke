@@ -151,6 +151,14 @@ class Table extends Object{
 		return json_encode($json);
 	}
 	
+	function setArray( $Data ){
+        $this->Id = $Data[0];
+		$this->IdDomain = $Data[1];
+		$this->Name = $Data[2];
+		$this->IdUser = $Data[3];
+		$this->Type = $Data[4];
+    }
+	
 	//-------------------------------------------------------------------------------
 	//DEFINE SETTING URL
 	//-------------------------------------------------------------------------------		

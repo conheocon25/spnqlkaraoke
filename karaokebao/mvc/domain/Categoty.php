@@ -32,6 +32,12 @@ class Category extends Object{
 		);
 		return json_encode($json);
 	}
+	
+	function setArray( $Data ){
+        $this->Id = $Data[0];	
+		$this->Name = $Data[1];
+		$this->Picture = $Data[2];		
+    }
 
 	//-------------------------------------------------------------------------------
 	//GET LISTs
