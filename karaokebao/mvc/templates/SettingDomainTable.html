@@ -21,17 +21,18 @@
 			<div metal:use-macro="mAdmin.xhtml/ContentHeader"/>
 			<div metal:use-macro="mAdmin.xhtml/Locationbar"/>
 			<div class="row">
-				<div class="col-12">
+				<div id="IdDomain" tal:attributes="alt Domain/getId" class="col-12">
 					<a href="#DialogIns" data-toggle="modal" class="btn btn-success btn-ins btn-small">
 						<i class="glyphicon glyphicon-plus"/> Thêm mới
 					</a>
 					<div class="widget-box">
 						<div class="widget-content nopadding">
-							<table class="table table-bordered table-striped table-hover with-check">																
+							<table class="table table-bordered table-striped table-hover with-check">
 								<thead>
 									<tr>
 										<th width="40"><input type="checkbox" id="title-table-checkbox" name="title-table-checkbox"/></th>
-										<th class="left">TÊN BÀN</th>										
+										<th class="left">TÊN</th>
+										<th class="left" width="90">LOẠI</th>
 										<th width="40"><i class="glyphicons-edit"/></th>
 										<th width="40"><i class="glyphicons-bin"/></th>
 									</tr>
@@ -39,9 +40,10 @@
 								<tbody>
 									<tr tal:repeat="Table TableAll">
 										<td class="center"><input type="checkbox"/></td>
-										<td><a class="update-item" href="#DialogEdit" data-toggle="modal" data-name="Table" tal:attributes="alt Table/getURLUpdExe; data-id Table/getId" tal:content="Table/getName"/></td>										
-										<td class="center"><a class="update-item" href="#DialogEdit" data-toggle="modal" data-name="Table" tal:attributes="alt Table/getURLUpdExe; data-id Table/getId"><i class="glyphicon glyphicon-pencil"/></a></td>
-										<td class="center"><a class="remove-item" href="#DialogDel" data-toggle="modal" tal:attributes="alt Table/getURLDelExe"><i class="glyphicon glyphicon-remove"/></a></td>
+										<td><a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id Table/getId" tal:content="Table/getName"/></td>
+										<td><span tal:content="Table/getTypePrint"/></td>
+										<td class="center"><a class="update-item" href="#DialogEdit" data-toggle="modal" data-name="Table" tal:attributes="data-id Table/getId"><i class="glyphicon glyphicon-pencil"/></a></td>
+										<td class="center"><a class="remove-item" href="#DialogDel" data-toggle="modal" tal:attributes="data-id Table/getId"><i class="glyphicon glyphicon-remove"/></a></td>
 									</tr>
 								</tbody>																
 							</table>
@@ -55,7 +57,7 @@
 								<div class="modal-header">
 									<h3><i class="glyphicons-fast_food modal-icon"/>THÊM MỚI BÀN</h3>
 								</div>
-								<form tal:attributes="action Domain/getURLTableInsExe" method="post" class="form-horizontal">
+								<div class="form-horizontal">
 									<div class="form-group">
 										<label class="control-label">Tên</label>
 										<div class="controls">
@@ -72,10 +74,10 @@
 										</div>
 									</div>
 									<div class="modal-footer">
-										<button class="btn btn-primary btn-small" type="submit"><i class="glyphicons-download_alt"/> Lưu</button>
+										<button id="URLInsButton" class="btn btn-primary btn-small"><i class="glyphicons-download_alt"/> Lưu</button>
 										<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -88,7 +90,7 @@
 								<div class="modal-header">
 									<h3><i class="glyphicons-fast_food modal-icon"/>CẬP NHẬT BÀN</h3>
 								</div>
-								<form action="" method="post" class="form-horizontal" id="update-link">
+								<div class="form-horizontal">
 									<div class="form-group">
 										<label class="control-label">Tên</label>
 										<div class="controls">
@@ -105,10 +107,10 @@
 										</div>
 									</div>
 									<div class="modal-footer">
-										<button class="btn btn-primary btn-small" type="submit"><i class="glyphicons-download_alt"/> Lưu</button>
+										<button id="URLUpdButton" class="btn btn-primary btn-small"><i class="glyphicons-download_alt"/> Lưu</button>
 										<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -125,8 +127,8 @@
 									<p>Bạn có chắc muốn xóa ?</p>
 								</div>
 								<div class="modal-footer">
-									<a class="btn btn-primary btn-small" id="remove-link" href="">Xóa</a>
-									<a data-dismiss="modal" class="btn btn-default btn-small">Không</a>
+									<button id="URLDelButton" class="btn btn-primary btn-small">Xóa</button>
+									<button data-dismiss="modal" class="btn btn-default btn-small">Không</button>
 								</div>
 							</div>
 						</div>
@@ -138,22 +140,84 @@
 		</div>
 		<div metal:use-macro="mAdmin.xhtml/Footer"/>
 		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
-		<script type="text/javascript">/*<![CDATA[*/
+		<script type="text/javascript">
+		/*<![CDATA[*/
+			//-----------------------------------------------------------------------------------
+			//Delete 1 TABLE			
+			//-----------------------------------------------------------------------------------
 			$('.remove-item').click(function(){
-				$('#remove-link').attr('href', $(this).attr('alt'));
+				$('#URLDelButton').attr('alt', $(this).attr('data-id'));
 			});
+			//Khi người dùng Click vào nút URLDelButton thì tiến  hành gọi Ajax xóa tự động
+			$('#URLDelButton').click(function(){			
+				var URL = "/object/del/Table/" + $(this).attr('alt');
+				$.ajax({
+					type: "POST",					
+					url: URL,
+					success: function(msg){
+						location.reload();
+					}
+				});
+			});
+		
+			//-----------------------------------------------------------------------------------
+			//Insert 1 TABLE
+			$('#URLInsButton').click(function(){
+				var Data = [];
+				Data[0] = 'null';
+				Data[1] = $('#IdDomain').attr('alt');
+				Data[2] = $('#Name1').val();
+				Data[3] = '1';
+				Data[4] = $('#Type1').val();
+							
+				var URL = "/object/ins/Table";
+				$.ajax({
+					type: "POST",
+					data: {Data:Data},
+					url: URL,
+					success: function(msg){
+						location.reload();
+					}
+				});
+			});
+			
+			//-----------------------------------------------------------------------------------
+			//Load 1 TABLE
+			//-----------------------------------------------------------------------------------
 			$('.update-item').click(function(){
 				//Load dữ liệu JSON về
-				var url = "/load/o2j/" + $(this).attr('data-name') + "/" + $(this).attr('data-id');
+				var url = "/object/load/Table/" + $(this).attr('data-id');
 				
 				//Load dữ liệu JSON lên FORM
-				$('#update-link').attr('action', $(this).attr('alt'));
-				$.getJSON(url, function(data) {
+				$.getJSON(url, function(data){
+					$('#URLUpdButton').attr('alt', data.Id);
 					$('#Name2').attr('value', data.Name);
 					$('#Type2').select2('val', data.Type);
 				});
 			});
-		/*]]>*/</script>
-		<div metal:use-macro="mAdmin.xhtml/AlertTools"/>
+			
+			//-----------------------------------------------------------------------------------
+			//Update 1 TABLE
+			//-----------------------------------------------------------------------------------
+			$('#URLUpdButton').click(function(){
+				var Data = [];
+				Data[0] = $('#URLUpdButton').attr('alt');
+				Data[1] = $('#IdDomain').attr('alt');
+				Data[2] = $('#Name2').val();
+				Data[3] = '1';
+				Data[4] = $('#Type2').val();
+				
+				var URL = "/object/upd/Table";
+				$.ajax({
+					type: "POST",
+					data: {Data:Data},
+					url: URL,
+					success: function(msg){
+						location.reload();
+					}
+				});
+			});			
+		/*]]>*/
+		</script>
 	</body>
 </html>
