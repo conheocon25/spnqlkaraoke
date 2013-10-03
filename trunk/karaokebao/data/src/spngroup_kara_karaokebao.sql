@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 30, 2013 at 10:07 PM
+-- Generation Time: Oct 03, 2013 at 06:37 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `tbl_collect_general` (
   `note` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `tbl_collect_1` (`id_term`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `tbl_collect_general`
@@ -94,7 +94,8 @@ CREATE TABLE IF NOT EXISTS `tbl_collect_general` (
 
 INSERT INTO `tbl_collect_general` (`id`, `id_term`, `date`, `value`, `note`) VALUES
 (5, 2, '2013-05-20', 10111, 'ddddd'),
-(6, 2, '2013-09-08', 1, 'thử nghiệm');
+(6, 2, '2013-09-08', 1, 'thử nghiệm'),
+(8, 3, '2013-09-11', 2, 'a');
 
 -- --------------------------------------------------------
 
@@ -120,8 +121,8 @@ INSERT INTO `tbl_config` (`id`, `param`, `value`) VALUES
 (4, 'PRICE_HOUR_VIP_2', '100000'),
 (5, 'DISCOUNT', '0'),
 (6, 'ROW_PER_PAGE', '12'),
-(7, 'GUEST_VISIT', '220'),
-(8, 'THEME', 'grey'),
+(7, 'GUEST_VISIT', '268'),
+(8, 'THEME', 'red'),
 (9, 'EVERY_5_MINUTES', '2000');
 
 -- --------------------------------------------------------
@@ -254,17 +255,18 @@ CREATE TABLE IF NOT EXISTS `tbl_employee` (
   `gender` tinyint(2) NOT NULL,
   `phone` varchar(13) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `salary_base` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `tbl_employee`
 --
 
-INSERT INTO `tbl_employee` (`id`, `name`, `job`, `gender`, `phone`, `address`) VALUES
-(1, 'Phan Thị B', '', 1, '0946 111 222', 'Cao Lãnh - Đồng Tháp'),
-(2, 'Lê Văn C', '', 0, '0986 222 333', 'Cái Bè, Tiền Giang'),
-(3, 'Nguyễn Văn A', 'Quản lý', 1, '11224', 'Trà Vinh');
+INSERT INTO `tbl_employee` (`id`, `name`, `job`, `gender`, `phone`, `address`, `salary_base`) VALUES
+(2, 'Lê Văn C', '', 0, '0986 222 333', 'Cái Bè, Tiền Giang', 0),
+(21, 'Luu Arin', 'Giao vien', 0, '123456', 'Thanh Phu Ben Tre', 0),
+(25, 'ABC', 'Đầu bếp', 1, '11223355', 'Vĩnh Long', 10000000);
 
 -- --------------------------------------------------------
 
@@ -279,14 +281,14 @@ CREATE TABLE IF NOT EXISTS `tbl_guest` (
   `exit_time` varchar(32) CHARACTER SET latin1 NOT NULL,
   `agent` varchar(16) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `tbl_guest`
 --
 
 INSERT INTO `tbl_guest` (`id`, `ip`, `entry_time`, `exit_time`, `agent`) VALUES
-(2, '192.168.1.3', '1380571271', '1380574871', '192.168.1.3');
+(10, '192.168.1.3', '1380734038', '1380737638', '192.168.1.3');
 
 -- --------------------------------------------------------
 
@@ -368,20 +370,13 @@ INSERT INTO `tbl_paid_general` (`id`, `id_term`, `date`, `value`, `note`) VALUES
 (70, 10, '2013-05-08', 115000, 'Tiền chợ'),
 (71, 10, '2013-05-09', 117000, 'Tiền chợ'),
 (72, 11, '2013-05-10', 6000, 'Cafe cho tài xế của khách'),
-(73, 10, '2013-05-10', 81000, 'Tiền chợ'),
-(74, 10, '2013-05-11', 99000, 'Tiền chợ\r\n'),
-(75, 10, '2013-05-12', 330000, 'Tiền chợ'),
 (76, 10, '2013-05-13', 85000, 'Tiền chợ\r\n'),
 (77, 10, '2013-05-14', 74500, 'Tiền chợ'),
 (78, 11, '2013-05-12', 141000, 'Mua chổi+cây lau nhà'),
 (79, 3, '2013-04-30', 5600001, 'Thuế TTĐB'),
 (80, 12, '2013-04-30', 3250000, 'chi tiền đầu chai cho NV'),
-(81, 10, '2013-05-15', 221000, ''),
-(82, 10, '2013-05-16', 106000, ''),
-(83, 10, '2013-05-17', 129000, ''),
-(85, 10, '2013-05-18', 99000, ''),
 (86, 10, '2013-05-19', 85000, ''),
-(87, 11, '2013-05-19', 414000, 'Bình gas+nguyên liệu làm motor'),
+(87, 11, '2013-05-20', 414000, 'Bình gas+nguyên liệu làm motor1'),
 (88, 10, '2013-05-20', 40000, '');
 
 -- --------------------------------------------------------
@@ -399,44 +394,12 @@ CREATE TABLE IF NOT EXISTS `tbl_pay_roll` (
   `late` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `demo1_pay_roll_1` (`idemployee`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=63 ;
 
 --
 -- Dumping data for table `tbl_pay_roll`
 --
 
-INSERT INTO `tbl_pay_roll` (`id`, `idemployee`, `date`, `state`, `extra`, `late`) VALUES
-(1, 1, '2013-05-01', 1, 0, 0),
-(2, 1, '2013-05-02', 1, 0, 0),
-(3, 1, '2013-05-03', 1, 0, 0),
-(4, 1, '2013-05-04', 1, 0, 0),
-(5, 1, '2013-05-05', 1, 0, 0),
-(6, 1, '2013-05-06', 1, 0, 0),
-(7, 1, '2013-05-07', 1, 0, 0),
-(8, 1, '2013-05-08', 1, 0, 0),
-(9, 1, '2013-05-09', 1, 0, 0),
-(10, 1, '2013-05-10', 1, 0, 0),
-(11, 1, '2013-05-11', 1, 0, 0),
-(12, 1, '2013-05-12', 1, 0, 0),
-(13, 1, '2013-05-13', 1, 0, 0),
-(14, 1, '2013-05-14', 1, 0, 0),
-(15, 1, '2013-05-15', 1, 0, 0),
-(16, 1, '2013-05-16', 1, 0, 0),
-(17, 1, '2013-05-17', 1, 0, 0),
-(18, 1, '2013-05-18', 1, 0, 0),
-(19, 1, '2013-05-19', 1, 0, 0),
-(20, 1, '2013-05-20', 1, 0, 0),
-(21, 1, '2013-05-21', 1, 0, 0),
-(22, 1, '2013-05-22', 1, 0, 0),
-(23, 1, '2013-05-23', 1, 0, 0),
-(24, 1, '2013-05-24', 1, 0, 0),
-(25, 1, '2013-05-25', 1, 0, 0),
-(26, 1, '2013-05-26', 1, 0, 0),
-(27, 1, '2013-05-27', 1, 0, 0),
-(28, 1, '2013-05-28', 1, 0, 0),
-(29, 1, '2013-05-29', 1, 0, 0),
-(30, 1, '2013-05-30', 1, 0, 0),
-(31, 1, '2013-05-31', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -462,7 +425,7 @@ CREATE TABLE IF NOT EXISTS `tbl_session` (
   KEY `idtable` (`idtable`),
   KEY `iduser` (`iduser`),
   KEY `tbl_session_3` (`idcustomer`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=441 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=446 ;
 
 --
 -- Dumping data for table `tbl_session`
@@ -470,8 +433,13 @@ CREATE TABLE IF NOT EXISTS `tbl_session` (
 
 INSERT INTO `tbl_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, `datetimeend`, `note`, `status`, `discount_value`, `discount_percent`, `surtax`, `payment`, `value`) VALUES
 (390, 1, 1, 1, '2013-05-11 22:34:00', '2013-05-12 00:55:00', '', 1, 0, 0, 0, 0, 0),
-(438, 1, 1, 1, '2013-09-03 10:30:00', '2013-09-03 14:00:00', '', 0, 0, 0, 0, 0, 491000),
-(440, 17, 1, 1, '2013-08-11 01:11:39', '2013-08-11 01:55:00', '', 0, 0, 0, 0, 0, 159000);
+(438, 1, 1, 1, '2013-09-03 10:30:00', '2013-09-03 14:00:00', 'In phieu', 1, 0, 0, 0, 0, 539000),
+(440, 17, 1, 1, '2013-08-11 01:11:39', '2013-08-11 01:55:00', 'In phieu', 1, 0, 0, 0, 0, 159000),
+(441, 14, 1, 1, '2013-10-02 04:59:40', '2013-10-02 04:59:40', '', 0, 0, 0, 0, 0, 0),
+(442, 15, 1, 1, '2013-10-02 05:03:22', '2013-10-02 05:03:22', '', 0, 0, 0, 0, 0, 0),
+(443, 2, 1, 1, '2013-10-02 05:09:41', '2013-10-02 05:09:41', 'In phieu', 1, 0, 0, 0, 0, 36000),
+(444, 1, 1, 1, '2013-10-02 05:10:12', '2013-10-02 05:10:12', 'In phieu', 1, 0, 0, 0, 0, 24000),
+(445, 1, 1, 1, '2013-10-02 05:44:27', '2013-10-02 05:44:27', '', 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -488,7 +456,7 @@ CREATE TABLE IF NOT EXISTS `tbl_session_detail` (
   PRIMARY KEY (`id`),
   KEY `idsession` (`idsession`),
   KEY `idcourse` (`idcourse`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1827 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1829 ;
 
 --
 -- Dumping data for table `tbl_session_detail`
@@ -502,10 +470,12 @@ INSERT INTO `tbl_session_detail` (`id`, `idsession`, `idcourse`, `count`, `price
 (1820, 440, 114, 4, 16000),
 (1821, 440, 107, 1, 18000),
 (1822, 440, 111, 1, 12000),
-(1823, 438, 114, 3, 16000),
+(1823, 438, 114, 6, 16000),
 (1824, 438, 107, 1, 18000),
 (1825, 438, 111, 1, 12000),
-(1826, 438, 137, 12, 14000);
+(1826, 438, 137, 12, 14000),
+(1827, 443, 107, 2, 18000),
+(1828, 444, 111, 2, 12000);
 
 -- --------------------------------------------------------
 
@@ -575,7 +545,7 @@ CREATE TABLE IF NOT EXISTS `tbl_term_collect` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tbl_term_collect`
@@ -583,7 +553,8 @@ CREATE TABLE IF NOT EXISTS `tbl_term_collect` (
 
 INSERT INTO `tbl_term_collect` (`id`, `name`) VALUES
 (2, 'Phụ Phẩm'),
-(3, 'Đặc Biệt');
+(3, 'Đặc Biệt'),
+(4, 'ABC');
 
 -- --------------------------------------------------------
 
@@ -640,7 +611,6 @@ INSERT INTO `tbl_unit` (`id`, `name`) VALUES
 (10, 'Gói'),
 (11, 'Cái'),
 (12, 'Cây'),
-(13, 'Giờ'),
 (14, 'Bao'),
 (15, 'Con'),
 (16, 'Kg'),
