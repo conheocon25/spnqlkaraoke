@@ -30,14 +30,14 @@
 								<tbody>
 									<tr tal:repeat="Employee EmployeeAll1">
 										<td class="center"><input type="checkbox"/></td>
-										<td><a class="update-item" href="#DialogEdit" data-toggle="modal" data-name="Employee" tal:attributes="alt Employee/getURLUpdExe; data-id Employee/getId" tal:content="Employee/getName"/></td>
+										<td><a class="update-item" href="#DialogEdit" data-toggle="modal" data-name="Employee" tal:attributes="data-id Employee/getId" tal:content="Employee/getName"/></td>
 										<td class="center">
-											<a class="update-item" href="#DialogEdit" data-toggle="modal" data-name="Employee" tal:attributes="alt Employee/getURLUpdExe; data-id Employee/getId">
+											<a class="update-item" href="#DialogEdit" data-toggle="modal" data-name="Employee" tal:attributes="data-id Employee/getId">
 												<i class="glyphicon glyphicon-pencil"/>
 											</a>
 										</td>
 										<td class="center">
-											<a class="remove-item" href="#DialogDel" data-toggle="modal" tal:attributes="alt Employee/getURLDelExe">
+											<a class="remove-item" href="#DialogDel" data-toggle="modal" tal:attributes="data-id Employee/getId">
 												<i class="glyphicon glyphicon-remove"/>
 											</a>
 										</td>
@@ -95,9 +95,17 @@
 												</div>
 											</div>
 										</div>
+										<div class="form-group">
+											<div class="control-group">
+												<label class="control-label">Lương cơ bản</label>
+												<div class="controls">			
+													<input id="SalaryBase1" name="SalaryBase1" type="text" class="form-control input-small"/>
+												</div>
+											</div>
+										</div>
 									</div>
 									<div class="modal-footer">
-										<button class="btn btn-primary btn-small" id="URLIns"><i class="glyphicons-download_alt"/> Lưu</button>
+										<button class="btn btn-primary btn-small" id="URLInsButton"><i class="glyphicons-download_alt"/> Lưu</button>
 										<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
 									</div>
 								</div>								
@@ -113,7 +121,7 @@
 								<div class="modal-header">
 									<h3><i class="glyphicons-fast_food modal-icon"/>CẬP NHẬT NHÂN VIÊN</h3>
 								</div>
-								<form action="" method="post" class="form-horizontal" id="update-link">
+								<div class="form-horizontal" id="update-link">
 									<div class="modal-body">
 										<div class="form-group">
 											<div class="control-group">
@@ -149,13 +157,21 @@
 													<input id="Address2" name="Address2" type="text" class="form-control input-small"/>
 												</div>
 											</div>
+											<div class="form-group">
+											<div class="control-group">
+												<label class="control-label">Lương cơ bản</label>
+												<div class="controls">			
+													<input id="SalaryBase2" name="SalaryBase2" type="text" class="form-control input-small"/>
+												</div>
+											</div>
+										</div>
 										</div>
 									</div>									
 									<div class="modal-footer">
-										<button class="btn btn-primary btn-small" type="submit"><i class="glyphicons-download_alt"/> Lưu</button>
+										<button class="btn btn-primary btn-small" id="URLUpdButton"><i class="glyphicons-download_alt"/> Lưu</button>
 										<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -172,7 +188,7 @@
 									<p>Bạn có chắc muốn xóa mục này ?</p>
 								</div>
 								<div class="modal-footer">
-									<button class="btn btn-primary btn-small" id="remove-link">Xóa</button>
+									<button class="btn btn-primary btn-small" id="URLDelButton">Xóa</button>
 									<a data-dismiss="modal" class="btn btn-default btn-small">Không</a>
 								</div>
 							</div>
@@ -187,20 +203,21 @@
 		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
 		
 		<script type="text/javascript">
-		/*<![CDATA[*/
-		
+		/*<![CDATA[*/		
 			//-----------------------------------------------------------------------------------
 			//Delete 1 EMPLOYEEE
 			//Copy URL Item into DiaglogDelete for User commit	
 			//-----------------------------------------------------------------------------------
 			$('.remove-item').click(function(){
-				$('#remove-link').attr('alt', $(this).attr('alt'));								
+				$('#URLDelButton').attr('alt', $(this).attr('data-id'));
 			});
-			//Khi người dùng Click vào nút Remove-Link thì tiến  hành gọi Ajax xóa tự động
-			$('#remove-link').click(function(){				
-				var URL = $(this).attr('alt');
-				$.getJSON(URL, function(data) {
-					if (data.result == "OK"){
+			//Khi người dùng Click vào nút URLDelButton thì tiến  hành gọi Ajax xóa tự động
+			$('#URLDelButton').click(function(){			
+				var URL = "/object/del/Employee/" + $(this).attr('alt');
+				$.ajax({
+					type: "POST",					
+					url: URL,
+					success: function(msg){
 						location.reload();
 					}
 				});
@@ -208,7 +225,7 @@
 		
 			//-----------------------------------------------------------------------------------
 			//Insert 1 EMPLOYEEE
-			$('#URLIns').click(function(){
+			$('#URLInsButton').click(function(){
 				var Data = [];
 				Data[0] = 'null';
 				Data[1] = $('#Name1').val();
@@ -216,7 +233,7 @@
 				Data[3] = $('#Job1').val();
 				Data[4] = $('#Phone1').val();
 				Data[5] = $('#Address1').val();
-				Data[6] = '900000';
+				Data[6] = $('#SalaryBase1').val();
 														
 				var URL = "/object/ins/Employee";
 				$.ajax({
@@ -224,11 +241,14 @@
 					data: {Data:Data},
 					url: URL,
 					success: function(msg){
-						//location.reload();
+						location.reload();
 					}
-				});				
+				});
 			});
-						
+			
+			//-----------------------------------------------------------------------------------
+			//Load 1 Employee
+			//-----------------------------------------------------------------------------------
 			$('.update-item').click(function(){
 				//Load dữ liệu JSON về
 				var url = "/load/o2j/" + $(this).attr('data-name') + "/" + $(this).attr('data-id');
@@ -236,17 +256,40 @@
 				//Load dữ liệu JSON lên FORM
 				$('#update-link').attr('action', $(this).attr('alt'));
 				$.getJSON(url, function(data) {
-					$('#Name2').attr('value', data.Name);
-					$('#Gender2').attr('value', data.Gender);
+					$('#URLUpdButton').attr('alt', data.Id);
+					$('#Name2').attr('value', data.Name);										
+					$('#Gender2').select2('val', data.Gender);
 					$('#Job2').attr('value', data.Job);
 					$('#Phone2').attr('value', data.Phone);
 					$('#Address2').attr('value', data.Address);
+					$('#SalaryBase2').attr('value', data.SalaryBase);
 				});
 			});
-		/*]]>*/</script>
-		
-		<!--
-		<div metal:use-macro="mAdmin.xhtml/AlertTools"/>
-		!-->
+			
+			//-----------------------------------------------------------------------------------
+			//Update 1 EMPLOYEEE
+			//-----------------------------------------------------------------------------------
+			$('#URLUpdButton').click(function(){
+				var Data = [];
+				Data[0] = $('#URLUpdButton').attr('alt');
+				Data[1] = $('#Name2').val();
+				Data[2] = $('#Gender2').val();
+				Data[3] = $('#Job2').val();
+				Data[4] = $('#Phone2').val();
+				Data[5] = $('#Address2').val();				
+				Data[6] = $('#SalaryBase2').val();
+														
+				var URL = "/object/upd/Employee";
+				$.ajax({
+					type: "POST",
+					data: {Data:Data},
+					url: URL,
+					success: function(msg){
+						location.reload();
+					}
+				});
+			});
+			
+		/*]]>*/</script>		
 	</body>
 </html>

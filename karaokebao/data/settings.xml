@@ -23,6 +23,7 @@
 		<command name="ObjectLoad"><view>ObjectLoad</view></command>
 		<command name="ObjectDel"><view>ObjectDel</view></command>
 		<command name="ObjectIns"><view>ObjectIns</view></command>
+		<command name="ObjectUpd"><view>ObjectUpd</view></command>
 		
 		<!-- ============================================================================== -->
 		<!-- GLOBAL			 																-->
