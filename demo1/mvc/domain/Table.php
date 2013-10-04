@@ -10,7 +10,7 @@ class Table extends Object{
 	private $Name;
 	private $IdUser;
 	private $Type;
-	
+			
 	private $Sessions;
 	private $SessionsTracking;
 	//-------------------------------------------------------------------------------
@@ -140,15 +140,25 @@ class Table extends Object{
 		return $mSession->trackingCount(array($this->getId(), $DateStart, $DateEnd));
 	}
 	
-	//-------------------------------------------------------------------------------
-	//DEFINE SETTING URL
-	//-------------------------------------------------------------------------------	
-	function getURLUpdLoad(){return "/setting/domain/".$this->getIdDomain()."/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){return "/setting/domain/".$this->getIdDomain()."/".$this->getId()."/upd/exe";}
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'IdDomain'		=> $this->getIdDomain(),
+			'Name'			=> $this->getName(),
+			'IdUser'		=> $this->getIdUser(),			
+			'Type'			=> $this->getType()
+		);
+		return json_encode($json);
+	}
 	
-	function getURLDelLoad(){return "/setting/domain/".$this->getIdDomain()."/".$this->getId()."/del/load";}
-	function getURLDelExe(){return "/setting/domain/".$this->getIdDomain()."/".$this->getId()."/del/exe";}
-	
+	function setArray( $Data ){
+        $this->Id = $Data[0];
+		$this->IdDomain = $Data[1];
+		$this->Name = $Data[2];
+		$this->IdUser = $Data[3];
+		$this->Type = $Data[4];
+    }
+		
 	//-------------------------------------------------------------------------------
 	//DEFINE SELLING URL
 	//-------------------------------------------------------------------------------	

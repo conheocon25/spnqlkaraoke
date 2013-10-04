@@ -21,8 +21,7 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$CategoryAll = $mCategory->findAll();
-			$SupplierAll = $mSupplier->findAll();
+			$CategoryAll = $mCategory->findAll();			
 			$DomainAll = $mDomain->findAll();			
 			$EmployeeAll = $mEmployee->findAll();
 			$UnitAll = $mUnit->findAll();			
@@ -33,8 +32,7 @@
 			$ConfigAll = $mConfig->findAll();
 			
 			$Title = "CẤU HÌNH";
-			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
+			$Navigation = array(				
 				array("THIẾT LẬP", "/setting")
 			);
 			if (!isset($Page)) $Page=1;
@@ -52,8 +50,7 @@
 			$request->setObject('ConfigAll1', $ConfigAll1);
 			$request->setObject('PN', $PN);
 			
-			$request->setObject('CategoryAll', $CategoryAll);
-			$request->setObject('SupplierAll', $SupplierAll);
+			$request->setObject('CategoryAll', $CategoryAll);			
 			$request->setObject('DomainAll', $DomainAll);			
 			$request->setObject('EmployeeAll', $EmployeeAll);
 			$request->setObject('UnitAll', $UnitAll);			

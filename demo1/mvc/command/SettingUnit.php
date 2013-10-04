@@ -21,8 +21,7 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
-			$CategoryAll = $mCategory->findAll();
-			$SupplierAll = $mSupplier->findAll();
+			$CategoryAll = $mCategory->findAll();			
 			$DomainAll = $mDomain->findAll();			
 			$EmployeeAll = $mEmployee->findAll();
 			$UnitAll = $mUnit->findAll();			
@@ -34,7 +33,6 @@
 			
 			$Title = "ĐƠN VỊ TÍNH";			
 			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
 				array("THIẾT LẬP", "/setting")
 			);
 			
@@ -51,13 +49,12 @@
 			$request->setProperty('Page', $Page);
 			$request->setObject('PN', $PN);
 			$request->setObject('Navigation', $Navigation);
+			//Làm đỡ
 			$request->setObject('UnitAll1', $UnitAll1);
 			
-			$request->setObject('CategoryAll', $CategoryAll);
-			$request->setObject('SupplierAll', $SupplierAll);
-			$request->setObject('DomainAll', $DomainAll);			
+			$request->setObject('CategoryAll', $CategoryAll);			
+			$request->setObject('DomainAll', $DomainAll);
 			$request->setObject('EmployeeAll', $EmployeeAll);
-			$request->setObject('UnitAll', $UnitAll);			
 			$request->setObject('CustomerAll', $CustomerAll);
 			$request->setObject('TermPaidAll', $TermPaidAll);
 			$request->setObject('TermCollectAll', $TermCollectAll);

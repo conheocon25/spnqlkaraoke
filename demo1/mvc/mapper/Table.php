@@ -7,9 +7,9 @@ class Table extends Mapper implements \MVC\Domain\UserFinder {
     function __construct() {
         parent::__construct();
 				
-		$tblTable = "demo1_table";
-		$tblSession = "demo1_session";
-		$tblSessionDetail = "demo1_session_detail";
+		$tblTable = "tbl_table";
+		$tblSession = "tbl_session";
+		$tblSessionDetail = "tbl_session_detail";
 				
 		$selectAllStmt = sprintf("select * from %s", $tblTable);								
 		$selectStmt = sprintf("select * from %s where id=?", $tblTable);
@@ -17,8 +17,7 @@ class Table extends Mapper implements \MVC\Domain\UserFinder {
 		$insertStmt = sprintf("insert into %s (iddomain, name, iduser, type) values(?, ?, ?, ?)", $tblTable);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblTable);
 		$findByDomainStmt = sprintf("select id, iddomain, name, iduser, type from %s where iddomain =?", $tblTable);
-		
-		
+				
 		$findNonGuestStmt = sprintf("
 							SELECT
 								*	 
