@@ -30,7 +30,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr tal:repeat="Category CategoryAll">
+									<tr tal:repeat="Category CategoryAll1">
 										<td class="center"><input type="checkbox"/></td>										
 										<td><a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id Category/getId" tal:content="Category/getName"/></td>
 										<td class="center"><a tal:attributes="href Category/getURLCourse"> <span tal:content="Category/getCourseAll/count" /> món</a></td>
@@ -49,7 +49,7 @@
 							</table>
 						</div>
 					</div>
-
+					<div metal:use-macro="mAdmin.xhtml/PageBar"/>
 					<!-- INSERT DIALOG  -->
 					<div id="DialogIns" class="modal fade">
 						<div class="modal-dialog">
