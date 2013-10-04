@@ -11,41 +11,54 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$Alias = $request->getProperty('IdApp');
-						
+									
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------			
-			$mTermCollect = new \MVC\Mapper\TermCollect();
-			$mTermPaid = new \MVC\Mapper\TermPaid();
-			$mSupplier = new \MVC\Mapper\Supplier();
-			$mDomain = new \MVC\Mapper\Domain();
-			$mCustomer = new \MVC\Mapper\Customer();
+			//-------------------------------------------------------------
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------
-			$TermCollectAll = $mTermCollect->findAll();
-			$TermPaidAll = $mTermPaid->findAll();
-			$SupplierAll = $mSupplier->findAll();
-			$DomainAll = $mDomain->findAll();
-			$CustomerAll = $mCustomer->findAll();
+			//-------------------------------------------------------------						
+			$CategoryAll 	= $mCategory->findAll();
+			$CourseAll 		= $mCourse->findAll();
+			$DomainAll 		= $mDomain->findAll();
+			$TableAll 		= $mTable->findAll();
+			$EmployeeAll 	= $mEmployee->findAll();
+			$UnitAll 		= $mUnit->findAll();
+			$CustomerAll 	= $mCustomer->findAll();
+			$TermPaidAll 	= $mTermPaid->findAll();
+			$TermCollectAll = $mTermCollect->findAll();			
+			$UserAll 		= $mUser->findAll();
+			$ConfigAll 		= $mConfig->findAll();
+			$SessionAll 	= $mSession->findAll();
+			$SessionLastAll = $mSession->findLastAll(array());
+			$SessionNowAll = $mSession->findNowAll(array());
 			
-			$Title = "ỨNG DỤNG";
+			$Title = "";
 			$Navigation = array();
-			
+						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------									
-			$request->setObject("DomainAll", $DomainAll);
-			$request->setObject("TermCollectAll", $TermCollectAll);
-			$request->setObject("TermPaidAll", $TermPaidAll);
-			$request->setObject("SupplierAll", $SupplierAll);
-			$request->setObject("CustomerAll", $CustomerAll);
-
+			//-------------------------------------------------------------
+			$request->setProperty("ActiveAdmin", "Admin");
 			$request->setProperty("Title", $Title);
-			$request->setProperty("ActiveAdmin", 'Admin');
 			$request->setObject("Navigation", $Navigation);
+			
+			$request->setObject('CategoryAll'	, $CategoryAll);			
+			$request->setObject('DomainAll'		, $DomainAll);
+			$request->setObject('TableAll'		, $TableAll);
+			$request->setObject('CourseAll'		, $CourseAll);
+			$request->setObject('EmployeeAll'	, $EmployeeAll);
+			$request->setObject('UnitAll'		, $UnitAll);			
+			$request->setObject('CustomerAll'	, $CustomerAll);
+			$request->setObject('TermPaidAll'	, $TermPaidAll);
+			$request->setObject('TermCollectAll', $TermCollectAll);
+			$request->setObject('UserAll'		, $UserAll);
+			$request->setObject('ConfigAll'		, $ConfigAll);
+			$request->setObject('SessionAll'	, $SessionAll);
+			$request->setObject('SessionLastAll', $SessionLastAll);
+			$request->setObject('SessionNowAll'	, $SessionNowAll);
 		}
 	}
 ?>

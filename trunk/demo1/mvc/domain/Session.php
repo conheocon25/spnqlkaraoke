@@ -324,6 +324,16 @@ class Session extends Object{
 		$num = new Number($this->getValue());
 		return $num->readDigit()." đồng";
 	}
+	
+	function getValueBase(){
+		$Value = 0;
+		$SDs = $this->getDetails();
+		while($SDs->valid()){
+			$Value += $SDs->current()->getValueBase();
+			$SDs->next();
+		}
+		return $Value;
+	}
 		
 	//-------------------------------------------------------------------------------
 	//DEFINE URL

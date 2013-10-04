@@ -77,6 +77,10 @@ class SessionDetail extends Object{
 	function getValue( ) {return $this->Price*$this->Count;}
 	function getValuePrint( ) {$num = new Number($this->getValue());return $num->formatCurrency()." đ";}
 	
+	function getValueBase( ){
+		return $this->getValue()* ( 1.0 - (float)($this->getCourse()->getRate())/100.0);		
+	}
+	
 	function toJSON(){
 		$json = array(
 			'Id' 			=> $this->getId(),

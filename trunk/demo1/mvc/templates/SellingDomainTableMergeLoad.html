@@ -6,20 +6,15 @@
 	</head>
 	
 	<body data-menu-position="closed">
-		<div metal:use-macro="mAdmin.xhtml/Header"/>
-		
+		<div metal:use-macro="mAdmin.xhtml/Header"/>		
 		<div id="content">
 			<div metal:use-macro="mAdmin.xhtml/ContentHeader"/>
 			<div metal:use-macro="mAdmin.xhtml/LocationBar"/>
-			<div class="container-fluid">							
+			<div class="container-fluid">
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-12">
 						<div class="widget-box">
-							<div class="widget-title">
-								<span class="icon"><i class="icon-align-justify"></i></span>
-								<h5>CẬP NHẬT</h5>
-							</div>
-							<div class="widget-content nopadding">
+							<div class="widget-content nopadding">			
 								<form class="form-horizontal" tal:attributes="action Table/getURLMergeExe" method="post">
 									<div class="control-group">
 										<label class="control-label" for="IdTableMerge">Gom với bàn</label>
