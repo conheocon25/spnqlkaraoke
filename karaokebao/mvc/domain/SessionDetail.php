@@ -82,11 +82,19 @@ class SessionDetail extends Object{
 			'Id' 			=> $this->getId(),
 			'IdSession'		=> $this->getIdSession(),
 			'IdCourse'		=> $this->getIdCourse(),
+			'Name'			=> $this->getCourse()->getName(),
 			'Count'			=> $this->getCount(),			
 			'Price'			=> $this->getPrice()
 		);
 		return json_encode($json);
 	}
+	function setArray( $Data ){
+        $this->Id 				= $Data[0];
+		$this->IdSession		= $Data[1];
+		$this->IdCourse			= $Data[2];
+		$this->Count			= $Data[3];
+		$this->Price			= $Data[4];
+    }
 	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL

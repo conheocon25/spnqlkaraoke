@@ -21,6 +21,7 @@
 			$mSession = new \MVC\Mapper\Session();
 			$mDomain = new \MVC\Mapper\Domain();
 			$mTable = new \MVC\Mapper\Table();
+			$mCustomer = new \MVC\Mapper\Customer();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -28,7 +29,8 @@
 			$Session = $mSession->find($IdSession);
 			$Domain = $mDomain->find($IdDomain);
 			$Table = $mTable->find($IdTable);
-															
+			$CustomerAll = $mCustomer->findAll();
+			
 			$Title = $Session->getDateTimePrint();
 			$Navigation = array(				
 				array("BÁN HÀNG", "/selling"),
@@ -41,6 +43,7 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
 			$request->setObject("Session", $Session);			
+			$request->setObject("CustomerAll", $CustomerAll);
 			$request->setProperty('Title', $Title);
 			$request->setObject("Navigation", $Navigation);
 		}
