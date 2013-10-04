@@ -91,7 +91,7 @@
 	<!-- PAGE BAR																  -->
 	<!-- ======================================================================== -->
 	<ul metal:define-macro="PageBar" class="pagination alternate pull-right page-bar">
-		<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'':'active'">
+		<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'active':'disable'">
 			<a tal:attributes="href P/getURL" tal:content="P/getName"/>
 		</li>
 	</ul>

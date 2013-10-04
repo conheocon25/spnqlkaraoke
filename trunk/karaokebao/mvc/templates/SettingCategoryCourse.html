@@ -41,7 +41,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr tal:repeat="Course CourseAll">
+									<tr tal:repeat="Course CourseAll1">
 										<td class="center" tal:content="repeat/Course/number"/>										
 										<td><a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id Course/getId" tal:content="Course/getName"/></td>
 										<td class="right" tal:content="Course/getPrice1Print"/>
@@ -57,7 +57,7 @@
 							</table>
 						</div>
 					</div>
-										
+					<div metal:use-macro="mAdmin.xhtml/PageBar"/>					
 					<!-- INSERT DIALOG  -->
 					<div id="DialogIns" class="modal fade">
 						<div class="modal-dialog">
