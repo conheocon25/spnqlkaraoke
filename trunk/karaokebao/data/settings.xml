@@ -59,20 +59,7 @@
 		<!-- REPORT.DETAIL			 														-->
 		<!-- ============================================================================== -->												
 		<command name="ReportDetail"><view>ReportDetail</view></command>
-		<command name="ReportDetailInsLoad"><view>ReportDetailInsLoad</view></command>
-		<command name="ReportDetailInsExe"><status value="CMD_OK"><forward>Report</forward></status><view>ReportDetailInsExe</view></command>
-		<command name="ReportDetailUpdLoad"><view>ReportDetailUpdLoad</view></command>
-		<command name="ReportDetailUpdExe"><status value="CMD_OK"><forward>Report</forward></status><view>ReportDetailUpdExe</view></command>
-		<command name="ReportDetailDelLoad"><view>ReportDetailDelLoad</view></command>
-		<command name="ReportDetailDelExe"><status value="CMD_OK"><forward>Report</forward></status><view>ReportDetailDelExe</view></command>
-			
 				
-		<command name="ReportPaidDetail"><view>ReportPaidDetail</view></command>
-		<command name="ReportPaidGeneral"><view>ReportPaidGeneral</view></command>
-				
-		<command name="ReportCollectDetail"><view>ReportCollectDetail</view></command>
-		<command name="ReportCollectGeneral"><view>ReportCollectGeneral</view></command>
-		
 		<command name="ReportSellingGeneral"><view>ReportSellingGeneral</view></command>
 		<command name="ReportSellingDetail"><view>ReportSellingDetail</view></command>
 				
@@ -107,19 +94,11 @@
 		<command name="SellingDomainTableCheckoutExe"><status value="CMD_OK"><forward>SellingDomain</forward></status><view>SellingDomainTableCheckoutExe</view></command>
 						
 		<!-- ============================================================================== -->
-		<!-- MONEY		 														-->
+		<!-- MONEY		 																	-->
 		<!-- ============================================================================== -->
-		<command name="Money"><view>Money</view></command>
-		
-		<command name="MoneyCollectGeneral"><view>MoneyCollectGeneral</view></command>		
-		<command name="MoneyCollectGeneralInsExe"><view>MoneyCollectGeneralInsExe</view><status value="CMD_OK"><forward>MoneyCollectGeneral</forward></status></command>		
-		<command name="MoneyCollectGeneralUpdExe"><view>MoneyCollectGeneralUpdExe</view><status value="CMD_OK"><forward>MoneyCollectGeneral</forward></status></command>		
-		<command name="MoneyCollectGeneralDelExe"><view>MoneyCollectGeneralDelExe</view><status value="CMD_OK"><forward>MoneyCollectGeneral</forward></status></command>
-				
-		<command name="MoneyPaidGeneral"><view>MoneyPaidGeneral</view></command>		
-		<command name="MoneyPaidGeneralInsExe"><view>MoneyPaidGeneralInsExe</view><status value="CMD_OK"><forward>MoneyPaidGeneral</forward></status></command>		
-		<command name="MoneyPaidGeneralUpdExe"><view>MoneyPaidGeneralUpdExe</view><status value="CMD_OK"><forward>MoneyPaidGeneral</forward></status></command>		
-		<command name="MoneyPaidGeneralDelExe"><view>MoneyPaidGeneralDelExe</view><status value="CMD_OK"><forward>MoneyPaidGeneral</forward></status></command>
+		<command name="Money"><view>Money</view></command>		
+		<command name="MoneyCollectGeneral"><view>MoneyCollectGeneral</view></command>
+		<command name="MoneyPaidGeneral"><view>MoneyPaidGeneral</view></command>
 			
 		<!-- ============================================================================== -->
 		<!-- SETTING																		-->

@@ -60,16 +60,17 @@ class CollectGeneral extends Object{
 		return json_encode($json);
 	}
 	
+	function setArray( $Data ){
+        $this->Id 		= $Data[0];
+		$this->IdTerm 	= $Data[1];
+		$this->Date 	= $Data[2];
+		$this->Value 	= $Data[3];
+		$this->Note 	= $Data[4];
+    }	
+	
 	/*--------------------------------------------------------------------*/
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}
-	//-------------------------------------------------------------------------------
-	//DEFINE URL
-	//-------------------------------------------------------------------------------
-	function getURLUpdLoad(){	return "/money/collect/general/".$this->getIdTerm()."/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){	return "/money/collect/general/".$this->getIdTerm()."/".$this->getId()."/upd/exe";}
-	
-	function getURLDelLoad(){	return "/money/collect/general/".$this->getIdTerm()."/".$this->getId()."/del/load";}
-	function getURLDelExe(){	return "/money/collect/general/".$this->getIdTerm()."/".$this->getId()."/del/exe";}
+		
 }
 ?>
