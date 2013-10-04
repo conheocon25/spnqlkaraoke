@@ -50,6 +50,7 @@
 		<script src="/mvc/templates/theme/cms/js/jquery.dataTables.min.js"></script>
 		<script src="/mvc/templates/theme/cms/js/unicorn.tables.js"></script>
 		<script src="/mvc/templates/theme/cms/js/jquery.gritter.min.js"></script>
+		<script src="/mvc/templates/theme/cms/js/bootstrap-datepicker.js"></script>
 	</span>
 	
 	<!-- ======================================================================== -->
@@ -88,12 +89,12 @@
 	<!-- ======================================================================== -->
 	<!-- PAGE BAR																  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="PageBar" class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
-		<a class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default ui-state-disabled"><i class="icon-angle-left"/>
-		</a><a tal:repeat="P PN/getPages" tal:attributes="href P/getURL; class php:Page==P->getId()?'fg-button ui-button ui-state-default':'fg-button ui-button ui-state-default ui-state-disabled'" tal:content="P/getName">
-		</a><a class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default"><i class="icon-angle-right"/></a>
-	</div>
-
+	<ul metal:define-macro="PageBar" class="pagination alternate pull-right page-bar">
+		<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'':'active'">
+			<a tal:attributes="href P/getURL" tal:content="P/getName"/>
+		</li>
+	</ul>
+	
 	<!-- ======================================================================== -->
 	<!-- MENU.APP															  	  -->
 	<!-- ======================================================================== -->

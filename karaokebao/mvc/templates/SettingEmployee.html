@@ -15,13 +15,13 @@
 				<div class="col-12">
 					<a href="#DialogIns" data-toggle="modal" class="btn btn-success btn-ins btn-small">
 						<i class="glyphicon glyphicon-plus"/> Thêm mới
-					</a>					
+					</a>
 					<div class="widget-box">
 						<div class="widget-content nopadding">
 							<table class="table table-bordered table-striped table-hover with-check">
 								<thead>
 									<tr>
-										<th width="40"><input type="checkbox" id="title-table-checkbox" name="title-table-checkbox"/></th>
+										<th width="40"><i class="glyphicons-group"/></th>
 										<th class="left">TÊN</th>										
 										<th width="40"><i class="glyphicons-edit"/></th>
 										<th width="40"><i class="glyphicons-bin"/></th>
@@ -29,7 +29,7 @@
 								</thead>
 								<tbody>
 									<tr tal:repeat="Employee EmployeeAll1">
-										<td class="center"><input type="checkbox"/></td>
+										<td align="center" tal:content="repeat/Employee/number"/>
 										<td><a class="update-item" href="#DialogEdit" data-toggle="modal" data-name="Employee" tal:attributes="data-id Employee/getId" tal:content="Employee/getName"/></td>
 										<td class="center">
 											<a class="update-item" href="#DialogEdit" data-toggle="modal" data-name="Employee" tal:attributes="data-id Employee/getId">
@@ -46,6 +46,8 @@
 							</table>							
 						</div>
 					</div>
+					
+					<div metal:use-macro="mAdmin.xhtml/PageBar"/>
 
 					<!-- INSERT DIALOG  -->
 					<div id="DialogIns" class="modal fade">
