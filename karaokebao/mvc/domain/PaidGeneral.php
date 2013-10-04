@@ -70,15 +70,18 @@ class PaidGeneral extends Object{
 		);
 		return json_encode($json);
 	}
+			
+	function setArray( $Data ){
+        $this->Id 		= $Data[0];
+		$this->IdTerm 	= $Data[1];
+		$this->Date 	= $Data[2];
+		$this->Value 	= $Data[3];
+		$this->Note 	= $Data[4];
+    }	
 	
 	/*--------------------------------------------------------------------*/
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}
-	//-------------------------------------------------------------------------------
-	//DEFINE URL
-	//-------------------------------------------------------------------------------	
-	function getURLUpdExe(){return "/money/paid/general/".$this->getIdTerm()."/".$this->getId()."/upd/exe";}		
-	function getURLDelExe(){return "/money/paid/general/".$this->getIdTerm()."/".$this->getId()."/del/exe";}
-	
+		
 }
 ?>
