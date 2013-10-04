@@ -133,7 +133,7 @@
 				$('#URLDelButton').attr('alt', $(this).attr('data-id'));
 			});
 			//Khi người dùng Click vào nút URLDelButton thì tiến  hành gọi Ajax xóa tự động
-			$('#URLDelButton').click(function(){			
+			$('#URLDelButton').click(function(){
 				var URL = "/object/del/Category/" + $(this).attr('alt');
 				$.ajax({
 					type: "POST",					

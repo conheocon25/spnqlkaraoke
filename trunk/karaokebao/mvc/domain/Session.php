@@ -327,22 +327,37 @@ class Session extends Object{
 	
 	function toJSON(){
 		$json = array(
-			'Id' 			=> $this->getId(),
-			'IdTable'		=> $this->getIdTable(),
-			'IdUser'		=> $this->getIdUser(),
-			'IdCustomer'	=> $this->getIdCustomer(),
-			'DateTime'		=> $this->getDateTime(),
-			'DateTimeEnd'	=> $this->getDateTimeEnd(),
-			'Note'			=> $this->getNote(),
-			'Status'		=> $this->getStatus(),
-			'DiscountValue'	=> $this->getDiscountValue(),
+			'Id' 				=> $this->getId(),
+			'IdTable'			=> $this->getIdTable(),
+			'IdUser'			=> $this->getIdUser(),
+			'IdCustomer'		=> $this->getIdCustomer(),
+			'DateTime'			=> $this->getDateTime(),
+			'DateTimeEnd'		=> $this->getDateTimeEnd(),
+			'Note'				=> $this->getNote(),
+			'Status'			=> $this->getStatus(),
+			'DiscountValue'		=> $this->getDiscountValue(),
 			'DiscountPercent'	=> $this->getDiscountPercent(),
-			'Surtax'		=> $this->getSurtax(),
-			'Payment'		=> $this->getPayment(),
-			'Value'			=> $this->getValue()
+			'Surtax'			=> $this->getSurtax(),
+			'Payment'			=> $this->getPayment(),
+			'Value'				=> $this->getValue()
 		);
 		return json_encode($json);
 	}
+	function setArray( $Data ){
+        $this->Id 				= $Data[0];
+		$this->IdTable			= $Data[1];
+		$this->IdUser			= $Data[2];
+		$this->IdCustomer		= $Data[3];
+		$this->DateTime			= $Data[4];
+		$this->DateTimeEnd		= $Data[5];
+		$this->Note				= $Data[6];
+		$this->Status			= $Data[7];
+		$this->DiscountValue	= $Data[8];
+		$this->DiscountPercent	= $Data[9];
+		$this->Surtax			= $Data[10];
+		$this->Payment			= $Data[11];
+		$this->Value			= $Data[12];
+    }
 	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL

@@ -30,62 +30,28 @@ class Customer extends Object{
 	function getType(){return $this->type;}	
     function setType( $Type ) {$this->type = $Type;$this->markDirty();}
 	function getTypePrint(){
-		if ($this->type==1)
+		if ($this->Type==1)
 			return "VIP";
 		return "thường";
 	}
 	
-	function getCard(){
-		return $this->card;
-	}
+	function getCard(){return $this->Card;}	
+    function setCard( $Card ) {$this->Card = $Card;$this->markDirty();}
 	
-    function setCard( $Card ) {
-        $this->card = $Card;
-        $this->markDirty();
-    }
+	function getNote(){return $this->Note;}	
+    function setNote( $Note ) {$this->Note = $Note;$this->markDirty();}
 	
-	function getNote(){
-		return $this->note;
-	}
-	
-    function setNote( $Note ) {
-        $this->note = $Note;
-        $this->markDirty();
-    }
-	
-	function getName(){
-		return $this->name;
-	}
-	
-    function setName( $Name ) {
-        $this->name = $Name;
-        $this->markDirty();
-    }
+	function getName(){return $this->Name;}	
+    function setName( $Name ) {$this->Name = $Name;$this->markDirty();}
 
-	function getPhone(){
-		return $this->phone;
-	}
-	
-    function setPhone( $Phone ) {
-        $this->phone = $Phone;
-        $this->markDirty();
-    }
+	function getPhone(){return $this->Phone;}	
+    function setPhone( $Phone ) {$this->Phone = $Phone;$this->markDirty();}
 			
-    function setAddress( $Address ) {
-        $this->address = $Address;
-        $this->markDirty();
-    }
-	function getAddress(){
-		return $this->address;
-	}
+    function setAddress( $Address ) {$this->Address = $Address;$this->markDirty();}
+	function getAddress(){return $this->Address;}
 		
-	function setDiscount( $Discount ) {
-        $this->discount = $Discount;
-        $this->markDirty();
-    }
-	function getDiscount(){
-		return $this->discount;
-	}
+	function setDiscount( $Discount ) {$this->Discount = $Discount;$this->markDirty();}
+	function getDiscount(){return $this->Discount;}
 	
 	function getSessionAll(){
 		$mSession = new	\MVC\Mapper\Session();
@@ -117,13 +83,7 @@ class Customer extends Object{
 	function getURLCollect(){return "/collect/customer/".$this->getId();}
 	function getURLCollectInsLoad(){return "/collect/customer/".$this->getId()."/ins/load";}
 	function getURLCollectInsExe(){return "/collect/customer/".$this->getId()."/ins/exe";}
-	
-	function getURLUpdLoad(){return "/setting/customer/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){return "/setting/customer/".$this->getId()."/upd/exe";}
-	
-	function getURLDelLoad(){return "/setting/customer/".$this->getId()."/del/load";}
-	function getURLDelExe(){return "/setting/customer/".$this->getId()."/del/exe";}
-			
+					
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}		
 }
