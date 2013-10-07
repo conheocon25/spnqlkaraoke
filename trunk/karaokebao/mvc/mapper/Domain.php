@@ -13,7 +13,7 @@ class Domain extends Mapper implements \MVC\Domain\DomainFinder {
 		$updateStmt = sprintf("update %s set name=? where id=?", $tblDomain);
 		$insertStmt = sprintf("insert into %s ( name) values(?)", $tblDomain);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblDomain);
-		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblDomain);
+		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY name LIMIT :start,:max", $tblDomain);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);

@@ -14,6 +14,7 @@
 			//-------------------------------------------------------------
 			$ObjectName = $request->getProperty('ObjectName');
 			$Id = $request->getProperty('Id');
+			$ListId = $request->getProperty('ListId');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -23,13 +24,17 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$mMapper 	= \MVC\Domain\HelperFactory::getFinder($ObjectName);
-			$Obj 		= $mMapper->delete(array($Id));
-			
+						
+			if (!isset($ListId)){
+				$mMapper->delete(array($Id));
+			}else{
+				foreach ($ListId as $Id )
+					$mMapper->delete(array($Id));
+			}
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$Session->setCurrentAction('Delete');
-			
+						
 			$json = array('result' => "OK");
 			echo json_encode($json);
 		}

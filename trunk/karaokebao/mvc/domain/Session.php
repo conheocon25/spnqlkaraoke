@@ -18,15 +18,12 @@ class Session extends Object{
 	private $DiscountPercent;
 	private $Surtax;
 	private $Payment;
-	private $Value;
 	
-	private $Table;
-	private $Employee;
-
+	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $IdTable=null, $IdUser=null, $IdCustomer=null, $DateTime=null, $DateTimeEnd=null, $Note=null, $Status=null, $DiscountValue=null, $DiscountPercent=null, $Surtax=null, $Payment=null, $Value=null ) {
+    function __construct( $Id=null, $IdTable=null, $IdUser=null, $IdCustomer=null, $DateTime=null, $DateTimeEnd=null, $Note=null, $Status=null, $DiscountValue=null, $DiscountPercent=null, $Surtax=null, $Payment=null ) {
         $this->Id = $Id;
 		$this->IdTable = $IdTable;
 		$this->IdUser = $IdUser;
@@ -39,84 +36,78 @@ class Session extends Object{
 		$this->DiscountPercent = $DiscountPercent;
 		$this->Surtax = $Surtax;
 		$this->Payment = $Payment;
-		$this->Value = $Value;
 		
         parent::__construct( $Id );
     }
+	function toJSON(){
+		$json = array(
+			'Id' 				=> $this->getId(),
+			'IdTable'			=> $this->getIdTable(),			
+			'IdUser'			=> $this->getIdUser(),						
+			'IdCustomer'		=> $this->getIdCustomer(),
+			'DateTime'			=> $this->getDateTime(),
+			'DateTimeEnd'		=> $this->getDateTimeEnd(),
+			'Note'				=> $this->getNote(),
+			'Status'			=> $this->getStatus(),
+			'DiscountValue'		=> $this->getDiscountValue(),
+			'DiscountPercent'	=> $this->getDiscountPercent(),
+			'Surtax'			=> $this->getSurtax(),
+			'Payment'			=> $this->getPayment()
+		);
+		return json_encode($json);
+	}
 	
-	function setId( $Id) {
-        return $this->Id = $Id;
+	function setArray( $Data ){
+        $this->Id 				= $Data[0];
+		$this->IdTable 			= $Data[1];
+		$this->IdUser 			= $Data[2];
+		$this->IdCustomer 		= $Data[3];
+		$this->DateTime 		= $Data[4];
+		$this->DateTimeEnd 		= $Data[5];
+		$this->Note 			= $Data[6];
+		$this->Status 			= $Data[7];
+		$this->DiscountValue 	= $Data[8];
+		$this->DiscountPercent 	= $Data[9];
+		$this->Surtax 			= $Data[10];
+		$this->Payment 			= $Data[11];
     }
-    function getId( ){
-        return $this->Id;
-    }
+		
+	function setId( $Id) {return $this->Id = $Id;}
+    function getId( ){return $this->Id;}
 				
-	function getIdTable( ) {
-        return $this->IdTable;
-    }	
-	function setIdTable( $IdTable ) {
-        $this->IdTable = $IdTable;
-        $this->markDirty();
-    }
-	function getTable(){
-		if (!isset($this->Table)){
-			$mTable = new \MVC\Mapper\Table();
-			$this->Table = $mTable->find($this->IdTable);
-		}
-		return $this->Table;
+	function getIdTable( ) {return $this->IdTable;}	
+	function setIdTable( $IdTable ) {$this->IdTable = $IdTable; $this->markDirty();}
+	function getTable(){		
+		$mTable = new \MVC\Mapper\Table();
+		$Table = $mTable->find($this->IdTable);		
+		return $Table;
 	}
 		
-	function setIdUser( $IdUser ) {
-        $this->IdUser = $IdUser;
-        $this->markDirty();
-    }
-	function getIdUser( ) {
-        return $this->IdUser;
-    }
-	function getUser( ) {
-		if (!isset($this->User)){
-			$mUser = new \MVC\Mapper\User();
-			$this->User = $mUser->find($this->IdUser);
-		}
-        return $this->User;
+	function setIdUser( $IdUser ){$this->IdUser = $IdUser;$this->markDirty();}
+	function getIdUser( ) {return $this->IdUser;}
+	function getUser( ) {	
+		$mUser = new \MVC\Mapper\User();
+		$User = $mUser->find($this->IdUser);		
+        return $User;
     }
 	
-	function getIdCustomer( ) {
-        return $this->IdCustomer;
-    }
+	function getIdCustomer( ) {return $this->IdCustomer;}
+	function setIdCustomer( $IdCustomer ) {$this->IdCustomer = $IdCustomer;$this->markDirty();}
 	function getCustomer( ) {
 		$mCustomer = new \MVC\Mapper\Customer();
 		$Customer = $mCustomer->find($this->IdCustomer);
         return $Customer;
     }		
-	function setIdCustomer( $IdCustomer ) {
-        $this->IdCustomer = $IdCustomer;
-        $this->markDirty();
-    }
-		
+			
 	//Giờ bắt đầu
-	function setDateTime( $DateTime ) {
-        $this->DateTime = $DateTime;
-        $this->markDirty();
-    }
-	
-	function getDateTime( ){
-        return $this->DateTime;
-    }
-	function getDatePrint( ) {
-		$date = new Date($this->getDateTime());
-        return $date->getDateFormat();
-    }
-    function getDateTimePrint( ){
-		return date('d/m H:i',strtotime($this->DateTime));
-    }
+	function setDateTime( $DateTime ) {$this->DateTime = $DateTime;$this->markDirty();}	
+	function getDateTime( ){return $this->DateTime;}
+	function getDatePrint( ) {$date = new Date($this->getDateTime());return $date->getDateFormat();}
+    function getDateTimePrint( ){return date('d/m H:i',strtotime($this->DateTime));}
 		
 	//Giờ kết thúc
-	function setDateTimeEnd( $DateTime ) {
-        $this->DateTimeEnd = $DateTime;
-        $this->markDirty();
-    }
-	function getDateTimeEnd( ) {		
+	function setDateTimeEnd( $DateTime ) {$this->DateTimeEnd = $DateTime;$this->markDirty();}
+	function getDateTimeEnd( ) {
 		if (!isset($this->DateTimeEnd) ){
 			return $this->DateTimeEnd = \date("Y-m-d H:i:s");
 		}
@@ -124,29 +115,18 @@ class Session extends Object{
 			return $this->DateTimeEnd;
 		}
     }	
-	function getDateTimeEndPrint( ) {
-		return date('d/m H:i',strtotime($this->getDateTimeEnd()));
-    }
+	function getDateTimeEndPrint( ) {return date('d/m H:i',strtotime($this->getDateTimeEnd()));}
 			
 	function getTimeRangePrint(){
 		$DS = date('d/m H:i',strtotime($this->getDateTime()));
 		$DE = date('H:i',strtotime($this->getDateTimeEnd()));
 		return $DS." - ".$DE;
 	}
-	function getCurrentDatePrint(){
-		$date = new Date();
-		return $date->getCurrentDateVN();
-	}
+	function getCurrentDatePrint(){$date = new Date();return $date->getCurrentDateVN();}
 	
 	//Ghi chú
-	function getNote( ) {
-        return $this->Note;
-    }
-	
-	function setNote( $Note ) {
-        $this->Note = $Note;
-        $this->markDirty();
-    }
+	function getNote( ) {return $this->Note;}	
+	function setNote( $Note ) {$this->Note = $Note;$this->markDirty();}
 	
 	//Giảm giá
 	function setDiscountValue( $DiscountValue ) {
@@ -165,166 +145,46 @@ class Session extends Object{
         $this->DiscountPercent = $DiscountPercent;
         $this->markDirty();
     }
-	function getDiscountPercent( ){
-        return $this->DiscountPercent;
-    }
-	function getDiscountPercentPrint(){
-		$num = new Number($this->getDiscountPercent());
-		return $num->formatCurrency()." %";
-	}
+	function getDiscountPercent( ){return $this->DiscountPercent;}
+	function getDiscountPercentPrint(){$num = new Number($this->getDiscountPercent());return $num->formatCurrency()." %";}
 	
 	//Phụ thu
-	function setSurtax( $Surtax ) {
-        $this->Surtax = $Surtax;
-        $this->markDirty();
-    }
-	function getSurtax( ) {
-        return $this->Surtax;
-    }
-	function getSurtaxPrint(){		
-		$num = new Number($this->getSurtax());
-		return $num->formatCurrency()." đ";
-	}
+	function setSurtax( $Surtax ) {$this->Surtax = $Surtax;$this->markDirty();}
+	function getSurtax( ) {return $this->Surtax;}
+	function getSurtaxPrint(){$num = new Number($this->getSurtax());return $num->formatCurrency()." đ";}
 		
 	//Tình trạng
-	function getStatus( ) {
-        return $this->Status;
-    }
-	
-	function setStatus( $Status ) {
-        $this->Status = $Status;
-        $this->markDirty();
-    }
+	function getStatus( ) {return $this->Status;}	
+	function setStatus( $Status ) {$this->Status = $Status;$this->markDirty();}
 			
-	function getStatusPrint(){
-        if ( isset($this->DateTime) )
-			return "Đang có khách";
-		else
-			return "Chưa có khách";
-    }
+	function getStatusPrint(){if ( isset($this->DateTime) )return "Đang có khách";else return "Chưa có khách";}
 	
 	//Tiền khách trả
-	function getPayment( ) {
-        return $this->Payment;
-    }
-	
-	function setPayment( $Payment ) {
-        $this->Payment = $Payment;
+	function getPayment( ) {return $this->Payment;}	
+	function setPayment( $Payment ) {$this->Payment = $Payment;
         $this->markDirty();
     }
 	
-	function getPaymentPrint( ){
-		$N = new \MVC\Library\Number($this->Payment);
-        return $N->formatCurrency()." đ";
-    }
-	
-	function getRemain( ){
-		$Remain = $this->getPayment() - $this->getValue();
-		return $Remain;
-    }
-	
-	function getRemainPrint( ){
-		$N = new \MVC\Library\Number( $this->getRemain() );
-        return $N->formatCurrency()." đ";
-	}
-	
-	//Tính ra tiền giờ làm tròn 15 phút
-	function getHours(){	
-		$diff = strtotime($this->getDateTimeEnd()) - strtotime($this->getDateTime());
-		$H = floor($diff/3600);
-		$M = round(($diff - $H*3600)/60,0);
-		return $H." giờ ".$M." phút";		
-	}
-	function getValueHours(){
-		//Lấy thông số Config
-		$mConfig = new \MVC\Mapper\Config();
+	function getPaymentPrint( ){$N = new \MVC\Library\Number($this->Payment);return $N->formatCurrency()." đ";}	
+	function getRemain( ){$Remain = $this->getPayment() - $this->getValue();return $Remain;}	
+	function getRemainPrint( ){$N = new \MVC\Library\Number( $this->getRemain() );return $N->formatCurrency()." đ";}
 			
-		$IsVIP = $this->getTable()->getType();
-		$Value = 0;
-				
-		if ($IsVIP==1){			
-			$Price1 = $mConfig->findByName('PRICE_HOUR_VIP_1')->getValue();
-			$Price2 = $mConfig->findByName('PRICE_HOUR_VIP_2')->getValue();									
-		}else{
-			$Price1 = $mConfig->findByName('PRICE_HOUR_NORMAL_1')->getValue();
-			$Price2 = $mConfig->findByName('PRICE_HOUR_NORMAL_2')->getValue();			
-		}
-				
-		$HDS = \date("H", strtotime($this->getDateTime())) + \date("i", strtotime($this->getDateTime()))/60;
-		$HD = (strtotime($this->getDateTimeEnd()) - strtotime($this->getDateTime()))/3600;
-		$HDE = $HDS + $HD;
-		//echo $HDS;
-		if ($HDS >=7){
-			//echo "TH1";
-			//Giá ban ngày
-			if ($HDE <19){
-				$Value = ($HDE - $HDS)*$Price1;
-			}else{				
-				if ($HDS>=19){
-					//echo "TH1.1:".$HDS." - ".$HDE.":";
-					$Value = ($HDE - $HDS)*$Price2;
-				}else{					
-					$Value = ($HDE - 19)*$Price2;
-					$Value += (19 - $HDS)*$Price1;
-				}
-			}
-		}else{
-			//echo "TH2";
-			//Vào chơi từ lúc qua ngày mới
-			if ($HDE <7){
-				//echo "TH21 ".($HDE - $HDS);
-				$Value = ($HDE - $HDS)*$Price2;
-			}else{
-				//lố quá ngày mới, chưa có ngoại lệ			
-				//echo "TH22";
-			}
-		}
-		
-		return $Value;
-	}
-	function getValueHoursPrint(){		
-		$num = new Number($this->getValueHours());
-		return $num->formatCurrency()." đ";
-		//return $this->getValueHours();
-	}
-	
 	//---------------------------------------------------------										
 	function getDetails(){
 		$mSD = new \MVC\Mapper\SessionDetail();
 		$SDs = $mSD->findBySession(array($this->getId()));
 		return $SDs;
 	}
-	
-	function setValue($Value){
-		$this->Value = $Value;
-		$this->markDirty();
-	}
-	
-	function getValue(){
-		if ($this->Value <= 0 || $this->Value == null){
-			$mSD = new \MVC\Mapper\SessionDetail();
-			$Value = $this->getSurtax() + (int)(($mSD->evaluate(array($this->getId())) + 500 + $this->getValueHours() - $this->getDiscountValue())*(1.0 - $this->getDiscountPercent()/100.0)/1000)*1000;
-			return $Value;
-		}
-		return $this->Value;
-	}
-	
-	function getReValue(){
+			
+	function getValue(){		
 		$mSD = new \MVC\Mapper\SessionDetail();
-		$Value = $this->getSurtax() + (int)(($mSD->evaluate(array($this->getId())) + 500 + $this->getValueHours() - $this->getDiscountValue())*(1.0 - $this->getDiscountPercent()/100.0)/1000)*1000;
+		$Value = $this->getSurtax() + (int)(($mSD->evaluate(array($this->getId())) + 500 - $this->getDiscountValue())*(1.0 - $this->getDiscountPercent()/100.0)/1000)*1000;
 		return $Value;
 	}
 	
-	function getValuePrint(){
-		$num = new Number($this->getValue());
-		return $num->formatCurrency()." đ";
-	}
 	
-	function getValueStrPrint(){
-		$num = new Number($this->getValue());
-		return $num->readDigit()." đồng";
-	}
-	
+	function getValuePrint(){$num = new Number($this->getValue());return $num->formatCurrency()." đ";}	
+	function getValueStrPrint(){$num = new Number($this->getValue());return $num->readDigit()." đồng";}	
 	function getValueBase(){
 		$Value = 0;
 		$SDs = $this->getDetails();

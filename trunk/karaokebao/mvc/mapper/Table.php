@@ -38,14 +38,22 @@ class Table extends Mapper implements \MVC\Domain\UserFinder {
 				*	 
 			FROM %s T
 			WHERE 				
-			(
-				SELECT S.status
-				from %s S
-				where T.id = S.idtable
-				order by datetime DESC
-				LIMIT 1
-			) <> 0
-		", $tblTable, $tblSession);
+				(
+					SELECT S.status
+					from %s S
+					where T.id = S.idtable
+					order by datetime DESC
+					LIMIT 1
+				) <> 0 OR 
+				(
+					SELECT S.status
+					from %s S
+					where T.id = S.idtable
+					order by datetime DESC
+					LIMIT 1
+				) is null
+			ORDER BY iddomain
+		", $tblTable, $tblSession, $tblSession);
 		
 		$findGuestStmt = sprintf("
 							SELECT

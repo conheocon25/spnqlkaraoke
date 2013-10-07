@@ -14,7 +14,7 @@ class TermCollect extends Mapper implements \MVC\Domain\TermCollectFinder{
 		$updateStmt = sprintf("update %s set name=? where id=?", $tblTerm);
 		$insertStmt = sprintf("insert into %s ( name) values(?)", $tblTerm);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblTerm);
-		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblTerm);
+		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY name LIMIT :start,:max", $tblTerm);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);

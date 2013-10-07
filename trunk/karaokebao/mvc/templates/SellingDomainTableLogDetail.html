@@ -29,15 +29,7 @@
 										<tr>									
 											<td><div class="text-right">KẾT THÚC : </div></td>
 											<td><div  class="text-left" tal:content="Session/getDateTimeEndPrint"/></td>
-										</tr>
-										<tr>
-											<td><div class="text-right">SỐ GIỜ : </div></td>
-											<td><div  class="text-left" tal:content="Session/getHours"/></td>									
-										</tr>
-										<tr>									
-											<td><div class="text-right">TIỀN GIỜ : </div></td>
-											<td><div  class="text-left" tal:content="Session/getValueHoursPrint"/></td>
-										</tr>
+										</tr>										
 									</table>
 									<table class="table table-bordered table-striped table-hover">
 										<thead>
@@ -66,8 +58,14 @@
 										</tbody>
 										<tfoot>
 											<tr>
+												<td colspan="4"><div class="text-right">GIẢM GIÁ</div></td>
+												<td><div class="text-right" tal:content="Session/getDiscountPercentPrint"/></td>
+												<td />
+											</tr>
+											<tr>
 												<td colspan="4"><div class="text-right">TỔNG CỘNG</div></td>
 												<td><div class="text-right" tal:content="Session/getValuePrint"/></td>
+												<td />
 											</tr>
 										</tfoot>
 									</table>									
@@ -134,8 +132,7 @@
 							</div>
 						</div>
 						<!-- END DIALOG EDIT -->
-						<!-- END UPDATE DIALOG  -->
-					
+										
 						<!-- UPDATE SESSION DIALOG  -->
 						<div id="DialogSessionEdit" class="modal fade">
 							<div class="modal-dialog">
@@ -171,13 +168,7 @@
 											<div class="controls">								
 												<input type="text" name="Note2" id="Note2" tal:attributes="value Session/getNote" class="form-control input-small"/>
 											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">Giảm giá (VNĐ)</label>
-											<div class="controls">								
-												<input type="text" name="DiscountValue2" id="DiscountValue2" tal:attributes="value Session/getDiscountValue" class="form-control input-small"/>
-											</div>
-										</div>
+										</div>										
 										<div class="control-group">
 											<label class="control-label" >Giảm giá (%)</label>
 											<div class="controls">
@@ -265,25 +256,7 @@
 					}
 				});
 			});
-		
-			//-----------------------------------------------------------------------------------
-			//Insert 1 CATEGORY
-			$('#URLInsButton').click(function(){
-				var Data = [];
-				Data[0] = 'null';
-				Data[1] = $('#Name1').val();
-
-				var URL = "/object/ins/Category";
-				$.ajax({
-					type: "POST",
-					data: {Data:Data},
-					url: URL,
-					success: function(msg){
-						location.reload();
-					}
-				});
-			});
-			
+								
 			//-----------------------------------------------------------------------------------
 			//Load 1 SESSION DETAIL
 			//-----------------------------------------------------------------------------------
@@ -327,20 +300,20 @@
 			//-----------------------------------------------------------------------------------
 			$('#URLUpdSessionButton').click(function(){
 				var Data = [];
-				Data[0] = $('#IdSession').attr('alt');
-				Data[1] = $('#IdTable').attr('alt');
-				Data[2] = $('#IdUser').attr('alt');
-				Data[3] = $('#IdCustomer2').val();
-				Data[4] = $('#DateTime2').val();
-				Data[5] = $('#DateTimeEnd2').val();
-				Data[6] = $('#Note2').val();
-				Data[7] = $('#Status2').val();
-				Data[8] = $('#DiscountValue2').val();
-				Data[9] = $('#DiscountPercent2').val();
-				Data[10] = $('#Surtax2').val();
-				Data[11] = $('#Payment2').val();
-				Data[12] = '0';
-																							
+				Data[0] 	= $('#IdSession').attr('alt');
+				Data[1] 	= $('#IdTable').attr('alt');
+				Data[2] 	= $('#IdUser').attr('alt');
+				Data[3] 	= $('#IdCustomer2').val();
+				Data[4] 	= $('#DateTime2').val();
+				Data[5] 	= $('#DateTimeEnd2').val();
+				Data[6] 	= $('#Note2').val();
+				Data[7] 	= $('#Status2').val();
+				//Data[8] 	= $('#DiscountValue2').val();
+				Data[8] 	= 0;
+				Data[9] 	= $('#DiscountPercent2').val();
+				Data[10] 	= $('#Surtax2').val();
+				Data[11] 	= $('#Payment2').val();
+																											
 				var URL = "/object/upd/Session";
 				$.ajax({
 					type: "POST",

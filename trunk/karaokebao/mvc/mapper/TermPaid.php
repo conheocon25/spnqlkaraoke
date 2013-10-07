@@ -14,7 +14,7 @@ class TermPaid extends Mapper implements \MVC\Domain\TermPaidFinder{
 		$updateStmt = sprintf("update %s set name=? where id=?", $tblTermPaid);
 		$insertStmt = sprintf("insert into %s ( name) values(?)", $tblTermPaid);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblTermPaid);
-		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblTermPaid);
+		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY name LIMIT :start,:max", $tblTermPaid);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);

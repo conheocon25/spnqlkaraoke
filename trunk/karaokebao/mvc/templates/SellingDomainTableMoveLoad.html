@@ -20,7 +20,7 @@
 									<div class="control-group">
 										<label class="control-label">Chuyển đến bàn</label>
 										<div class="controls">
-											<select name="IdTableMove" id="IdTableMove" class="form-control input-sm">
+											<select name="IdTableMove" id="IdTableMove">
 												<option tal:repeat="Table TableAll" tal:attributes="value Table/getId">
 													<span tal:content="Table/getDomain/getName" /> / <span tal:content="Table/getName" />
 												</option>

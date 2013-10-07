@@ -18,10 +18,10 @@
 								<form class="form-horizontal" tal:attributes="action Table/getURLMergeExe" method="post">
 									<div class="control-group">
 										<label class="control-label" for="IdTableMerge">Gom với bàn</label>
-										<div class="controls">
-											<select name="IdTableMerge" id="IdTableMerge" class="form-control input-sm">
-												<option tal:repeat="Table TableAll" tal:attributes="value Table/getId">
-													<span tal:content="Table/getDomain/getName" /> / <span tal:content="Table/getName" />
+										<div class="controls">											
+											<select name="IdTableMerge" id="IdTableMerge">
+												<option tal:repeat="Session SessionAll" tal:attributes="value Session/getTable/getId">
+													<span tal:content="Session/getTable/getDomain/getName" /> / <span tal:content="Session/getTable/getName" />
 												</option>
 											</select>
 										</div>

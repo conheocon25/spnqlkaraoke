@@ -4,15 +4,10 @@
 			<td width="100%" align="center">
 				<font size="13pt"><b>PHIẾU TÍNH TIỀN</b></font>
 			</td>
-		</tr>
-		<tr>			
-			<td width="100%" align="center">
-				<font size="10pt"><span tal:content="Session/getDatePrint" /></font>
-			</td>
-		</tr>
+		</tr>		
 	</table>
 <br/>
-<font size="10pt">	
+<font size="10pt">
 	<table style="padding-top:0px;" width="100%" cellpadding="1" cellspacing="0" border="0" bordercolor="#FFF">
 		<tr>
 			<td width="50%" align="left">				
@@ -53,13 +48,7 @@
 		</tbody>
 	</table>
 	<table style="padding-bottom:2px;" width="100%" cellpadding="2" cellspacing="0" border="0">
-		<tbody>			
-			<tr  tal:condition="Session/getDiscountValuePrint">
-				<td align='right' colspan="5" width="100%">
-					<font size="10">Tiền Karaoke: <span tal:content="Session/getValueHoursPrint" /></font>
-				</td>
-			</tr>
-			
+		<tbody>
 			<tr tal:condition="Session/getDiscountValue">
 				<td align='right' colspan="5" width="100%">
 					<font align='right' size="10pt">Chiết khấu: <span tal:content="Session/getDiscountValuePrint" /></font>
@@ -73,11 +62,6 @@
 			<tr  tal:condition="Session/getSurtax">
 				<td align='right' colspan="5" width="100%">
 					<font align='right' size="10pt">Phụ thu: <span tal:content="Session/getSurtaxPrint" /></font>
-				</td>
-			</tr>			
-			<tr>
-				<td align='right' colspan="5" width="100%">
-					------------------------
 				</td>
 			</tr>
 			<tr>

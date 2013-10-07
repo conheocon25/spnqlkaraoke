@@ -15,7 +15,10 @@
 			<div class="row">
 				<div class="col-12">
 					<a href="#DialogIns" data-toggle="modal" class="btn btn-success btn-ins btn-small">
-						<i class="glyphicon glyphicon-plus"/> Thêm mới
+						<i class="glyphicons-plus"/> Thêm mới
+					</a>
+					<a href="#DialogDelSelected" data-toggle="modal" class="btn btn-success btn-ins btn-small">
+						<i class="glyphicons-remove_2"/> Xóa chọn
 					</a>
 					<div class="widget-box">
 						<div class="widget-content nopadding">
@@ -24,16 +27,16 @@
 									<tr>
 										<th width="40"><input type="checkbox" id="title-table-checkbox" name="title-table-checkbox"/></th>
 										<th class="left">TÊN</th>
-										<th width="100"><i class="glyphicons-drink"/></th>
+										<th class="right" width="100">MÓN</th>
 										<th width="40"><i class="glyphicons-edit"/></th>
 										<th width="40"><i class="glyphicons-bin"/></th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr tal:repeat="Category CategoryAll1">
-										<td class="center"><input type="checkbox"/></td>										
+										<td class="center"><input class="CheckedDel" type="checkbox" tal:attributes="data-id Category/getId"/></td>
 										<td><a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id Category/getId" tal:content="Category/getName"/></td>
-										<td class="center"><a tal:attributes="href Category/getURLCourse"> <span tal:content="Category/getCourseAll/count" /> món</a></td>
+										<td class="right"><a tal:attributes="href Category/getURLCourse"> <span tal:content="Category/getCourseAll/count" /> món</a></td>
 										<td class="center">
 											<a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id Category/getId">
 												<i class="glyphicon glyphicon-pencil"/>
@@ -99,26 +102,8 @@
 						</div>
 					</div>
 					<!-- END UPDATE DIALOG  -->
-
-					<!-- DELETE DIALOG  -->
-					<div id="DialogDel" class="modal fade">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h3>Cảnh báo: Việc xóa sẽ làm mất dữ liệu và không thể phục hồi</h3>
-								</div>
-								<div class="modal-body">
-									<p>Bạn có chắc muốn xóa mục này ?</p>
-								</div>
-								<div class="modal-footer">
-									<button id="URLDelButton" class="btn btn-primary btn-small">Xóa</button>
-									<button data-dismiss="modal" class="btn btn-default btn-small">Không</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- END DELETE DIALOG  -->
-					
+					<div metal:use-macro="mDialog.xhtml/DialogDel"/>
+					<div metal:use-macro="mDialog.xhtml/DialogDelSelected"/>
 				</div>
 			</div>
 		</div>
@@ -126,6 +111,28 @@
 		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
 		<script type="text/javascript">
 		/*<![CDATA[*/
+			$('#URLDelSelectedButton').click(function(){
+				var count = 0;
+				var Data = [];
+				var URL = "/object/del/Category/0";
+				
+				$(".CheckedDel").each(function( i, obj){
+					if ( $(this).is(':checked')==true ){
+						count += 1;
+						Data[count] = $(this).attr('data-id');
+					}
+				});
+				
+				$.ajax({
+					type: "POST",
+					data: {ListId:Data},
+					url: URL,
+					success: function(msg){
+						location.reload();
+					}
+				});
+			});
+			
 			//-----------------------------------------------------------------------------------
 			//Delete 1 CATEGORY			
 			//-----------------------------------------------------------------------------------

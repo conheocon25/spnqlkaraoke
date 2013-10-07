@@ -27,8 +27,7 @@
 			$Session = $mSession->find($IdSession);
 			
 			//Thanh toán đủ
-			$Session->setStatus(1);
-			$Session->setValue( $Session->getReValue() );
+			$Session->setStatus(1);			
 			$mSession->update($Session);
 			
 			//-------------------------------------------------------------
