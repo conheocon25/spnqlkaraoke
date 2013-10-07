@@ -19,6 +19,7 @@ class Resource extends Mapper implements \MVC\Domain\ResourceFinder {
 							SELECT *
 							FROM %s
 							WHERE idsupplier=:idsupplier
+							ORDER BY name
 							LIMIT :start,:max
 				", $tblResource);
 				

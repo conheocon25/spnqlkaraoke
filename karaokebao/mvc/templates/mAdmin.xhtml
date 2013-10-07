@@ -52,6 +52,7 @@
 		<script src="/mvc/templates/theme/cms/js/unicorn.tables.js"></script>
 		<script src="/mvc/templates/theme/cms/js/jquery.gritter.min.js"></script>
 		<script src="/mvc/templates/theme/cms/js/bootstrap-datepicker.js"></script>
+		<script src="/mvc/templates/theme/cms/js/bootstrap-datepicker.vi.js"></script>		
 	</span>
 	
 	<!-- ======================================================================== -->
@@ -59,7 +60,7 @@
 	<!-- ======================================================================== -->
 	<div metal:define-macro="Header">
 		<div id="header">
-			<h1><a>Karaoke Management App</a></h1>	
+			<h1><a>Karaoke Management App</a></h1>
 			<a id="menu-trigger" href="#"><i class="glyphicon glyphicon-align-justify"/></a>	
 		</div>
 		<div id="user-nav">
@@ -83,9 +84,7 @@
 	<!-- ======================================================================== -->
 	<!-- CONTENT HEADER															  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="ContentHeader" id="content-header">
-		<h1>HỆ THỐNG QUẢN LÝ KARAOKE BẢO</h1>
-	</div>
+	<div metal:define-macro="ContentHeader" id="content-header"><h1>HỆ THỐNG QUẢN LÝ KARAOKE BẢO</h1></div>
 	
 	<!-- ======================================================================== -->
 	<!-- PAGE BAR																  -->
@@ -103,6 +102,9 @@
 		<ul tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isAdmin()">
 			<li tal:attributes="class php:ActiveAdmin=='Selling'?'active':'disable'">
 				<a tal:attributes="href '/selling'"><i class="glyphicons-drink" />BÁN HÀNG</a>
+			</li>
+			<li tal:attributes="class php:ActiveAdmin=='Import'?'active':'disable'">
+				<a tal:attributes="href '/import'"><i class="glyphicons-truck" />NHẬP HÀNG</a>
 			</li>
 			<li tal:attributes="class php:ActiveAdmin=='PayRoll'?'active':'disable'">
 				<a tal:attributes="href '/payroll'"><i class="glyphicons-check" />CHẤM CÔNG</a>
@@ -160,6 +162,11 @@
 			<li tal:attributes="class php:ActiveAdmin=='Category'?'active':'disable'">
 				<a tal:attributes="href '/setting/category'" >
 					<i class="glyphicons-fast_food" />DANH MỤC MÓN
+				</a>
+			</li>
+			<li tal:attributes="class php:ActiveAdmin=='Supplier'?'active':'disable'">
+				<a tal:attributes="href '/setting/supplier'" >
+					<i class="glyphicons-truck" />NHÀ CUNG CẤP
 				</a>
 			</li>
 			<li tal:attributes="class php:ActiveAdmin=='Domain'?'active':'disable'">
@@ -232,11 +239,11 @@
 				<td width="50%" align="left"><B align="right" tal:content="Title" /></td>
 			</tr>
 			<tr>
-				<td width="50%" align="left">P.3, Trưng Nữ Vương TP.VL</td>
+				<td width="50%" align="left">Trưng Nữ Vương, TP.VL</td>
 				<td width="50%" align="right">Lưu hành nội bộ</td>
 			</tr>
 			<tr>
-				<td width="50%" align="left">0919 222 444</td>
+				<td width="50%" align="left">0919 222 666</td>
 				<td width="50%" align="left" />
 			</tr>
 		</table>

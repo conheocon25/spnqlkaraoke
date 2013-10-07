@@ -19,11 +19,12 @@
 			//-------------------------------------------------------------			
 			$mDomain = new \MVC\Mapper\Domain();
 			$mTable = new \MVC\Mapper\Table();
-						
+			$mSession = new \MVC\Mapper\Session();
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------									
-			$TableAll = $mTable->findAll();
+			//-------------------------------------------------------------												
+			$SessionAll = $mSession->findLastAll(array());			
 			$Table = $mTable->find($IdTable);
 			$Domain = $mDomain->find($IdDomain);
 									
@@ -36,7 +37,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			$request->setObject('TableAll', $TableAll);
+			$request->setObject('SessionAll', $SessionAll);
 			$request->setObject('Table', $Table);
 			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);

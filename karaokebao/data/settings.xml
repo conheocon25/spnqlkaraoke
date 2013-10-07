@@ -30,8 +30,7 @@
 		<command name="Selling"><view>Selling</view></command>
 		<command name="SellingDomain"><view>SellingDomain</view></command>								
 		<command name="Report"><view>Report</view></command>
-		<command name="Setting"><view>Setting</view></command>
-		
+				
 		<command name="ChangePassLoad"><view>ChangePassLoad</view></command>
 		<command name="ChangePassExe">
 			<view>ChangePassExe</view>
@@ -44,14 +43,21 @@
 		</command>
 		
 		<!-- ============================================================================== -->
+		<!-- IMPORT			 																-->
+		<!-- ============================================================================== -->
+		<command name="Import"><view>Import</view></command>
+		<command name="ImportSupplier"><view>ImportSupplier</view></command>
+		<command name="ImportSupplierOrder"><view>ImportSupplierOrder</view></command>
+		<command name="ImportSupplierOrderPrint"><view>ImportSupplierOrderPrint</view></command>
+		<command name="ImportSupplierOrderExe"><view>ImportSupplierOrderExe</view></command>
+		
+		<!-- ============================================================================== -->
 		<!-- PAYROLL			 															-->
 		<!-- ============================================================================== -->		
 		<command name="PayRoll"><view>PayRoll</view></command>
 		<command name="PayRollWork"><view>PayRollWork</view></command>
 		<command name="PayRollWorkDetail">
-			<status value="CMD_OK">
-				<forward>PayRollWork</forward>
-			</status>
+			<status value="CMD_OK"><forward>PayRollWork</forward></status>
 			<view>PayRollWorkDetail</view>
 		</command>
 				
@@ -103,17 +109,19 @@
 		<!-- ============================================================================== -->
 		<!-- SETTING																		-->
 		<!-- ============================================================================== -->
-		<command name="SettingCustomer"><view>SettingCustomer</view></command>				
-		<command name="SettingEmployee"><view>SettingEmployee</view></command>		
-		<command name="SettingUser"><view>SettingUser</view></command>				
-		<command name="SettingDomain"><view>SettingDomain</view></command>				
-		<command name="SettingDomainTable"><view>SettingDomainTable</view></command>				
-		<command name="SettingUnit"><view>SettingUnit</view></command>				
-		<command name="SettingConfig"><view>SettingConfig</view></command>				
-		<command name="SettingCategory"><view>SettingCategory</view></command>				
-		<command name="SettingCategoryCourse"><view>SettingCategoryCourse</view></command>				
-		<command name="SettingTermPaid"><view>SettingTermPaid</view></command>				
+		<command name="Setting"><view>Setting</view></command>
+		<command name="SettingCustomer"><view>SettingCustomer</view></command>
+		<command name="SettingEmployee"><view>SettingEmployee</view></command>
+		<command name="SettingUser"><view>SettingUser</view></command>
+		<command name="SettingDomain"><view>SettingDomain</view></command>
+		<command name="SettingDomainTable"><view>SettingDomainTable</view></command>
+		<command name="SettingUnit"><view>SettingUnit</view></command>
+		<command name="SettingConfig"><view>SettingConfig</view></command>
+		<command name="SettingCategory"><view>SettingCategory</view></command>
+		<command name="SettingCategoryCourse"><view>SettingCategoryCourse</view></command>
+		<command name="SettingTermPaid"><view>SettingTermPaid</view></command>
 		<command name="SettingTermCollect"><view>SettingTermCollect</view></command>
-																																								
+		<command name="SettingSupplier"><view>SettingSupplier</view></command>
+		<command name="SettingSupplierResource"><view>SettingSupplierResource</view></command>
 	</control>
 </options>

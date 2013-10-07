@@ -14,7 +14,7 @@ class Unit extends Mapper implements \MVC\Domain\UnitFinder{
 		$updateStmt = sprintf("update %s set name=? where id=?", $tblUnit);
 		$insertStmt = sprintf("insert into %s (name) values(?)", $tblUnit);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblUnit);
-		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblUnit);
+		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY name LIMIT :start,:max", $tblUnit);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);

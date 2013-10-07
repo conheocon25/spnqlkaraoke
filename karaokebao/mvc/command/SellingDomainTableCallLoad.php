@@ -22,6 +22,7 @@
 			$mCourse = new \MVC\Mapper\Course();
 			$mTable = new \MVC\Mapper\Table();
 			$mSession = new \MVC\Mapper\Session();
+			$mSD = new \MVC\Mapper\SessionDetail();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -36,7 +37,8 @@
 			$Domain = $Table->getDomain();
 			$URLCallLoad = $Table->getURLCallLoad();
 			$URLCall = $Table->getURLCallExe();
-						
+			$Session = $Table->getSessionActive();
+			
 			$Title = mb_strtoupper($Category->getName(), 'UTF8')." GỌI";
 			$Navigation = array(				
 				array("BÁN HÀNG", "/selling"),
@@ -53,6 +55,8 @@
 			$request->setObject("Category", $Category);
 			$request->setObject("CategoryAll", $CategoryAll);			
 			$request->setObject('Table', $Table);
+			$request->setObject('Session', $Session);
+			$request->setObject('mSD', $mSD);
 		}
 	}
 ?>
