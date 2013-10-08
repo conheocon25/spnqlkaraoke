@@ -29,7 +29,15 @@
 										<tr>									
 											<td><div class="text-right">KẾT THÚC : </div></td>
 											<td><div  class="text-left" tal:content="Session/getDateTimeEndPrint"/></td>
-										</tr>										
+										</tr>
+										<tr>
+											<td><div class="text-right">SỐ GIỜ : </div></td>
+											<td><div  class="text-left" tal:content="Session/getHours"/></td>									
+										</tr>
+										<tr>									
+											<td><div class="text-right">TIỀN GIỜ : </div></td>
+											<td><div  class="text-left" tal:content="Session/getValueHoursPrint"/></td>
+										</tr>
 									</table>
 									<table class="table table-bordered table-striped table-hover">
 										<thead>

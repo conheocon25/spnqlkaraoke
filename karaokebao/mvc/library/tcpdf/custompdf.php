@@ -385,10 +385,10 @@ class CUSTOMPDF extends TCPDF {
         $this->SetFont('arial', 'B', 14);
         // Title
 		$this->Ln(6);		
-        $this->Cell(0, 5, 'QUÁN MUỐI ỚT XANH', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->Cell(0, 5, 'KARAOKE BẢO', 0, false, 'C', 0, '', 0, false, 'M', 'M');
 		$this->SetFont('arial', '', 11);
 		$this->Ln(5);			 
-        $this->Cell(0, 0, 'Phạm Hùng P.9, TP.VL', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->Cell(0, 0, 'Trưng Nữ Vương P3 TP.VL', 0, false, 'C', 0, '', 0, false, 'M', 'M');
 		$this->Ln(5);
     }
 

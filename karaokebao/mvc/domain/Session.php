@@ -18,8 +18,7 @@ class Session extends Object{
 	private $DiscountPercent;
 	private $Surtax;
 	private $Payment;
-	
-	
+		
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
@@ -123,7 +122,7 @@ class Session extends Object{
 		return $DS." - ".$DE;
 	}
 	function getCurrentDatePrint(){$date = new Date();return $date->getCurrentDateVN();}
-	
+		
 	//Ghi chú
 	function getNote( ) {return $this->Note;}	
 	function setNote( $Note ) {$this->Note = $Note;$this->markDirty();}
@@ -165,6 +164,64 @@ class Session extends Object{
         $this->markDirty();
     }
 	
+	//Tính ra tiền giờ làm tròn 15 phút
+	function getHours(){	
+		$diff = strtotime($this->getDateTimeEnd()) - strtotime($this->getDateTime());
+		$H = floor($diff/3600);
+		$M = round(($diff - $H*3600)/60,0);
+		return $H." giờ ".$M." phút";		
+	}
+	function getValueHours(){
+		//Lấy thông số Config
+		$mConfig = new \MVC\Mapper\Config();
+			
+		$IsVIP = $this->getTable()->getType();
+		$Value = 0;
+				
+		if ($IsVIP==1){			
+			$Price1 = $mConfig->findByName('PRICE_HOUR_VIP_1')->getValue();
+			$Price2 = $mConfig->findByName('PRICE_HOUR_VIP_2')->getValue();									
+		}else{
+			$Price1 = $mConfig->findByName('PRICE_HOUR_NORMAL_1')->getValue();
+			$Price2 = $mConfig->findByName('PRICE_HOUR_NORMAL_2')->getValue();			
+		}
+				
+		$HDS = \date("H", strtotime($this->getDateTime())) + \date("i", strtotime($this->getDateTime()))/60;
+		$HD = (strtotime($this->getDateTimeEnd()) - strtotime($this->getDateTime()))/3600;
+		$HDE = $HDS + $HD;
+		//echo $HDS."-".$HDE;
+		if ($HDS >=7){
+			//echo "TH1";
+			//Giá ban ngày
+			if ($HDE <19){
+				$Value = ($HDE - $HDS)*$Price1;
+			}else{				
+				if ($HDS>=19){
+					//echo "TH1.1:".$HDS." - ".$HDE.":";
+					$Value = ($HDE - $HDS)*$Price2;
+				}else{					
+					$Value = ($HDE - 19)*$Price2;
+					$Value += (19 - $HDS)*$Price1;
+				}
+			}
+		}else{
+			//echo "TH2 ".$HDE;
+			//Vào chơi từ lúc qua ngày mới
+			if ($HDE <7){
+				//echo "TH21 ".($HDE - $HDS);
+				$Value = ($HDE - $HDS)*$Price2;
+			}else{
+				//lố quá ngày mới, chưa có ngoại lệ			
+				//echo "TH22";
+			}
+		}		
+		return $Value;
+	}
+	function getValueHoursPrint(){		
+		$num = new Number($this->getValueHours());
+		return $num->formatCurrency()." đ";		
+	}
+	
 	function getPaymentPrint( ){$N = new \MVC\Library\Number($this->Payment);return $N->formatCurrency()." đ";}	
 	function getRemain( ){$Remain = $this->getPayment() - $this->getValue();return $Remain;}	
 	function getRemainPrint( ){$N = new \MVC\Library\Number( $this->getRemain() );return $N->formatCurrency()." đ";}
@@ -178,7 +235,7 @@ class Session extends Object{
 			
 	function getValue(){		
 		$mSD = new \MVC\Mapper\SessionDetail();
-		$Value = $this->getSurtax() + (int)(($mSD->evaluate(array($this->getId())) + 500 - $this->getDiscountValue())*(1.0 - $this->getDiscountPercent()/100.0)/1000)*1000;
+		$Value = $this->getSurtax() + (int)(($mSD->evaluate(array($this->getId())) + 500 + $this->getValueHours() - $this->getDiscountValue())*(1.0 - $this->getDiscountPercent()/100.0)/1000)*1000;
 		return $Value;
 	}
 	
