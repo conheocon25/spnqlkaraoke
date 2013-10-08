@@ -49,6 +49,11 @@
 	</table>
 	<table style="padding-bottom:2px;" width="100%" cellpadding="2" cellspacing="0" border="0">
 		<tbody>
+			<tr  tal:condition="Session/getDiscountValuePrint">
+				<td align='right' colspan="5" width="100%">
+					<font size="10">Tiền Karaoke: <span tal:content="Session/getValueHoursPrint" /></font>
+				</td>
+			</tr>
 			<tr tal:condition="Session/getDiscountValue">
 				<td align='right' colspan="5" width="100%">
 					<font align='right' size="10pt">Chiết khấu: <span tal:content="Session/getDiscountValuePrint" /></font>
