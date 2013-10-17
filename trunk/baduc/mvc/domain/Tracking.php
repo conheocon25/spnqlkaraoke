@@ -292,6 +292,14 @@ class Tracking extends Object{
 	function getCustomerNewDebtPrint($IdCustomer){$N = new \MVC\Library\Number( $this->getCustomerNewDebt($IdCustomer) );return $N->formatCurrency()." đ";}	
 	function getCustomerNewDebtStrPrint($IdCustomer){$N = new \MVC\Library\Number( $this->getCustomerNewDebt($IdCustomer) );return $N->readDigit();}
 	
+	//THỐNG KÊ PHÒNG/PHIẾU/GIỜ
+	function getTableSession($IdTable){		
+		$Date1 = \date("Y-m-d", strtotime($this->getDateStart()))." 8:0:0";
+		$Date2 = \date("Y-m-d", strtotime("+1 day", strtotime($this->getDateEnd())))." 7:59:59";		
+		$mSession = new \MVC\Mapper\Session();
+		$SessionAll = $mSession->findByTableTracking(array($IdTable,$Date1,$Date2));
+		return $SessionAll;
+	}
 	
 	//CÁC LIÊN KẾT CỦA CÁC NGÀY TRONG THÁNG
 	function getURLDayAll(){
@@ -335,20 +343,14 @@ class Tracking extends Object{
 	function getURLView(){return "/report/".$this->getId();}
 	
 	function getURLCustomer(){return "/report/customer/".$this->getId();}
-	function getURLCustomerDetail($IdCustomer){return "/report/customer/".$this->getId()."/".$IdCustomer;}
-	function getURLPaidPayRoll(){return "/report/paid/payroll/".$this->getId();}	
-	function getURLPaidGeneral(){return "/report/paid/".$this->getId();}
-	function getURLPaidDetail($IdTerm){return "/report/paid/".$this->getId()."/".$IdTerm;}
-	function getURLCollectDetail($IdTerm){return "/report/collect/".$this->getId()."/".$IdTerm;}
+	function getURLCustomerDetail($IdCustomer){return "/report/customer/".$this->getId()."/".$IdCustomer;}	
+	function getURLPaidGeneral(){return "/report/paid/".$this->getId();}	
 	function getURLCollectGeneral(){return "/report/collect/".$this->getId();}
-	function getURLImportGeneral(){return "/report/import/".$this->getId()."/general";}
-	function getURLImportDetail($IdSupplier){return "/report/import/".$this->getId()."/".$IdSupplier;}
-	function getURLSellingGeneral(){return "/report/selling/".$this->getId()."/general";}
-	function getURLSellingDetail(){return "/report/selling/".$this->getId()."/detail";}	
-	function getURLSellingRefesh(){return "/report/selling/".$this->getId()."/refresh";}		
+	function getURLImportGeneral(){return "/report/import/".$this->getId()."/general";}			
 	function getURLEvalStore(){return "/report/store/".$this->getId()."/eval";}
 	function getURLStore(){return "/report/store/".$this->getId();}
 	function getURLCourse(){return "/report/course/".$this->getId();}		
+	function getURLHours(){return "/report/hours/".$this->getId();}
 	function getURLGeneral(){return "/report/general/".$this->getId();}		
 	function getURLUpdLoad(){return "/report/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){return "/report/".$this->getId()."/upd/exe";}	
