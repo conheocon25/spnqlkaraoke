@@ -52,26 +52,16 @@
 		<command name="ReportCustomer"><view>ReportCustomer</view></command>
 		<command name="ReportCustomerDetail"><view>ReportCustomerDetail</view></command>
 		<command name="ReportCustomerGeneral"><view>ReportCustomerGeneral</view></command>
-		
-		<command name="ReportPaidDetail"><view>ReportPaidDetail</view></command>
-		<command name="ReportPaidGeneral"><view>ReportPaidGeneral</view></command>
-		<command name="ReportImportDetail"><view>ReportImportDetail</view></command>
-		<command name="ReportImportGeneral"><view>ReportImportGeneral</view></command>
-		
-		<command name="ReportCollectDetail"><view>ReportCollectDetail</view></command>
-		<command name="ReportCollectGeneral"><view>ReportCollectGeneral</view></command>
-		
-		<command name="ReportSellingGeneral"><view>ReportSellingGeneral</view></command>
-		<command name="ReportSellingDetail"><view>ReportSellingDetail</view></command>
-		<command name="ReportSellingRefresh"><view>ReportSellingRefresh</view></command>
-		
+				
+		<command name="ReportPaidGeneral"><view>ReportPaidGeneral</view></command>		
+		<command name="ReportImportGeneral"><view>ReportImportGeneral</view></command>		
+		<command name="ReportCollectGeneral"><view>ReportCollectGeneral</view></command>				
 		<command name="ReportCourse"><view>ReportCourse</view></command>
+		<command name="ReportHours"><view>ReportHours</view></command>
 		<command name="ReportStore"><view>ReportStore</view></command>
 		<command name="ReportEvalStore"><view>ReportEvalStore</view></command>
 		<command name="ReportGeneral"><view>ReportGeneral</view></command>
-		
-		<command name="ReportPaidPayRoll"><view>ReportPaidPayRoll</view></command>
-						
+										
 		<!-- ============================================================================== -->
 		<!-- SELLING.DOMAIN		 															-->
 		<!-- ============================================================================== -->				
