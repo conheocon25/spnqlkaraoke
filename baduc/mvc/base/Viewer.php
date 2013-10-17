@@ -39,13 +39,14 @@ class Viewer {
 			
 		$html = $this->html();		
 		$pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-		$pdf->SetMargins(3, 3, 3);
-		$pdf->SetHeaderMargin(1);		
+		$pdf->SetMargins(3, 1, 3);		
+		$pdf->setPrintHeader(false);
+		
 		$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 		$pdf->AddPage();
-		$pdf->SetFont('arial', 'N', 10);					
+		$pdf->SetFont('arial', 'N', 10);
 		$pdf->writeHTML($html, true, false, true, false, '');
-		$Out = $pdf->Output("print_BDC.pdf", 'I');
+		$Out = $pdf->Output("bao_cao_karaoke_bdc.pdf", 'I');
 		unset($pdf);
 		return $Out;
 	}
@@ -68,7 +69,7 @@ class Viewer {
 		$pdf->AddPage();
 		$pdf->SetFont('arial', 'N', 8);					
 		$pdf->writeHTML($html, true, false, true, false, '');
-		$Out = $pdf->Output('custompdf.pdf', 'I');
+		$Out = $pdf->Output('phieu_karaoke_bdc.pdf', 'I');
 		unset($Out);
 		return $Out;
 	}			

@@ -39,6 +39,11 @@ class Tracking extends Object{
 	function getCollectAll($IdTerm){$mCollect = new \MVC\Mapper\CollectGeneral();$CollectAll = $mCollect->findByTracking1(array($IdTerm, $this->getDateStart(), $this->getDateEnd()));return $CollectAll;}
 	function getCollectAllValue($IdTerm){$CollectAll = $this->getCollectAll($IdTerm);$Value = 0;while ($CollectAll->valid()){$Collect = $CollectAll->current();$Value += $Collect->getValue();$CollectAll->next();}return $Value;}
 	function getCollectAllValuePrint($IdTerm){$N = new \MVC\Library\Number($this->getCollectAllValue($IdTerm));return $N->formatCurrency()." đ";}
+	function getCollectAllSum(){
+		$mCollect = new \MVC\Mapper\CollectGeneral();
+		$CollectAll = $mCollect->findByTracking(array($this->getDateStart(), $this->getDateEnd()));
+		return $CollectAll;
+	}
 	
 	function getCollectAllSumValue(){
 				
@@ -53,7 +58,7 @@ class Tracking extends Object{
 		}
 		
 		//thu bán hàng
-		$Value += $this->getSessionAllValue();
+		//$Value += $this->getSessionAllValue();
 		
 		return $Value;
 	}
@@ -70,8 +75,7 @@ class Tracking extends Object{
 	function getPaidAllValue($IdTerm){$PaidAll = $this->getPaidAll($IdTerm);$Value = 0;while ($PaidAll->valid()){$Paid = $PaidAll->current();$Value += $Paid->getValue();$PaidAll->next();}return $Value;}
 	function getPaidAllValuePrint($IdTerm){$N = new \MVC\Library\Number($this->getPaidAllValue($IdTerm));return $N->formatCurrency()." đ";}
 	function getPaidAllValueStrPrint($IdTerm){$N = new \MVC\Library\Number($this->getPaidAllValue($IdTerm));return $N->readDigit()."đồng";}	
-	function getPaidAllSum(){$mPaid = new \MVC\Mapper\PaidGeneral();$PaidAll = $mPaid->findByTracking(array($this->getDateStart(), $this->getDateEnd()));return $PaidAll;}
-	
+	function getPaidAllSum(){$mPaid = new \MVC\Mapper\PaidGeneral();$PaidAll = $mPaid->findByTracking(array($this->getDateStart(), $this->getDateEnd()));return $PaidAll;}	
 	function getPaidAllSumValue(){
 		//Các khoản chi tổng quát
 		$PaidAll = $this->getPaidAllSum();
@@ -80,14 +84,15 @@ class Tracking extends Object{
 			$Paid = $PaidAll->current();
 			$Value += $Paid->getValue();
 			$PaidAll->next();
-		}
-		
+		}		
 		//Các khoản chi lương
-		$Value += $this->getPaidPayRollAllValue();
-		
+		//$Value += $this->getPaidPayRollAllValue();
 		return $Value;
 	}
 	function getPaidAllSumValuePrint(){$N = new \MVC\Library\Number($this->getPaidAllSumValue());return $N->formatCurrency()." đ";}
+	
+	function getPaidGeneralValue(){return ($this->getPaidAllSumValue() + $this->getPaidPayRollAllValue());}	
+	function getPaidGeneralValuePrint(){$N = new \MVC\Library\Number($this->getPaidGeneralValue());return $N->formatCurrency()." đ";}
 	
 	//--------------------------------------------------------------------------------	
 	//NHẬP HÀNG
@@ -105,7 +110,33 @@ class Tracking extends Object{
 	//BÁN HÀNG
 	//--------------------------------------------------------------------------------
 	function getSessionAll(){$mSession = new \MVC\Mapper\Session();$Date1 = \date("Y-m-d", strtotime($this->getDateStart()))." 8:0:0";$Date2 = \date("Y-m-d", strtotime("+1 day", strtotime($this->getDateEnd())))." 7:59:59";$SessionAll = $mSession->findByTracking( array($Date1, $Date2) );return $SessionAll;}	
-	function getSessionAllValue(){$SessionAll = $this->getSessionAll();$Value = 0;while ($SessionAll->valid()){$Session = $SessionAll->current();$Value += $Session->getValue();$SessionAll->next();}return $Value;}
+	function getSessionAllValue(){		
+		return $this->getSessionAllValue1() + $this->getSessionAllValue2();
+	}
+	function getSessionAllValue1(){
+		$SessionAll = $this->getSessionAll();
+		$Value = 0;
+		while ($SessionAll->valid()){
+			$Session = $SessionAll->current();
+			if ($Session->getStatus()==1)
+				$Value += $Session->getValue();
+			$SessionAll->next();
+		}
+		return $Value;
+	}
+	function getSessionAllValue2(){
+		$SessionAll = $this->getSessionAll();
+		$Value = 0;
+		while ($SessionAll->valid()){
+			$Session = $SessionAll->current();
+			if ($Session->getStatus()==2)
+				$Value += $Session->getValue();
+			$SessionAll->next();
+		}
+		return $Value;
+	}
+	function getSessionAllValue1Print(){$N = new \MVC\Library\Number($this->getSessionAllValue1());return $N->formatCurrency()." đ";}
+	function getSessionAllValue2Print(){$N = new \MVC\Library\Number($this->getSessionAllValue2());return $N->formatCurrency()." đ";}
 	function getSessionAllValuePrint(){$N = new \MVC\Library\Number($this->getSessionAllValue());return $N->formatCurrency()." đ";}
 	
 	//---------------------------------------------------------------------------------------------
@@ -230,14 +261,37 @@ class Tracking extends Object{
 	function getCustomerFullSessionAll($IdCustomer){$mSession = new \MVC\Mapper\Session();$Date1 = \date("Y-m-d", strtotime($this->getDateStart()))." 8:0:0";$Date2 = \date("Y-m-d", strtotime("+1 day", strtotime($this->getDateEnd())))." 7:59:59";$SessionAll = $mSession->findByTrackingFullCustomer( array($IdCustomer, $Date1, $Date2) );return $SessionAll;}
 	function getCustomerFullSessionAllValue($IdCustomer){$SessionAll = $this->getCustomerFullSessionAll($IdCustomer);$Value = 0;while ($SessionAll->valid()){$Session = $SessionAll->current();$Value += $Session->getValue();$SessionAll->next();}return $Value;}
 	function getCustomerFullSessionAllValuePrint($IdCustomer){$N = new \MVC\Library\Number($this->getCustomerFullSessionAllValue($IdCustomer));return $N->formatCurrency()." đ";}	
-	//CÁC GIAO DỊCH CỦA KHÁCH HÀNG TRONG KÌ
+	
+	//CÁC GIAO DỊCH THU TIỀN KHÁCH HÀNG TRONG KÌ
 	function getCustomerCollectAll($IdCustomer){$mCC = new \MVC\Mapper\CollectCustomer();$Date1 = \date("Y-m-d", strtotime($this->getDateStart() ));$Date2 = \date("Y-m-d", strtotime($this->getDateEnd()   ));$CollectAll = $mCC->findByTracking( array($IdCustomer, $Date1, $Date2) );return $CollectAll;}
 	function getCustomerCollectAllValue($IdCustomer){$CollectAll = $this->getCustomerCollectAll($IdCustomer);$Value = 0;while ($CollectAll->valid()){$Collect = $CollectAll->current();$Value += $Collect->getValue();$CollectAll->next();}return $Value;}
 	function getCustomerCollectAllValuePrint($IdCustomer){$N = new \MVC\Library\Number($this->getCustomerCollectAllValue($IdCustomer));return $N->formatCurrency()." đ";}
+	
+	function getCustomerCollectGeneral(){
+		$mCC = new \MVC\Mapper\CollectCustomer();
+		$Date1 = \date("Y-m-d", strtotime($this->getDateStart() ));
+		$Date2 = \date("Y-m-d", strtotime($this->getDateEnd()   ));
+		$CollectAll = $mCC->findByTracking1( array($Date1, $Date2) );
+		return $CollectAll;
+	}
+	
+	function getCustomerCollectGeneralValue(){
+		$CollectAll = $this->getCustomerCollectGeneral();
+		$Value = 0;
+		while ($CollectAll->valid()){
+			$Collect = $CollectAll->current();
+			$Value += $Collect->getValue();
+			$CollectAll->next();
+		}
+		return $Value;
+	}
+	function getCustomerCollectGeneralValuePrint(){$N = new \MVC\Library\Number( $this->getCustomerCollectGeneralValue() );return $N->formatCurrency()." đ";}	
+	
 	//NỢ MỚI
 	function getCustomerNewDebt($IdCustomer){return \abs($this->getCustomerOldDebt($IdCustomer)) + $this->getCustomerDebtSessionAllValue($IdCustomer) - $this->getCustomerCollectAllValue($IdCustomer);}
 	function getCustomerNewDebtPrint($IdCustomer){$N = new \MVC\Library\Number( $this->getCustomerNewDebt($IdCustomer) );return $N->formatCurrency()." đ";}	
-	function getCustomerNewDebtStrPrint($IdCustomer){$N = new \MVC\Library\Number( $this->getCustomerNewDebt($IdCustomer) );return $N->readDigit();}	
+	function getCustomerNewDebtStrPrint($IdCustomer){$N = new \MVC\Library\Number( $this->getCustomerNewDebt($IdCustomer) );return $N->readDigit();}
+	
 	
 	//CÁC LIÊN KẾT CỦA CÁC NGÀY TRONG THÁNG
 	function getURLDayAll(){
