@@ -24,9 +24,7 @@
 			$SD = $mSD->find($IdSessionDetail);										
 			$Session = $SD->getSession();
 			$mSD->delete(array($IdSessionDetail));
-			
-			$Session->setValue( $Session->getReValue() );
-			$mSession->update($Session);
+						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------												

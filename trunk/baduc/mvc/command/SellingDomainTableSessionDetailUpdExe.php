@@ -30,11 +30,7 @@
 			$SD->setCount($Count);
 			$SD->setPrice($Price);
 			$mSD->update($SD);
-			
-			$Session = $SD->getSession();
-			$Session->setValue( $Session->getReValue() );
-			$mSession->update($Session);
-			
+									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------												

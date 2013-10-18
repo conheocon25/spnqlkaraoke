@@ -28,7 +28,6 @@
 			
 			//Thanh toán đủ
 			$Session->setStatus(1);
-			$Session->setValue( $Session->getReValue() );
 			$mSession->update($Session);
 			
 			//-------------------------------------------------------------

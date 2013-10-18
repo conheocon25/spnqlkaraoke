@@ -30,7 +30,11 @@
 		</tr>
 		<tr>
 			<th align="right" width="70%"><B>DƯ NỢ MỚI</B></th>
-			<th align="right" width="30%"><H3 tal:content="php:Tracking->getCustomerNewDebtPrint( Customer->getId() )" /></th>
+			<th align="right" width="30%">
+				<font color="red" size="12">
+					<b tal:content="php:Tracking->getCustomerNewDebtPrint( Customer->getId() )" />
+				</font>
+			</th>
 		</tr>		
 	</table>
 	<p /><p><b><font size="14">CHI TIẾT GIAO DỊCH TRONG KÌ</font></b></p>	
