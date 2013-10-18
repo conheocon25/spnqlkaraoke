@@ -33,43 +33,32 @@ class Tracking extends Object{
 	//GET LISTs
 	//-------------------------------------------------------------------------------
 	
-	//-------------------------------------------------------------------------------
-	//KHOẢN THU
+	//-------------------------------------------------------------------------------	
+	//TỔNG HỢP THU = TỔNG THU DOANH SỐ + TỔNG THU KHÁC + TỔNG THU KHÁCH HÀNG
 	//-------------------------------------------------------------------------------
 	function getCollectAll($IdTerm){$mCollect = new \MVC\Mapper\CollectGeneral();$CollectAll = $mCollect->findByTracking1(array($IdTerm, $this->getDateStart(), $this->getDateEnd()));return $CollectAll;}
 	function getCollectAllValue($IdTerm){$CollectAll = $this->getCollectAll($IdTerm);$Value = 0;while ($CollectAll->valid()){$Collect = $CollectAll->current();$Value += $Collect->getValue();$CollectAll->next();}return $Value;}
 	function getCollectAllValuePrint($IdTerm){$N = new \MVC\Library\Number($this->getCollectAllValue($IdTerm));return $N->formatCurrency()." đ";}
-	function getCollectAllSum(){
-		$mCollect = new \MVC\Mapper\CollectGeneral();
-		$CollectAll = $mCollect->findByTracking(array($this->getDateStart(), $this->getDateEnd()));
-		return $CollectAll;
-	}
+	function getCollectAllSum(){ $mCollect = new \MVC\Mapper\CollectGeneral(); $CollectAll = $mCollect->findByTracking(array($this->getDateStart(), $this->getDateEnd())); return $CollectAll; }
 	
-	function getCollectAllSumValue(){
-				
+	function getCollectAllSumValue(){				
 		$mCollect = new \MVC\Mapper\CollectGeneral();
-		$CollectAll = $mCollect->findByTracking(array($this->getDateStart(), $this->getDateEnd()));
-		
+		$CollectAll = $mCollect->findByTracking(array($this->getDateStart(), $this->getDateEnd()));		
 		$Value = 0;
 		while ($CollectAll->valid()){
 			$Collect = $CollectAll->current();
 			$Value += $Collect->getValue();
 			$CollectAll->next();
-		}
-		
-		//thu bán hàng
-		//$Value += $this->getSessionAllValue();
-		
+		}				
 		return $Value;
 	}
+	function getCollectAllSumValuePrint(){$N = new \MVC\Library\Number( $this->getCollectAllSumValue() );return $N->formatCurrency();}
 	
-	function getCollectAllSumValuePrint(){
-		$N = new \MVC\Library\Number( $this->getCollectAllSumValue() );
-		return $N->formatCurrency();
-	}
-	
+	function getCollectGeneralValue(){return ($this->getCollectAllSumValue() + $this->getSessionAllValue() + $this->getCustomerCollectGeneralValue() );}
+	function getCollectGeneralValuePrint(){$N = new \MVC\Library\Number($this->getCollectGeneralValue());return $N->formatCurrency()." đ";}
+		
 	//-------------------------------------------------------------------------------
-	//KHOẢN CHI
+	//TỔNG HỢP CHI = TỔNG CHI NHẬP HÀNG + TỔNG CHI KHÁC + TỔNG CHI LƯƠNG
 	//-------------------------------------------------------------------------------
 	function getPaidAll($IdTerm){$mPaid = new \MVC\Mapper\PaidGeneral();$PaidAll = $mPaid->findByTracking1(array($IdTerm, $this->getDateStart(), $this->getDateEnd()));return $PaidAll;}
 	function getPaidAllValue($IdTerm){$PaidAll = $this->getPaidAll($IdTerm);$Value = 0;while ($PaidAll->valid()){$Paid = $PaidAll->current();$Value += $Paid->getValue();$PaidAll->next();}return $Value;}
@@ -84,14 +73,14 @@ class Tracking extends Object{
 			$Paid = $PaidAll->current();
 			$Value += $Paid->getValue();
 			$PaidAll->next();
-		}		
-		//Các khoản chi lương
-		//$Value += $this->getPaidPayRollAllValue();
+		}				
 		return $Value;
 	}
 	function getPaidAllSumValuePrint(){$N = new \MVC\Library\Number($this->getPaidAllSumValue());return $N->formatCurrency()." đ";}
 	
-	function getPaidGeneralValue(){return ($this->getPaidAllSumValue() + $this->getPaidPayRollAllValue());}	
+	function getPaidGeneralValue(){
+		return ($this->getPaidAllSumValue() + $this->getPaidPayRollAllValue() + $this->getOrderAllSumValue() );
+	}
 	function getPaidGeneralValuePrint(){$N = new \MVC\Library\Number($this->getPaidGeneralValue());return $N->formatCurrency()." đ";}
 	
 	//--------------------------------------------------------------------------------	
@@ -221,20 +210,23 @@ class Tracking extends Object{
 	function getCustomerOldDebt($IdCustomer){
 		$mSession = new \MVC\Mapper\Session();
 		$mCC = new \MVC\Mapper\CollectCustomer();
-		$Date1 = \date("Y-m-d", strtotime("2013-1-1"));
-		$Date2 = \date("Y-m-d", strtotime("-1 day", strtotime($this->getDateStart())));		
-		
+		$Date1 = \date("Y-m-d", strtotime("2013-1-1"));		
+		$Date2 = \date("Y-m-d", strtotime($this->getDateStart()))." 7:59:0";
+						
 		//Tính phiếu nợ trước đó
 		$SessionAll = $mSession->findByTrackingDebtCustomer( array($IdCustomer, $Date1, $Date2) );
 		$ValueSessionAll = 0;
 		while ($SessionAll->valid()){
 			$Session = $SessionAll->current();
-			$ValueSessionAll += $Session->getValue();
+			if ($Session->getStatus()==2)
+				$ValueSessionAll += $Session->getValue();
 			$SessionAll->next();
 		}
 		
 		//Tính tiền trả trước đó
-		$CollectAll = $mCC->findByTracking( array($IdCustomer, $Date1, $Date2) );				
+		$Date11 = \date("Y-m-d", strtotime("2013-1-1"));
+		$Date21 = \date("Y-m-d", strtotime("-1 day", strtotime($this->getDateStart())));
+		$CollectAll = $mCC->findByTracking( array($IdCustomer, $Date11, $Date21) );				
 		$ValueCollectAll = 0;
 		while ($CollectAll->valid()){
 			$Collect = $CollectAll->current();
