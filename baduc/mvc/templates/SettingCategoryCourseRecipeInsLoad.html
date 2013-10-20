@@ -1,15 +1,69 @@
-<!DOCTYPE html> 
-<html>
+<!DOCTYPE html>
+<html style="overflow-y:hidden;" lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS_Mobile"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS_Mobile"/>
-	</head>
-<body>
-	<div data-role="page" class="type-interior">
-		<span metal:use-macro="macros.xhtml/header"/>
-		<div data-role="content">
-			<div class="content-primary">				
-				<form tal:attributes="action Course/getURLRecipeInsExe" method="post" data-ajax="false">
+		<div metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<div metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
+	</head>	
+	<body data-menu-position="closed">
+		<div metal:use-macro="mAdmin.xhtml/Header"/>		
+		<div id="content">
+			<div metal:use-macro="mAdmin.xhtml/ContentHeader"/>
+			<div metal:use-macro="mAdmin.xhtml/LocationBar"/>
+			<div class="container-fluid">							
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon"><i class="icon-align-justify"></i></span>
+								<h5>THÊM MỚI</h5>
+							</div>
+							<div class="widget-content nopadding">
+								<form class="form-horizontal" tal:attributes="action Course/getURLRecipeInsExe" method="post">
+									<div class="control-group">
+										<label class="control-label" for="Name">TÊN MÓN</label>
+										<div class="controls">
+											<input id="Name" name="Name" readonly="true" type="text" class="form-control input-sm" tal:attributes="value php:Course->getName() . ' / ' . Course->getUnit()"/>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="Value1">Tỉ lệ bán</label>
+										<div class="controls">
+											<input id="Value2" name="Value2" type="text" class="form-control input-sm" value="1"/>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="IdResource">TÊN HÀNG</label>
+										<div class="controls">
+											<select name="IdResource" id="IdResource" class="form-control input-sm">
+												<option tal:repeat="Resource ResourceAll" tal:attributes="value Resource/getId">
+													<span tal:content="Resource/getSupplier/getName" /> / <span tal:content="Resource/getName" /> / <span tal:content="Resource/getUnit" />
+												</option>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="Value1">Tỉ lệ nhập</label>
+										<div class="controls">
+											<input id="Value1" name="Value1" type="text" class="form-control input-sm" value="1"/>
+										</div>
+									</div>									
+									<div class="form-actions">
+										<button class="btn btn-primary btn-sm" type="submit"><i class="icon-download-alt"/> Lưu</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div metal:use-macro="mAdmin.xhtml/Footer"/>
+		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</body>
+</html>
+<!--
+
+				<form tal:attributes="" method="post" data-ajax="false">
 					<ul data-role="listview" data-theme="c" data-dividertheme="b">
 						<li data-role="list-divider" tal:content="Title" />
 						<li data-role="fieldcontain">
@@ -19,24 +73,8 @@
 									<span tal:content="Resource/getName" /> (<span tal:content="Resource/getUnit" />)
 								</option>
 							</select>
-						</li>
-						<li data-role="fieldcontain">
-							<label for="Value1" class="text">Giá trị 1:</label>
-							<input class="required"  id="Value1" name="Value1" type="text" value="1" />
-						</li>
-						<li data-role="fieldcontain">
-							<label for="Value2" class="text">Giá trị 2:</label>
-							<input class="required"  id="Value2" name="Value2" type="text" value="1" />
-						</li>
+						</li>						
 						<button data-corners="false" type="submit" data-theme="c"  data-icon="edit" name="submit" value="submit-value">Thêm mới</button>
 					</ul>
 				</form>
-			</div>
-			<div class="content-secondary">
-				
-			</div>
-		</div>
-		<span metal:use-macro="macros.xhtml/footer"/>
-	</div>
-</body>
-</html>
+!-->

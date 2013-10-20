@@ -1,7 +1,6 @@
 <?php
 Namespace MVC\Domain;
 require_once( "mvc/base/domain/DomainObject.php" );
-
 class TrackingStore extends Object{
 
     private $Id;
@@ -81,9 +80,12 @@ class TrackingStore extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-		
+	function getURLUpdLoad(){	return "/report/store/".$this->getIdTracking()."/".$this->getId()."/upd/load";}
+	function getURLUpdExe(){	return "/report/store/".$this->getIdTracking()."/".$this->getId()."/upd/exe";}
+	
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}
+	
 }
 ?>

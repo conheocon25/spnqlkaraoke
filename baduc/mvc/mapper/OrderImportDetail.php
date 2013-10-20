@@ -21,13 +21,11 @@ class OrderImportDetail extends Mapper implements \MVC\Domain\OrderImportDetailF
 		
 		$evalPriceStmt = sprintf("
 			SELECT 
-				avg(OD.price) 
+				avg(price) 
 			FROM
-				%s O INNER JOIN %s OD ON O.id = OD.idorder
-			WHERE OD.idresource=? AND O.date>=? AND O.date<=?
-			GROUP BY
-				OD.idresource
-		", $tblOrderImport, $tblOrderImportDetail);
+				%s
+			WHERE 	idresource=?
+		", $tblOrderImportDetail);
 		
 		$trackByCountStmt = sprintf("
 			select 
