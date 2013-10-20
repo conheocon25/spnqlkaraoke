@@ -19,6 +19,7 @@
 			$mTracking 	= new \MVC\Mapper\Tracking();
 			$mTS 		= new \MVC\Mapper\TrackingStore();
 			$mR2C  		= new \MVC\Mapper\R2C();
+			$mCourse  	= new \MVC\Mapper\Course();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -26,28 +27,46 @@
 			$Tracking 	= $mTracking->find($IdTrack);
 			if ($Tracking->getTrackingStore()->count()>0)
 				return self::statuses('CMD_OK');
+			$CourseAll = $mCourse->findAll();
 			
-			$R2CAll 	= $mR2C->findAll();
-			$Data 		= array();
-			$Sum 		= 0;
-			while ($R2CAll->valid()){
-				$R2C = $R2CAll->current();
-				$OldCount  		= $Tracking->getResourceOld( $R2C->getIdResource() );
-				$ImportCount  	= $Tracking->getResourceImport( $R2C->getIdResource() );
-				$ExportCount  	= $Tracking->getCountCourse( $R2C->getIdCourse() )*$R2C->getRate();
-				$PriceAverage  	= $R2C->getResource()->getPriceAverage();
+			while ($CourseAll->valid()){
+				$Course = $CourseAll->current();				
 				
-				$TS = new \MVC\Domain\TrackingStore(
-					null,					
-					$Tracking->getId(),
-					$R2C->getIdResource(),
-					$OldCount,
-					$ImportCount,
-					$ExportCount,
-					$PriceAverage
-				);
-				$mTS->insert($TS);				
-				$R2CAll->next();
+				//Tính phần nhập hàng
+				$R2CAll = $mR2C->findBy(array($Course->getId()));
+				
+				//Nếu có trong bảng ánh xạ mới tính toán
+				if ($R2CAll->count()>0){				
+					$R2CAll->rewind();
+					
+					$PriceAverage 	= 0;
+					$OldCount		= 0;
+					$ImportCount	= 0;
+					
+					//Nhiều nhà cung cấp cho một sản phẩm bán cho nên phải lấy tổng số lượng hoặc trung bình cộng giá
+					while ($R2CAll->valid()){
+						$R2C = $R2CAll->current();
+						$PriceAverage += $R2C->getResource()->getPriceAverage();						
+						$ImportCount  += $Tracking->getResourceImport( $R2C->getIdResource() );
+						$R2CAll->next();
+					}
+					$OldCount  	  += $Tracking->getCourseOld( $Course->getId() );
+					$PriceAverage = $PriceAverage/$R2CAll->count();																			
+					//Bán hàng thực tế
+					$ExportCount  	= $Tracking->getCountCourse( $Course->getId() );
+															
+					$TS = new \MVC\Domain\TrackingStore(
+						null,
+						$Tracking->getId(),
+						$Course->getId(),
+						$OldCount,
+						$ImportCount,
+						$ExportCount,
+						$PriceAverage
+					);
+					$mTS->insert($TS);								
+				}
+				$CourseAll->next();
 			}
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

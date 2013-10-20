@@ -19,7 +19,7 @@
 			$mTracking 	= new \MVC\Mapper\Tracking();
 			$mTS 		= new \MVC\Mapper\TrackingStore();
 			$mR2C 		= new \MVC\Mapper\R2C();
-			$mResource 	= new \MVC\Mapper\Resource();
+			$mCourse 	= new \MVC\Mapper\Course();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -28,20 +28,33 @@
 			if ($Tracking->getTrackingStore()->count()>0)
 				return self::statuses('CMD_OK');
 				
-			$R2CAll = $mR2C->findAll();
-			while($R2CAll->valid()){
-				$R2C = $R2CAll->current();
-				$TS = new \MVC\Domain\TrackingStore(
-					null,					
-					$Tracking->getId(),
-					$R2C->getIdResource(),
-					0,
-					0,
-					0,
-					$R2C->getResource()->getPriceAverage()
-				);
-				$mTS->insert($TS);
-				$R2CAll->next();
+			$CourseAll = $mCourse->findAll();
+			while($CourseAll->valid()){
+				$Course = $CourseAll->current();
+				
+				$R2CAll = $mR2C->findBy(array($Course->getId()));
+				if ($R2CAll->count()>0){
+				
+					$R2CAll->rewind();
+					$PriceAverage = 0;
+					while ($R2CAll->valid()){
+						$R2C = $R2CAll->current();
+						$PriceAverage += $R2C->getResource()->getPriceAverage();
+						$R2CAll->next();
+					}
+					$PriceAverage = $PriceAverage/$R2CAll->count();
+					$TS = new \MVC\Domain\TrackingStore(
+						null,
+						$Tracking->getId(),
+						$Course->getId(),
+						0,
+						0,
+						0,
+						$PriceAverage
+					);
+					$mTS->insert($TS);
+				}												
+				$CourseAll->next();
 			}			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

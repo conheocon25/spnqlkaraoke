@@ -18,8 +18,7 @@
 								<table class="table table-bordered table-striped table-hover data-table">
 									<thead>
 										<tr role="row">
-											<th width="35">STT</th>
-											<th><div class="text-right">NHÀ CUNG CẤP</div></th>
+											<th width="35">STT</th>											
 											<th><div class="text-left">TÊN HÀNG</div></th>
 											<th width="80"><div class="text-right">TỒN CŨ</div></th>
 											<th width="80"><div class="text-right">TRONG KÌ</div></th>
@@ -32,8 +31,7 @@
 									<tbody role="alert" aria-live="polite" aria-relevant="all">
 										<tr tal:repeat="TS Tracking/getTrackingStore" class="gradeA odd">
 											<td align="center" tal:content="repeat/TS/number"/>
-											<td align="right"><a tal:attributes="href TS/getURLUpdLoad" tal:content="TS/getResource/getSupplier/getName"/></td>
-											<td><span tal:content="TS/getResource/getName"/></td>
+											<td><span tal:content="TS/getCourse/getName"/></td>
 											<td align="right"><span tal:content="TS/getCountOldPrint"/></td>
 											<td align="right"><span tal:content="TS/getCountImportPrint"/></td>
 											<td align="right"><span tal:content="TS/getCountExportPrint"/></td>
@@ -42,7 +40,7 @@
 											<td align="right"><span tal:content="TS/getCountRemainValuePrint"/></td>
 										</tr>
 										<tr>
-											<td colspan="8" align="right"><B>TỔNG CỘNG</B></td>
+											<td colspan="7" align="right"><B>TỔNG CỘNG</B></td>
 											<td align="right"><span tal:content="Tracking/getTrackingStoreValuePrint"/></td>
 										</tr>
 									</tbody>
@@ -55,8 +53,7 @@
 								<table class="table table-bordered table-striped table-hover data-table">
 									<thead>
 										<tr role="row">
-											<th width="35">STT</th>
-											<th><div class="text-right">NHÀ CUNG CẤP</div></th>
+											<th width="35">STT</th>											
 											<th><div class="text-left">TÊN HÀNG</div></th>
 											<th width="80"><div class="text-right">TỒN CŨ</div></th>
 											<th width="80"><div class="text-right">TRONG KÌ</div></th>
@@ -69,17 +66,16 @@
 									<tbody role="alert" aria-live="polite" aria-relevant="all">
 										<tr tal:repeat="D Data" class="gradeA odd">
 											<td align="center" />
-											<td align="right"><span tal:content="php:D[1]"/></td>
-											<td><span tal:content="php:D[2]"/></td>
+											<td align="left"><span tal:content="php:D[1]"/></td>											
+											<td align="right"><span tal:content="php:D[2]"/></td>
 											<td align="right"><span tal:content="php:D[3]"/></td>
 											<td align="right"><span tal:content="php:D[4]"/></td>
 											<td align="right"><span tal:content="php:D[5]"/></td>
 											<td align="right"><span tal:content="php:D[6]"/></td>
 											<td align="right"><span tal:content="php:D[7]"/></td>
-											<td align="right"><span tal:content="php:D[8]"/></td>
 										</tr>
 										<tr>
-											<td colspan="8" align="right"><B>TỔNG CỘNG</B></td>
+											<td colspan="7" align="right"><B>TỔNG CỘNG</B></td>
 											<td align="right"><span tal:content="Sum"/></td>
 										</tr>
 									</tbody>

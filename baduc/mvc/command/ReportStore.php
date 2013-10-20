@@ -17,39 +17,63 @@
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
 			$mTracking 	= new \MVC\Mapper\Tracking();
+			$mCourse 	= new \MVC\Mapper\Course();
 			$mR2C  		= new \MVC\Mapper\R2C();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$Tracking 	= $mTracking->find($IdTrack);
-			$R2CAll 	= $mR2C->findAll();
+			$Tracking 	= $mTracking->find($IdTrack);			
+			$CourseAll = $mCourse->findAll();
+			
 			$Data 		= array();
 			$Sum 		= 0;
-			while ($R2CAll->valid()){
-				$R2C = $R2CAll->current();
-				$OldCount  		= $Tracking->getResourceOld( $R2C->getIdResource() );
-				$ImportCount  	= $Tracking->getResourceImport( $R2C->getIdResource() );
-				$ExportCount  	= $Tracking->getCountCourse( $R2C->getIdCourse() )*$R2C->getRate();
-				$PriceAverage  	= $R2C->getResource()->getPriceAverage();
-				$NewCount  		= $OldCount + $ImportCount - $ExportCount;
-				$NewValue  		= $NewCount*$PriceAverage;
+			while ($CourseAll->valid()){
+				$Course = $CourseAll->current();				
 				
-				$NNewValue		= new \MVC\Library\Number($NewValue);
-				$NPriceAverage	= new \MVC\Library\Number($PriceAverage);
+				//Tính phần nhập hàng
+				$R2CAll = $mR2C->findBy(array($Course->getId()));
 				
-				$Data[] = array(	$R2C->getIdResource(), 
-									$R2C->getResource()->getName(), 
-									$R2C->getResource()->getSupplier()->getName(), 
-									$OldCount, 
-									$ImportCount, 
-									$ExportCount, 
-									$NPriceAverage->formatCurrency(),
-									$NewCount,
-									$NNewValue->formatCurrency()
-				);
-				$Sum += $NewValue;
-				$R2CAll->next();
+				//Nếu có trong bảng ánh xạ mới tính toán
+				if ($R2CAll->count()>0){				
+					$R2CAll->rewind();
+					
+					$PriceAverage 	= 0;
+					$OldCount		= 0;
+					$ImportCount	= 0;
+					
+					//Nhiều nhà cung cấp cho một sản phẩm bán cho nên phải lấy tổng số lượng hoặc trung bình cộng giá
+					while ($R2CAll->valid()){
+						$R2C = $R2CAll->current();
+						$PriceAverage += $R2C->getResource()->getPriceAverage();						
+						$ImportCount  += $Tracking->getResourceImport( $R2C->getIdResource() );
+						$R2CAll->next();
+					}
+					$OldCount  	  += $Tracking->getCourseOld( $Course->getId() );
+					$PriceAverage = $PriceAverage/$R2CAll->count();
+																			
+					//Bán hàng thực tế
+					$ExportCount  	= $Tracking->getCountCourse( $Course->getId() );
+					
+					$NewCount  		= $OldCount + $ImportCount - $ExportCount;
+					$NewValue  		= $NewCount*$PriceAverage;
+					
+					$NNewValue		= new \MVC\Library\Number($NewValue);
+					$NPriceAverage	= new \MVC\Library\Number($PriceAverage);
+					
+					$Data[] = array(	
+						$Course->getId(), 
+						$Course->getName(),
+						$OldCount,
+						$ImportCount,
+						$ExportCount, 
+						$NPriceAverage->formatCurrency(),
+						$NewCount,
+						$NNewValue->formatCurrency()
+					);
+					$Sum += $NewValue;										
+				}
+				$CourseAll->next();
 			}
 			$NSum = new \MVC\Library\Number($Sum);
 			
