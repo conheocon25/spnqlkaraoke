@@ -28,7 +28,14 @@
 			$Category = $mCategory->find($IdCategory);
 			$ResourceAll = $mResource->findAll();
 			
-			$Title = mb_strtoupper("THIẾT LẬP / ".$Category->getName()." / ".$Course->getName()." ( ".$Course->getUnit()." ) / ÁNH XẠ /THÊM MỚI", 'UTF8');
+			$Title = "ÁNH XẠ";
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("DANH MỤC MÓN", "/setting/category"),
+				array(mb_strtoupper($Category->getName(), 'UTF8'), $Category->getURLCourse()),
+				array(mb_strtoupper($Course->getName(), 'UTF8'), $Course->getURLRecipe() )
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -37,8 +44,7 @@
 			$request->setObject("ResourceAll", $ResourceAll);
 			
 			$request->setProperty( "Title", $Title );
-			$request->setProperty( "URLHeader", $Course->getURLRecipe() );
-			
+			$request->setObject("Navigation", $Navigation);
 		}
 	}
 ?>

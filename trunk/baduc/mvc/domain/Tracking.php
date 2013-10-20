@@ -167,7 +167,7 @@ class Tracking extends Object{
 		
 		return $Count1 - $Count2;		
 	}
-	function getResourceOldPrint($IdResource){return \round( $this->getResourceOld($IdResource) ,1 );}	
+	function getResourceOldPrint($IdResource){return \round( $this->getResourceOld($IdResource) ,1 );}
 	function getResourceImport($IdResource){$mOD = new \MVC\Mapper\OrderImportDetail();$Count = $mOD->trackByCount( array($IdResource, $this->getDateStart(), $this->getDateEnd()) );return ($Count?$Count:0);}	
 	function getResourceExport($IdResource){
 		$mSD = new \MVC\Mapper\SessionDetail();
@@ -192,7 +192,22 @@ class Tracking extends Object{
 	function getResourceRemainValue($IdResource){$Count = $this->getResourceRemain($IdResource);$Price = $this->getResourcePrice($IdResource);return $Count*$Price;}	
 	function getResourceRemainValuePrint($IdResource){$N = new \MVC\Library\Number( $this->getResourceRemainValue($IdResource) );return $N->formatCurrency();}
 	
-	function getTrackingStoreValue(){$mTrackingStore = new \MVC\Mapper\TrackingStore();$TrackingStoreAll = $mTrackingStore->findBy(array($this->getId()));$Value = 0;while($TrackingStoreAll->valid()){ $TS = $TrackingStoreAll->current(); $Value += $TS->getCountRemainValue();$TrackingStoreAll->next();}		return $Value;}
+	function getTrackingStore(){
+		$mTrackingStore = new \MVC\Mapper\TrackingStore();
+		$TrackingStoreAll = $mTrackingStore->findBy(array($this->getId()));		
+		return $TrackingStoreAll;
+	}
+	
+	function getTrackingStoreValue(){
+		$TrackingStoreAll = $this->getTrackingStore();
+		$Value = 0;
+		while($TrackingStoreAll->valid()){ 
+			$TS = $TrackingStoreAll->current(); 
+			$Value += $TS->getCountRemainValue();
+			$TrackingStoreAll->next();
+		}
+		return $Value;
+	}
 	function getTrackingStoreValuePrint(){ $N = new \MVC\Library\Number( $this->getTrackingStoreValue() ); return $N->formatCurrency();}
 	
 	//-------------------------------------------------------------------------------------
@@ -340,7 +355,11 @@ class Tracking extends Object{
 	function getURLCollectGeneral(){return "/report/collect/".$this->getId();}
 	function getURLImportGeneral(){return "/report/import/".$this->getId()."/general";}			
 	function getURLEvalStore(){return "/report/store/".$this->getId()."/eval";}
+	
 	function getURLStore(){return "/report/store/".$this->getId();}
+	function getURLStoreInit(){return "/report/store/".$this->getId()."/init";}
+	function getURLStoreEvaluate(){return "/report/store/".$this->getId()."/evaluate";}
+	
 	function getURLCourse(){return "/report/course/".$this->getId();}		
 	function getURLHours(){return "/report/hours/".$this->getId();}
 	function getURLGeneral(){return "/report/general/".$this->getId();}		

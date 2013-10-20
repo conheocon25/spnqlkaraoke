@@ -11,7 +11,7 @@
 			<view>SigninExe</view>
 			<status value="CMD_OK"><forward>App</forward></status>
 			<status value="CMD_NO_AUTHOR"><forward>Home</forward></status>
-		</command>		
+		</command>
 		<command name="SignoutLoad"><view>SignoutLoad</view></command>
 		<command name="SignoutExe"><view>SignoutExe</view><status value="CMD_OK"><forward>Home</forward></status></command>				
 		<command name="App"><view>App</view></command>
@@ -57,11 +57,17 @@
 		<command name="ReportImportGeneral"><view>ReportImportGeneral</view></command>		
 		<command name="ReportCollectGeneral"><view>ReportCollectGeneral</view></command>				
 		<command name="ReportCourse"><view>ReportCourse</view></command>
-		<command name="ReportHours"><view>ReportHours</view></command>
-		<command name="ReportStore"><view>ReportStore</view></command>
-		<command name="ReportEvalStore"><view>ReportEvalStore</view></command>
+		<command name="ReportHours"><view>ReportHours</view></command>		
 		<command name="ReportGeneral"><view>ReportGeneral</view></command>
-										
+				
+		<command name="ReportStore"><view>ReportStore</view></command>
+		<command name="ReportStoreInit">
+			<view>ReportStoreInit</view>		
+			<status value="CMD_OK"><forward>ReportStore</forward></status>					
+		</command>
+		<command name="ReportStoreEvaluate"><view>ReportStoreEvaluate</view></command>
+		<command name="ReportStorePrint"><view>ReportStorePrint</view></command>
+		
 		<!-- ============================================================================== -->
 		<!-- SELLING.DOMAIN		 															-->
 		<!-- ============================================================================== -->				

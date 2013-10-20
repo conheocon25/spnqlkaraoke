@@ -18,26 +18,37 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
+			$mResource = new \MVC\Mapper\Resource();
 			$mCategory = new \MVC\Mapper\Category();
 			$mCourse = new \MVC\Mapper\Course();
 			$mR2C = new \MVC\Mapper\R2C();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
+			//-------------------------------------------------------------
+			$ResourceAll = $mResource->findAll();
 			$Course = $mCourse->find($IdCourse);
 			$Category = $mCategory->find($IdCategory);
 			$Recipe = $mR2C->find($IdRecipe);
-			$Title = mb_strtoupper("THIẾT LẬP / ".$Category->getName()." / ".$Course->getName()." / ÁNH XẠ /CẬP NHẬT", 'UTF8');
+						
+			$Title = "ÁNH XẠ";
+			$Navigation = array(
+				array("ỨNG DỤNG", "/app"),
+				array("THIẾT LẬP", "/setting"),
+				array("DANH MỤC MÓN", "/setting/category"),
+				array(mb_strtoupper($Category->getName(), 'UTF8'), $Category->getURLCourse()),
+				array(mb_strtoupper($Course->getName(), 'UTF8'), $Course->getURLRecipe() )
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
+			$request->setObject("ResourceAll", $ResourceAll);
 			$request->setObject("Course", $Course);
 			$request->setObject("Recipe", $Recipe);
 			
 			$request->setProperty( "Title", $Title );
-			$request->setProperty( "URLHeader", $Course->getURLRecipe() );
+			$request->setObject("Navigation", $Navigation);
 			
 		}
 	}
