@@ -148,18 +148,18 @@ class Tracking extends Object{
 	//-------------------------------------------------------------------------------------
 	//THEO DÕI SỐ TỒN KHO
 	//-------------------------------------------------------------------------------------		
-	function getResourceOld($IdResource){
-		$mTracking 	= new \MVC\Mapper\Tracking();
-		$mTS 		= new \MVC\Mapper\TrackingStore();
+	function getCourseOld($IdCourse){
+		$mTracking 		= new \MVC\Mapper\Tracking();
+		$mTS 			= new \MVC\Mapper\TrackingStore();
 		$TrackingAll 	= $mTracking->findByNearest(array($this->getDateStart()));
 		
 		if ($TrackingAll->count()==0)
 			return -1;
 		
 		$IdTracking = $TrackingAll->current()->getId();
-		$TSAll = $mTS->findByResource( array($IdTracking, $IdResource));
+		$TSAll = $mTS->findByCourse( array($IdTracking, $IdCourse));
 		if ($TSAll->count()==0)
-			return -2;			
+			return -2;
 		return $TSAll->current()->getCountRemain();
 	}
 	function getResourceOldPrint($IdResource){return \round( $this->getResourceOld($IdResource) ,1 );}

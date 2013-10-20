@@ -1,7 +1,6 @@
 <?php	
 Namespace MVC\Domain;
 require_once( "mvc/base/domain/DomainObject.php");
-
 class R2C extends Object{
 
     private $Id;
@@ -45,25 +44,16 @@ class R2C extends Object{
 	function setValue2( $Value2 ) {$this->Value2 = $Value2;$this->markDirty();}
 	function getValue2( ) {return $this->Value2;}
 	
-	function getRate(){
-		return ($this->getValue1()*$this->getValue2());
-	}
+	function getRate(){return ($this->getValue1()*$this->getValue2());}
+	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL SETTING.R2C
 	//-------------------------------------------------------------------------------
-	function getURLUpdLoad(){
-		return "/setting/category/".$this->getCourse()->getCategory()->getId()."/".$this->getIdCourse()."/recipe/".$this->getId()."/upd/load";
-	}
-	function getURLUpdExe(){
-		return "/setting/category/".$this->getCourse()->getCategory()->getId()."/".$this->getIdCourse()."/recipe/".$this->getId()."/upd/exe";
-	}
+	function getURLUpdLoad(){return "/setting/category/".$this->getCourse()->getCategory()->getId()."/".$this->getIdCourse()."/recipe/".$this->getId()."/upd/load";}
+	function getURLUpdExe(){return "/setting/category/".$this->getCourse()->getCategory()->getId()."/".$this->getIdCourse()."/recipe/".$this->getId()."/upd/exe";}
 	
-	function getURLDelLoad(){
-		return "/setting/category/".$this->getCourse()->getCategory()->getId()."/".$this->getIdCourse()."/recipe/".$this->getId()."/del/load";
-	}
-	function getURLDelExe(){
-		return "/setting/category/".$this->getCourse()->getCategory()->getId()."/".$this->getIdCourse()."/recipe/".$this->getId()."/del/exe";
-	}
+	function getURLDelLoad(){return "/setting/category/".$this->getCourse()->getCategory()->getId()."/".$this->getIdCourse()."/recipe/".$this->getId()."/del/load";}
+	function getURLDelExe(){return "/setting/category/".$this->getCourse()->getCategory()->getId()."/".$this->getIdCourse()."/recipe/".$this->getId()."/del/exe";}
 	//-------------------------------------------------------------------------------
 	//DEFINE URL SELLING
 	//-------------------------------------------------------------------------------
