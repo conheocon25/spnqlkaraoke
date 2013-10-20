@@ -15,7 +15,7 @@ class Tracking extends Object{
     
 	function getId() {return $this->Id;}	
 	function getIdPrint(){return "u" . $this->getId();}	
-	function getName(){$Name = 'BÁO CÁO THÁNG '.\date("m/Y", strtotime($this->getDateStart()));return $Name;}
+	function getName(){$Name = 'THÁNG '.\date("m/Y", strtotime($this->getDateStart()));return $Name;}
 	
     function setDateStart( $DateStart ) {$this->DateStart = $DateStart;$this->markDirty();}   
 	function getDateStart( ) {return $this->DateStart;}	
@@ -128,6 +128,7 @@ class Tracking extends Object{
 	function getSessionAllValue2Print(){$N = new \MVC\Library\Number($this->getSessionAllValue2());return $N->formatCurrency()." đ";}
 	function getSessionAllValuePrint(){$N = new \MVC\Library\Number($this->getSessionAllValue());return $N->formatCurrency()." đ";}
 	
+	
 	//---------------------------------------------------------------------------------------------
 	//TÍNH SỐ DƯ CUỐI CÙNG	
 	//---------------------------------------------------------------------------------------------
@@ -146,52 +147,24 @@ class Tracking extends Object{
 	
 	//-------------------------------------------------------------------------------------
 	//THEO DÕI SỐ TỒN KHO
-	//-------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------		
 	function getResourceOld($IdResource){
-		$mOD = new \MVC\Mapper\OrderImportDetail();
-		$Date1 = "2013-1-1";
-		$Date2 = $this->getDateStart()." 7:59:59";
+		$mTracking 	= new \MVC\Mapper\Tracking();
+		$mTS 		= new \MVC\Mapper\TrackingStore();
+		$TrackingAll 	= $mTracking->findByNearest(array($this->getDateStart()));
 		
-		//Tổng Nhập	
-		$Count1 = $mOD->trackByCount( array($IdResource, $Date1, $Date2) );
+		if ($TrackingAll->count()==0)
+			return -1;
 		
-		//Tổng Xuất
-		$mSD = new \MVC\Mapper\SessionDetail();
-		$SDAll = $mSD->trackByExport( array($IdResource, $Date1, $Date2 ) );
-		$Count2 = 0;
-		while ($SDAll->valid()){
-			$SD = $SDAll->current();
-			$Count2 += $SD->getCountExchange($IdResource);
-			$SDAll->next();
-		}
-		
-		return $Count1 - $Count2;		
+		$IdTracking = $TrackingAll->current()->getId();
+		$TSAll = $mTS->findByResource( array($IdTracking, $IdResource));
+		if ($TSAll->count()==0)
+			return -2;			
+		return $TSAll->current()->getCountRemain();
 	}
 	function getResourceOldPrint($IdResource){return \round( $this->getResourceOld($IdResource) ,1 );}
 	function getResourceImport($IdResource){$mOD = new \MVC\Mapper\OrderImportDetail();$Count = $mOD->trackByCount( array($IdResource, $this->getDateStart(), $this->getDateEnd()) );return ($Count?$Count:0);}	
-	function getResourceExport($IdResource){
-		$mSD = new \MVC\Mapper\SessionDetail();
-		$Date1 = \date("Y-m-d", strtotime($this->getDateStart()))." 8:0:0";
-		$Date2 = \date("Y-m-d", strtotime("+1 day", strtotime($this->getDateEnd())))." 7:59:59";
-		$SDAll = $mSD->trackByExport( array($IdResource, $Date1, $Date2 ) );
-		$Count = 0;
-		while ($SDAll->valid()){
-			$SD = $SDAll->current();
-			$Count += $SD->getCountExchange($IdResource);
-			$SDAll->next();
-		}
-		return $Count;
-	}
-	
-	function getResourceRemain($IdResource){$Count0 = $this->getResourceOld($IdResource);$Count1 = $this->getResourceImport($IdResource);$Count2 = $this->getResourceExport($IdResource);return ($Count0 + $Count1 - $Count2);}	
-	function getResourceRemainPrint($IdResource){return \round( $this->getResourceRemain($IdResource) ,1 );}
-	
-	function getResourcePrice($IdResource){$mOD = new \MVC\Mapper\OrderImportDetail();$Count = $mOD->evalPrice( array($IdResource, $this->getDateStart(), $this->getDateEnd()) );return ($Count?$Count:0);	}
-	function getResourcePricePrint($IdResource){$N = new \MVC\Library\Number($this->getResourcePrice($IdResource));return $N->formatCurrency();}
-	
-	function getResourceRemainValue($IdResource){$Count = $this->getResourceRemain($IdResource);$Price = $this->getResourcePrice($IdResource);return $Count*$Price;}	
-	function getResourceRemainValuePrint($IdResource){$N = new \MVC\Library\Number( $this->getResourceRemainValue($IdResource) );return $N->formatCurrency();}
-	
+		
 	function getTrackingStore(){
 		$mTrackingStore = new \MVC\Mapper\TrackingStore();
 		$TrackingStoreAll = $mTrackingStore->findBy(array($this->getId()));		
@@ -359,6 +332,7 @@ class Tracking extends Object{
 	function getURLStore(){return "/report/store/".$this->getId();}
 	function getURLStoreInit(){return "/report/store/".$this->getId()."/init";}
 	function getURLStoreEvaluate(){return "/report/store/".$this->getId()."/evaluate";}
+	function getURLStoreEmpty(){return "/report/store/".$this->getId()."/empty";}
 	
 	function getURLCourse(){return "/report/course/".$this->getId();}		
 	function getURLHours(){return "/report/hours/".$this->getId();}
