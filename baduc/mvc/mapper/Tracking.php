@@ -14,13 +14,14 @@ class Tracking extends Mapper implements \MVC\Domain\TrackingFinder{
 		$updateStmt = sprintf("update %s set date_start=?, date_end=?, estate_rate=? where id=?", $tblTracking);
 		$insertStmt = sprintf("insert into %s (date_start, date_end, estate_rate) values(?, ?, ?)", $tblTracking);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblTracking);
+		$findByNearestStmt = sprintf("select * from %s where date_start<? ORDER BY date_start DESC LIMIT 1 ", $tblTracking);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
-		
+		$this->findByNearestStmt = self::$PDO->prepare($findByNearestStmt);
     } 
     function getCollection( array $raw ) {
         return new TrackingCollection( $raw, $this );
@@ -36,10 +37,7 @@ class Tracking extends Mapper implements \MVC\Domain\TrackingFinder{
         return $obj;
     }
 
-    protected function targetClass() {        
-		return "Tracking";
-    }
-
+    protected function targetClass() {        return "Tracking";}
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 
 			$object->getDateStart(), 
@@ -49,8 +47,7 @@ class Tracking extends Mapper implements \MVC\Domain\TrackingFinder{
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
         $object->setId( $id );
-    }
-    
+    }    
     protected function doUpdate( \MVC\Domain\Object $object ) {
         $values = array( 
 			$object->getDateStart(), 
@@ -60,16 +57,13 @@ class Tracking extends Mapper implements \MVC\Domain\TrackingFinder{
 		);
         $this->updateStmt->execute( $values );
     }
-
-	protected function doDelete(array $values) {
-        return $this->deleteStmt->execute( $values );
-    }
-
-    function selectStmt() {
-        return $this->selectStmt;
-    }
-    function selectAllStmt() {
-        return $this->selectAllStmt;
+	protected function doDelete(array $values) {return $this->deleteStmt->execute( $values );}
+    function selectStmt() {return $this->selectStmt;}
+    function selectAllStmt() {return $this->selectAllStmt;}
+	
+	function findByNearest($values) {
+        $this->findByNearestStmt->execute( $values );
+        return new TrackingCollection( $this->findByNearestStmt->fetchAll(), $this );
     }
 	
 }

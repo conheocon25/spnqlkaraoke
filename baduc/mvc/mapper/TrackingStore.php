@@ -16,6 +16,7 @@ class TrackingStore extends Mapper implements \MVC\Domain\TrackingStoreFinder{
 		$deleteStmt = sprintf("delete from %s where id=?", $tblTrackingStore);
 		$deleteByTrackingStmt = sprintf("delete from %s where id_tracking=?", $tblTrackingStore);
 		$findByStmt = sprintf("select *  from %s where id_tracking=?", $tblTrackingStore);
+		$findByResourceStmt = sprintf("select *  from %s where id_tracking=? AND id_resource=?", $tblTrackingStore);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -24,7 +25,7 @@ class TrackingStore extends Mapper implements \MVC\Domain\TrackingStoreFinder{
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->deleteByTrackingStmt = self::$PDO->prepare($deleteByTrackingStmt);
 		$this->findByStmt = self::$PDO->prepare($findByStmt);
-		
+		$this->findByResourceStmt = self::$PDO->prepare($findByResourceStmt);
     } 
     function getCollection( array $raw ) {
         return new TrackingStoreCollection( $raw, $this );
@@ -74,25 +75,20 @@ class TrackingStore extends Mapper implements \MVC\Domain\TrackingStoreFinder{
         $this->updateStmt->execute( $values );
     }
 	
-	protected function doDelete(array $values) {
-        return $this->deleteStmt->execute( $values );
-    }
-
-    function selectStmt() {
-        return $this->selectStmt;
-    }
-    function selectAllStmt() {
-        return $this->selectAllStmt;
-    }
+	protected function doDelete(array $values) {return $this->deleteStmt->execute( $values );}
+    function selectStmt() {return $this->selectStmt;}
+    function selectAllStmt() {return $this->selectAllStmt;}
 	
-	function deleteByTracking(array $values) {
-        return $this->deleteByTrackingStmt->execute( $values );
-    }
+	function deleteByTracking(array $values) {return $this->deleteByTrackingStmt->execute( $values );}
 	
-	function findBy(array $values) {        
+	function findBy(array $values) {
 		$this->findByStmt->execute( $values );
         return new TrackingStoreCollection( $this->findByStmt->fetchAll(), $this );
     }
 	
+	function findByResource(array $values) {
+		$this->findByResourceStmt->execute( $values );
+        return new TrackingStoreCollection( $this->findByResourceStmt->fetchAll(), $this );
+    }	
 }
 ?>

@@ -7,17 +7,14 @@
 	
 	<body data-menu-position="closed">
 		<div metal:use-macro="mAdmin.xhtml/Header"/>
-		<div class="menu">
+		<div class="menu">			
 			<div id="sidebar">
-				<ul style="display: block;">
-					<li><a tal:attributes="href Tracking/getURLCustomer"><i class="icon-user" />CN. KHÁCH HÀNG</a></li>
-					<li><a target="blank" tal:attributes="href Tracking/getURLStore"><i class="icon-beer" />TK. KHO HÀNG</a></li>
-					<li><a target="blank" tal:attributes="href Tracking/getURLCourse"><i class="icon-beer" />TK. CÁC MÓN</a></li>
-					<li><a target="blank" tal:attributes="href Tracking/getURLHours"><i class="icon-beer" />TK. GIỜ HÁT</a></li>
-					<li><a target="blank" tal:attributes="href Tracking/getURLGeneral"><i class="icon-book" />TH. CHUNG</a></li>					
-					<li><a target="blank" tal:attributes="href Tracking/getURLCollectGeneral"><i class="icon-book" />TH. THU</a></li>
-					<li><a target="blank" tal:attributes="href Tracking/getURLPaidGeneral"><i class="icon-book" />TH. CHI</a></li>
-					<li><a tal:attributes="href Tracking/getURLStore"><i class="icon-book" />XEM TỒN KHO</a></li>
+				<ul style="display: block;">																				
+					<li tal:repeat="Tracking1 TrackingAll" tal:attributes="class php:Tracking1->getId()==Tracking->getId()?'active':'disable'">
+						<a tal:attributes="href Tracking1/getURLView">
+							<i class="icon-book" /><span tal:content="Tracking1/getName"/>							
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -26,8 +23,16 @@
 			<div metal:use-macro="mAdmin.xhtml/LocationBar"/>			
 			<div class="container-fluid">							
 				<div class="row">
-					<div class="col-xs-12">
-						
+					<div class="col-xs-12">																
+						<a class="btn btn-block btn-primary" target="blank" tal:attributes="href Tracking/getURLCollectGeneral">(1) TỔNG HỢP THU</a>
+						<a class="btn btn-block btn-primary" target="blank" tal:attributes="href Tracking/getURLPaidGeneral">(2) TỔNG HỢP CHI</a>						
+						<a class="btn btn-block btn-primary" target="blank" tal:attributes="href Tracking/getURLGeneral">(3) TỔNG HỢP THÁNG</a>
+						<BR/>
+						<a class="btn btn-block btn-primary" tal:attributes="href Tracking/getURLStore">XEM TỒN KHO</a>
+						<a class="btn btn-block btn-primary" tal:attributes="href Tracking/getURLCustomer">XEM CÔNG NỢ CỦA KHÁCH HÀNG</a>
+						<BR/>
+						<a class="btn btn-block btn-primary" target="blank" tal:attributes="href Tracking/getURLCourse">THỐNG KÊ CÁC MÓN</a>
+						<a class="btn btn-block btn-primary" target="blank" tal:attributes="href Tracking/getURLHours">THỐNG KÊ GIỜ HÁT</a>
 					</div>
 				</div>
 			</div>

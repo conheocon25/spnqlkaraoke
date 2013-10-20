@@ -42,7 +42,7 @@ class Resource extends Object{
 	function getPriceAverage(){
 		$mOD = new \MVC\Mapper\OrderImportDetail();
 		$Value = $mOD->evalPrice(array($this->getId()));
-		return $Value;
+		return round($Value, 0);
 	}
 	
 	function setUnit( $Unit ) {$this->unit = $Unit;$this->markDirty();}
