@@ -44,16 +44,16 @@
 		<tr>
 			<th width="5%" align="center"><B>STT</B></th>
 			<th width="20%" align="left"><B>NHÂN VIÊN</B></th>
-			<th width="15%" align="left"><B>CHỨC VỤ</B></th>
-			<th width="15%" align="right"><B>THỰC LÃNH</B></th>
-			<th width="15%" align="right"><B>PHỤ CẤP</B></th>
-			<th width="15%" align="right"><B>TẠM ỨNG</B></th>
+			<th width="24%" align="left"><B>DIỄN GIẢI</B></th>
+			<th width="12%" align="right"><B>THỰC LÃNH</B></th>
+			<th width="12%" align="right"><B>PHỤ CẤP</B></th>
+			<th width="12%" align="right"><B>TẠM ỨNG</B></th>
 			<th width="15%" align="right"><B>LƯƠNG CB</B></th>
 		</tr>
 		<tr tal:repeat="PPR Tracking/getPaidPayRollAll">
 			<td align="center" tal:content="repeat/PPR/number" />
 			<td align="left" tal:content="PPR/getEmployee/getName" />
-			<td align="left" tal:content="PPR/getEmployee/getJob" />
+			<td align="left" tal:content="PPR/getNote" />
 			<td align="right" tal:content="PPR/getValueRealPrint" />
 			<td align="right" tal:content="PPR/getValueSubPrint" />
 			<td align="right" tal:content="PPR/getValuePrePrint" />

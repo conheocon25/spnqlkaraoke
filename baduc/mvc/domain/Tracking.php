@@ -303,16 +303,16 @@ class Tracking extends Object{
 	function getPaidPayRollAll(){ $mPPR = new \MVC\Mapper\PaidPayRoll(); $PPRAll = $mPPR->findByTracking( array( $this->getDateStart(), $this->getDateEnd() )); return $PPRAll;}	
 	//TỔNG LƯƠNG CƠ BẢN
 	function getPaidPayRollAllValueBase(){ $PPRAll = $this->getPaidPayRollAll(); $Value = 0; $PPRAll->rewind(); while ( $PPRAll->valid() ){ $PPR = $PPRAll->current(); $Value += $PPR->getValueBase(); $PPRAll->next(); }  return $Value; }
-	function getPaidPayRollAllValueBasePrint(){ $N = new \MVC\Library\Number( $this->getPaidPayRollAllValueBase() ); return $N->formatCurrency(); }	
+	function getPaidPayRollAllValueBasePrint(){ $N = new \MVC\Library\Number( $this->getPaidPayRollAllValueBase() ); return $N->formatCurrency()." đ"; }	
 	//TỔNG LƯƠNG PHỤ CẤP
 	function getPaidPayRollAllValueSub(){$PPRAll = $this->getPaidPayRollAll();$Value = 0;$PPRAll->rewind();while ( $PPRAll->valid() ){$PPR = $PPRAll->current();$Value += $PPR->getValueSub();$PPRAll->next();}return $Value;}
-	function getPaidPayRollAllValueSubPrint(){$N = new \MVC\Library\Number( $this->getPaidPayRollAllValueSub() );return $N->formatCurrency();}	
+	function getPaidPayRollAllValueSubPrint(){$N = new \MVC\Library\Number( $this->getPaidPayRollAllValueSub() );return $N->formatCurrency()." đ";}	
 	//TỔNG LƯƠNG ỨNG TIỀN
 	function getPaidPayRollAllValuePre(){$PPRAll = $this->getPaidPayRollAll();$Value = 0;$PPRAll->rewind();while ( $PPRAll->valid() ){$PPR = $PPRAll->current();$Value += $PPR->getValuePre();$PPRAll->next();}return $Value;}
-	function getPaidPayRollAllValuePrePrint(){$N = new \MVC\Library\Number( $this->getPaidPayRollAllValuePre() );return $N->formatCurrency();}	
+	function getPaidPayRollAllValuePrePrint(){$N = new \MVC\Library\Number( $this->getPaidPayRollAllValuePre() );return $N->formatCurrency()." đ";}	
 	//TỔNG LƯƠNG THỰC LÃNH
 	function getPaidPayRollALlValueReal(){$PPRAll = $this->getPaidPayRollAll();$Value = 0;$PPRAll->rewind();while ( $PPRAll->valid() ){$PPR = $PPRAll->current();$Value += $PPR->getValueReal();$PPRAll->next();}return $Value;}
-	function getPaidPayRollAllValueRealPrint(){$N = new \MVC\Library\Number( $this->getPaidPayRollAllValueReal() );return $N->formatCurrency();}
+	function getPaidPayRollAllValueRealPrint(){$N = new \MVC\Library\Number( $this->getPaidPayRollAllValueReal() );return $N->formatCurrency()." đ";}
 	//TỔNG LƯƠNG
 	function getPaidPayRollAllValue(){$Value = $this->getPaidPayRollAllValueBase() + $this->getPaidPayRollAllValueSub();return $Value;}	
 	function getPaidPayRollAllValuePrint(){$N = new \MVC\Library\Number( $this->getPaidPayRollAllValue() );return $N->formatCurrency()." đ";}
@@ -334,7 +334,8 @@ class Tracking extends Object{
 	function getURLStoreEvaluate(){return "/report/store/".$this->getId()."/evaluate";}
 	function getURLStoreEmpty(){return "/report/store/".$this->getId()."/empty";}
 	
-	function getURLCourse(){return "/report/course/".$this->getId();}		
+	function getURLCourse(){return "/report/course/".$this->getId();}
+	function getURLResource(){return "/report/resource/".$this->getId();}
 	function getURLHours(){return "/report/hours/".$this->getId();}
 	function getURLGeneral(){return "/report/general/".$this->getId();}		
 	function getURLUpdLoad(){return "/report/".$this->getId()."/upd/load";}

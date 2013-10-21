@@ -107,6 +107,7 @@ RewriteRule ^report/store/([0-9]+)/empty$ 				?cmd=ReportStoreEmpty&IdTrack=$1 [
 RewriteRule ^report/store/([0-9]+)/init$ 				?cmd=ReportStoreInit&IdTrack=$1 [L]
 
 RewriteRule ^report/course/([0-9]+)$ 					?cmd=ReportCourse&IdTrack=$1 [L]
+RewriteRule ^report/resource/([0-9]+)$ 					?cmd=ReportResource&IdTrack=$1 [L]
 RewriteRule ^report/hours/([0-9]+)$ 					?cmd=ReportHours&IdTrack=$1 [L]
 RewriteRule ^report/general/([0-9]+)$ 					?cmd=ReportGeneral&IdTrack=$1 [L]
 
