@@ -48,7 +48,7 @@ class Resource extends Object{
 	function setUnit( $Unit ) {$this->unit = $Unit;$this->markDirty();}
     function getUnit( ) {return $this->unit;}
 	
-	function getPricePrint( ) {$num = new Number($this->price);return $num->formatCurrency()." đ";}
+	function getPricePrint( ) {$num = new \MVC\Library\Number($this->price);return $num->formatCurrency()." đ";}
 	function getDescription( ) {return $this->description;}
 	function setDescription( $description ) {$this->description = $description;$this->markDirty();}
 	

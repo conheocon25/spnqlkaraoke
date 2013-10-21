@@ -2,10 +2,10 @@
 -- version 3.5.5
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le: Jeu 17 Octobre 2013 à 02:57
--- Version du serveur: 5.5.33-31.1
--- Version de PHP: 5.3.17
+-- Host: localhost
+-- Generation Time: Oct 21, 2013 at 01:35 PM
+-- Server version: 5.5.33-31.1
+-- PHP Version: 5.3.17
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `spngroup_kara_baduc`
+-- Database: `spngroup_kara_baduc`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_app`
+-- Table structure for table `k3d_app`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_app` (
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `k3d_app` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `k3d_app`
+-- Dumping data for table `k3d_app`
 --
 
 INSERT INTO `k3d_app` (`id`, `name`, `phone`, `address`, `email`, `banner`, `prefix`, `alias`, `date_created`, `date_modified`, `date_activity`, `type`, `page_view`) VALUES
@@ -53,7 +53,7 @@ INSERT INTO `k3d_app` (`id`, `name`, `phone`, `address`, `email`, `banner`, `pre
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_category`
+-- Table structure for table `k3d_category`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_category` (
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `k3d_category` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 --
--- Contenu de la table `k3d_category`
+-- Dumping data for table `k3d_category`
 --
 
 INSERT INTO `k3d_category` (`id`, `name`, `picture`) VALUES
@@ -77,7 +77,7 @@ INSERT INTO `k3d_category` (`id`, `name`, `picture`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_collect_customer`
+-- Table structure for table `k3d_collect_customer`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_collect_customer` (
@@ -88,21 +88,24 @@ CREATE TABLE IF NOT EXISTS `k3d_collect_customer` (
   `note` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `k3d_customer_collect_1` (`idcustomer`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
--- Contenu de la table `k3d_collect_customer`
+-- Dumping data for table `k3d_collect_customer`
 --
 
 INSERT INTO `k3d_collect_customer` (`id`, `idcustomer`, `date`, `value`, `note`) VALUES
-(2, 15, '2013-05-18', 1000001, 'Trả lần 1, lẻ 1 đồng'),
 (3, 17, '2013-05-01', 2087000, 'thanh toán nợ cũ'),
-(4, 16, '2013-08-31', 18000000, 'Trả nợ phiếu');
+(4, 16, '2013-08-31', 18000000, 'Trả nợ phiếu'),
+(5, 15, '2013-07-14', 76000, 'Thái trả phiếu còn nợ 255.000'),
+(6, 15, '2013-07-10', 467000, 'Trừ vào lương tháng 06'),
+(7, 15, '2013-08-10', 2500000, 'Trừ vào lương tháng 07'),
+(8, 15, '2013-10-20', 2378000, 'Trừ lương tháng 09');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_collect_general`
+-- Table structure for table `k3d_collect_general`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_collect_general` (
@@ -116,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `k3d_collect_general` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
--- Contenu de la table `k3d_collect_general`
+-- Dumping data for table `k3d_collect_general`
 --
 
 INSERT INTO `k3d_collect_general` (`id`, `id_term`, `date`, `value`, `note`) VALUES
@@ -125,7 +128,7 @@ INSERT INTO `k3d_collect_general` (`id`, `id_term`, `date`, `value`, `note`) VAL
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_config`
+-- Table structure for table `k3d_config`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_config` (
@@ -136,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `k3d_config` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
--- Contenu de la table `k3d_config`
+-- Dumping data for table `k3d_config`
 --
 
 INSERT INTO `k3d_config` (`id`, `param`, `value`) VALUES
@@ -146,12 +149,12 @@ INSERT INTO `k3d_config` (`id`, `param`, `value`) VALUES
 (4, 'PRICE_HOUR_VIP_2', '100000'),
 (5, 'DISCOUNT', '0'),
 (6, 'ROW_PER_PAGE', '8'),
-(7, 'GUEST_VISIT', '3678');
+(7, 'GUEST_VISIT', '6024');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_course`
+-- Table structure for table `k3d_course`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_course` (
@@ -170,72 +173,72 @@ CREATE TABLE IF NOT EXISTS `k3d_course` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=165 ;
 
 --
--- Contenu de la table `k3d_course`
+-- Dumping data for table `k3d_course`
 --
 
 INSERT INTO `k3d_course` (`id`, `idcategory`, `name`, `shortname`, `unit`, `price1`, `price2`, `price3`, `price4`, `picture`) VALUES
-(15, 11, 'Thuốc Hút', 'Thuốc Hút', 'Gói', 25000, 0, 0, 0, NULL),
-(53, 8, 'Trà Xanh', 'Trà Xanh', 'Chai', 15000, 0, 0, 0, NULL),
+(15, 11, 'Thuốc hút', 'Thuốc hút', 'Gói', 25000, 0, 0, 0, NULL),
+(53, 8, 'Trà xanh', 'Trà xanh', 'Chai', 15000, 0, 0, 0, NULL),
 (54, 8, 'C2', 'C2', 'Chai', 15000, 0, 0, 0, NULL),
 (55, 8, 'Dr Thanh', 'Dr Thanh', 'Chai', 15000, 0, 0, 0, NULL),
-(56, 8, 'Nước Yến', 'Nước Yến', 'Lon', 15000, 0, 0, 0, NULL),
+(56, 8, 'Nước yến', 'Nước yến', 'Lon', 15000, 0, 0, 0, NULL),
 (107, 3, 'Heniken', 'Heniken', 'Chai', 18000, 0, 0, 0, ''),
-(108, 3, 'HENIKEN', 'HENIKEN', 'Lon', 20000, 0, 0, 0, ''),
-(110, 12, 'Trái Cây', 'Trái Cây', 'Dĩa', 50000, 0, 0, 0, ''),
-(111, 3, 'Sài Gòn đỏ', 'Sài Gòn đỏ', 'Chai', 12000, 0, 0, 0, ''),
-(112, 3, 'Sài gòn Special', 'Sài gòn Special', 'Chai', 15000, 0, 0, 0, ''),
-(113, 3, 'Sài gòn SPECIAL', 'Sài gòn SPECIAL', 'Lon', 17000, 0, 0, 0, ''),
+(108, 3, 'Heniken.', 'Heniken.', 'Lon', 20000, 0, 0, 0, ''),
+(110, 12, 'Trái cây', 'Trái cây', 'Dĩa', 50000, 0, 0, 0, ''),
+(111, 3, 'Sài gòn đỏ', 'Sài gòn đỏ', 'Chai', 12000, 0, 0, 0, ''),
+(112, 3, 'Sài gòn special', 'Sài gòn special', 'Chai', 15000, 0, 0, 0, ''),
+(113, 3, 'Sài gòn special.', 'Sài gòn special.', 'Lon', 17000, 0, 0, 0, ''),
 (114, 3, 'Bia 333', 'Bia 333', 'Lon', 16000, 0, 0, 0, ''),
 (115, 11, 'Thuốc 555', 'Thuốc 555', 'Gói', 30000, 0, 0, 0, ''),
 (116, 11, 'Thuốc Craven', 'Thuốc Craven', 'Gói', 25000, 0, 0, 0, ''),
 (117, 12, 'Oshi', 'Oshi', 'Gói', 10000, 0, 0, 0, ''),
-(118, 12, 'Chả Giò', 'Chả Giò', 'Gói', 15000, 0, 0, 0, ''),
-(119, 12, 'Khô Bò', 'Khô Bò', 'Gói', 10000, 0, 0, 0, ''),
+(118, 12, 'Chả giò', 'Chả giò', 'Gói', 15000, 0, 0, 0, ''),
+(119, 12, 'Khô bò', 'Khô bò', 'Gói', 10000, 0, 0, 0, ''),
 (120, 12, 'Mít sấy', 'Mít sấy', 'Gói', 15000, 0, 0, 0, ''),
-(121, 12, 'Xúc Xích', 'Xúc Xích', 'Gói', 35000, 0, 0, 0, ''),
-(122, 12, 'Chewing Gum', 'Chewing Gum', 'Cây', 6000, 0, 0, 0, ''),
-(123, 12, 'Đậu Phộng chiên', 'Đậu Phộng chiên', 'Gói', 10000, 0, 0, 0, ''),
-(124, 12, 'Đậu Phộng sấy', 'Đậu Phộng sấy', 'Gói', 10000, 0, 0, 0, ''),
-(125, 12, 'Đậu Phộng', 'Đậu Phộng', 'Gói', 7000, 0, 0, 0, ''),
+(121, 12, 'Xúc xích', 'Xúc xích', 'Gói', 35000, 0, 0, 0, ''),
+(122, 12, 'CW Doublemin', 'CW Doublemin', 'Cây', 6000, 0, 0, 0, ''),
+(123, 12, 'Đậu phộng chiên', 'Đậu phộng chiên', 'Gói', 10000, 0, 0, 0, ''),
+(124, 12, 'Đậu phộng sấy', 'Đậu phộng sấy', 'Gói', 10000, 0, 0, 0, ''),
+(125, 12, '(Đậu phộng)', '(Đậu phộng)', 'Gói', 12000, 0, 0, 0, ''),
 (126, 8, 'Lavie 500ml', 'Lavie 500ml', 'Chai', 10000, 0, 0, 0, ''),
 (127, 8, 'Pepsi', 'Pepsi', 'Lon', 15000, 0, 0, 0, ''),
 (128, 8, '7 Up', '7 Up', 'Lon', 15000, 0, 0, 0, ''),
-(129, 8, 'Mirinda Cam', 'Mirinda Cam', 'Lon', 15000, 0, 0, 0, ''),
-(134, 12, 'Khô Mực', 'Khô Mực', 'Con', 50000, 0, 0, 0, ''),
-(135, 12, 'Chả Lụa', 'Chả Lụa', 'Dĩa', 50000, 0, 0, 0, ''),
-(136, 8, 'Red Bull', 'Red Bull', 'Lon', 15000, 0, 0, 0, ''),
+(129, 8, 'Mirinda cam', 'Mirinda cam', 'Lon', 15000, 0, 0, 0, ''),
+(134, 12, 'Khô mực', 'Khô mực', 'Con', 50000, 0, 0, 0, ''),
+(135, 12, 'Chả lụa', 'Chả lụa', 'Dĩa', 50000, 0, 0, 0, ''),
+(136, 8, 'Red bull', 'Red bull', 'Lon', 15000, 0, 0, 0, ''),
 (137, 3, 'Tiger', 'Tiger', 'Chai', 14000, 0, 0, 0, ''),
-(138, 3, 'Tiger Bạc', 'Tiger Bạc', 'Chai', 15000, 0, 0, 0, ''),
-(139, 12, 'Đậu Nành rang', 'Đậu Nành rang', 'Gói', 10000, 0, 0, 0, ''),
-(140, 3, 'TIGER', 'TIGER', 'Lon', 19000, 0, 0, 0, ''),
-(141, 12, 'Cơm Cháy', 'Cơm Cháy', 'Gói', 17000, 0, 0, 0, ''),
-(142, 12, 'Cá Cơm', 'Cá Cơm', 'Gói', 12000, 0, 0, 0, ''),
+(138, 3, 'Tiger bạc', 'Tiger bạc', 'Chai', 15000, 0, 0, 0, ''),
+(139, 12, 'Đậu nành rang', 'Đậu nành rang', 'Gói', 10000, 0, 0, 0, ''),
+(140, 3, 'Tiger.', 'Tiger.', 'Lon', 19000, 0, 0, 0, ''),
+(141, 12, 'Cơm cháy', 'Cơm cháy', 'Gói', 17000, 0, 0, 0, ''),
+(142, 12, 'Cá cơm', 'Cá cơm', 'Gói', 12000, 0, 0, 0, ''),
 (143, 8, 'Sting', 'Sting', 'Chai', 15000, 0, 0, 0, ''),
-(144, 12, 'Khô Mực I', 'Khô Mực I', 'Con', 60000, 0, 0, 0, ''),
+(144, 12, 'Khô mực I', 'Khô mực I', 'Con', 60000, 0, 0, 0, ''),
 (145, 12, 'Chà giò rế', 'Chà giò rế', 'Dĩa', 60000, 0, 0, 0, ''),
 (146, 12, 'Nhái chiên giòn', 'Nhái', 'Dĩa', 60000, 0, 0, 0, ''),
-(147, 12, 'Đậu Nành sấy', 'Đậu nành sấy', 'Gói', 12000, 0, 0, 0, ''),
+(147, 12, 'Đậu nành sấy', 'Đậu nành sấy', 'Gói', 12000, 0, 0, 0, ''),
 (149, 13, 'Nước đá viên', 'Nước đá viên', 'Kg', 1000, 0, 0, 0, ''),
 (150, 12, 'Xoài thêm', '', 'Dĩa', 30000, 0, 0, 0, ''),
 (151, 12, 'Ổi thêm', '', 'Dĩa', 30000, 0, 0, 0, ''),
-(152, 12, 'Dưa Hấu thêm', '', 'Dĩa', 30000, 0, 0, 0, ''),
+(152, 12, 'Dưa hấu thêm', 'Dưa hấu thêm', 'Dĩa', 30000, 0, 0, 0, ''),
 (153, 12, 'Mận thêm', '', 'Dĩa', 30000, 0, 0, 0, ''),
 (154, 12, 'Sơ ri thêm', '', 'Dĩa', 30000, 0, 0, 0, ''),
-(155, 3, 'SAGOTA', 'SAGOTA', 'Lon', 15000, 0, 0, 0, ''),
+(155, 3, 'Sagota.', 'Sagota.', 'Lon', 15000, 0, 0, 0, ''),
 (156, 12, 'Mít', '', 'Dĩa', 50000, 0, 0, 0, ''),
-(157, 12, 'Hột Điều', '', 'Gói', 12000, 0, 0, 0, ''),
-(158, 12, 'Xúc Xích N', 'Xúc Xích N', 'Gói', 25000, 0, 0, 0, ''),
+(157, 12, 'Hột điều', 'Hột điều', 'Gói', 12000, 0, 0, 0, ''),
+(158, 12, 'Xúc xích N', 'Xúc xích N', 'Gói', 25000, 0, 0, 0, ''),
 (159, 12, 'Chả cá chiên giòn', 'Chả cá chiên giòn', 'Dĩa', 45000, 0, 0, 0, ''),
-(160, 12, 'Phô Mai', '', 'Hộp', 25000, 0, 0, 0, ''),
+(160, 12, 'Phô mai', 'Phô mai', 'Hộp', 25000, 0, 0, 0, ''),
 (161, 13, 'Khăn giấy', '', 'Gói', 5000, 0, 0, 0, ''),
 (162, 13, 'Khăn Lạnh', '', 'Cái', 2000, 0, 0, 0, ''),
 (163, 13, 'Quẹt gas', '', 'Cái', 4000, 0, 0, 0, ''),
-(164, 12, 'Đậu Hà Lan', '', 'Gói', 30000, 0, 0, 0, '');
+(164, 12, 'Đậu Hà lan', 'Đậu Hà lan', 'Gói', 30000, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_customer`
+-- Table structure for table `k3d_customer`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_customer` (
@@ -248,34 +251,35 @@ CREATE TABLE IF NOT EXISTS `k3d_customer` (
   `note` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `discount` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=28 ;
 
 --
--- Contenu de la table `k3d_customer`
+-- Dumping data for table `k3d_customer`
 --
 
 INSERT INTO `k3d_customer` (`id`, `name`, `type`, `card`, `phone`, `address`, `note`, `discount`) VALUES
-(1, 'Khách Hàng Vãng Lai', 0, '893970784300', '0945030709', '', '', 0),
-(12, 'Lê Hồng Đức', 1, '893970784301', '0918585203', 'Cty TNHH MTV Ba Đức Vĩnh Long', 'Giám Đốc', 0),
-(13, 'Nguyễn Quang Minh', 0, '893970784302', '', '', '', 10),
-(14, 'Phan Thanh Phong', 0, '893970784303', '', '', 'Toàn', 0),
-(15, 'Phạm Minh Tuấn Anh', 0, '893970784304', '', 'Vĩnh Long', 'Kế Toán', 0),
-(16, 'Lê Nguyễn Đông Khoa', 1, '893970784305', '0945030709', 'Cty TNHH MTV Ba Đức Vĩnh Long', 'P. GĐ', 0),
-(17, 'Lê Thành Tâm', 0, '893970784306', '', '', '', 0),
-(18, 'Cường Cầu Đôi', 0, '893970784307', '', 'Cầu Đôi', '', 0),
-(19, 'Lê Nguyễn Thanh Trung', 0, '', '', '', '', 0),
-(20, 'Anh Trí CAVL', 0, '', '', 'CSKT VL', '', 0),
+(1, 'KHÁCH VÃNG LAI', 0, '893970784300', '', '', '', 0),
+(12, 'LÊ HỒNG ĐỨC', 1, '893970784301', '0918585203', 'Cty TNHH MTV Ba Đức Vĩnh Long', 'Giám Đốc', 0),
+(13, 'NGUYỄN QUANG MINH (NV)', 0, '893970784302', '', '', 'NV Karaoke', 0),
+(14, 'PHAN THANH PHONG', 0, '893970784303', '', '', 'Toàn', 0),
+(15, 'PHẠM MINH TUẤN ANH (NV)', 0, '893970784304', '', 'Vĩnh Long', 'Kế Toán', 0),
+(16, 'LÊ NGUYỄN ĐÔNG KHOA', 1, '893970784305', '0945030709', 'Cty TNHH MTV Ba Đức Vĩnh Long', 'P. GĐ', 0),
+(17, 'LÊ THÀNH TÂM', 0, '893970784306', '', '', '', 0),
+(18, 'CƯỜNG (Cầu Đôi)', 0, '893970784307', '', 'Cầu Đôi', '', 0),
+(19, 'LÊ NGUYỄN THANH TRUNG', 0, '', '', '', '', 0),
+(20, 'ANH TRÍ CAVL', 0, '', '', 'CSKT VL', '', 0),
 (21, 'Nhí', 0, '', '', '', '', 0),
-(22, 'Nguyễn Văn Hiếu', 0, '', '', 'NV Karaoke', '', 0),
-(23, 'Trương Phước Sang', 0, '', '', 'NV Khách sạn', '', 0),
-(24, 'Ngọc', 0, '', '', 'NV Khách sạn', '', 0),
-(25, 'Khách Hàng Nợ', 0, '', '', '', '', 0),
-(26, 'Anh Thắng', 1, '', '', 'CAVL', '', 10);
+(22, 'NGUYỄN VĂN HIẾU', 0, '', '', 'NV Karaoke', '', 0),
+(23, 'TRƯƠNG PHƯỚC SANG', 0, '', '', 'NV Khách sạn', '', 0),
+(24, 'HUỲNH PHAN HỒNG NGỌC', 0, '', '', 'NV Khách sạn', '', 0),
+(25, 'KHÁCH HÀNG NỢ', 0, '', '', '', 'Khách vãng lai nợ', 0),
+(26, 'THẮNG', 1, '', '', 'CAVL', 'CAVL', 0),
+(27, 'PHAN HOÀNG THÁI', 0, '', '', '', 'Kế Toán', 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_domain`
+-- Table structure for table `k3d_domain`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_domain` (
@@ -285,7 +289,7 @@ CREATE TABLE IF NOT EXISTS `k3d_domain` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- Contenu de la table `k3d_domain`
+-- Dumping data for table `k3d_domain`
 --
 
 INSERT INTO `k3d_domain` (`id`, `name`) VALUES
@@ -296,7 +300,7 @@ INSERT INTO `k3d_domain` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_employee`
+-- Table structure for table `k3d_employee`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_employee` (
@@ -310,7 +314,7 @@ CREATE TABLE IF NOT EXISTS `k3d_employee` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
--- Contenu de la table `k3d_employee`
+-- Dumping data for table `k3d_employee`
 --
 
 INSERT INTO `k3d_employee` (`id`, `name`, `job`, `gender`, `phone`, `address`) VALUES
@@ -323,7 +327,7 @@ INSERT INTO `k3d_employee` (`id`, `name`, `job`, `gender`, `phone`, `address`) V
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_guest`
+-- Table structure for table `k3d_guest`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_guest` (
@@ -333,19 +337,19 @@ CREATE TABLE IF NOT EXISTS `k3d_guest` (
   `exit_time` varchar(32) CHARACTER SET latin1 NOT NULL,
   `agent` varchar(16) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=78 ;
 
 --
--- Contenu de la table `k3d_guest`
+-- Dumping data for table `k3d_guest`
 --
 
 INSERT INTO `k3d_guest` (`id`, `ip`, `entry_time`, `exit_time`, `agent`) VALUES
-(37, '115.78.94.118', '1381941274', '1381944874', '115.78.94.118');
+(77, '123.25.208.233', '1382380281', '1382383881', '123.25.208.233');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_order_import`
+-- Table structure for table `k3d_order_import`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_order_import` (
@@ -355,10 +359,10 @@ CREATE TABLE IF NOT EXISTS `k3d_order_import` (
   `description` varchar(50) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`),
   KEY `k3d_order_import_1` (`idsupplier`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=298 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=299 ;
 
 --
--- Contenu de la table `k3d_order_import`
+-- Dumping data for table `k3d_order_import`
 --
 
 INSERT INTO `k3d_order_import` (`id`, `idsupplier`, `date`, `description`) VALUES
@@ -617,12 +621,13 @@ INSERT INTO `k3d_order_import` (`id`, `idsupplier`, `date`, `description`) VALUE
 (294, 8, '2013-10-05', ''),
 (295, 16, '2013-10-05', ''),
 (296, 11, '2013-10-10', ''),
-(297, 8, '2013-10-13', '');
+(297, 8, '2013-10-13', ''),
+(298, 18, '2013-10-21', 'Nhập ĐL Tam Bình (mượn 40 két vỏ SGĐ)');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_order_import_detail`
+-- Table structure for table `k3d_order_import_detail`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_order_import_detail` (
@@ -634,10 +639,10 @@ CREATE TABLE IF NOT EXISTS `k3d_order_import_detail` (
   PRIMARY KEY (`id`),
   KEY `k3d_order_import_detail_1` (`idorder`),
   KEY `k3d_order_import_detail_2` (`idresource`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=486 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=488 ;
 
 --
--- Contenu de la table `k3d_order_import_detail`
+-- Dumping data for table `k3d_order_import_detail`
 --
 
 INSERT INTO `k3d_order_import_detail` (`id`, `idorder`, `idresource`, `count`, `price`) VALUES
@@ -1105,12 +1110,14 @@ INSERT INTO `k3d_order_import_detail` (`id`, `idorder`, `idresource`, `count`, `
 (482, 295, 88, 50, 11000),
 (483, 296, 96, 50, 16000),
 (484, 297, 21, 100, 6600),
-(485, 297, 22, 100, 9500);
+(485, 297, 22, 100, 9500),
+(486, 298, 97, 400, 6400),
+(487, 298, 98, 1000, 9200);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_paid_customer`
+-- Table structure for table `k3d_paid_customer`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_paid_customer` (
@@ -1124,7 +1131,7 @@ CREATE TABLE IF NOT EXISTS `k3d_paid_customer` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
--- Contenu de la table `k3d_paid_customer`
+-- Dumping data for table `k3d_paid_customer`
 --
 
 INSERT INTO `k3d_paid_customer` (`id`, `idcustomer`, `date`, `value`, `note`) VALUES
@@ -1133,7 +1140,7 @@ INSERT INTO `k3d_paid_customer` (`id`, `idcustomer`, `date`, `value`, `note`) VA
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_paid_general`
+-- Table structure for table `k3d_paid_general`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_paid_general` (
@@ -1144,10 +1151,10 @@ CREATE TABLE IF NOT EXISTS `k3d_paid_general` (
   `note` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `k3d_paid_1` (`id_term`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=154 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=162 ;
 
 --
--- Contenu de la table `k3d_paid_general`
+-- Dumping data for table `k3d_paid_general`
 --
 
 INSERT INTO `k3d_paid_general` (`id`, `id_term`, `date`, `value`, `note`) VALUES
@@ -1283,12 +1290,20 @@ INSERT INTO `k3d_paid_general` (`id`, `id_term`, `date`, `value`, `note`) VALUES
 (150, 10, '2013-08-06', 87000, ''),
 (151, 10, '2013-08-08', 65000, ''),
 (152, 10, '2013-08-09', 51000, ''),
-(153, 10, '2013-10-06', 1000000, 'chung');
+(153, 10, '2013-10-06', 1000000, 'chung'),
+(154, 3, '2013-06-30', 1350000, 'Thuế TTĐB'),
+(155, 3, '2013-08-31', 800000, 'Thuế TTĐB T08'),
+(156, 3, '2013-09-30', 850000, 'Thuế TTĐB T09'),
+(157, 10, '2013-09-30', 2500000, 'Tổng tiền ăn NV T09'),
+(158, 1, '2013-08-31', 5800000, 'Tiền điện T08'),
+(159, 1, '2013-09-30', 3700000, 'Tiền điện T09'),
+(160, 2, '2013-08-31', 2200000, 'Tiền nước T08'),
+(161, 2, '2013-09-30', 2300000, 'Tiền nước T09');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_paid_pay_roll`
+-- Table structure for table `k3d_paid_pay_roll`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_paid_pay_roll` (
@@ -1301,10 +1316,10 @@ CREATE TABLE IF NOT EXISTS `k3d_paid_pay_roll` (
   `note` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `k3d_paid_pay_roll_1` (`idemployee`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
 
 --
--- Contenu de la table `k3d_paid_pay_roll`
+-- Dumping data for table `k3d_paid_pay_roll`
 --
 
 INSERT INTO `k3d_paid_pay_roll` (`id`, `idemployee`, `date`, `value_base`, `value_sub`, `value_pre`, `note`) VALUES
@@ -1315,12 +1330,20 @@ INSERT INTO `k3d_paid_pay_roll` (`id`, `idemployee`, `date`, `value_base`, `valu
 (9, 2, '2013-08-31', 2000000, 0, 0, NULL),
 (10, 3, '2013-08-31', 2000000, 0, 1000000, ''),
 (11, 4, '2013-08-31', 2500000, 0, 0, NULL),
-(12, 5, '2013-08-31', 2500000, 0, 0, '');
+(12, 5, '2013-08-31', 2500000, 0, 0, ''),
+(13, 4, '2013-09-30', 2500000, 0, 0, ''),
+(14, 5, '2013-06-30', 2500000, 0, 0, ''),
+(15, 5, '2013-07-31', 2500000, 0, 0, ''),
+(16, 5, '2013-09-30', 2500000, 0, 2378000, 'Trừ nợ phiếu (tính đến ngày 20/10/2013)'),
+(17, 2, '2013-06-30', 2000000, 600000, 0, ''),
+(18, 3, '2013-06-30', 2000000, 0, 0, ''),
+(19, 2, '2013-09-30', 2000000, 0, 0, 'Phụ cấp đầu chai'),
+(20, 3, '2013-09-30', 2000000, 0, 0, 'Tạm tính');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_paid_supplier`
+-- Table structure for table `k3d_paid_supplier`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_paid_supplier` (
@@ -1334,7 +1357,7 @@ CREATE TABLE IF NOT EXISTS `k3d_paid_supplier` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 --
--- Contenu de la table `k3d_paid_supplier`
+-- Dumping data for table `k3d_paid_supplier`
 --
 
 INSERT INTO `k3d_paid_supplier` (`id`, `idsupplier`, `date`, `value`, `note`) VALUES
@@ -1354,7 +1377,7 @@ INSERT INTO `k3d_paid_supplier` (`id`, `idsupplier`, `date`, `value`, `note`) VA
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_r2c`
+-- Table structure for table `k3d_r2c`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_r2c` (
@@ -1366,67 +1389,68 @@ CREATE TABLE IF NOT EXISTS `k3d_r2c` (
   PRIMARY KEY (`id`),
   KEY `k3d_r2c_1` (`id_course`),
   KEY `k3d_r2c_2` (`id_resource`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=103 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=153 ;
 
 --
--- Contenu de la table `k3d_r2c`
+-- Dumping data for table `k3d_r2c`
 --
 
 INSERT INTO `k3d_r2c` (`id`, `id_course`, `id_resource`, `value1`, `value2`) VALUES
-(28, 114, 24, 1, 1),
-(29, 108, 20, 1, 1),
-(30, 113, 23, 1, 1),
-(33, 107, 19, 1, 1),
-(34, 111, 21, 1, 1),
-(35, 112, 22, 1, 1),
-(36, 137, 26, 1, 1),
-(37, 140, 62, 1, 1),
-(38, 138, 25, 1, 1),
-(39, 128, 69, 24, 1),
-(40, 54, 64, 24, 1),
-(41, 126, 63, 24, 1),
-(42, 55, 74, 24, 1),
-(43, 129, 73, 24, 1),
-(44, 56, 75, 24, 1),
-(45, 127, 72, 24, 1),
-(46, 136, 71, 24, 1),
-(47, 53, 70, 24, 1),
-(49, 134, 58, 1, 1),
-(51, 119, 30, 1, 1),
-(62, 142, 46, 1, 1),
-(63, 118, 29, 1, 1),
-(64, 122, 28, 1, 1),
-(65, 141, 45, 1, 1),
-(66, 139, 44, 1, 1),
-(67, 147, 76, 1, 1),
-(69, 144, 59, 1, 1),
-(70, 120, 31, 1, 1),
-(71, 146, 77, 20, 1),
-(72, 117, 78, 1, 1),
-(75, 121, 27, 1, 1),
-(76, 15, 65, 1, 1),
-(77, 116, 39, 1, 1),
-(78, 115, 40, 1, 1),
-(79, 125, 32, 1, 1),
-(80, 123, 36, 1, 1),
-(81, 124, 35, 1, 1),
-(82, 143, 60, 24, 1),
-(83, 149, 2, 20, 1),
-(93, 110, 47, 4, 1),
-(94, 110, 54, 4, 1),
-(95, 110, 79, 8, 1),
-(96, 110, 55, 5, 1),
-(97, 152, 79, 10, 1),
-(98, 153, 54, 5, 1),
-(99, 151, 47, 5, 1),
-(100, 150, 52, 5, 1),
-(101, 155, 83, 1, 1),
-(102, 158, 80, 1, 1);
+(103, 107, 19, 1, 1),
+(104, 107, 86, 1, 1),
+(105, 111, 21, 1, 1),
+(106, 108, 20, 1, 1),
+(107, 108, 87, 1, 1),
+(108, 111, 89, 1, 1),
+(109, 112, 22, 1, 1),
+(110, 112, 90, 1, 1),
+(111, 113, 23, 1, 1),
+(112, 114, 24, 1, 1),
+(113, 137, 26, 1, 1),
+(114, 138, 25, 1, 1),
+(115, 140, 62, 1, 1),
+(116, 53, 70, 1, 1),
+(117, 54, 64, 1, 1),
+(118, 55, 74, 1, 1),
+(119, 56, 75, 1, 1),
+(120, 126, 63, 1, 1),
+(121, 127, 72, 1, 1),
+(122, 128, 69, 1, 1),
+(123, 129, 73, 1, 1),
+(124, 136, 71, 1, 1),
+(125, 143, 60, 1, 1),
+(126, 15, 65, 1, 1),
+(127, 115, 40, 1, 1),
+(128, 116, 39, 1, 1),
+(129, 161, 95, 1, 1),
+(130, 162, 85, 1, 1),
+(131, 163, 43, 1, 1),
+(132, 111, 97, 1, 1),
+(133, 112, 98, 1, 1),
+(134, 155, 83, 1, 1),
+(135, 118, 29, 1, 1),
+(136, 119, 30, 1, 1),
+(137, 120, 31, 1, 1),
+(138, 121, 27, 1, 1),
+(139, 122, 28, 1, 1),
+(140, 123, 36, 1, 1),
+(141, 124, 35, 1, 1),
+(142, 125, 32, 1, 1),
+(143, 134, 58, 1, 1),
+(144, 139, 44, 1, 1),
+(145, 141, 45, 1, 1),
+(146, 142, 46, 1, 1),
+(147, 144, 59, 1, 1),
+(148, 147, 76, 1, 1),
+(149, 158, 80, 1, 1),
+(150, 160, 92, 1, 1),
+(151, 164, 96, 1, 1),
+(152, 157, 100, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_resource`
+-- Table structure for table `k3d_resource`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_resource` (
@@ -1438,10 +1462,10 @@ CREATE TABLE IF NOT EXISTS `k3d_resource` (
   `description` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `k3d_resource_1` (`idsupplier`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=97 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=101 ;
 
 --
--- Contenu de la table `k3d_resource`
+-- Dumping data for table `k3d_resource`
 --
 
 INSERT INTO `k3d_resource` (`id`, `idsupplier`, `name`, `unit`, `price`, `description`) VALUES
@@ -1449,82 +1473,86 @@ INSERT INTO `k3d_resource` (`id`, `idsupplier`, `name`, `unit`, `price`, `descri
 (14, 1, 'Nước đá ướp', 'Kg', 800, 'Đá cây ướp bia'),
 (17, 6, 'Bánh', 'Gói', 5000, ''),
 (19, 8, 'Heniken', 'Chai', 13042, ''),
-(20, 8, 'HENIKEN', 'Lon', 15084, 'Thùng 24 lon'),
+(20, 8, 'Heniken.', 'Lon', 15084, 'Thùng 24 lon'),
 (21, 8, 'Sài gòn đỏ', 'Chai', 6600, 'Két 20 chai'),
-(22, 8, 'Sài gòn Special', 'Chai', 8900, 'Két 20 chai'),
-(23, 8, 'Sài gòn SPECIAL', 'Lon', 10896, 'Thùng 24 lon'),
+(22, 8, 'Sài gòn special', 'Chai', 8900, 'Két 20 chai'),
+(23, 8, 'Sài gòn special.', 'Lon', 10896, 'Thùng 24 lon'),
 (24, 8, 'Bia 333', 'Lon', 8625, 'Thùng 24 lon'),
-(25, 8, 'Tiger Bạc', 'Chai', 10834, 'Két 24 chai'),
+(25, 8, 'Tiger bạc', 'Chai', 10834, 'Két 24 chai'),
 (26, 8, 'Tiger', 'Chai', 9917, 'Két 24 chai'),
-(27, 6, 'Xúc Xích', 'Gói', 17000, ''),
-(28, 6, 'CW DOUBLEMINT', 'Cây', 2000, ''),
-(29, 6, 'Chả Giò', 'Gói', 10300, ''),
-(30, 6, 'Khô Bò', 'Gói', 5500, ''),
-(31, 6, 'Mít Sấy', 'Gói', 6200, ''),
-(32, 6, 'Đậu Phộng ', 'Gói', 7000, ''),
-(35, 9, 'Đậu Phộng sấy', 'Bịch', 5000, '5000'),
-(36, 9, 'Đậu Phộng chiên', 'Bịch', 5000, ''),
+(27, 6, 'Xúc xích', 'Gói', 17000, ''),
+(28, 6, 'CW Doublemin', 'Cây', 2000, ''),
+(29, 6, 'Chả giò', 'Gói', 10300, ''),
+(30, 6, 'Khô bò', 'Gói', 5500, ''),
+(31, 6, 'Mít sấy', 'Gói', 6200, ''),
+(32, 6, '(Đậu phộng)', 'Gói', 7000, ''),
+(35, 9, 'Đậu phộng sấy', 'Gói', 5000, '5000'),
+(36, 9, 'Đậu phộng chiên', 'Gói', 5000, ''),
 (39, 9, 'Thuốc Craven', 'Gói', 16500, ''),
 (40, 9, 'Thuốc 555', 'Gói', 23500, ''),
 (43, 9, 'Quẹt gas', 'Cái', 1700, ''),
-(44, 9, 'Đậu Nành rang', 'Gói', 3000, 'Mua ngoài'),
-(45, 11, 'Cơm Cháy', 'Gói', 7000, ''),
-(46, 11, 'Cá Cơm', 'Gói', 7000, '0'),
+(44, 9, 'Đậu nành rang', 'Gói', 3000, 'Mua ngoài'),
+(45, 11, 'Cơm cháy', 'Gói', 7000, ''),
+(46, 11, 'Cá cơm', 'Gói', 7000, '0'),
 (47, 12, 'Ổi', 'Kg', 9000, ''),
-(48, 12, 'Củ Sắn', 'Kg', 15000, ''),
+(48, 12, 'Củ sắn', 'Kg', 15000, ''),
 (49, 12, 'Mít', 'Kg', 18000, ''),
-(50, 12, 'Chôm Chôm', 'Kg', 10000, ''),
+(50, 12, 'Chôm chôm', 'Kg', 10000, ''),
 (51, 12, 'Xoài Thái', 'Kg', 15000, ''),
-(52, 12, 'Xoài ĐàiLoan', 'Kg', 15000, ''),
+(52, 12, 'Xoài Đài Loan', 'Kg', 15000, ''),
 (53, 12, 'Xoài chua', 'Kg', 15000, ''),
 (54, 12, 'Mận', 'Kg', 10000, ''),
 (55, 12, 'Sơ ri', 'Kg', 12000, ''),
 (56, 12, 'Thơm', 'Kg', 12000, ''),
 (57, 12, 'Khóm', 'Kg', 10000, ''),
-(58, 9, 'Khô Mực', 'Con', 22000, ''),
-(59, 9, 'Khô Mực I', 'Con', 30000, ''),
+(58, 9, 'Khô mực', 'Con', 22000, ''),
+(59, 9, 'Khô mực I', 'Con', 30000, ''),
 (60, 8, 'Sting', 'Lon', 7208, 'Thùng 24 lon'),
-(61, 9, 'Khăn Lạnh', 'Cái', 800, ''),
-(62, 8, 'TIGER', 'Lon', 11667, 'Thùng 24 lon'),
+(61, 9, 'Khăn lạnh', 'Cái', 800, ''),
+(62, 8, 'Tiger.', 'Lon', 11667, 'Thùng 24 lon'),
 (63, 8, 'Lavie 500ml', 'Chai', 3584, 'Thùng 24 chai'),
 (64, 8, 'C2', 'Chai', 4500, 'Thùng 24 chai'),
-(65, 9, 'Thuốc Hút', 'Gói', 15500, ''),
-(66, 9, 'Bánh tráng rế', 'Bịch', 15000, 'Bánh tráng gói chả giò rế'),
+(65, 9, 'Thuốc hút', 'Gói', 15500, ''),
+(66, 9, 'Bánh tráng rế', 'Gói', 15000, 'Bánh tráng gói chả giò rế'),
 (67, 9, 'Thịt ghẹ', 'Kg', 80000, 'Thịt ghẹ gói chả giò rế'),
 (68, 9, 'Khoai cao', 'Kg', 30000, 'Khoai cao gói chả giò rế'),
 (69, 8, '7 Up', 'Lon', 6375, 'Thùng 24 lon'),
-(70, 8, 'Trà Xanh', 'Chai', 6583, 'Thùng 24 chai'),
-(71, 8, 'Red Bull', 'Lon', 6200, 'Thùng 30 lon'),
+(70, 8, 'Trà xanh', 'Chai', 6583, 'Thùng 24 chai'),
+(71, 8, 'Red bull', 'Lon', 6200, 'Thùng 30 lon'),
 (72, 8, 'Pepsi', 'Lon', 6375, 'Thùng 24 lon'),
-(73, 8, 'Mirinda Cam', 'Lon', 5417, 'Thùng 24 lon'),
+(73, 8, 'Mirinda cam', 'Lon', 5417, 'Thùng 24 lon'),
 (74, 8, 'Dr Thanh', 'Chai', 7750, 'Thùng 24 chai'),
-(75, 8, 'Nước Yến', 'Lon', 5917, 'Thùng 24 lon'),
-(76, 9, 'Đậu Nành sấy', 'Gói', 5000, ''),
-(77, 9, 'Nhái Khô', 'Kg', 600000, ''),
+(75, 8, 'Nước yến', 'Lon', 5917, 'Thùng 24 lon'),
+(76, 9, 'Đậu nành sấy', 'Gói', 5000, ''),
+(77, 9, 'Nhái khô', 'Kg', 600000, ''),
 (78, 6, 'Oshi', 'Gói', 5000, ''),
-(79, 12, 'Dưa Hấu', 'Kg', 10000, ''),
-(80, 6, 'Xúc Xích N', 'Gói', 11500, ''),
+(79, 12, 'Dưa hấu', 'Kg', 10000, ''),
+(80, 6, 'Xúc xích N', 'Gói', 11500, ''),
 (81, 6, 'Tương ớt cay', 'Chai', 9700, ''),
 (82, 12, 'Táo', 'Kg', 10000, ''),
 (83, 15, 'SAGOTA', 'Lon', 8000, ''),
 (84, 12, 'Cóc', 'Kg', 6000, ''),
-(85, 14, 'Khăn Lạnh', 'Cái', 550, ''),
+(85, 14, 'Khăn lạnh', 'Cái', 550, ''),
 (86, 13, 'Heniken', 'Chai', 13083, ''),
-(87, 13, 'HENIKEN', 'Lon', 10834, ''),
+(87, 13, 'Heniken.', 'Lon', 10834, ''),
 (88, 16, 'Gạo', 'Kg', 11000, ''),
-(89, 13, 'Sài Gòn đỏ', 'Chai', 6600, 'Két 20 chai'),
-(90, 13, 'Sài Gòn Special', 'Chai', 9000, 'Két 20 chai'),
+(89, 13, 'Sài gòn đỏ', 'Chai', 6600, 'Két 20 chai'),
+(90, 13, 'Sài gòn special', 'Chai', 9000, 'Két 20 chai'),
 (91, 1, 'Đá ống viên lớn', 'Kg', 800, 'Bao 20kg'),
-(92, 17, 'Phô Mai', 'Hộp', 14334, '0'),
-(93, 17, 'Xúc Xích N', 'Gói', 10500, 'Xúc xích nhỏ'),
-(94, 17, 'Xúc Xích', 'Gói', 17800, ''),
+(92, 17, 'Phô mai', 'Hộp', 14334, '0'),
+(93, 17, 'Xúc xích N', 'Gói', 10500, 'Xúc xích nhỏ'),
+(94, 17, 'Xúc xích', 'Gói', 17800, ''),
 (95, 17, 'Khăn giấy', 'Gói', 1800, ''),
-(96, 11, 'Đậu Hà Lan', 'Gói', 16000, '');
+(96, 11, 'Đậu Hà lan', 'Gói', 16000, ''),
+(97, 18, 'Sài gòn đỏ', 'Chai', 6400, ''),
+(98, 18, 'Sài gòn special', 'Chai', 9200, ''),
+(99, 12, 'Bưởi', 'Kg', 10000, ''),
+(100, 11, 'Hột điều', 'Gói', 6000, '');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_session`
+-- Table structure for table `k3d_session`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_session` (
@@ -1545,10 +1573,10 @@ CREATE TABLE IF NOT EXISTS `k3d_session` (
   KEY `idtable` (`idtable`),
   KEY `iduser` (`iduser`),
   KEY `k3d_session_3` (`idcustomer`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1083 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1098 ;
 
 --
--- Contenu de la table `k3d_session`
+-- Dumping data for table `k3d_session`
 --
 
 INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, `datetimeend`, `note`, `status`, `discount_value`, `discount_percent`, `surtax`, `payment`, `value`) VALUES
@@ -1875,7 +1903,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (530, 17, 6, 1, '2013-06-08 04:15:00', '2013-06-08 04:50:00', '', 1, 0, 0, 0, 0, 86000),
 (531, 1, 6, 1, '2013-06-08 17:00:00', '2013-06-08 17:25:00', '', 1, 0, 0, 0, 0, 29000),
 (532, 1, 6, 1, '2013-06-08 22:08:54', '2013-06-08 22:08:54', '', 1, 0, 0, 0, 0, 130000),
-(533, 1, 6, 16, '2013-06-08 23:58:36', '2013-06-08 23:58:36', '', 2, 0, 0, 0, 0, 480000),
+(533, 1, 6, 16, '2013-06-08 23:58:36', '2013-06-08 23:58:36', 'Khoa nợ', 2, 0, 0, 0, 0, 480000),
 (534, 1, 6, 1, '2013-06-09 20:42:00', '2013-06-10 00:13:00', '', 1, 0, 0, 0, 0, 585000),
 (535, 26, 6, 1, '2013-06-09 23:30:00', '2013-06-10 00:49:00', '', 1, 0, 0, 0, 0, 567000),
 (536, 16, 5, 1, '2013-06-10 17:35:00', '2013-06-10 19:04:00', '', 1, 0, 0, 0, 0, 343000),
@@ -1883,8 +1911,8 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (539, 1, 6, 1, '2013-06-10 22:00:00', '2013-06-10 23:36:00', '', 1, 0, 0, 0, 0, 386000),
 (540, 2, 6, 1, '2013-06-10 22:08:00', '2013-06-11 00:03:00', '', 1, 0, 0, 0, 0, 396000),
 (541, 1, 6, 1, '2013-06-11 18:29:00', '2013-06-11 19:59:00', '', 1, 0, 0, 0, 0, 402000),
-(542, 17, 6, 20, '2013-06-11 20:23:00', '2013-06-11 22:14:00', '', 2, 0, 0, 0, 0, 654000),
-(543, 1, 6, 16, '2013-06-11 23:51:11', '2013-06-11 23:51:11', '', 2, 0, 0, 0, 0, 220000),
+(542, 17, 6, 20, '2013-06-11 20:23:00', '2013-06-11 22:14:00', 'Anh Trí CA nợ', 2, 0, 0, 0, 0, 654000),
+(543, 1, 6, 16, '2013-06-11 23:51:11', '2013-06-11 23:51:11', 'Khoa nợ', 2, 0, 0, 0, 0, 220000),
 (544, 2, 5, 1, '2013-06-12 14:35:00', '2013-06-12 15:41:00', '', 1, 0, 0, 0, 0, 92000),
 (545, 1, 5, 1, '2013-06-12 15:28:00', '2013-06-12 15:50:00', 'Phụ thu', 1, 0, 0, 15000, 0, 189000),
 (546, 17, 6, 1, '2013-06-12 16:33:29', '2013-06-12 17:26:00', '', 1, 1000, 0, 0, 0, 60000),
@@ -1896,7 +1924,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (552, 1, 3, 1, '2013-06-13 20:14:18', '2013-06-13 21:40:00', '', 1, 0, 0, 0, 0, 411000),
 (553, 1, 6, 1, '2013-06-13 21:43:32', '2013-06-14 00:35:00', '', 1, 0, 0, 0, 0, 462000),
 (554, 1, 6, 1, '2013-06-14 00:41:42', '2013-06-14 00:41:42', '', 1, 0, 0, 0, 0, 10000),
-(555, 2, 6, 16, '2013-06-14 14:25:00', '2013-06-14 17:53:00', 'Con mực tươi', 2, 0, 0, 280000, 0, 1497000),
+(555, 2, 6, 16, '2013-06-14 14:25:00', '2013-06-14 17:53:00', 'Khoa nợ (phụ thu con mực tươi)', 2, 0, 0, 280000, 0, 1497000),
 (556, 1, 6, 1, '2013-06-14 19:54:16', '2013-06-14 21:50:00', '', 1, 0, 0, 0, 0, 639000),
 (557, 16, 6, 1, '2013-06-14 20:58:00', '2013-06-14 22:11:00', '', 1, 0, 0, 0, 0, 355000),
 (558, 15, 6, 1, '2013-06-14 21:41:41', '2013-06-15 00:55:00', '', 1, 0, 0, 0, 0, 1343000),
@@ -1904,7 +1932,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (560, 15, 6, 1, '2013-06-15 01:11:21', '2013-06-15 01:11:21', '', 1, 0, 0, 0, 0, 15000),
 (561, 26, 6, 1, '2013-06-15 20:47:21', '2013-06-15 20:47:21', '', 1, 0, 0, 0, 0, 36000),
 (562, 1, 6, 1, '2013-06-14 20:59:00', '2013-06-14 20:59:00', 'Khách sạn', 1, 0, 0, 0, 0, 0),
-(563, 1, 6, 19, '2013-06-15 21:40:00', '2013-06-15 23:45:00', '', 2, 0, 10, 0, 0, 290000),
+(563, 1, 6, 19, '2013-06-15 21:40:00', '2013-06-15 23:45:00', 'Trung nợ phiếu', 2, 0, 10, 0, 0, 290000),
 (564, 2, 6, 1, '2013-06-15 23:53:18', '2013-06-16 02:18:00', '', 1, 0, 0, 0, 0, 483000),
 (565, 17, 6, 1, '2013-06-16 00:52:00', '2013-06-16 02:49:00', 'Phụ thu', 1, 0, 0, 20000, 0, 882000),
 (566, 2, 3, 16, '2013-06-16 20:17:38', '2013-06-16 20:17:38', 'Nhậu với Dượng 7', 2, 0, 0, 0, 0, 335000),
@@ -1912,7 +1940,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (568, 1, 6, 1, '2013-06-17 00:24:00', '2013-06-17 01:00:00', '', 1, 0, 0, 0, 0, 96000),
 (569, 17, 6, 1, '2013-06-17 20:51:43', '2013-06-17 21:53:00', '', 1, 0, 0, 0, 0, 175000),
 (570, 16, 6, 1, '2013-06-17 22:08:38', '2013-06-17 23:56:00', '', 1, 0, 0, 0, 0, 868000),
-(571, 1, 6, 19, '2013-06-17 23:37:00', '2013-06-18 03:30:00', '', 2, 0, 10, 0, 0, 872000),
+(571, 1, 6, 19, '2013-06-17 23:37:00', '2013-06-18 03:30:00', 'Trung nợ phiếu', 2, 0, 10, 0, 0, 872000),
 (572, 16, 6, 1, '2013-06-17 23:58:00', '2013-06-18 00:32:00', '', 1, 0, 0, 0, 0, 177000),
 (573, 16, 6, 1, '2013-06-18 00:36:00', '2013-06-18 00:59:00', '', 1, 0, 0, 0, 0, 79000),
 (574, 16, 6, 1, '2013-06-18 01:00:00', '2013-06-18 01:32:00', '', 1, 0, 0, 0, 0, 48000),
@@ -1951,7 +1979,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (609, 1, 3, 1, '2013-06-30 19:06:00', '2013-06-30 19:06:00', 'KHÁCH SẠN', 1, 0, 0, 0, 0, 0),
 (610, 17, 6, 1, '2013-07-01 20:47:37', '2013-07-01 22:33:00', '', 1, 0, 0, 0, 0, 298000),
 (611, 2, 6, 1, '2013-07-02 18:10:42', '2013-07-02 20:02:00', '', 1, 0, 0, 0, 0, 357000),
-(612, 17, 6, 15, '2013-07-02 20:25:00', '2013-07-02 23:00:00', '', 2, 0, 0, 0, 0, 467000),
+(612, 17, 6, 15, '2013-07-02 20:25:00', '2013-07-02 23:00:00', 'Tuấn Anh nợ', 2, 0, 0, 0, 0, 467000),
 (613, 1, 6, 1, '2013-07-03 00:25:44', '2013-07-03 00:25:44', '', 1, 0, 0, 0, 0, 15000),
 (614, 26, 6, 1, '2013-07-03 13:06:10', '2013-07-03 15:32:00', '', 1, 0, 0, 0, 0, 662000),
 (615, 1, 3, 16, '2013-07-03 22:17:29', '2013-07-03 22:17:29', 'BÁN LẺ(Anh Khoa)', 1, 0, 0, 0, 0, 170000),
@@ -1966,7 +1994,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (624, 2, 6, 1, '2013-07-06 00:19:00', '2013-07-06 02:05:00', '', 1, 0, 0, 0, 0, 332000),
 (625, 3, 6, 1, '2013-07-06 00:22:00', '2013-07-06 01:56:00', '', 1, 0, 0, 0, 0, 317000),
 (626, 1, 6, 1, '2013-07-06 02:06:46', '2013-07-06 02:06:46', '', 1, 0, 0, 0, 0, 25000),
-(627, 2, 5, 13, '2013-07-06 18:50:00', '2013-07-06 20:55:00', '', 2, 0, 0, 0, 0, 374000),
+(627, 2, 5, 13, '2013-07-06 18:50:00', '2013-07-06 20:55:00', 'Minh nợ', 2, 0, 0, 0, 0, 374000),
 (628, 17, 5, 1, '2013-07-06 20:45:00', '2013-07-06 22:20:00', '', 1, 0, 0, 0, 0, 697000),
 (629, 3, 5, 1, '2013-07-06 23:15:00', '2013-07-06 23:50:00', '', 1, 0, 0, 0, 0, 187000),
 (630, 15, 5, 1, '2013-07-06 23:50:00', '2013-07-07 01:10:00', '', 1, 0, 0, 0, 0, 658000),
@@ -1975,8 +2003,8 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (633, 14, 6, 1, '2013-07-07 21:22:50', '2013-07-07 21:46:00', '', 1, 0, 0, 0, 0, 85000),
 (634, 17, 3, 1, '2013-07-08 00:27:32', '2013-07-08 01:46:00', '', 1, 0, 0, 0, 0, 253000),
 (635, 2, 6, 1, '2013-07-08 20:21:47', '2013-07-08 22:10:00', '', 1, 0, 0, 0, 0, 443000),
-(636, 2, 6, 16, '2013-07-09 22:20:04', '2013-07-09 22:20:04', '', 2, 0, 0, 0, 0, 438000),
-(637, 17, 6, 13, '2013-07-10 21:38:00', '2013-07-11 02:12:00', '', 2, 0, 0, 0, 0, 721000),
+(636, 2, 6, 16, '2013-07-09 22:20:04', '2013-07-09 22:20:04', 'Khoa nợ', 2, 0, 0, 0, 0, 438000),
+(637, 17, 6, 13, '2013-07-10 21:38:00', '2013-07-11 02:12:00', 'Minh nợ', 2, 0, 0, 0, 0, 721000),
 (638, 2, 6, 1, '2013-07-10 23:32:00', '2013-07-11 01:17:00', '', 1, 0, 0, 0, 0, 502000),
 (639, 1, 6, 1, '2013-07-11 01:44:00', '2013-07-11 01:44:00', '', 1, 0, 0, 0, 0, 37000),
 (640, 3, 6, 1, '2013-07-11 10:56:00', '2013-07-11 12:19:00', '', 1, 0, 0, 0, 0, 257000),
@@ -1995,11 +2023,11 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (653, 2, 6, 1, '2013-07-12 23:17:40', '2013-07-13 00:58:00', '', 1, 0, 0, 0, 0, 373000),
 (654, 3, 6, 1, '2013-07-12 23:55:03', '2013-07-13 00:42:00', '', 1, 0, 0, 0, 0, 244000),
 (655, 2, 6, 1, '2013-07-13 19:05:19', '2013-07-13 20:12:00', '', 1, 0, 0, 0, 0, 390000),
-(656, 17, 6, 13, '2013-07-13 21:03:43', '2013-07-14 03:45:00', '', 2, 0, 10, 0, 0, 1006000),
+(656, 17, 6, 13, '2013-07-13 21:03:43', '2013-07-14 03:45:00', 'Minh nợ', 2, 0, 10, 0, 0, 1006000),
 (657, 3, 6, 1, '2013-07-13 22:24:52', '2013-07-14 01:35:00', '', 1, 0, 0, 0, 0, 787000),
 (658, 2, 6, 1, '2013-07-13 22:35:00', '2013-07-14 00:45:00', '', 1, 0, 0, 0, 0, 746000),
 (659, 15, 6, 1, '2013-07-13 22:56:31', '2013-07-14 00:31:00', '', 1, 0, 0, 0, 0, 417000),
-(660, 17, 6, 1, '2013-07-14 18:24:00', '2013-07-14 20:23:00', 'Anh Thái(kết toán)còn nợ 255.000đ', 2, 0, 0, 0, 0, 335000),
+(660, 17, 6, 15, '2013-07-14 18:24:00', '2013-07-14 20:23:00', 'Thái (kết toán) thanh toán còn nợ 255.000đ', 2, 0, 0, 0, 0, 335000),
 (661, 2, 6, 1, '2013-07-14 18:57:43', '2013-07-14 20:32:00', '', 1, 0, 0, 0, 0, 445000),
 (662, 3, 6, 1, '2013-07-14 23:50:00', '2013-07-15 01:48:00', '', 1, 0, 0, 0, 0, 364000),
 (663, 2, 6, 1, '2013-07-15 01:00:00', '2013-07-15 03:00:00', '', 1, 0, 0, 0, 0, 400000),
@@ -2014,7 +2042,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (672, 17, 6, 1, '2013-07-16 23:43:27', '2013-07-17 01:05:00', '', 1, 0, 0, 0, 0, 264000),
 (673, 3, 6, 1, '2013-07-17 00:25:45', '2013-07-17 02:06:00', '', 1, 0, 0, 0, 0, 608000),
 (674, 1, 6, 1, '2013-07-17 01:18:24', '2013-07-17 01:18:24', '', 1, 0, 0, 0, 0, 25000),
-(675, 26, 6, 13, '2013-07-17 20:43:11', '2013-07-18 01:42:00', '', 2, 0, 10, 0, 0, 1438000),
+(675, 26, 6, 13, '2013-07-17 20:43:11', '2013-07-18 01:42:00', 'Minh nợ', 2, 0, 10, 0, 0, 1438000),
 (676, 17, 6, 1, '2013-07-17 22:35:21', '2013-07-18 00:15:00', '', 1, 0, 0, 0, 0, 646000),
 (677, 2, 6, 1, '2013-07-17 23:46:47', '2013-07-18 01:16:00', '', 1, 0, 0, 0, 0, 302000),
 (678, 16, 6, 1, '2013-07-17 23:57:44', '2013-07-18 01:08:00', '', 1, 0, 0, 0, 0, 453000),
@@ -2031,17 +2059,17 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (690, 1, 6, 1, '2013-07-20 22:07:24', '2013-07-20 22:52:00', '', 1, 0, 0, 0, 0, 256000),
 (691, 2, 6, 1, '2013-07-21 14:40:22', '2013-07-21 15:55:00', '', 1, 0, 0, 0, 0, 557000),
 (692, 1, 6, 1, '2013-07-21 15:59:31', '2013-07-21 18:22:00', '', 1, 0, 0, 0, 0, 553000),
-(693, 2, 6, 20, '2013-07-21 18:26:41', '2013-07-21 20:03:00', '', 2, 0, 0, 0, 0, 428000),
+(693, 2, 6, 20, '2013-07-21 18:26:41', '2013-07-21 20:03:00', 'Anh Trí CA nợ', 2, 0, 0, 0, 0, 428000),
 (694, 26, 6, 1, '2013-07-21 23:03:36', '2013-07-22 00:14:00', '', 1, 0, 0, 0, 0, 351000),
 (695, 1, 6, 1, '2013-07-22 00:09:01', '2013-07-22 01:29:00', 'Phụ thu ', 1, 0, 0, 10000, 0, 363000),
 (696, 2, 6, 1, '2013-07-22 00:30:00', '2013-07-22 01:58:00', '', 1, 0, 0, 0, 0, 414000),
 (697, 1, 6, 1, '2013-07-22 02:12:28', '2013-07-22 02:12:28', '', 1, 0, 0, 0, 0, 10000),
 (698, 17, 6, 1, '2013-07-22 19:40:00', '2013-07-22 22:02:00', '', 1, 0, 0, 0, 0, 809000),
 (699, 1, 6, 16, '2013-07-21 22:00:00', '2013-07-21 22:00:00', 'Nhậu trên phòng voi anh Tuấn,Anh khải', 2, 0, 0, 0, 0, 408000),
-(700, 1, 6, 20, '2013-07-21 22:02:00', '2013-07-21 22:02:00', '', 2, 0, 0, 0, 0, 480000),
+(700, 1, 6, 20, '2013-07-21 22:02:00', '2013-07-21 22:02:00', 'Anh Trí CA nợ', 2, 0, 0, 0, 0, 480000),
 (701, 1, 6, 1, '2013-07-23 00:22:47', '2013-07-23 02:56:00', 'Chôm chôm thêm', 1, 0, 0, 30000, 0, 861000),
 (702, 2, 6, 1, '2013-07-23 02:03:20', '2013-07-23 02:03:20', '', 1, 0, 0, 0, 0, 15000),
-(703, 1, 6, 16, '2013-07-23 03:17:01', '2013-07-23 03:17:01', '', 2, 0, 0, 0, 0, 50000),
+(703, 1, 6, 16, '2013-07-23 03:17:01', '2013-07-23 03:17:01', 'Khoa nợ', 2, 0, 0, 0, 0, 50000),
 (704, 17, 6, 1, '2013-07-23 15:00:00', '2013-07-23 15:47:00', '', 1, 0, 0, 0, 0, 323000),
 (705, 1, 6, 1, '2013-07-23 16:15:45', '2013-07-23 16:15:45', '', 1, 0, 0, 0, 0, 90000),
 (706, 17, 5, 1, '2013-07-23 21:13:13', '2013-07-23 23:56:00', '', 1, 0, 0, 0, 0, 638000),
@@ -2057,23 +2085,23 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (717, 1, 3, 1, '2013-07-25 23:10:29', '2013-07-26 01:18:00', '', 1, 0, 0, 0, 0, 265000),
 (718, 2, 6, 1, '2013-07-25 23:48:00', '2013-07-26 00:20:00', '', 1, 0, 0, 0, 0, 193000),
 (719, 17, 6, 1, '2013-07-26 01:40:54', '2013-07-26 02:14:00', '', 1, 0, 0, 0, 0, 314000),
-(720, 17, 6, 13, '2013-07-26 02:30:00', '2013-07-26 04:39:00', '', 1, 0, 10, 0, 0, 312000),
+(720, 17, 6, 1, '2013-07-26 02:30:00', '2013-07-26 04:39:00', '', 1, 0, 10, 0, 0, 312000),
 (721, 2, 6, 1, '2013-07-26 11:30:00', '2013-07-26 13:04:00', '', 1, 0, 0, 0, 0, 502000),
 (722, 2, 6, 16, '2013-07-26 14:35:00', '2013-07-26 18:00:00', 'Mì xào bò.Nhậu với Tâm ', 2, 0, 0, 90000, 0, 838000),
 (723, 2, 6, 1, '2013-07-27 00:42:00', '2013-07-27 02:15:00', '', 1, 0, 0, 0, 0, 353000),
 (724, 1, 6, 16, '2013-07-27 18:06:00', '2013-07-27 18:06:00', 'Nhậu với Anh Tâm(bạn a Linh)', 2, 0, 0, 0, 0, 279000),
 (725, 2, 5, 1, '2013-07-27 09:45:00', '2013-07-27 12:34:00', '', 1, 0, 0, 0, 0, 328000),
-(726, 2, 6, 15, '2013-07-27 13:45:55', '2013-07-27 17:15:00', '', 2, 0, 0, 0, 0, 953000),
+(726, 2, 6, 15, '2013-07-27 13:45:55', '2013-07-27 17:15:00', 'Tuấn Anh nợ', 2, 0, 0, 0, 0, 953000),
 (727, 26, 6, 1, '2013-07-27 18:30:00', '2013-07-27 21:30:00', '', 1, 0, 0, 0, 0, 727000),
 (728, 17, 6, 1, '2013-07-27 19:57:19', '2013-07-27 22:26:00', '', 1, 0, 0, 0, 0, 890000),
 (729, 1, 6, 1, '2013-07-27 20:46:48', '2013-07-27 21:50:00', '', 1, 0, 0, 0, 0, 227000),
 (730, 1, 6, 1, '2013-07-27 17:30:00', '2013-07-27 17:30:00', 'Ch Trúc karaoke voi Châu ', 2, 0, 0, 0, 0, 20000),
 (731, 2, 5, 1, '2013-07-28 17:05:00', '2013-07-28 17:55:00', '', 1, 0, 0, 0, 0, 187000),
 (732, 1, 6, 1, '2013-07-29 12:16:49', '2013-07-29 13:41:00', '', 1, 0, 0, 0, 0, 218000),
-(733, 1, 5, 1, '2013-07-29 13:51:08', '2013-07-29 17:11:00', ' Trí (CA) Nợ lại tiền karaoke 233.000đ', 1, 233000, 0, 0, 0, 385000),
-(734, 26, 5, 1, '2013-07-30 14:12:05', '2013-07-30 18:40:00', '', 1, 0, 0, 0, 0, 1216000),
-(735, 2, 5, 1, '2013-07-30 20:15:00', '2013-07-30 21:15:00', '', 1, 0, 0, 0, 0, 416000);
+(733, 1, 5, 1, '2013-07-29 13:51:08', '2013-07-29 17:11:00', ' Trí (CA) Nợ lại tiền karaoke 233.000đ', 1, 233000, 0, 0, 0, 385000);
 INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, `datetimeend`, `note`, `status`, `discount_value`, `discount_percent`, `surtax`, `payment`, `value`) VALUES
+(734, 26, 5, 1, '2013-07-30 14:12:05', '2013-07-30 18:40:00', '', 1, 0, 0, 0, 0, 1216000),
+(735, 2, 5, 1, '2013-07-30 20:15:00', '2013-07-30 21:15:00', '', 1, 0, 0, 0, 0, 416000),
 (736, 1, 5, 1, '2013-07-30 20:44:00', '2013-07-30 22:15:00', 'Anh Khoa KM Dĩa Nhái Chiên ', 1, 0, 0, 0, 0, 510000),
 (737, 17, 5, 1, '2013-07-30 22:14:58', '2013-07-31 00:35:00', '', 1, 0, 0, 0, 0, 424000),
 (738, 1, 3, 1, '2013-07-31 00:27:46', '2013-07-31 02:44:00', '', 1, 0, 0, 0, 0, 588000),
@@ -2108,7 +2136,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (769, 14, 5, 1, '2013-08-05 01:14:20', '2013-08-05 03:17:00', '', 1, 0, 0, 0, 0, 556000),
 (770, 27, 5, 1, '2013-08-05 18:15:00', '2013-08-05 20:40:00', '', 1, 0, 0, 0, 0, 482000),
 (771, 17, 5, 1, '2013-08-05 18:18:00', '2013-08-05 20:48:00', '', 1, 0, 0, 0, 0, 367000),
-(772, 2, 5, 15, '2013-08-05 19:43:24', '2013-08-05 23:00:00', '', 2, 0, 0, 0, 0, 579000),
+(772, 2, 5, 15, '2013-08-05 19:43:24', '2013-08-05 23:00:00', 'Tuấn Anh nợ', 2, 0, 0, 0, 0, 579000),
 (773, 17, 5, 1, '2013-08-05 23:39:18', '2013-08-06 00:41:00', '', 1, 0, 0, 0, 0, 241000),
 (774, 2, 5, 1, '2013-08-06 00:50:00', '2013-08-06 02:42:00', '', 1, 0, 0, 0, 0, 497000),
 (775, 16, 5, 1, '2013-08-06 01:27:11', '2013-08-06 03:03:00', '', 1, 0, 0, 0, 0, 274000),
@@ -2136,12 +2164,12 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (798, 1, 5, 1, '2013-08-09 21:15:24', '2013-08-09 21:15:24', '', 1, 0, 0, 0, 0, 44000),
 (799, 2, 5, 1, '2013-08-09 21:55:33', '2013-08-09 23:06:00', '', 1, 0, 0, 0, 0, 285000),
 (800, 16, 5, 1, '2013-08-09 23:22:44', '2013-08-09 23:55:00', '', 1, 0, 0, 0, 0, 128000),
-(801, 27, 5, 16, '2013-08-09 23:36:12', '2013-08-09 23:36:12', '', 2, 0, 0, 0, 0, 45000),
+(801, 27, 5, 16, '2013-08-09 23:36:12', '2013-08-09 23:36:12', 'Khoa nợ', 2, 0, 0, 0, 0, 45000),
 (802, 1, 3, 1, '2013-08-10 01:24:28', '2013-08-10 01:24:28', '', 1, 0, 0, 0, 0, 60000),
 (803, 16, 5, 1, '2013-08-10 15:36:19', '2013-08-10 17:00:00', '', 1, 0, 0, 0, 0, 172000),
 (804, 1, 5, 16, '2013-08-09 15:37:00', '2013-08-09 15:37:00', 'Nhậu với Anh Cường', 2, 0, 0, 0, 0, 380000),
 (805, 1, 5, 1, '2013-08-10 15:39:37', '2013-08-10 15:39:37', '', 1, 0, 10, 0, 0, 273000),
-(807, 2, 5, 15, '2013-08-10 16:26:00', '2013-08-10 21:40:00', '', 2, 0, 0, 0, 0, 1302000),
+(807, 2, 5, 15, '2013-08-10 16:26:00', '2013-08-10 21:40:00', 'Tuấn Anh nợ', 2, 0, 0, 0, 0, 1302000),
 (809, 17, 5, 1, '2013-08-10 23:30:00', '2013-08-11 00:21:00', '', 1, 0, 0, 0, 0, 256000),
 (810, 1, 5, 1, '2013-08-11 00:04:26', '2013-08-11 00:04:26', '', 1, 0, 0, 0, 0, 25000),
 (811, 14, 3, 1, '2013-08-11 01:00:00', '2013-08-11 02:20:00', '', 1, 0, 0, 0, 0, 373000),
@@ -2167,7 +2195,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (831, 2, 5, 1, '2013-08-14 23:55:00', '2013-08-15 00:28:00', '', 1, 0, 0, 0, 0, 297000),
 (832, 17, 5, 1, '2013-08-15 00:00:00', '2013-08-15 01:30:00', '', 1, 0, 0, 0, 0, 423000),
 (833, 14, 5, 1, '2013-08-15 00:08:28', '2013-08-15 01:40:00', '', 1, 0, 0, 0, 0, 512000),
-(834, 1, 5, 16, '2013-08-15 11:31:39', '2013-08-15 11:31:39', '', 2, 0, 0, 0, 0, 195000),
+(834, 1, 5, 16, '2013-08-15 11:31:39', '2013-08-15 11:31:39', 'Khoa nợ', 2, 0, 0, 0, 0, 195000),
 (835, 2, 5, 1, '2013-08-15 12:00:00', '2013-08-15 13:15:00', '', 1, 0, 0, 0, 0, 537000),
 (836, 17, 5, 1, '2013-08-15 22:40:25', '2013-08-15 23:42:00', '', 1, 0, 0, 0, 0, 306000),
 (837, 2, 5, 1, '2013-08-15 23:59:24', '2013-08-16 01:45:00', '', 1, 0, 0, 0, 0, 557000),
@@ -2194,7 +2222,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (859, 1, 5, 1, '2013-08-19 15:15:05', '2013-08-19 15:15:05', '', 1, 0, 0, 0, 0, 30000),
 (860, 17, 5, 1, '2013-08-19 20:10:00', '2013-08-19 21:22:00', '', 1, 0, 0, 0, 0, 248000),
 (861, 17, 5, 1, '2013-08-19 22:30:00', '2013-08-20 00:50:00', '', 1, 0, 0, 0, 0, 798000),
-(862, 2, 5, 13, '2013-08-19 22:35:00', '2013-08-20 01:15:00', '', 2, 0, 10, 0, 0, 225000),
+(862, 2, 5, 13, '2013-08-19 22:35:00', '2013-08-20 01:15:00', 'Minh nợ', 2, 0, 10, 0, 0, 225000),
 (863, 16, 5, 1, '2013-08-19 23:35:00', '2013-08-20 01:35:00', '', 1, 0, 0, 0, 0, 314000),
 (864, 1, 5, 1, '2013-08-20 19:15:22', '2013-08-20 19:15:22', '', 1, 0, 0, 0, 0, 25000),
 (865, 17, 5, 1, '2013-08-20 22:20:00', '2013-08-21 00:10:00', '', 1, 0, 0, 0, 0, 671000),
@@ -2206,7 +2234,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (872, 26, 5, 1, '2013-08-22 20:20:00', '2013-08-22 21:30:00', '', 1, 0, 0, 0, 0, 286000),
 (873, 17, 5, 1, '2013-08-22 22:47:54', '2013-08-23 00:52:00', '', 1, 0, 0, 0, 0, 368000),
 (874, 2, 5, 1, '2013-08-22 23:32:45', '2013-08-23 02:00:00', '', 1, 0, 0, 0, 0, 781000),
-(875, 2, 5, 13, '2013-08-23 21:10:08', '2013-08-23 23:00:00', 'Nợ phiếu', 2, 0, 10, 0, 0, 344000),
+(875, 2, 5, 13, '2013-08-23 21:10:08', '2013-08-23 23:00:00', 'Minh nợ', 2, 0, 10, 0, 0, 344000),
 (876, 17, 5, 1, '2013-08-24 14:30:00', '2013-08-24 17:47:00', '', 1, 0, 0, 0, 0, 766000),
 (877, 27, 5, 1, '2013-08-24 20:15:00', '2013-08-24 22:00:00', '', 1, 0, 0, 0, 0, 427000),
 (878, 2, 5, 1, '2013-08-24 21:35:00', '2013-08-24 22:35:00', '', 1, 0, 0, 0, 0, 345000),
@@ -2226,7 +2254,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (892, 2, 5, 1, '2013-08-28 18:58:31', '2013-08-28 20:15:00', '', 1, 0, 0, 0, 0, 380000),
 (893, 16, 5, 1, '2013-08-28 20:34:38', '2013-08-28 22:20:00', '', 1, 0, 0, 0, 0, 364000),
 (894, 3, 5, 1, '2013-08-28 22:10:22', '2013-08-29 00:10:00', '', 1, 0, 0, 0, 0, 266000),
-(895, 2, 5, 15, '2013-08-29 19:50:44', '2013-08-29 22:45:00', 'Bể 1 Cái Chai Bia', 2, 0, 0, 15000, 0, 768000),
+(895, 2, 5, 15, '2013-08-29 19:50:44', '2013-08-29 22:45:00', 'Tuấn Anh nợ (phụ thu 1 vỏ chai)', 2, 0, 0, 15000, 0, 768000),
 (896, 17, 5, 1, '2013-08-29 22:45:29', '2013-08-30 01:45:00', '', 1, 0, 0, 0, 0, 663000),
 (897, 3, 5, 1, '2013-08-30 00:05:00', '2013-08-30 00:53:00', '', 1, 0, 0, 0, 0, 318000),
 (898, 1, 5, 1, '2013-08-30 00:29:10', '2013-08-30 00:29:10', '', 1, 0, 0, 0, 0, 15000),
@@ -2241,7 +2269,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (908, 15, 5, 1, '2013-09-01 00:47:11', '2013-09-01 02:47:00', '', 1, 0, 0, 0, 0, 490000),
 (909, 16, 5, 1, '2013-09-01 00:47:19', '2013-09-01 02:00:00', '', 1, 0, 0, 0, 0, 311000),
 (910, 1, 5, 1, '2013-09-01 01:37:08', '2013-09-01 01:37:08', '', 1, 0, 0, 0, 0, 25000),
-(911, 2, 5, 13, '2013-09-01 01:40:21', '2013-09-01 03:38:00', '', 2, 0, 0, 0, 0, 447000),
+(911, 2, 5, 13, '2013-09-01 01:40:21', '2013-09-01 03:38:00', 'Minh nợ', 2, 0, 0, 0, 0, 447000),
 (912, 16, 9, 1, '2013-09-01 17:15:00', '2013-09-01 19:30:00', '', 1, 0, 0, 0, 0, 950000),
 (913, 16, 9, 1, '2013-09-01 19:32:38', '2013-09-01 19:32:38', '', 1, 0, 0, 0, 0, 60000),
 (914, 15, 9, 1, '2013-09-01 20:17:41', '2013-09-01 22:25:00', '', 1, 0, 0, 0, 0, 391000),
@@ -2260,7 +2288,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (928, 16, 5, 1, '2013-09-03 02:15:00', '2013-09-03 03:30:00', '', 1, 0, 0, 0, 0, 340000),
 (929, 27, 5, 16, '2013-09-03 19:00:00', '2013-09-03 22:50:00', 'BIDV TT xong ngày 7/9', 1, 0, 0, 0, 0, 1393000),
 (930, 1, 5, 23, '2013-09-03 19:34:31', '2013-09-03 19:34:31', 'Sang NV Khách Sạn Nợ Phiếu', 1, 0, 10, 0, 0, 234000),
-(931, 26, 5, 24, '2013-09-05 22:00:00', '2013-09-06 00:45:00', 'Sinh Nhật Ngọc nv. Khách Sạn', 2, 0, 10, 0, 0, 481000),
+(931, 26, 5, 24, '2013-09-05 22:00:00', '2013-09-06 00:45:00', 'Ngọc nợ (SN Ngọc NV KS)', 2, 0, 10, 0, 0, 481000),
 (932, 2, 5, 1, '2013-09-05 22:00:27', '2013-09-06 00:00:00', '', 1, 0, 0, 0, 0, 367000),
 (933, 3, 5, 1, '2013-09-05 23:04:25', '2013-09-06 00:33:00', 'NV tính nhầm Heniken là SG Special', 1, 0, 0, 0, 0, 413000),
 (934, 16, 9, 1, '2013-09-05 23:36:40', '2013-09-06 02:00:00', 'Bể 1 Cái Ly Và 2 Chai Bia', 1, 0, 0, 35000, 0, 520000),
@@ -2277,10 +2305,10 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (945, 1, 5, 1, '2013-09-07 20:24:43', '2013-09-07 20:24:43', '', 1, 0, 0, 0, 0, 15000),
 (946, 2, 5, 1, '2013-09-08 00:28:27', '2013-09-08 01:35:00', '', 1, 0, 0, 0, 0, 150000),
 (947, 2, 5, 1, '2013-09-08 14:29:00', '2013-09-08 17:20:00', '', 1, 0, 0, 0, 0, 523000),
-(949, 3, 5, 16, '2013-09-08 17:57:15', '2013-09-08 21:10:00', '', 2, 0, 0, 0, 0, 705000),
-(950, 26, 5, 1, '2013-09-08 19:39:51', '2013-09-08 22:00:00', '(Cơ Quan Chị Trúc). Tặng 1 Dĩa Chả Giò', 2, 0, 0, 0, 0, 639000),
-(951, 27, 5, 22, '2013-09-09 16:10:00', '2013-09-09 18:10:00', 'SN Hiếu Tặng 2 Dĩa Chả Giò Ghế', 2, 0, 10, 0, 0, 675000),
-(952, 2, 5, 1, '2013-09-10 23:30:00', '2013-09-11 01:50:00', '', 2, 0, 0, 0, 0, 422000),
+(949, 3, 5, 16, '2013-09-08 17:57:15', '2013-09-08 21:10:00', 'Khoa nợ', 2, 0, 0, 0, 0, 705000),
+(950, 26, 5, 25, '2013-09-08 19:39:51', '2013-09-08 22:00:00', 'CQ Chị Trúc (tặng 1 Dĩa Chả Giò)', 2, 0, 0, 0, 0, 639000),
+(951, 27, 5, 22, '2013-09-09 16:10:00', '2013-09-09 18:10:00', 'Hiếu nợ (SN Hiếu Tặng 2 Dĩa Chả Giò Ghế)', 2, 0, 10, 0, 0, 675000),
+(952, 2, 5, 25, '2013-09-10 23:30:00', '2013-09-11 01:50:00', 'NV Nhà trọ Quang Trung', 2, 0, 0, 0, 0, 422000),
 (953, 1, 5, 1, '2013-09-10 23:37:34', '2013-09-10 23:37:34', '', 1, 0, 0, 0, 0, 35000),
 (954, 3, 5, 1, '2013-09-10 23:52:11', '2013-09-11 01:10:00', '', 1, 0, 0, 0, 0, 419000),
 (955, 16, 5, 1, '2013-09-10 23:56:11', '2013-09-11 02:20:00', '', 1, 0, 0, 0, 0, 324000),
@@ -2289,7 +2317,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (958, 1, 5, 1, '2013-09-11 23:27:31', '2013-09-11 23:27:31', '', 1, 0, 0, 0, 0, 25000),
 (959, 3, 5, 1, '2013-09-12 20:23:58', '2013-09-12 21:55:00', '', 1, 0, 0, 0, 0, 351000),
 (960, 16, 5, 1, '2013-09-12 21:24:07', '2013-09-13 00:21:00', '', 1, 0, 0, 0, 0, 375000),
-(961, 2, 5, 13, '2013-09-12 22:19:12', '2013-09-13 01:20:00', '', 2, 0, 10, 0, 0, 577000),
+(961, 2, 5, 13, '2013-09-12 22:19:12', '2013-09-13 01:20:00', 'Minh nợ', 2, 0, 10, 0, 0, 577000),
 (962, 3, 5, 1, '2013-09-12 23:02:49', '2013-09-12 23:41:00', '', 1, 0, 0, 0, 0, 107000),
 (963, 14, 5, 1, '2013-09-12 23:09:16', '2013-09-13 02:30:00', '', 1, 0, 0, 0, 0, 574000),
 (964, 1, 5, 1, '2013-09-13 02:01:19', '2013-09-13 02:01:19', '', 1, 0, 0, 0, 0, 50000),
@@ -2312,12 +2340,12 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (981, 26, 5, 1, '2013-09-15 14:58:13', '2013-09-15 15:37:00', 'Anh Khoa Tặng 1 Dĩa Chả Cá Chiên', 1, 0, 0, 0, 0, 356000),
 (982, 2, 5, 1, '2013-09-15 21:15:00', '2013-09-15 21:50:00', '', 1, 0, 10, 0, 0, 313000),
 (983, 1, 5, 1, '2013-09-15 21:46:02', '2013-09-15 21:46:02', '', 1, 0, 0, 0, 0, 244000),
-(984, 3, 5, 16, '2013-09-16 21:18:31', '2013-09-16 22:20:00', '', 2, 0, 0, 0, 0, 312000),
+(984, 3, 5, 16, '2013-09-16 21:18:31', '2013-09-16 22:20:00', 'Khoa nợ', 2, 0, 0, 0, 0, 312000),
 (985, 2, 5, 1, '2013-09-16 23:20:00', '2013-09-17 00:50:00', '', 1, 0, 0, 0, 0, 430000),
 (986, 16, 5, 1, '2013-09-17 16:31:57', '2013-09-17 17:40:00', '', 1, 0, 0, 0, 0, 285000),
 (987, 16, 5, 1, '2013-09-17 17:38:02', '2013-09-17 18:20:00', '', 1, 0, 0, 0, 0, 106000),
 (988, 1, 5, 1, '2013-09-17 17:59:49', '2013-09-17 17:59:49', '', 1, 0, 0, 0, 0, 24000),
-(989, 2, 5, 26, '2013-09-17 20:25:50', '2013-09-17 21:15:00', '', 2, 0, 0, 0, 0, 368000),
+(989, 2, 5, 26, '2013-09-17 20:25:50', '2013-09-17 21:15:00', 'Thắng nợ', 2, 0, 0, 0, 0, 368000),
 (990, 3, 5, 1, '2013-09-17 20:48:44', '2013-09-17 22:35:00', 'Anh Khoa Tặng 1 Dĩa Chả Cá Chiên Giòn', 1, 0, 0, 0, 0, 489000),
 (991, 14, 5, 1, '2013-09-17 21:07:10', '2013-09-17 22:30:00', '', 1, 0, 0, 0, 0, 141000),
 (992, 2, 5, 1, '2013-09-18 19:56:34', '2013-09-18 21:45:00', '', 1, 0, 0, 0, 0, 454000),
@@ -2330,7 +2358,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (999, 26, 5, 1, '2013-09-18 22:55:45', '2013-09-19 00:40:00', '', 1, 0, 0, 0, 0, 660000),
 (1000, 1, 5, 1, '2013-09-18 23:15:23', '2013-09-18 23:15:23', '', 1, 0, 0, 0, 0, 50000),
 (1001, 3, 5, 16, '2013-09-18 23:56:26', '2013-09-19 03:40:00', 'Nhậu với Anh Khoa Trung Thu', 2, 0, 0, 0, 0, 743000),
-(1002, 16, 5, 15, '2013-09-19 00:15:05', '2013-09-19 03:40:00', 'Anh Thái bạn A Khoa nhậu', 2, 0, 15, 0, 0, 542000),
+(1002, 16, 5, 15, '2013-09-19 00:15:05', '2013-09-19 03:40:00', 'Thái (kết toán) nợ', 2, 0, 15, 0, 0, 542000),
 (1003, 1, 5, 1, '2013-09-19 00:41:54', '2013-09-19 00:41:54', '', 1, 0, 0, 0, 0, 38000),
 (1004, 1, 5, 1, '2013-09-19 00:55:17', '2013-09-19 00:55:17', '', 1, 0, 0, 0, 0, 50000),
 (1005, 2, 5, 1, '2013-09-19 07:43:56', '2013-09-19 10:10:00', '', 1, 0, 0, 0, 0, 256000),
@@ -2350,7 +2378,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (1022, 3, 5, 1, '2013-09-26 23:44:45', '2013-09-27 00:50:00', '', 1, 0, 0, 0, 0, 202000),
 (1023, 14, 5, 1, '2013-09-27 00:35:22', '2013-09-27 02:00:00', '', 1, 0, 0, 0, 0, 523000),
 (1024, 3, 5, 1, '2013-09-27 18:55:56', '2013-09-27 20:35:00', '', 1, 0, 0, 0, 0, 341000),
-(1025, 2, 5, 24, '2013-09-27 19:22:14', '2013-09-27 21:10:00', '', 2, 0, 10, 0, 0, 246000),
+(1025, 2, 5, 24, '2013-09-27 19:22:14', '2013-09-27 21:10:00', 'Ngọc nợ', 2, 0, 10, 0, 0, 246000),
 (1026, 2, 5, 1, '2013-09-27 23:07:52', '2013-09-28 00:45:00', '', 1, 0, 0, 0, 0, 444000),
 (1027, 27, 5, 1, '2013-09-27 23:43:37', '2013-09-28 01:15:00', '', 1, 0, 10, 0, 0, 905000),
 (1028, 2, 5, 1, '2013-09-28 23:30:25', '2013-09-29 01:10:00', '', 1, 0, 0, 0, 0, 364000),
@@ -2360,13 +2388,13 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (1032, 27, 5, 1, '2013-09-29 14:45:00', '2013-09-29 15:25:00', '', 1, 0, 0, 0, 0, 103000),
 (1033, 27, 5, 1, '2013-09-29 15:30:00', '2013-09-29 16:05:00', '', 1, 0, 0, 0, 0, 47000),
 (1034, 2, 5, 1, '2013-09-29 22:10:00', '2013-09-29 23:25:00', '', 1, 0, 0, 0, 0, 280000),
-(1035, 1, 5, 15, '2013-09-29 22:31:24', '2013-09-30 01:00:00', '', 2, 0, 0, 0, 0, 539000),
+(1035, 1, 5, 15, '2013-09-29 22:31:24', '2013-09-30 01:00:00', 'Tuấn Anh nợ', 2, 0, 0, 0, 0, 539000),
 (1036, 2, 5, 1, '2013-10-01 23:00:00', '2013-10-02 00:45:00', '', 1, 0, 0, 0, 0, 421000),
 (1037, 1, 5, 1, '2013-10-01 23:05:46', '2013-10-01 23:05:46', '', 1, 0, 0, 0, 0, 360000),
 (1038, 1, 5, 1, '2013-10-02 00:20:59', '2013-10-02 00:20:59', '', 1, 0, 0, 0, 0, 37000),
 (1039, 1, 5, 1, '2013-09-29 01:00:00', '2013-09-29 01:00:00', '', 1, 0, 0, 0, 0, 25000),
 (1040, 1, 5, 1, '2013-10-02 18:11:48', '2013-10-02 20:40:00', '', 1, 0, 0, 0, 0, 726000),
-(1041, 2, 5, 22, '2013-10-02 18:35:46', '2013-10-02 18:35:46', '', 2, 0, 0, 0, 0, 70000),
+(1041, 2, 5, 22, '2013-10-02 18:35:46', '2013-10-02 18:35:46', 'Hiếu nợ', 2, 0, 0, 0, 0, 70000),
 (1042, 2, 5, 1, '2013-10-02 21:18:25', '2013-10-02 23:15:00', '', 1, 0, 0, 0, 0, 453000),
 (1043, 3, 5, 1, '2013-10-03 00:22:57', '2013-10-03 01:45:00', '', 1, 0, 0, 0, 0, 372000),
 (1044, 4, 5, 1, '2013-10-03 00:26:07', '2013-10-03 01:35:00', '', 1, 0, 0, 0, 0, 290000),
@@ -2380,9 +2408,9 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (1052, 1, 5, 16, '2013-10-05 00:07:40', '2013-10-05 00:07:40', 'Anh Khoa lấy 1 Gói mèo', 2, 0, 0, 0, 0, 25000),
 (1053, 27, 5, 1, '2013-10-06 18:35:00', '2013-10-06 19:30:00', '', 1, 0, 0, 0, 0, 337000),
 (1054, 2, 5, 1, '2013-10-06 23:03:31', '2013-10-06 23:55:00', '', 1, 0, 0, 0, 0, 386000),
-(1055, 1, 5, 22, '2013-10-06 23:20:21', '2013-10-06 23:20:21', '', 2, 0, 0, 0, 0, 130000),
+(1055, 1, 5, 22, '2013-10-06 23:20:21', '2013-10-06 23:20:21', 'Hiếu nợ', 2, 0, 0, 0, 0, 130000),
 (1056, 1, 5, 1, '2013-10-05 20:00:00', '2013-10-05 20:00:00', '', 1, 0, 0, 0, 0, 260000),
-(1057, 1, 5, 22, '2013-10-06 23:00:00', '2013-10-06 23:00:00', '', 2, 0, 0, 0, 0, 180000),
+(1057, 1, 5, 22, '2013-10-06 23:00:00', '2013-10-06 23:00:00', 'Hiếu nợ', 2, 0, 0, 0, 0, 180000),
 (1058, 3, 5, 1, '2013-10-07 16:04:35', '2013-10-07 16:45:00', '', 1, 0, 0, 0, 0, 125000),
 (1059, 27, 5, 1, '2013-10-07 16:48:58', '2013-10-07 17:45:00', '', 1, 0, 0, 0, 0, 342000),
 (1060, 1, 5, 22, '2013-10-07 18:04:46', '2013-10-07 18:04:46', 'Bể 1 Chai Bia', 2, 0, 0, 10000, 0, 25000),
@@ -2392,7 +2420,7 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (1064, 17, 5, 1, '2013-10-08 00:16:27', '2013-10-08 00:40:00', '', 1, 0, 0, 0, 0, 35000),
 (1065, 2, 5, 1, '2013-10-08 00:00:00', '2013-10-08 01:40:00', '', 1, 0, 0, 0, 0, 822000),
 (1066, 2, 5, 1, '2013-10-11 00:00:08', '2013-10-11 00:30:00', '', 1, 0, 0, 0, 0, 132000),
-(1067, 4, 5, 22, '2013-10-11 00:15:41', '2013-10-11 05:30:00', 'Sang+Hiếu+Minh+Ngọc+Trang Nhậu Chia ra', 2, 0, 10, 0, 0, 917000),
+(1067, 4, 5, 22, '2013-10-11 00:15:41', '2013-10-11 05:30:00', 'Hiếu nợ (Sang+Hiếu+Minh+Ngọc+Trang chia ra)', 2, 0, 10, 0, 0, 917000),
 (1068, 3, 5, 1, '2013-10-11 00:25:00', '2013-10-11 02:00:00', '', 1, 0, 0, 0, 0, 886000),
 (1069, 17, 5, 1, '2013-10-11 12:04:20', '2013-10-11 15:10:00', '', 1, 0, 0, 0, 0, 852000),
 (1070, 2, 5, 1, '2013-10-11 16:00:00', '2013-10-11 17:25:00', 'Anh Khoa Tặng 1 Dĩa Chả Cá Chiên Giòn + Khô Mực', 1, 0, 0, 0, 0, 419000),
@@ -2405,12 +2433,26 @@ INSERT INTO `k3d_session` (`id`, `idtable`, `iduser`, `idcustomer`, `datetime`, 
 (1078, 1, 5, 1, '2013-10-13 19:22:39', '2013-10-13 19:22:39', '', 1, 0, 0, 0, 0, 10000),
 (1079, 2, 5, 1, '2013-10-15 00:35:00', '2013-10-15 04:30:00', '', 1, 0, 0, 0, 0, 1451000),
 (1080, 2, 5, 1, '2013-10-16 18:45:00', '2013-10-16 20:35:00', '', 1, 0, 0, 0, 0, 711000),
-(1082, 3, 5, 16, '2013-10-16 21:59:59', '2013-10-16 23:40:00', 'Anh Khoa Nhậu với Anh Đoàn, Anh Lộc', 2, 0, 0, 0, 0, 601000);
+(1082, 3, 5, 16, '2013-10-16 21:59:59', '2013-10-16 23:40:00', 'Anh Khoa Nhậu với Anh Đoàn, Anh Lộc', 2, 0, 0, 0, 0, 601000),
+(1083, 1, 5, 16, '2013-10-17 18:09:45', '2013-10-17 18:09:45', 'Anh Khoa Lấy 1 Chai Nước Suối', 2, 0, 0, 0, 0, 10000),
+(1084, 2, 5, 1, '2013-10-17 23:07:41', '2013-10-18 00:35:00', '', 1, 0, 0, 0, 0, 331000),
+(1085, 2, 5, 1, '2013-10-18 23:42:28', '2013-10-19 01:20:00', '', 1, 0, 0, 0, 0, 0),
+(1086, 1, 5, 16, '2013-10-18 23:53:21', '2013-10-18 23:53:21', 'Anh Khoa Lấy 1 Chai Nước Suối', 2, 0, 0, 0, 0, 0),
+(1087, 3, 5, 1, '2013-10-19 00:10:34', '2013-10-19 01:25:00', '', 1, 0, 0, 0, 0, 0),
+(1088, 27, 5, 1, '2013-10-19 18:35:36', '2013-10-19 20:45:00', 'Anh Khoa Tặng 2 Dĩa Chả Cá Chiên Giòn ', 1, 0, 20, 0, 0, 0),
+(1089, 1, 5, 1, '2013-10-19 00:00:00', '2013-10-19 00:00:00', '', 1, 0, 0, 0, 0, 0),
+(1091, 1, 5, 16, '2013-10-19 23:15:00', '2013-10-19 23:15:00', 'Anh Khoa Nhậu với Anh Hảo Phòng Lạnh', 2, 0, 0, 0, 0, 0),
+(1092, 2, 5, 1, '2013-10-20 00:28:53', '2013-10-20 01:15:00', '', 1, 0, 10, 0, 0, 0),
+(1093, 27, 5, 1, '2013-10-20 18:50:00', '2013-10-20 19:25:00', '', 1, 0, 0, 0, 0, 0),
+(1094, 17, 5, 1, '2013-10-21 17:35:00', '2013-10-21 21:15:00', '', 1, 0, 0, 0, 0, 0),
+(1095, 2, 5, 1, '2013-10-21 21:38:00', '2013-10-21 23:30:00', '', 1, 0, 0, 0, 0, 0),
+(1096, 26, 5, 1, '2013-10-21 21:59:18', '2013-10-22 00:10:00', '', 1, 0, 0, 0, 0, 0),
+(1097, 3, 5, 1, '2013-10-22 00:07:14', '2013-10-22 00:07:14', '', 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_session_detail`
+-- Table structure for table `k3d_session_detail`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_session_detail` (
@@ -2422,10 +2464,10 @@ CREATE TABLE IF NOT EXISTS `k3d_session_detail` (
   PRIMARY KEY (`id`),
   KEY `idsession` (`idsession`),
   KEY `idcourse` (`idcourse`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4889 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4937 ;
 
 --
--- Contenu de la table `k3d_session_detail`
+-- Dumping data for table `k3d_session_detail`
 --
 
 INSERT INTO `k3d_session_detail` (`id`, `idsession`, `idcourse`, `count`, `price`) VALUES
@@ -5851,12 +5893,54 @@ INSERT INTO `k3d_session_detail` (`id`, `idsession`, `idcourse`, `count`, `price
 (4885, 1082, 163, 1, 4000),
 (4886, 1082, 115, 1, 30000),
 (4887, 1082, 121, 1, 35000),
-(4888, 1082, 164, 1, 30000);
+(4888, 1082, 164, 1, 30000),
+(4889, 1083, 126, 1, 10000),
+(4890, 1084, 112, 10, 15000),
+(4891, 1084, 110, 1, 50000),
+(4893, 1085, 112, 8, 17000),
+(4894, 1085, 110, 1, 50000),
+(4896, 1086, 126, 1, 10000),
+(4897, 1087, 111, 4, 14000),
+(4898, 1087, 110, 1, 50000),
+(4900, 1085, 15, 1, 25000),
+(4901, 1087, 141, 1, 17000),
+(4902, 1089, 111, 5, 14000),
+(4904, 1088, 112, 20, 15000),
+(4905, 1088, 110, 4, 50000),
+(4906, 1088, 159, 2, 0),
+(4908, 1088, 122, 1, 6000),
+(4909, 1088, 116, 1, 25000),
+(4910, 1091, 112, 23, 15000),
+(4911, 1091, 110, 1, 50000),
+(4912, 1091, 162, 3, 2000),
+(4913, 1091, 139, 2, 10000),
+(4914, 1091, 116, 1, 25000),
+(4915, 1091, 159, 1, 45000),
+(4916, 1092, 112, 7, 17000),
+(4917, 1092, 122, 1, 6000),
+(4918, 1094, 112, 11, 15000),
+(4919, 1094, 110, 1, 50000),
+(4920, 1094, 162, 3, 2000),
+(4921, 1094, 122, 1, 6000),
+(4922, 1095, 112, 30, 15000),
+(4923, 1095, 110, 1, 50000),
+(4924, 1095, 162, 10, 2000),
+(4925, 1096, 112, 5, 15000),
+(4926, 1096, 110, 1, 50000),
+(4928, 1095, 164, 1, 30000),
+(4929, 1095, 122, 1, 6000),
+(4930, 1095, 163, 1, 4000),
+(4931, 1095, 116, 1, 25000),
+(4932, 1095, 126, 1, 10000),
+(4933, 1097, 112, 1, 17000),
+(4934, 1097, 110, 1, 50000),
+(4935, 1097, 162, 1, 2000),
+(4936, 1097, 143, 1, 15000);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_store`
+-- Table structure for table `k3d_store`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_store` (
@@ -5867,7 +5951,7 @@ CREATE TABLE IF NOT EXISTS `k3d_store` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `k3d_store`
+-- Dumping data for table `k3d_store`
 --
 
 INSERT INTO `k3d_store` (`id`, `name`, `note`) VALUES
@@ -5876,7 +5960,7 @@ INSERT INTO `k3d_store` (`id`, `name`, `note`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_supplier`
+-- Table structure for table `k3d_supplier`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_supplier` (
@@ -5887,29 +5971,30 @@ CREATE TABLE IF NOT EXISTS `k3d_supplier` (
   `note` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `debt` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
--- Contenu de la table `k3d_supplier`
+-- Dumping data for table `k3d_supplier`
 --
 
 INSERT INTO `k3d_supplier` (`id`, `name`, `phone`, `address`, `note`, `debt`) VALUES
-(1, 'ĐL Nước Đá', '0703456456', 'Trí Phường 4', 'Cung cấp nước đá', 0),
-(6, 'Coop Mart', 'chưa cập nhật', 'Vĩnh Long', '', 0),
-(8, 'Nhà PP Đoan Trang', '0703 822 227', '64/6N Trần Phú P4 TP Vĩnh Long', '', 0),
-(9, 'KHÁC', '', '', '', 0),
-(11, 'CH Tuấn', '0902 612 434', 'P4, TPVL', 'Cung cấp thực phẩm khô đóng gói', 0),
-(12, 'Vựa Trái Cây', '', '', '', 0),
-(13, 'Cty Du Lịch Cửu Long', '0703828042', 'Vĩnh Long', '', 0),
-(14, 'CH Thanh Sơn', '0703 823 842', 'Vĩnh Long', 'Cung cấp khăn lạnh', 0),
+(1, 'ĐL NƯỚC ĐÁ TRÍ', '0703456456', 'Trí Phường 4', 'Cung cấp nước đá', 0),
+(6, 'COOP MART', 'chưa cập nhật', 'Vĩnh Long', '', 0),
+(8, 'NPP ĐOAN TRANG', '0703 822 227', '64/6N Trần Phú P4 TP Vĩnh Long', '', 0),
+(9, 'TẠP HÓA 01', '', '', '', 0),
+(11, 'CH TUẤN', '0902 612 434', 'P4, TPVL', 'Cung cấp thực phẩm khô đóng gói', 0),
+(12, 'VỰA TRÁI CÂY', '', '', '', 0),
+(13, 'CTY CP DU LỊCH CỬU LONG', '0703828042', 'Vĩnh Long', 'c/c Bia', 0),
+(14, 'CH THANH SƠN', '0703 823 842', 'Vĩnh Long', 'Cung cấp khăn lạnh', 0),
 (15, 'Bia SAGOTA', '', '', '', 0),
-(16, 'TIỀN CHỢ', '', '', '', 0),
-(17, 'TẠP HÓA 01', '', '', '', 0);
+(16, 'CHỢ VĨNH LONG', '', '', '', 0),
+(17, 'TẠP HÓA 02', '', '', '', 0),
+(18, 'ĐL BIA 01', '', '', '', 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_table`
+-- Table structure for table `k3d_table`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_table` (
@@ -5923,7 +6008,7 @@ CREATE TABLE IF NOT EXISTS `k3d_table` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=28 ;
 
 --
--- Contenu de la table `k3d_table`
+-- Dumping data for table `k3d_table`
 --
 
 INSERT INTO `k3d_table` (`id`, `iddomain`, `name`, `iduser`, `type`) VALUES
@@ -5941,7 +6026,7 @@ INSERT INTO `k3d_table` (`id`, `iddomain`, `name`, `iduser`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_term`
+-- Table structure for table `k3d_term`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_term` (
@@ -5952,7 +6037,7 @@ CREATE TABLE IF NOT EXISTS `k3d_term` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 --
--- Contenu de la table `k3d_term`
+-- Dumping data for table `k3d_term`
 --
 
 INSERT INTO `k3d_term` (`id`, `name`, `type`) VALUES
@@ -5965,7 +6050,7 @@ INSERT INTO `k3d_term` (`id`, `name`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_term_collect`
+-- Table structure for table `k3d_term_collect`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_term_collect` (
@@ -5975,7 +6060,7 @@ CREATE TABLE IF NOT EXISTS `k3d_term_collect` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- Contenu de la table `k3d_term_collect`
+-- Dumping data for table `k3d_term_collect`
 --
 
 INSERT INTO `k3d_term_collect` (`id`, `name`) VALUES
@@ -5985,7 +6070,7 @@ INSERT INTO `k3d_term_collect` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_tracking`
+-- Table structure for table `k3d_tracking`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_tracking` (
@@ -5997,343 +6082,90 @@ CREATE TABLE IF NOT EXISTS `k3d_tracking` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 --
--- Contenu de la table `k3d_tracking`
+-- Dumping data for table `k3d_tracking`
 --
 
 INSERT INTO `k3d_tracking` (`id`, `date_start`, `date_end`, `estate_rate`) VALUES
 (2, '2013-02-01', '2013-02-28', 0),
-(3, '2013-03-01', '2013-03-31', 0),
 (4, '2013-04-01', '2013-04-30', 0),
 (5, '2013-05-01', '2013-05-31', 0),
 (6, '2013-06-01', '2013-06-30', 0),
 (7, '2013-07-01', '2013-07-31', 0),
 (8, '2013-08-01', '2013-08-31', 0),
 (9, '2013-09-01', '2013-09-30', 0),
-(10, '2013-10-01', '2013-10-31', 0),
-(11, '2013-01-01', '2013-12-31', 0);
+(10, '2013-10-01', '2013-10-31', 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_tracking_store`
+-- Table structure for table `k3d_tracking_store`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_tracking_store` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_tracking` int(11) NOT NULL,
-  `id_resource` int(11) NOT NULL,
+  `id_course` int(11) NOT NULL,
   `count_old` float NOT NULL,
   `count_import` float NOT NULL,
   `count_export` float NOT NULL,
   `price` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1510 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=55 ;
 
 --
--- Contenu de la table `k3d_tracking_store`
+-- Dumping data for table `k3d_tracking_store`
 --
 
-INSERT INTO `k3d_tracking_store` (`id`, `id_tracking`, `id_resource`, `count_old`, `count_import`, `count_export`, `price`) VALUES
-(740, 4, 45, 1.76, 0, 0.44, 0),
-(741, 4, 46, 1.6, 0, 0.58, 0),
-(742, 4, 17, 118, 0, 0, 0),
-(743, 4, 27, 4, 35, 31, 17875),
-(744, 4, 28, 46, 60, 7.5, 2500),
-(745, 4, 29, 58, 0, 19, 0),
-(746, 4, 30, 50, 10, 27, 16800),
-(747, 4, 31, 50, 10, 29, 17700),
-(748, 4, 32, 260, 0, 31, 0),
-(749, 4, 78, 0, 0, 44, 0),
-(750, 4, 2, 0, 42, 36.2944, 16000),
-(751, 4, 14, 0, 0, 0, 0),
-(752, 4, 35, 754, 0, 17, 0),
-(753, 4, 36, 0, 0, 13, 0),
-(754, 4, 39, 12.1, 30, 2.8, 16600),
-(755, 4, 40, 6.6, 10, 1.4, 23500),
-(756, 4, 43, 0, 0, 0.18, 0),
-(757, 4, 44, 0, 150, 69, 3000),
-(758, 4, 58, 8, 1, 16, 0),
-(759, 4, 59, 8, 52, 10, 27147),
-(760, 4, 61, 0, 14, 14.82, 27200),
-(761, 4, 65, 0.4, 0, 0, 0),
-(762, 4, 66, 0, 0, 0, 0),
-(763, 4, 67, 0, 0, 0, 0),
-(764, 4, 68, 0, 0, 0, 0),
-(765, 4, 76, 0, 0, 0, 0),
-(766, 4, 77, 0, 0, 0, 0),
-(767, 4, 19, 5.1, 34, 27.5, 313000),
-(768, 4, 20, 7.3, 10, 9.25, 362000),
-(769, 4, 21, 38.5, 25, 52.75, 132000),
-(770, 4, 22, 8.4, 20, 15.55, 178000),
-(771, 4, 23, 6.5, 0, 0, 0),
-(772, 4, 24, 3.5, 0, 0.5, 0),
-(773, 4, 25, 9.5, 0, 2.375, 0),
-(774, 4, 26, 7.7, 0, 0.833333, 0),
-(775, 4, 60, 0.9, 0, 0.708333, 0),
-(776, 4, 62, 1, 5, 0.125, 280000),
-(777, 4, 63, 0.7, 1, 1.125, 258000),
-(778, 4, 64, 1, 0, 0.375, 0),
-(779, 4, 69, 0, 0, 0, 0),
-(780, 4, 70, 0, 0, 0.166667, 0),
-(781, 4, 71, 0, 0, 0, 0),
-(782, 4, 72, 0, 0, 0.0833333, 0),
-(783, 4, 73, 0, 0, 0, 0),
-(784, 4, 74, 0, 0, 0, 0),
-(785, 4, 75, 0, 0, 0, 0),
-(786, 4, 47, 0, 50, 35.5, 9917),
-(787, 4, 48, 0, 13, 0, 7650),
-(788, 4, 49, 0, 0, 0, 0),
-(789, 4, 50, 0, 4, 0, 16250),
-(790, 4, 51, 0, 0, 0, 0),
-(791, 4, 52, 0, 5, 0, 22000),
-(792, 4, 53, 2, 35, 0, 12260),
-(793, 4, 54, 0, 37, 35.5, 11525),
-(794, 4, 55, 0, 15, 28.4, 11854),
-(795, 4, 56, 0, 4, 0, 6500),
-(796, 4, 57, 0, 0, 0, 0),
-(797, 4, 79, 0, 0, 17.75, 0),
-(798, 5, 45, 1.32, 0, 0.32, 0),
-(799, 5, 46, 1.02, 1, 0.46, 350000),
-(800, 5, 17, 118, 0, 0, 0),
-(801, 5, 27, 8, 30, 32, 17500),
-(802, 5, 28, 118.5, 60, 5.4, 2500),
-(803, 5, 29, 39, 10, 13, 10500),
-(804, 5, 30, 33, 20, 21, 17650),
-(805, 5, 31, 31, 20, 26, 20000),
-(806, 5, 32, 229, 0, 19, 0),
-(807, 5, 78, -44, 0, 14, 0),
-(808, 5, 2, 10.7056, 56, 33.7083, 16000),
-(809, 5, 14, 0, 0, 0, 0),
-(810, 5, 35, 737, 0, 8, 0),
-(811, 5, 36, -13, 0, 10, 0),
-(812, 5, 39, 39.3, 30, 2, 17100),
-(813, 5, 40, 15.2, 20, 0.9, 23000),
-(814, 5, 43, -0.18, 40, 0.72, 1700),
-(815, 5, 44, 81, 48, 71, 3000),
-(816, 5, 58, -7, 0, 0, 0),
-(817, 5, 59, 50, 0, 16, 0),
-(818, 5, 61, -0.82, 13, 14.2, 32167),
-(819, 5, 65, 0.4, 24, 0.2, 107133),
-(820, 5, 66, 0, 0, 0, 0),
-(821, 5, 67, 0, 0, 0, 0),
-(822, 5, 68, 0, 0, 0, 0),
-(823, 5, 76, 0, 0, 15, 0),
-(824, 5, 77, 0, 0, 1.1, 0),
-(825, 5, 19, 11.6, 18, 20.9583, 313000),
-(826, 5, 20, 8.05, 7, 8.125, 361000),
-(827, 5, 21, 10.75, 43, 43.35, 132000),
-(828, 5, 22, 12.85, 22, 26.15, 178000),
-(829, 5, 23, 6.5, 0, 0, 0),
-(830, 5, 24, 3, 0, 0.541667, 0),
-(831, 5, 25, 7.125, 0, 0, 0),
-(832, 5, 26, 6.86667, 0, 2, 0),
-(833, 5, 60, 0.191667, 1, 0.541667, 173000),
-(834, 5, 62, 5.875, 0, 0, 0),
-(835, 5, 63, 0.575, 1, 1.33333, 86000),
-(836, 5, 64, 0.625, 0, 0.166667, 0),
-(837, 5, 69, 0, 0, 0, 0),
-(838, 5, 70, -0.166667, 0, 0, 0),
-(839, 5, 71, 0, 0, 0, 0),
-(840, 5, 72, -0.0833333, 1, 0.583333, 148000),
-(841, 5, 73, 0, 0, 0.0416667, 0),
-(842, 5, 74, 0, 1, 0.0416667, 185000),
-(843, 5, 75, 0, 0, 0, 0),
-(844, 5, 47, 14.5, 27, 34.75, 8750),
-(845, 5, 48, 13, 0, 0, 0),
-(846, 5, 49, 0, 0, 0, 0),
-(847, 5, 50, 4, 0, 0, 0),
-(848, 5, 51, 0, 0, 0, 0),
-(849, 5, 52, 5, 6.5, 0, 14700),
-(850, 5, 53, 41, 19, 0, 11500),
-(851, 5, 54, 6.5, 51, 34.75, 7986),
-(852, 5, 55, -11.4, 6, 27.8, 11333),
-(853, 5, 56, 4, 0, 0, 0),
-(854, 5, 57, 0, 0, 0, 0),
-(855, 5, 79, -17.75, 0, 17.375, 0),
-(914, 6, 45, 1, 0, 0.26, 0),
-(915, 6, 46, 1.56, 0, 0.2, 0),
-(916, 6, 17, 118, 0, 0, 0),
-(917, 6, 27, 6, 10, 13, 17500),
-(918, 6, 28, 153.1, 3, 4.1, 50000),
-(919, 6, 29, 56, 20, 11, 10900),
-(920, 6, 30, 62, 30, 11, 16800),
-(921, 6, 31, 45, 20, 10, 20800),
-(922, 6, 32, 210, 0, 21, 0),
-(923, 6, 78, -58, 0, 0, 0),
-(924, 6, 2, 27.9972, 36, 21, 16000),
-(925, 6, 14, 0, 0, 0, 0),
-(926, 6, 35, 729, 0, 7, 0),
-(927, 6, 36, -23, 0, 2, 0),
-(928, 6, 39, 67.3, 0, 1.4, 0),
-(929, 6, 40, 34.3, 0, 0.8, 0),
-(930, 6, 43, 39.1, 0, 0.38, 0),
-(931, 6, 44, 58, 69, 48, 3000),
-(932, 6, 58, -7, 0, 8, 0),
-(933, 6, 59, 34, 0, 8, 0),
-(934, 6, 61, 1.98, 4, 6.42, 26900),
-(935, 6, 65, 24.2, 0, 1.3, 0),
-(936, 6, 66, 0, 0, 0, 0),
-(937, 6, 67, 0, 0, 0, 0),
-(938, 6, 68, 0, 0, 0, 0),
-(939, 6, 76, -15, 0, 4, 0),
-(940, 6, 77, -1.1, 0, 0.45, 0),
-(941, 6, 19, 8.64167, 4, 10, 313000),
-(942, 6, 20, 6.925, 4, 4.54167, 361000),
-(943, 6, 21, 10.4, 29, 26.2, 132000),
-(944, 6, 22, 8.7, 14, 19.05, 180000),
-(945, 6, 23, 6.5, 0, 1.70833, 0),
-(946, 6, 24, 2.45833, 0, 0.208333, 0),
-(947, 6, 25, 7.125, 0, 0.291667, 0),
-(948, 6, 26, 4.86667, 0, 1, 0),
-(949, 6, 60, 0.65, 0, 0.416667, 0),
-(950, 6, 62, 5.875, 0, 0, 0),
-(951, 6, 63, 0.241667, 0, 0.75, 0),
-(952, 6, 64, 0.458333, 0, 0.208333, 0),
-(953, 6, 69, 0, 0, 0, 0),
-(954, 6, 70, -0.166667, 0, 0, 0),
-(955, 6, 71, 0, 0, 0, 0),
-(956, 6, 72, 0.333333, 0, 0.416667, 0),
-(957, 6, 73, -0.0416667, 0, 0, 0),
-(958, 6, 74, 0.958333, 0, 0, 0),
-(959, 6, 75, 0, 0, 0, 0),
-(960, 6, 47, 6.75, 19.6, 20.2, 12750),
-(961, 6, 48, 13, 0, 0, 0),
-(962, 6, 49, 0, 4.6, 0, 15000),
-(963, 6, 50, 4, 11, 0, 13429),
-(964, 6, 51, 0, 0, 0, 0),
-(965, 6, 52, 11.5, 0, 0, 0),
-(966, 6, 53, 54, 0, 0, 0),
-(967, 6, 54, 19.75, 20.8, 20, 13000),
-(968, 6, 55, -33.2, 2, 16, 12000),
-(969, 6, 56, 4, 0, 0, 0),
-(970, 6, 57, 0, 0, 0, 0),
-(971, 6, 79, -31.125, 33.85, 10, 6200),
-(1204, 7, 45, 0.74, 0.4, 0.26, 375000),
-(1205, 7, 46, 1.36, 0, 0.4, 0),
-(1206, 7, 17, 118, 0, 0, 0),
-(1207, 7, 27, 3, 20, 21, 16800),
-(1208, 7, 28, 152, 1, 4.3, 49000),
-(1209, 7, 29, 45, 1, 15, 12000),
-(1210, 7, 30, 51, 0, 20, 0),
-(1211, 7, 31, 35, 0, 19, 0),
-(1212, 7, 32, 189, 0, 21, 0),
-(1213, 7, 78, -58, 0, 0, 0),
-(1214, 7, 2, 42.9972, 32, 26.0333, 16000),
-(1215, 7, 14, 0, 0, 0, 0),
-(1216, 7, 35, 722, 0, 0, 0),
-(1217, 7, 36, -25, 0, 16, 0),
-(1218, 7, 39, 65.9, 2, 2.9, 169000),
-(1219, 7, 40, 33.5, 1, 1, 225000),
-(1220, 7, 43, 38.72, 0, 0.52, 0),
-(1221, 7, 44, 79, 0, 46, 0),
-(1222, 7, 58, -15, 0, 7, 0),
-(1223, 7, 59, 26, 10, 5, 27500),
-(1224, 7, 61, -4.44, 10, 8.66, 26900),
-(1225, 7, 65, 22.9, 1, 2.5, 155000),
-(1226, 7, 66, 0, 0, 0, 0),
-(1227, 7, 67, 0, 0, 0, 0),
-(1228, 7, 68, 0, 0, 0, 0),
-(1229, 7, 76, -19, 0, 12, 0),
-(1230, 7, 77, -1.55, 0, 0.6, 0),
-(1231, 7, 19, 2.64167, 5, 5.95833, 314000),
-(1232, 7, 20, 6.38333, 4, 5.45833, 360000),
-(1233, 7, 21, 13.2, 20, 24.2, 132000),
-(1234, 7, 22, 13.65, 40, 39.4, 180000),
-(1235, 7, 23, 4.79167, 0, 2.41667, 0),
-(1236, 7, 24, 2.25, 0, 0, 0),
-(1237, 7, 25, 6.83333, 0, 0.666667, 0),
-(1238, 7, 26, 3.86667, 0, 0, 0),
-(1239, 7, 60, 0.233333, 1, 0.375, 177600),
-(1240, 7, 62, 5.875, 0, 0, 0),
-(1241, 7, 63, -0.508333, 0, 0.291667, 0),
-(1242, 7, 64, 0.25, 1, 0.416667, 124800),
-(1243, 7, 69, 0, 0, 0, 0),
-(1244, 7, 70, -0.166667, 0, 0.0833333, 0),
-(1245, 7, 71, 0, 0, 0, 0),
-(1246, 7, 72, -0.0833333, 1, 0.458333, 148000),
-(1247, 7, 73, -0.0416667, 0, 0, 0),
-(1248, 7, 74, 0.958333, 0, 0.208333, 0),
-(1249, 7, 75, 0, 0, 0, 0),
-(1250, 7, 47, 6.15, 8.2, 27.75, 12667),
-(1251, 7, 48, 13, 0, 0, 0),
-(1252, 7, 49, 4.6, 0, 0, 0),
-(1253, 7, 50, 15, 21.8, 0, 15583),
-(1254, 7, 51, 0, 0, 0, 0),
-(1255, 7, 52, 11.5, 0, 0, 0),
-(1256, 7, 53, 54, 0, 0, 0),
-(1257, 7, 54, 18.55, 21.4, 28.15, 17045),
-(1258, 7, 55, -49.2, 6.6, 22.2, 14000),
-(1259, 7, 56, 4, 0, 0, 0),
-(1260, 7, 57, 0, 0, 0, 0),
-(1261, 7, 79, -11.275, 20.9, 13.875, 8000),
-(1447, 8, 83, 202, 0, 19, 0),
-(1448, 8, 45, 44, 0, 17, 0),
-(1449, 8, 46, 48, 0, 15, 0),
-(1450, 8, 17, 118, 0, 0, 0),
-(1451, 8, 27, 2, 24, 16, 18750),
-(1452, 8, 28, 33, 40, 40, 2450),
-(1453, 8, 29, 31, 9, 7, 10900),
-(1454, 8, 30, 31, 20, 19, 18300),
-(1455, 8, 31, 16, 20, 17, 22500),
-(1456, 8, 32, 168, 0, 18, 0),
-(1457, 8, 78, -58, 0, 0, 0),
-(1458, 8, 80, 0, 10, 1, 11500),
-(1459, 8, 81, 0, 4, 0, 9700),
-(1460, 8, 2, 167, 38, 0, 15923),
-(1461, 8, 14, 0, 0, 0, 0),
-(1462, 8, 35, 722, 0, 0, 0),
-(1463, 8, 36, -41, 0, 19, 0),
-(1464, 8, 39, 11, 20, 27, 17100),
-(1465, 8, 40, 11, 10, 9, 22500),
-(1466, 8, 43, -50, 0, 34, 0),
-(1467, 8, 44, 33, 5, 53, 3000),
-(1468, 8, 58, -22, 25, 2, 23000),
-(1469, 8, 59, 31, 17, 17, 29500),
-(1470, 8, 61, -155, 550, 442, 800),
-(1471, 8, 65, 34, 30, 29, 15300),
-(1472, 8, 66, 0, 0, 0, 0),
-(1473, 8, 67, 0, 0, 0, 0),
-(1474, 8, 68, 0, 0, 0, 0),
-(1475, 8, 76, -31, 0, 11, 0),
-(1476, 8, 77, -2.15, 0, 0.75, 0),
-(1477, 8, 19, 40, 648, 399, 13126),
-(1478, 8, 20, 118, 96, 68, 15000),
-(1479, 8, 21, 180, 700, 683, 6600),
-(1480, 8, 22, 85, 900, 800, 8975),
-(1481, 8, 23, 57, 0, 0, 0),
-(1482, 8, 24, 54, 0, 0, 0),
-(1483, 8, 25, 148, 0, 28, 0),
-(1484, 8, 26, 93, 72, 85, 9917),
-(1485, 8, 60, 67.9583, 24, 0.791667, 6084),
-(1486, 8, 62, 141, 0, 0, 0),
-(1487, 8, 63, 61.5, 24, 0.875, 3584),
-(1488, 8, 64, 46.8333, 0, 0.416667, 0),
-(1489, 8, 69, 0, 0, 0, 0),
-(1490, 8, 70, -0.25, 0, 0, 0),
-(1491, 8, 71, 0, 0, 0, 0),
-(1492, 8, 72, 46.4583, 24, 0.666667, 6375),
-(1493, 8, 73, -0.0416667, 0, 0, 0),
-(1494, 8, 74, 23.75, 0, 0.416667, 0),
-(1495, 8, 75, 0, 0, 0, 0),
-(1496, 8, 47, -13.4, 3, 32.95, 8000),
-(1497, 8, 48, 13, 0, 0, 0),
-(1498, 8, 49, 4.6, 0, 0, 0),
-(1499, 8, 50, 36.8, 11.1, 0, 12250),
-(1500, 8, 51, 0, 2, 0, 29000),
-(1501, 8, 52, 11.5, 0, 0, 0),
-(1502, 8, 53, 54, 1, 0, 16000),
-(1503, 8, 54, 11.8, 11.5, 32.75, 20125),
-(1504, 8, 55, -64.8, 6.6, 26.2, 10500),
-(1505, 8, 56, 4, 0, 0, 0),
-(1506, 8, 57, 0, 0, 0, 0),
-(1507, 8, 79, -4.25, 11.1, 16.375, 7500),
-(1508, 8, 82, 0, 1, 0, 10000),
-(1509, 8, 84, 0, 0, 0, 0);
+INSERT INTO `k3d_tracking_store` (`id`, `id_tracking`, `id_course`, `count_old`, `count_import`, `count_export`, `price`) VALUES
+(11, 2, 125, 0, 0, 0, 0),
+(12, 2, 128, 0, 0, 0, 0),
+(13, 2, 114, 0, 0, 0, 8625),
+(14, 2, 54, 0, 0, 0, 4720),
+(15, 2, 142, 0, 0, 0, 7000),
+(16, 2, 118, 0, 0, 0, 7800),
+(17, 2, 141, 0, 0, 0, 7000),
+(18, 2, 122, 0, 0, 0, 2067),
+(19, 2, 55, 0, 0, 0, 7709),
+(20, 2, 164, 0, 0, 0, 16000),
+(21, 2, 139, 0, 0, 0, 3000),
+(22, 2, 147, 0, 0, 0, 0),
+(23, 2, 123, 0, 0, 0, 0),
+(24, 2, 124, 0, 0, 0, 0),
+(25, 2, 107, 0, 0, 0, 13076),
+(26, 2, 108, 0, 0, 0, 7535),
+(27, 2, 157, 0, 0, 0, 0),
+(28, 2, 161, 0, 0, 0, 0),
+(29, 2, 162, 0, 0, 0, 550),
+(30, 2, 119, 0, 0, 0, 13525),
+(31, 2, 134, 0, 0, 0, 7667),
+(32, 2, 144, 0, 0, 0, 23991),
+(33, 2, 126, 0, 0, 0, 3584),
+(34, 2, 129, 0, 0, 0, 0),
+(35, 2, 120, 0, 0, 0, 15838),
+(36, 2, 56, 0, 0, 0, 0),
+(37, 2, 127, 0, 0, 0, 6236),
+(38, 2, 160, 0, 0, 0, 0),
+(39, 2, 163, 0, 0, 0, 1450),
+(40, 2, 136, 0, 0, 0, 0),
+(41, 2, 155, 0, 0, 0, 8000),
+(42, 2, 111, 0, 0, 0, 6533),
+(43, 2, 112, 0, 0, 0, 9068),
+(44, 2, 113, 0, 0, 0, 10896),
+(45, 2, 143, 0, 0, 0, 6830),
+(46, 2, 115, 0, 0, 0, 19167),
+(47, 2, 116, 0, 0, 0, 14713),
+(48, 2, 15, 0, 0, 0, 15383),
+(49, 2, 137, 0, 0, 0, 9917),
+(50, 2, 138, 0, 0, 0, 10834),
+(51, 2, 140, 0, 0, 0, 11667),
+(52, 2, 53, 0, 0, 0, 0),
+(53, 2, 121, 0, 0, 0, 15062),
+(54, 2, 158, 0, 0, 0, 11500);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_unit`
+-- Table structure for table `k3d_unit`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_unit` (
@@ -6343,7 +6175,7 @@ CREATE TABLE IF NOT EXISTS `k3d_unit` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
--- Contenu de la table `k3d_unit`
+-- Dumping data for table `k3d_unit`
 --
 
 INSERT INTO `k3d_unit` (`id`, `name`) VALUES
@@ -6369,7 +6201,7 @@ INSERT INTO `k3d_unit` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `k3d_user`
+-- Table structure for table `k3d_user`
 --
 
 CREATE TABLE IF NOT EXISTS `k3d_user` (
@@ -6388,7 +6220,7 @@ CREATE TABLE IF NOT EXISTS `k3d_user` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
--- Contenu de la table `k3d_user`
+-- Dumping data for table `k3d_user`
 --
 
 INSERT INTO `k3d_user` (`id`, `name`, `email`, `pass`, `gender`, `note`, `datecreate`, `dateupdate`, `dateactivity`, `type`, `code`) VALUES
@@ -6402,79 +6234,79 @@ INSERT INTO `k3d_user` (`id`, `name`, `email`, `pass`, `gender`, `note`, `datecr
 (9, 'Khoa', 'lenguyen.bdc@gmail.com', '123456', 0, '', '2013-08-13 05:48:44', '2013-08-13 05:48:44', '2013-08-13 05:48:44', 1, '');
 
 --
--- Contraintes pour les tables exportées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `k3d_collect_customer`
+-- Constraints for table `k3d_collect_customer`
 --
 ALTER TABLE `k3d_collect_customer`
   ADD CONSTRAINT `k3d_customer_collect_1` FOREIGN KEY (`idcustomer`) REFERENCES `k3d_customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `k3d_collect_general`
+-- Constraints for table `k3d_collect_general`
 --
 ALTER TABLE `k3d_collect_general`
   ADD CONSTRAINT `k3d_collect_general_1` FOREIGN KEY (`id_term`) REFERENCES `k3d_term_collect` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `k3d_course`
+-- Constraints for table `k3d_course`
 --
 ALTER TABLE `k3d_course`
   ADD CONSTRAINT `k3d_course_1` FOREIGN KEY (`idcategory`) REFERENCES `k3d_category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `k3d_order_import`
+-- Constraints for table `k3d_order_import`
 --
 ALTER TABLE `k3d_order_import`
   ADD CONSTRAINT `k3d_order_import_1` FOREIGN KEY (`idsupplier`) REFERENCES `k3d_supplier` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `k3d_order_import_detail`
+-- Constraints for table `k3d_order_import_detail`
 --
 ALTER TABLE `k3d_order_import_detail`
   ADD CONSTRAINT `k3d_order_import_detail_1` FOREIGN KEY (`idorder`) REFERENCES `k3d_order_import` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `k3d_order_import_detail_2` FOREIGN KEY (`idresource`) REFERENCES `k3d_resource` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `k3d_paid_customer`
+-- Constraints for table `k3d_paid_customer`
 --
 ALTER TABLE `k3d_paid_customer`
   ADD CONSTRAINT `k3d_customer_paid_1` FOREIGN KEY (`idcustomer`) REFERENCES `k3d_customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `k3d_paid_general`
+-- Constraints for table `k3d_paid_general`
 --
 ALTER TABLE `k3d_paid_general`
   ADD CONSTRAINT `k3d_paid_general_1` FOREIGN KEY (`id_term`) REFERENCES `k3d_term` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `k3d_paid_pay_roll`
+-- Constraints for table `k3d_paid_pay_roll`
 --
 ALTER TABLE `k3d_paid_pay_roll`
   ADD CONSTRAINT `k3d_paid_pay_roll_1` FOREIGN KEY (`idemployee`) REFERENCES `k3d_employee` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `k3d_paid_supplier`
+-- Constraints for table `k3d_paid_supplier`
 --
 ALTER TABLE `k3d_paid_supplier`
   ADD CONSTRAINT `k3d_supplier_paid_1` FOREIGN KEY (`idsupplier`) REFERENCES `k3d_supplier` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `k3d_r2c`
+-- Constraints for table `k3d_r2c`
 --
 ALTER TABLE `k3d_r2c`
   ADD CONSTRAINT `k3d_r2c_1` FOREIGN KEY (`id_course`) REFERENCES `k3d_course` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `k3d_r2c_2` FOREIGN KEY (`id_resource`) REFERENCES `k3d_resource` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `k3d_resource`
+-- Constraints for table `k3d_resource`
 --
 ALTER TABLE `k3d_resource`
   ADD CONSTRAINT `k3d_resource_1` FOREIGN KEY (`idsupplier`) REFERENCES `k3d_supplier` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `k3d_session`
+-- Constraints for table `k3d_session`
 --
 ALTER TABLE `k3d_session`
   ADD CONSTRAINT `k3d_session_1` FOREIGN KEY (`idtable`) REFERENCES `k3d_table` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -6482,14 +6314,14 @@ ALTER TABLE `k3d_session`
   ADD CONSTRAINT `k3d_session_3` FOREIGN KEY (`idcustomer`) REFERENCES `k3d_customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `k3d_session_detail`
+-- Constraints for table `k3d_session_detail`
 --
 ALTER TABLE `k3d_session_detail`
   ADD CONSTRAINT `k3d_session_detail_1` FOREIGN KEY (`idsession`) REFERENCES `k3d_session` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `k3d_session_detail_2` FOREIGN KEY (`idcourse`) REFERENCES `k3d_course` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `k3d_table`
+-- Constraints for table `k3d_table`
 --
 ALTER TABLE `k3d_table`
   ADD CONSTRAINT `k3d_table_1` FOREIGN KEY (`iddomain`) REFERENCES `k3d_domain` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
