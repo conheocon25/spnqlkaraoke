@@ -14,11 +14,11 @@
 			<td width="50%" align="left" />
 		</tr>
 	</table>
-	<span tal:repeat="Category CategoryAll">
+	<span tal:repeat="Supplier SupplierAll">
 		<BR/>
 		<table width="100%" border="1" cellpadding="2" >
 			<tr>
-				<th width="100%" align="left"><B tal:content="Category/getName"/></th>
+				<th width="100%" align="left"><B tal:content="Supplier/getName"/></th>
 			</tr>
 			<tr>
 				<th width="5%" align="center"><B>STT</B></th>
@@ -26,12 +26,12 @@
 				<th width="20%" align="left"><B>ĐƠN VỊ</B></th>
 				<th width="15%" align="right"><B>SỐ LƯỢNG</B></th>				
 			</tr>
-			<tr tal:repeat="Course Category/getCourseAll">
-				<td align="center" tal:content="repeat/Course/number" />
-				<td align="left" tal:content="Course/getName" />
-				<td align="left" tal:content="Course/getUnit" />
-				<td align="right" tal:content="php: Tracking->getCountCoursePrint( Course->getId() )"/>				
-			</tr>
+			<tr tal:repeat="Resource Supplier/getResourceAll">
+				<td align="center" tal:content="repeat/Resource/number" />
+				<td align="left" tal:content="Resource/getName" />
+				<td align="left" tal:content="Resource/getUnit" />
+				<td align="right" tal:content="php:Tracking->getResourceImport(Resource->getId())"/>				
+			</tr>			
 		</table>
 	</span>
 </body>

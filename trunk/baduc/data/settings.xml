@@ -57,7 +57,8 @@
 		<command name="ReportImportGeneral"><view>ReportImportGeneral</view></command>		
 		<command name="ReportCollectGeneral"><view>ReportCollectGeneral</view></command>				
 		<command name="ReportCourse"><view>ReportCourse</view></command>
-		<command name="ReportHours"><view>ReportHours</view></command>		
+		<command name="ReportResource"><view>ReportResource</view></command>
+		<command name="ReportHours"><view>ReportHours</view></command>
 		<command name="ReportGeneral"><view>ReportGeneral</view></command>
 				
 		<command name="ReportStore"><view>ReportStore</view></command>
