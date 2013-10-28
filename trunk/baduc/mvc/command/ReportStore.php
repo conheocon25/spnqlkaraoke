@@ -12,7 +12,8 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------			
 			$IdTrack = $request->getProperty('IdTrack');
-						
+			$Save = $request->getProperty('Save');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
@@ -76,6 +77,11 @@
 				$CourseAll->next();
 			}
 			$NSum = new \MVC\Library\Number($Sum);
+			
+			if ($Save="yes"){
+				$Tracking->setStoreValue($Sum);
+				$mTracking->update($Tracking);
+			}
 			
 			$Title = "TỒN KHO";
 			$Navigation = array(
