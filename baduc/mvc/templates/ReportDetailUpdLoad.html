@@ -17,74 +17,74 @@
 						<div class="widget-box">
 							<div class="widget-title">
 								<span class="icon"><i class="icon-align-justify"></i></span>
-								<h5>THÊM MỚI</h5>
+								<h5>CẬP NHẬT</h5>
 							</div>
 							<div class="widget-content nopadding">
-								<form class="form-horizontal" tal:attributes="action '/report/ins/exe'" method="post">
+								<form class="form-horizontal" tal:attributes="action Tracking/getURLUpdExe" method="post">
 									<div class="control-group">
 										<label class="control-label" for="DateStart">Bắt đầu</label>
 										<div class="controls">
-											<input id="DateStart" name="DateStart" type="text" data-date-format="yyyy-mm-dd" class="form-control input-sm"/>
+											<input id="DateStart" name="DateStart" type="text" data-date-format="yyyy-mm-dd" class="form-control input-sm" tal:attributes="value Tracking/getDateStart"/>
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="DateEnd">Kết thúc</label>
 										<div class="controls">
-											<input id="DateEnd" name="DateEnd" type="text" data-date-format="yyyy-mm-dd" class="form-control input-sm"/>
+											<input id="DateEnd" name="DateEnd" type="text" data-date-format="yyyy-mm-dd" class="form-control input-sm" tal:attributes="value Tracking/getDateEnd"/>
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="PaidGeneral">Chi khác</label>
 										<div class="controls">
-											<input id="PaidGeneral" name="PaidGeneral" type="text" class="form-control input-sm"/>
+											<input id="PaidGeneral" name="PaidGeneral" type="text" class="form-control input-sm" tal:attributes="value Tracking/getPaidGeneral"/>
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="PaidPayRoll">Chi lương</label>
 										<div class="controls">
-											<input id="PaidPayRoll" name="PaidPayRoll" type="text" class="form-control input-sm"/>
+											<input id="PaidPayRoll" name="PaidPayRoll" type="text" class="form-control input-sm" tal:attributes="value Tracking/getPaidPayRoll"/>
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="PaidImport">Chi nhập hàng</label>
 										<div class="controls">
-											<input id="PaidImport" name="PaidImport" type="text" class="form-control input-sm"/>
+											<input id="PaidImport" name="PaidImport" type="text" class="form-control input-sm" tal:attributes="value Tracking/getPaidImport"/>
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="CollectGeneral">Thu khác</label>
 										<div class="controls">
-											<input id="CollectGeneral" name="CollectGeneral" type="text" class="form-control input-sm"/>
+											<input id="CollectGeneral" name="CollectGeneral" type="text" class="form-control input-sm" tal:attributes="value Tracking/getCollectGeneral"/>
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="CollectCustomer">Thu khách hàng</label>
 										<div class="controls">
-											<input id="CollectCustomer" name="CollectCustomer" type="text" class="form-control input-sm"/>
+											<input id="CollectCustomer" name="CollectCustomer" type="text" class="form-control input-sm" tal:attributes="value Tracking/getCollectCustomer"/>
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="CollectSellingDebt">Doanh số có nợ</label>
 										<div class="controls">
-											<input id="CollectSellingDebt" name="CollectSellingDebt" type="text" class="form-control input-sm"/>
+											<input id="CollectSellingDebt" name="CollectSellingDebt" type="text" class="form-control input-sm" tal:attributes="value Tracking/getCollectSellingDebt"/>
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="CollectSellingNoDebt">Doanh số không nợ</label>
 										<div class="controls">
-											<input id="CollectSellingNoDebt" name="CollectSellingNoDebt" type="text" class="form-control input-sm"/>
+											<input id="CollectSellingNoDebt" name="CollectSellingNoDebt" type="text" class="form-control input-sm" tal:attributes="value Tracking/getCollectSellingNoDebt"/>
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="EstateRate">Khấu hao tài sản</label>
 										<div class="controls">
-											<input id="EstateRate" name="EstateRate" type="text" class="form-control input-sm"/>
+											<input id="EstateRate" name="EstateRate" type="text" class="form-control input-sm" tal:attributes="value Tracking/getEstateRate"/>
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="StoreValue">Giá trị tồn kho</label>
 										<div class="controls">
-											<input id="StoreValue" name="StoreValue" type="text" class="form-control input-sm"/>
+											<input id="StoreValue" name="StoreValue" type="text" class="form-control input-sm" tal:attributes="value Tracking/getStoreValue"/>
 										</div>
 									</div>
 									<div class="form-actions">

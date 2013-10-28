@@ -1,6 +1,5 @@
 <?php
 namespace MVC\Mapper;
-
 require_once( "mvc/base/Mapper.php" );
 class Tracking extends Mapper implements \MVC\Domain\TrackingFinder{
 
@@ -11,8 +10,32 @@ class Tracking extends Mapper implements \MVC\Domain\TrackingFinder{
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY date_start", $tblTracking);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblTracking);
-		$updateStmt = sprintf("update %s set date_start=?, date_end=?, estate_rate=? where id=?", $tblTracking);
-		$insertStmt = sprintf("insert into %s (date_start, date_end, estate_rate) values(?, ?, ?)", $tblTracking);
+		$updateStmt = sprintf("update %s set 
+			date_start=?,
+			date_end=?,
+			paid_general=?,
+			paid_pay_roll=?,
+			paid_import=?,
+			collect_general=?,
+			collect_customer=?,
+			collect_selling_debt=?, 
+			collect_selling_nodebt=?, 
+			estate_rate=?, 
+			store_value=?
+		where id=?", $tblTracking);
+		$insertStmt = sprintf("insert into %s (
+			date_start, 
+			date_end, 
+			paid_general,
+			paid_pay_roll,
+			paid_import,
+			collect_general,
+			collect_customer,
+			collect_selling_debt, 
+			collect_selling_nodebt, 
+			estate_rate, 
+			store_value
+		) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", $tblTracking);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblTracking);
 		$findByNearestStmt = sprintf("select * from %s where date_start<? ORDER BY date_start DESC LIMIT 1 ", $tblTracking);
 		
@@ -32,27 +55,51 @@ class Tracking extends Mapper implements \MVC\Domain\TrackingFinder{
 			$array['id'],
 			$array['date_start'],
 			$array['date_end'],
-			$array['estate_rate']
+			$array['paid_general'],
+			$array['paid_pay_roll'],
+			$array['paid_import'],
+			$array['collect_general'],
+			$array['collect_customer'],
+			$array['collect_selling_debt'],
+			$array['collect_selling_nodebt'],
+			$array['estate_rate'],
+			$array['store_value']
 		);
         return $obj;
     }
 
-    protected function targetClass() {        return "Tracking";}
+    protected function targetClass() {return "Tracking";}
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 
 			$object->getDateStart(), 
 			$object->getDateEnd(),
+			$object->getPaidGeneral(),
+			$object->getPaidPayRoll(),
+			$object->getPaidImport(),
+			$object->getCollectGeneral(),
+			$object->getCollectCustomer(),
+			$object->getCollectSellingDebt(),
+			$object->getCollectSellingNoDebt(),
 			$object->getEstateRate(),
+			$object->getStoreValue()
 		);
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
         $object->setId( $id );
     }    
     protected function doUpdate( \MVC\Domain\Object $object ) {
-        $values = array( 
+        $values = array(
 			$object->getDateStart(), 
 			$object->getDateEnd(),
+			$object->getPaidGeneral(),
+			$object->getPaidPayRoll(),
+			$object->getPaidImport(),
+			$object->getCollectGeneral(),
+			$object->getCollectCustomer(),
+			$object->getCollectSellingDebt(),
+			$object->getCollectSellingNoDebt(),
 			$object->getEstateRate(),
+			$object->getStoreValue(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
