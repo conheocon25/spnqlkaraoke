@@ -12,7 +12,8 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------			
 			$IdTrack = $request->getProperty('IdTrack');
-						
+			$Save = $request->getProperty('Save');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
@@ -28,6 +29,23 @@
 			$Title = "TỔNG HỢP THU THÁNG ".\date("m", strtotime($Tracking->getDateStart()))."/".\date("Y", strtotime($Tracking->getDateStart()));
 			$DateCurrent = "Vĩnh Long, ngày ".\date("d")." tháng ".\date("m")." năm ".\date("Y");
 			
+			//lưu TỔNG HỢP KHOẢN THU vào DB
+			if ($Save == "yes"){
+				$Value = $Tracking->getCollectAllSumValue();
+				$Tracking->setCollectGeneral($Value);
+				
+				$Value = $Tracking->getCustomerCollectGeneralValue();
+				$Tracking->setCollectCustomer($Value);
+				
+				$Value = $Tracking->getSessionAllValue2();
+				$Tracking->setCollectSellingDebt($Value);
+				
+				$Value = $Tracking->getSessionAllValue1();
+				$Tracking->setCollectSellingNoDebt($Value);
+				
+				$mTracking->update($Tracking);
+			}
+						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									

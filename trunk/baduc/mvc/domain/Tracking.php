@@ -6,15 +6,53 @@ class Tracking extends Object{
     private $Id;
 	private $DateStart;
 	private $DateEnd;
+	
+	private $PaidGeneral;
+	private $PaidPayRoll;
+	private $PaidImport;
+	
+	private $CollectGeneral;
+	private $CollectCustomer;
+	private $CollectSellingDebt;
+	private $CollectSellingNoDebt;
+	
 	private $EstateRate;
+	private $StoreValue;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $DateStart=null, $DateEnd=null, $EstateRate=null) {$this->Id = $Id; $this->DateStart = $DateStart; $this->DateEnd = $DateEnd; $this->EstateRate = $EstateRate;  parent::__construct( $Id );}
+    function __construct( 
+			$Id=null,
+			$DateStart=null, 
+			$DateEnd=null, 
+			$PaidGeneral=null, 
+			$PaidPayRoll=null, 
+			$PaidImport=null, 			
+			$CollectGeneral=null, 
+			$CollectCustomer=null, 
+			$CollectSellingDebt=null, 
+			$CollectSellingNoDebt=null, 			
+			$EstateRate=null, 
+			$StoreValue=null 
+	){
+			$this->Id 					= $Id; 
+			$this->DateStart 			= $DateStart; 
+			$this->DateEnd 				= $DateEnd;						
+			$this->PaidGeneral 			= $PaidGeneral;
+			$this->PaidPayRoll 			= $PaidPayRoll; 
+			$this->PaidImport 			= $PaidImport; 
+			$this->CollectGeneral 		= $CollectGeneral; 
+			$this->CollectCustomer 		= $CollectCustomer; 
+			$this->CollectSellingDebt 	= $CollectSellingDebt; 
+			$this->CollectSellingNoDebt = $CollectSellingNoDebt; 
+			$this->EstateRate 			= $EstateRate; 
+			$this->StoreValue 			= $StoreValue; 
+						
+			parent::__construct( $Id );
+	}
     
-	function getId() {return $this->Id;}	
-	function getIdPrint(){return "u" . $this->getId();}	
+	function getId() {return $this->Id;}		
 	function getName(){$Name = 'THÁNG '.\date("m/Y", strtotime($this->getDateStart()));return $Name;}
 	
     function setDateStart( $DateStart ) {$this->DateStart = $DateStart;$this->markDirty();}   
@@ -25,9 +63,41 @@ class Tracking extends Object{
 	function getDateEnd( ) {return $this->DateEnd;}	
 	function getDateEndPrint( ) {$D = new \MVC\Library\Date($this->DateEnd);return $D->getDateFormat();}
 	
+	function setPaidGeneral( $PaidGeneral ) {$this->PaidGeneral= $PaidGeneral; $this->markDirty();}
+	function getPaidGeneral( ) {return $this->PaidGeneral;}	
+	function getPaidGeneralPrint( ) {$N = new \MVC\Library\Number($this->PaidGeneral); return $N->formatCurrency();}
+	
+	function setPaidPayRoll( $PaidPayRoll ) {$this->PaidPayRoll= $PaidPayRoll; $this->markDirty();}
+	function getPaidPayRoll( ) {return $this->PaidPayRoll;}	
+	function getPaidPayRollPrint( ) { $N = new \MVC\Library\Number($this->PaidPayRoll); return $N->formatCurrency(); }
+	
+	function setPaidImport( $PaidImport ) {$this->PaidImport= $PaidImport; $this->markDirty();}
+	function getPaidImport( ) {return $this->PaidImport;}	
+	function getPaidImportPrint( ) { $N = new \MVC\Library\Number($this->PaidImport); return $N->formatCurrency();}
+	
+	function setCollectGeneral( $CollectGeneral ) {$this->CollectGeneral = $CollectGeneral; $this->markDirty();}
+	function getCollectGeneral( ) {return $this->CollectGeneral;}	
+	function getCollectGeneralPrint( ){ $N = new \MVC\Library\Number($this->CollectGeneral); return $N->formatCurrency();}
+	
+	function setCollectCustomer( $CollectCustomer ) {$this->CollectCustomer = $CollectCustomer; $this->markDirty();}
+	function getCollectCustomer( ) {return $this->CollectCustomer;}	
+	function getCollectCustomerPrint( ){ $N = new \MVC\Library\Number($this->CollectCustomer); return $N->formatCurrency();}
+	
+	function setCollectSellingDebt( $CollectSellingDebt ) {$this->CollectSellingDebt = $CollectSellingDebt; $this->markDirty();}
+	function getCollectSellingDebt( ) {return $this->CollectSellingDebt;}	
+	function getCollectSellingDebtPrint( ){ $N = new \MVC\Library\Number($this->CollectSellingDebt); return $N->formatCurrency();}
+	
+	function setCollectSellingNoDebt( $CollectSellingNoDebt ) {$this->CollectSellingNoDebt = $CollectSellingNoDebt; $this->markDirty();}
+	function getCollectSellingNoDebt( ) {return $this->CollectSellingNoDebt;}	
+	function getCollectSellingNoDebtPrint( ){$N = new \MVC\Library\Number($this->CollectSellingNoDebt); return $N->formatCurrency();}
+	
 	function setEstateRate( $EstateRate ) {$this->EstateRate = $EstateRate;$this->markDirty();}   
 	function getEstateRate( ) {return $this->EstateRate;}
 	function getEstateRatePrint( ) {$N = new \MVC\Library\Number($this->EstateRate);return $N->formatCurrency();}
+	
+	function setStoreValue( $StoreValue ) {$this->StoreValue = $StoreValue; $this->markDirty();}   
+	function getStoreValue( ) {return $this->StoreValue;}
+	function getStoreValuePrint( ) {$N = new \MVC\Library\Number($this->StoreValue); return $N->formatCurrency();}
 	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
@@ -132,18 +202,27 @@ class Tracking extends Object{
 	//---------------------------------------------------------------------------------------------
 	//TÍNH SỐ DƯ CUỐI CÙNG	
 	//---------------------------------------------------------------------------------------------
-	function getValue(){
+	function getValueDebt(){
 		$Value = 
-			$this->getCollectAllSumValue()
-			+ $this->getTrackingStoreValue() 
-			- $this->getOrderAllSumValue() 
-			- $this->getPaidAllSumValue()
-			- $this->getEstateRate();
+			$this->StoreValue + 
+			($this->CollectGeneral + $this->CollectCustomer + $this->CollectSellingNoDebt + $this->CollectSellingDebt) - 
+			($this->PaidGeneral + $this->PaidPayRoll + $this->PaidImport) - 						
+			$this->EstateRate;
+			
 		return $Value;
-	}
+	}	
+	function getValueDebtPrint(){ $N = new \MVC\Library\Number($this->getValueDebt()); return $N->formatCurrency()." đ";}
 	
-	function getValuePrint(){ $N = new \MVC\Library\Number($this->getValue()); return $N->formatCurrency()." đ";}
-	function getValueStrPrint(){ $N = new \MVC\Library\Number($this->getValue()); return $N->readDigit()." đồng";}
+	function getValueNoDebt(){
+		$Value = 
+			$this->StoreValue + 
+			($this->CollectGeneral + $this->CollectCustomer + $this->CollectSellingNoDebt) - 
+			($this->PaidGeneral + $this->PaidPayRoll + $this->PaidImport) - 						
+			$this->EstateRate;
+			
+		return $Value;
+	}	
+	function getValueNoDebtPrint(){ $N = new \MVC\Library\Number($this->getValueNoDebt()); return $N->formatCurrency()." đ";}
 	
 	//-------------------------------------------------------------------------------------
 	//THEO DÕI SỐ TỒN KHO
@@ -323,13 +402,16 @@ class Tracking extends Object{
 	function getURLView(){return "/report/".$this->getId();}
 	
 	function getURLCustomer(){return "/report/customer/".$this->getId();}
-	function getURLCustomerDetail($IdCustomer){return "/report/customer/".$this->getId()."/".$IdCustomer;}	
-	function getURLPaidGeneral(){return "/report/paid/".$this->getId();}	
-	function getURLCollectGeneral(){return "/report/collect/".$this->getId();}
-	function getURLImportGeneral(){return "/report/import/".$this->getId()."/general";}			
-	function getURLEvalStore(){return "/report/store/".$this->getId()."/eval";}
+	function getURLCustomerDetail($IdCustomer){return "/report/customer/".$this->getId()."/".$IdCustomer;}
 	
+	function getURLPaidGeneral(){return "/report/paid/".$this->getId();}
+	function getURLPaidGeneralSave(){return "/report/paid/".$this->getId()."/save";}
+	function getURLCollectGeneral(){return "/report/collect/".$this->getId();}
+	function getURLCollectGeneralSave(){return "/report/collect/".$this->getId()."/save";}
+			
 	function getURLStore(){return "/report/store/".$this->getId();}
+	function getURLStoreSave(){return "/report/store/".$this->getId()."/save";}
+	
 	function getURLStoreInit(){return "/report/store/".$this->getId()."/init";}
 	function getURLStoreEvaluate(){return "/report/store/".$this->getId()."/evaluate";}
 	function getURLStoreEmpty(){return "/report/store/".$this->getId()."/empty";}
@@ -338,6 +420,7 @@ class Tracking extends Object{
 	function getURLResource(){return "/report/resource/".$this->getId();}
 	function getURLHours(){return "/report/hours/".$this->getId();}
 	function getURLGeneral(){return "/report/general/".$this->getId();}		
+	
 	function getURLUpdLoad(){return "/report/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){return "/report/".$this->getId()."/upd/exe";}	
 	function getURLDelLoad(){return "/report/".$this->getId()."/del/load";}

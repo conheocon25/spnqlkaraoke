@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class ReportDetailInsExe extends Command {
+	class ReportDetailUpdExe extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -10,7 +10,8 @@
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------						
+			//-------------------------------------------------------------			
+			$IdTrack = $request->getProperty('IdTrack');
 			$DateStart 		= $request->getProperty('DateStart');
 			$DateEnd 		= $request->getProperty('DateEnd');
 			$PaidGeneral 	= $request->getProperty('PaidGeneral');
@@ -22,37 +23,32 @@
 			$CollectSellingNoDebt	= $request->getProperty('CollectSellingNoDebt');
 			$EstateRate 		= $request->getProperty('EstateRate');
 			$StoreValue 		= $request->getProperty('StoreValue');	
-				
+						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
 			$mTracking = new \MVC\Mapper\Tracking();
-					
+								
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------
-			if (!isset($DateStart)||$DateStart=="")
-				return self::statuses('CMD_OK');
-				
-			$Tracking = new \MVC\Domain\Tracking(
-				null,
-				$DateStart,
-				$DateEnd,
-				$PaidGeneral,
-				$PaidPayRoll,
-				$PaidImport,
-				$CollectGeneral,
-				$CollectCustomer,
-				$CollectSellingDebt,
-				$CollectSellingNoDebt,
-				$EstateRate,
-				$StoreValue
-			);			
-			$mTracking->insert($Tracking);
+			//-------------------------------------------------------------							
+			$Tracking = $mTracking->find($IdTrack);
+			$Tracking->setDateStart($DateStart);
+			$Tracking->setDateEnd($DateEnd);
+			$Tracking->setPaidGeneral($PaidGeneral);
+			$Tracking->setPaidPayRoll($PaidPayRoll);
+			$Tracking->setPaidImport($PaidImport);			
+			$Tracking->setCollectGeneral($CollectGeneral);
+			$Tracking->setCollectCustomer($CollectCustomer);
+			$Tracking->setCollectSellingDebt($CollectSellingDebt);
+			$Tracking->setCollectSellingNoDebt($CollectSellingNoDebt);
+			$Tracking->setEstateRate($EstateRate);
+			$Tracking->setStoreValue($StoreValue);			
+			$mTracking->update($Tracking);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------			
+			//-------------------------------------------------------------
 			return self::statuses('CMD_OK');
 		}
 	}

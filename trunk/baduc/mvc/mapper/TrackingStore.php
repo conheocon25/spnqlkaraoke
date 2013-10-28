@@ -52,10 +52,10 @@ class TrackingStore extends Mapper implements \MVC\Domain\TrackingStoreFinder{
         $values = array( 
 			$object->getIdTracking(),
 			$object->getIdCourse(),
-			$object->getCountOld(),
-			$object->getCountImport(),
-			$object->getCountExport(),
-			$object->getPrice()
+			$object->getCountOld()?$object->getCountOld():0,
+			$object->getCountImport()?$object->getCountImport():0,
+			$object->getCountExport()?$object->getCountExport():0,
+			$object->getPrice()?$object->getPrice():0
 		);
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();

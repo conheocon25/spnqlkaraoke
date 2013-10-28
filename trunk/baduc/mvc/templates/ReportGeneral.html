@@ -17,66 +17,71 @@
 	<BR />
 	<table width="100%" border="0" cellpadding="2">
 		<tr>
-			<th width="40%" align="left"></th>
-			<th width="60%" align="right"></th>
+			<th width="70%" align="left"></th>
+			<th width="30%" align="right"></th>
+		</tr>
+		<tr><td/><td/></tr>
+		<tr>
+			<td align="left"><B>1. TỔNG HỢP THU</B></td>
+			<td align="right" />
 		</tr>
 		<tr>
-			<td align="left"><B>1. KHOẢN THU</B></td>
-			<td align="right"><B tal:content="Tracking/getCollectAllSumValuePrint" /></td>
+			<td align="left"><B>1.1 TỔNG HỢP THU / THU KHÁC</B></td>
+			<td align="right" ><span tal:content="Tracking/getCollectGeneralPrint" /> đ</td>
 		</tr>
 		<tr>
-			<td align="left">DOANH SỐ</td>
-			<td align="right">
-				<span tal:content="Tracking/getSessionAllValuePrint" />
-			</td>
-		</tr>
-		<tr tal:repeat="TermCollect TermCollectAll">
-			<td align="left"><span tal:content="TermCollect/getName" /></td>
-			<td align="right">
-				<span tal:content="php:Tracking->getCollectAllValuePrint( TermCollect->getId() )" />
-			</td>
-		</tr>
-		<tr> <td /> <td /></tr>
-		<tr>
-			<td align="left"><B>2. KHOẢN CHI</B></td>
-			<td align="right"><B tal:content="php:Tracking->getPaidAllSumValuePrint( )" /></td>
-		</tr>
-		<tr tal:repeat="Term TermAll">
-			<td align="left"><span tal:content="Term/getName" /></td>
-			<td align="right"><span tal:content="php:Tracking->getPaidAllValuePrint( Term->getId() )" /></td>
+			<td align="left"><B>1.2 TỔNG HỢP THU / THU ĐỦ</B></td>
+			<td align="right" ><span tal:content="Tracking/getCollectSellingNoDebtPrint" /> đ</td>
 		</tr>
 		<tr>
-			<td align="left">LƯƠNG NHÂN VIÊN</td>
-			<td align="right">
-				<span tal:content="Tracking/getPaidPayRollAllValuePrint" />
-			</td>
+			<td align="left"><B>1.3 TỔNG HỢP THU / NỢ PHIẾU</B></td>
+			<td align="right" ><span tal:content="Tracking/getCollectSellingDebtPrint" /> đ</td>
 		</tr>
-		<tr> <td /> <td /></tr>
 		<tr>
-			<td align="left"><B>3. NHẬP HÀNG</B></td>
-			<td align="right"><B tal:content="php:Tracking->getOrderAllSumValuePrint( )" /></td>
+			<td align="left"><B>1.4 TỔNG HỢP THU / THU KHÁCH HÀNG</B></td>
+			<td align="right" ><span tal:content="Tracking/getCollectCustomerPrint" /> đ</td>
 		</tr>
-		<tr tal:repeat="Supplier SupplierAll">
-			<td align="left"><span tal:content="Supplier/getName" /></td>
-			<td align="right"><span tal:content="php:Tracking->getOrderAllValuePrint( Supplier->getId() )" /></td>
-		</tr>
-		<tr> <td /> <td /></tr>
+		<tr><td/><td/></tr>
 		<tr>
-			<td align="left"><B>4. TỒN KHO</B></td>
-			<td align="right"><B tal:content="php:Tracking->getTrackingStoreValuePrint( )" /></td>
+			<td align="left"><B>2. TỔNG HỢP CHI</B></td>
+			<td align="right" />
 		</tr>
-		<tr> <td /> <td /></tr>
 		<tr>
-			<td align="left"><B>5. KHẤU HAO TÀI SẢN</B></td>
-			<td align="right"><B tal:content="php:Tracking->getEstateRatePrint( )" /></td>
+			<td align="left"><B>2.1 TỔNG HỢP CHI / CHI KHÁC</B></td>
+			<td align="right"><span tal:content="Tracking/getPaidGeneralPrint" /> đ</td>
 		</tr>
-		<tr> <td /> <td /></tr>
 		<tr>
-			<td align="left"><B>6. SỐ DƯ CUỐI</B></td>
-			<td align="right"><H3 tal:content="php:Tracking->getValuePrint( )" /></td>
+			<td align="left"><B>2.2 TỔNG HỢP CHI / CHI LƯƠNG</B></td>
+			<td align="right"><span tal:content="Tracking/getPaidPayRollPrint" /> đ</td>
 		</tr>
-	</table>	
-	<P align="right">(<b tal:content="php:Tracking->getValueStrPrint( )" />)</P>	
+		<tr>
+			<td align="left"><B>2.3 TỔNG HỢP CHI / CHI NHẬP HÀNG</B></td>
+			<td align="right"><span tal:content="Tracking/getPaidImportPrint" /> đ</td>
+		</tr>
+		<tr><td/><td/></tr>
+		<tr>
+			<td align="left"><B>3. TỔNG HỢP TỒN KHO</B></td>
+			<td align="right"><span tal:content="Tracking/getStoreValuePrint" /> đ</td>
+		</tr>		
+		<tr><td/><td/></tr>
+		<tr>
+			<td align="left"><B>4. KHẤU HAO TÀI SẢN</B></td>
+			<td align="right"><span tal:content="Tracking/getEstateRatePrint"/> đ</td>
+		</tr>
+		<tr><td/><td/></tr>
+		<tr>
+			<td align="left"><B>5. SỐ DƯ CUỐI</B></td>
+			<td align="right" />
+		</tr>
+		<tr>
+			<td align="left"><B>5.1 SỐ DƯ CUỐI / KHÔNG TÍNH C.NỢ</B></td>
+			<td align="right" ><span tal:content="Tracking/getValueNoDebtPrint"/> đ</td>
+		</tr>
+		<tr>
+			<td align="left"><B>5.2 SỐ DƯ CUỐI / TÍNH CÔNG NỢ</B></td>
+			<td align="right" ><span tal:content="Tracking/getValueDebtPrint"/> đ</td>
+		</tr>
+	</table>
 	<table width="100%" border="0" cellpadding="2" >
 		<tr>
 			<td width="35%" align="center"></td>
