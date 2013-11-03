@@ -1,69 +1,71 @@
 <?php
 namespace MVC\Domain;
+use MVC\Library\Number;
 require_once( "mvc/base/domain/DomainObject.php" );
 
 class Resource extends Object{
 
-    private $id;
-	private $idsupplier;
-	private $name;
-    private $price;
-    private $unit;
-	private $description;
+    private $Id;
+	private $IdSupplier;
+	private $Name;
+    private $Price;
+    private $Unit;
+	private $Description;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $id=null, $idsupplier=null, $name=null, $unit=null, $price=null, $description=null) {
-        $this->id = $id;
-		$this->idsupplier = $idsupplier;
-		$this->name = $name;
-		$this->price = $price;
-		$this->unit = $unit;
-		$this->description = $description;
-        parent::__construct( $id );
+    function __construct( $Id=null, $IdSupplier=null, $Name=null, $Unit=null, $Price=null, $Description=null) {
+        $this->Id = $Id;
+		$this->IdSupplier = $IdSupplier;
+		$this->Name = $Name;
+		$this->Price = $Price;
+		$this->Unit = $Unit;
+		$this->Description = $Description;
+        parent::__construct( $Id );
     }
-	function setId( $Id) {return $this->id = $Id;}
-    function getId( ) {return $this->id;}
+    function getId( ) {return $this->Id;}
 			
-	function getIdSupplier( ) {return $this->idsupplier;}
-    function setIdSupplier( $supplier ) {$this->idsupplier = $supplier;$this->markDirty();}
-	function getSupplier(){
-		$mSupplier = new \MVC\Mapper\Supplier();
-		$Supplier = $mSupplier->find($this->getIdSupplier());		
-		return $Supplier;
+	function getIdSupplier( ) {return $this->IdSupplier;}
+    function setIdSupplier( $supplier ) {$this->IdSupplier = $supplier;$this->markDirty();}
+	
+    function setName( $Name ) {$this->Name = $Name;$this->markDirty();}
+    function getName( ) {return $this->Name;}
+	
+	function setPrice( $Price ) {$this->Price = $Price;$this->markDirty();}
+    function getPrice( ) {return $this->Price;}
+	function getPricePrint( ) {$num = new Number($this->Price);return $num->formatCurrency()." đ";}
+	
+	function setUnit( $Unit ) {$this->Unit = $Unit;$this->markDirty();}
+    function getUnit( ) {return $this->Unit;}
+		
+	function getDescription( ) {return $this->Description;}
+	function setDescription( $Description ) {$this->Description = $Description;$this->markDirty(); }
+	
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),	
+			'IdSupplier'	=> $this->getIdSupplier(),
+			'Name'			=> $this->getName(),			
+			'Price'			=> $this->getPrice(),
+			'Unit'			=> $this->getUnit(),
+			'Description'	=> $this->getDescription()
+		);		
+		return json_encode($json);
 	}
 	
-    function setName( $name ) {$this->name = $name;$this->markDirty();}
-    function getName( ) {return $this->name;}
-	
-	function setPrice( $price ) {$this->price = $price;$this->markDirty();}
-    function getPrice( ) {return $this->price;}
-	function getPriceAverage(){
-		$mOD = new \MVC\Mapper\OrderImportDetail();
-		$Value = $mOD->evalPrice(array($this->getId()));
-		return round($Value, 0);
-	}
-	
-	function setUnit( $Unit ) {$this->unit = $Unit;$this->markDirty();}
-    function getUnit( ) {return $this->unit;}
-	
-	function getPricePrint( ) {$num = new \MVC\Library\Number($this->price);return $num->formatCurrency()." đ";}
-	function getDescription( ) {return $this->description;}
-	function setDescription( $description ) {$this->description = $description;$this->markDirty();}
-	
-	//-------------------------------------------------------------------------------
-	//DEFINE URL
-	//-------------------------------------------------------------------------------		
-	function getURLUpdLoad(){return "/setting/supplier/".$this->getIdSupplier()."/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){return "/setting/supplier/".$this->getIdSupplier()."/".$this->getId()."/upd/exe";}
-	
-	function getURLDelLoad(){return "/setting/supplier/".$this->getIdSupplier()."/".$this->getId()."/del/load";}
-	function getURLDelExe(){return "/setting/supplier/".$this->getIdSupplier()."/".$this->getId()."/del/exe";}
-	
+	function setArray( $Data ){
+        $this->Id 			= $Data[0];
+		$this->IdSupplier 	= $Data[1];
+		$this->Name 		= $Data[2];
+		$this->Price 		= $Data[3];
+		$this->Unit 		= $Data[4];
+		$this->Description 	= $Data[5];
+    }
+				
 	//-------------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
-    static function find( $id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $id );}
-	
+    static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}
 }
+
 ?>
