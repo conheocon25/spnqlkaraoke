@@ -99,6 +99,40 @@ class Tracking extends Object{
 	function getStoreValue( ) {return $this->StoreValue;}
 	function getStoreValuePrint( ) {$N = new \MVC\Library\Number($this->StoreValue); return $N->formatCurrency();}
 	
+	function toJSON(){
+	
+		$json = array(
+			'Id' 					=> $this->getId(),
+			'DateStart'				=> $this->getDateStart(),
+			'DateEnd'				=> $this->getDateEnd(),
+			'PaidGeneral'			=> $this->getPaidGeneral(), 
+			'PaidPayRoll'			=> $this->getPaidPayRoll(), 
+			'PaidImport'			=> $this->getPaidImport(), 
+			'CollectGeneral'		=> $this->getCollectGeneral(), 
+			'CollectCustomer'		=> $this->getCollectCustomer(), 
+			'CollectSellingDebt'	=> $this->getCollectSellingDebt(), 
+			'CollectSellingNoDebt'	=> $this->getCollectSellingNoDebt(), 
+			'EstateRate'			=> $this->getEstateRate(), 
+			'StoreValue'			=> $this->getStoreValue()
+		);
+		return json_encode($json);					
+	}
+	
+	function setArray( $Data ){	
+        $this->Id 					= $Data[0];
+		$this->DateStart 			= $Data[1];
+		$this->DateEnd 				= $Data[2];
+		$this->PaidGeneral 			= $Data[3];
+		$this->PaidPayRoll 			= $Data[4];
+		$this->PaidImport 			= $Data[5];
+		$this->CollectGeneral 		= $Data[6]; 
+		$this->CollectCustomer 		= $Data[7]; 
+		$this->CollectSellingDebt 	= $Data[8]; 
+		$this->CollectSellingNoDebt = $Data[9]; 
+		$this->EstateRate 			= $Data[10]; 
+		$this->StoreValue 			= $Data[11]; 
+    }
+	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------

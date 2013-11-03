@@ -1,6 +1,6 @@
 <?php		
 	namespace MVC\Command;	
-	class ImportSupplierOrder extends Command{
+	class ImportSupplierOrder extends Command {
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");
 			//-------------------------------------------------------------
@@ -9,39 +9,42 @@
 			$Session = \MVC\Base\SessionRegistry::instance();
 			
 			//-------------------------------------------------------------
-			//THAM SỐ GỬI ĐI
+			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdSupplier = $request->getProperty("IdSupplier");
-			$IdOrderImport = $request->getProperty("IdOrderImport");
+			$IdSupplier 	= $request->getProperty('IdSupplier');
+			$IdOrder 		= $request->getProperty('IdOrder');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			
-			$mSupplier = new \MVC\Mapper\Supplier();
-			$mOI = new \MVC\Mapper\OrderImport();
+			$mOrderImport 	= new \MVC\Mapper\OrderImport();
+			$mSupplier 		= new \MVC\Mapper\Supplier();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------									
-			$Supplier = $mSupplier->find($IdSupplier);
-			$OI = $mOI->find($IdOrderImport);
+			$Supplier 	= $mSupplier->find($IdSupplier);
+			$Order 		= $mOrderImport->find($IdOrder);
 			
-			$Title = $OI->getDatePrint();
+			//-------------------------------------------------------------
+			//THAM SỐ GỬI ĐI
+			//-------------------------------------------------------------									
+			$Title = $Order->getDatePrint();
 			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
 				array("NHẬP HÀNG", "/import"),
-				array(mb_strtoupper($Supplier->getName(), 'UTF8'), $Supplier->getURLImport())				
+				array(mb_strtoupper($Supplier->getName(), 'UTF8'), $Supplier->getURLImport())
 			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------															
-			$request->setObject('Supplier', $Supplier);
-			$request->setObject('OI', $OI);
-			
-			$request->setProperty('Title', $Title);
+			//-------------------------------------------------------------
+			$request->setProperty('Title', $Title);			
 			$request->setObject('Navigation', $Navigation);
+									
+			$request->setObject('Order', $Order);
+			$request->setObject('Supplier', $Supplier);
+			
+			return self::statuses('CMD_DEFAULT');
 		}
 	}
 ?>

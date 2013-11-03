@@ -1,8 +1,8 @@
 <?php
-	namespace MVC\Command;
-	class PaidSupplierDelExe extends Command{
+	namespace MVC\Command;	
+	class Money extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
-			require_once("mvc/base/domain/HelperFactory.php");
+			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
 			//-------------------------------------------------------------
@@ -11,28 +11,25 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdPaidSupplier = $request->getProperty('IdPaidSupplier');
-											
+						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			
-			$mPS = new \MVC\Mapper\PaidSupplier();
-			
+						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------													
-			$PS = $mPS->find($IdPaidSupplier);
-			if (!isset($PS))
-				return self::statuses('CMD_OK');
-				
-			$mPS->delete(array($IdPaidSupplier));
-									
+			//-------------------------------------------------------------						
+			$Title = "THU / CHI";
+			$Navigation = array();
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
-			return self::statuses('CMD_OK');
+			//-------------------------------------------------------------																		
+			$request->setProperty('Title', $Title );
+			$request->setProperty('ActiveAdmin', 'Money' );
+			$request->setObject("Navigation", $Navigation);
 			
+			return self::statuses('CMD_DEFAULT');
 		}
 	}
 ?>
