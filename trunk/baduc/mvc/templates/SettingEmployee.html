@@ -25,20 +25,18 @@
 								<thead>
 									<tr>
 										<th width="40"><input type="checkbox" id="title-table-checkbox" name="title-table-checkbox"/></th>
-										<th class="left">TÊN</th>										
-										<th width="40"><i class="glyphicons-edit"/></th>
+										<th class="left">TÊN</th>
+										<th width="120" class="left">ĐIỆN THOẠI</th>
+										<th class="left">ĐỊA CHỈ</th>
 										<th width="40"><i class="glyphicons-bin"/></th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr tal:repeat="Employee EmployeeAll1">
 										<td class="center"><input class="CheckedDel" type="checkbox" tal:attributes="data-id Employee/getId"/></td>
-										<td><a class="update-item" href="#DialogEdit" data-toggle="modal" data-name="Employee" tal:attributes="data-id Employee/getId" tal:content="Employee/getName"/></td>
-										<td class="center">
-											<a class="update-item" href="#DialogEdit" data-toggle="modal" data-name="Employee" tal:attributes="data-id Employee/getId">
-												<i class="glyphicon glyphicon-pencil"/>
-											</a>
-										</td>
+										<td><a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id Employee/getId" tal:content="Employee/getName"/></td>
+										<td><span tal:content="Employee/getPhone"/></td>
+										<td><span tal:content="Employee/getAddress"/></td>
 										<td class="center">
 											<a class="remove-item" href="#DialogDel" data-toggle="modal" tal:attributes="data-id Employee/getId">
 												<i class="glyphicon glyphicon-remove"/>
@@ -56,7 +54,7 @@
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h3><i class="glyphicons-fast_food modal-icon"/>THÊM MỚI NHÂN VIÊN</h3>
+									<h3><i class="glyphicons-user modal-icon"/>THÊM MỚI NHÂN VIÊN</h3>
 								</div>
 								<div class="form-horizontal">
 									<div class="modal-body">
@@ -123,7 +121,7 @@
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h3><i class="glyphicons-fast_food modal-icon"/>CẬP NHẬT NHÂN VIÊN</h3>
+									<h3><i class="glyphicons-user modal-icon"/>CẬP NHẬT NHÂN VIÊN</h3>
 								</div>
 								<div class="form-horizontal" id="update-link">
 									<div class="modal-body">

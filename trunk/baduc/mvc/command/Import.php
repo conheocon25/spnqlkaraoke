@@ -1,41 +1,42 @@
-<?php
+<?php		
 	namespace MVC\Command;	
 	class Import extends Command {
-		function doExecute( \MVC\Controller\Request $request ) {
-			require_once("mvc/base/domain/HelperFactory.php");			
+		function doExecute( \MVC\Controller\Request $request ){
+			require_once("mvc/base/domain/HelperFactory.php");
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
-			//-------------------------------------------------------------
+			//-------------------------------------------------------------			
 			$Session = \MVC\Base\SessionRegistry::instance();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+									
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mSupplier = new \MVC\Mapper\Supplier();
-						
+			require_once("mvc/base/mapper/MapperDefault.php");
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
+			//-------------------------------------------------------------						
+			$SupplierAll = $mSupplier->findAll();			
+						
 			//-------------------------------------------------------------
-			$SupplierAll = $mSupplier->findAll();
-												
+			//THAM SỐ GỬI ĐI
+			//-------------------------------------------------------------									
 			$Title = "NHẬP HÀNG";
-			$Navigation = array(
-				array("ỨNG DỤNG", "/app")				
-			);
+			$Navigation = array();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------						
-			$request->setObject("SupplierAll", $SupplierAll);
-												
-			$request->setProperty('Title', $Title );
-			$request->setProperty('ActiveAdmin', 'Import' );
-			$request->setObject("Navigation", $Navigation);
+			//-------------------------------------------------------------
+			$request->setProperty('Title', $Title);
+			$request->setProperty('ActiveAdmin', 'Import');
+			$request->setObject('Navigation', $Navigation);
 			
+			$request->setObject('SupplierAll', $SupplierAll);			
+						
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

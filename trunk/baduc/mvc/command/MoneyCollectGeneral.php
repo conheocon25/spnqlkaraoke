@@ -1,6 +1,6 @@
 <?php		
 	namespace MVC\Command;	
-	class CollectGeneral extends Command {
+	class MoneyCollectGeneral extends Command {
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");
 			//-------------------------------------------------------------
@@ -36,10 +36,9 @@
 			$CollectAll = $mCollectGeneral->findByPage(array($IdTerm, $Page, $Config->getValue() ));
 			$PN = new \MVC\Domain\PageNavigation( $Term->getCollectAll()->count(), $Config->getValue(), $Term->getURLCollect());
 			
-			$Title = "CHUNG";
+			$Title = "KHOẢN THU KHÁC";
 			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
-				array("KHOẢN THU", "/collect")
+				array("THU / CHI", "/money"),				
 			);
 			
 			//-------------------------------------------------------------

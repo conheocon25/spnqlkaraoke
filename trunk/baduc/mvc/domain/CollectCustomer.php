@@ -27,56 +27,26 @@ class CollectCustomer extends Object{
 		$this->Note = $Note;
         parent::__construct( $Id );
     }
-    function setId( $Id ) {
-        $this->Id = $Id;
-        $this->markDirty();
-    }
-    function getId( ) {
-        return $this->Id;
-    }
-	function getIdPrint( ) {
-        return "SupplierPaid".$this->Id;
-    }
-			
-    function setIdCustomer( $IdCustomer ) {
-        $this->IdCustomer = $IdCustomer;
-        $this->markDirty();
-    }
-    function getIdCustomer( ) {
-        return $this->IdCustomer;
-    }
-	function getCustomer( ) {		
+    function setId( $Id ) {$this->Id = $Id; $this->markDirty(); }
+    function getId( ) {return $this->Id; }
+				
+    function setIdCustomer( $IdCustomer ) {$this->IdCustomer = $IdCustomer; $this->markDirty();}
+    function getIdCustomer( ) {return $this->IdCustomer;}
+	function getCustomer( ) {
 		$mCustomer = new \MVC\Mapper\Customer();
-		$Customer = $mCustomer->find($this->IdCustomer);
-		
+		$Customer = $mCustomer->find($this->IdCustomer);		
         return $Customer;
     }
     
-	function setValue( $Value ) {
-        $this->Value = $Value;
-        $this->markDirty();
-    }	
-	function getValue( ) {
-		if (!isset($this->Value))
-			return 0;
-        return $this->Value;
-    }
-	function getValuePrint( ) {        
+	function setValue( $Value ) {$this->Value = $Value; $this->markDirty();}	
+	function getValue( ) {if (!isset($this->Value)) return 0; return $this->Value; }
+	function getValuePrint( ) { 
 		$num = number_format($this->Value, 0, ',', '.');
 		return $num." đ";
-    }
-	
-	function setDate( $Date ) {
-        $this->Date = $Date;
-        $this->markDirty();
-    }
-	function getDate( ) {
-        return $this->Date;
-    }
-	function getDatePrint( ) {        
-		$date = new \DateTime($this->Date);
-		return $date->format('d/m/Y');
-    }
+    }	
+	function setDate( $Date ) {$this->Date = $Date; $this->markDirty(); }
+	function getDate( ) {return $this->Date; }
+	function getDatePrint( ) {  $date = new \DateTime($this->Date); return $date->format('d/m/Y');}
 	
 	function getEmployee(){
 		$mEmployee = new \MVC\Mapper\Employee();
@@ -84,10 +54,7 @@ class CollectCustomer extends Object{
 		return $Employee;
     }
 	   
-	function setNote( $Note ) {
-        $this->Note = $Note;
-        $this->markDirty();
-    }
+	function setNote( $Note ) {$this->Note = $Note; $this->markDirty(); }
 	function getNote( ) {
 		if (!isset($this->Note))
 			return "Click để thêm ghi chú";
@@ -97,19 +64,24 @@ class CollectCustomer extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLUpdLoad(){
-		return "/collect/customer/".$this->getIdCustomer()."/".$this->getId()."/upd/load";
-	}
-	function getURLUpdExe(){
-		return "/collect/customer/".$this->getIdCustomer()."/".$this->getId()."/upd/exe";
+	public function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'IdCustomer'	=> $this->getIdCustomer(),
+		 	'Date'			=> $this->getDate(),
+		 	'Value'			=> $this->getValue(),
+		 	'Note'			=> $this->getNote()
+		);
+		return json_encode($json);
 	}
 	
-	function getURLDelLoad(){
-		return "/collect/customer/".$this->getIdCustomer()."/".$this->getId()."/del/load";
-	}
-	function getURLDelExe(){
-		return "/collect/customer/".$this->getIdCustomer()."/".$this->getId()."/del/exe";
-	}
+	function setArray( $Data ){
+        $this->Id 			= $Data[0];
+		$this->IdCustomer 	= $Data[1];
+		$this->Date 		= $Data[2];
+		$this->Value 		= $Data[3];
+		$this->Note 		= $Data[4];				
+    }	
 	
 	/*--------------------------------------------------------------------*/	
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}

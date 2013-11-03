@@ -119,6 +119,14 @@
 		<command name="SellingDomainTableCheckoutExe"><status value="CMD_OK"><forward>SellingDomain</forward></status><view>SellingDomainTableCheckoutExe</view></command>
 		
 		<!-- ============================================================================== -->
+		<!-- MONEY		 																	-->
+		<!-- ============================================================================== -->
+		<command name="Money"><view>Money</view></command>		
+		<command name="MoneyCollectGeneral"><view>MoneyCollectGeneral</view></command>
+		<command name="MoneyCollectCustomer"><view>MoneyCollectCustomer</view></command>
+		<command name="MoneyPaidGeneral"><view>MoneyPaidGeneral</view></command>
+						
+		<!-- ============================================================================== -->
 		<!-- PAID.GENERAL		 															-->
 		<!-- ============================================================================== -->
 		<command name="Paid"><view>Paid</view></command>

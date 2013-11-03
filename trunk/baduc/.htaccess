@@ -65,6 +65,10 @@ RewriteRule ^money/collect/general$ 								?cmd=MoneyCollectGeneral [L]
 RewriteRule ^money/collect/general/([0-9]+)$ 						?cmd=MoneyCollectGeneral&IdTerm=$1 [L]
 RewriteRule ^money/collect/general/([0-9]+)/page/([0-9]+)$ 			?cmd=MoneyCollectGeneral&IdTerm=$1&Page=$2 [L]
 
+RewriteRule ^money/collect/customer$ 								?cmd=MoneyCollectCustomer [L]
+RewriteRule ^money/collect/customer/([0-9]+)$ 						?cmd=MoneyCollectCustomer&IdCustomer=$1 [L]
+RewriteRule ^money/collect/customer/([0-9]+)/page/([0-9]+)$ 		?cmd=MoneyCollectCustomer&IdCustomer=$1&Page=$2 [L]
+
 RewriteRule ^money/paid/general$ 									?cmd=MoneyPaidGeneral [L]
 RewriteRule ^money/paid/general/([0-9]+)$ 							?cmd=MoneyPaidGeneral&IdTerm=$1 [L]
 RewriteRule ^money/paid/general/([0-9]+)/page/([0-9]+)$ 			?cmd=MoneyPaidGeneral&IdTerm=$1&Page=$2 [L]
@@ -80,22 +84,11 @@ RewriteRule ^import$ 								?cmd=Import [L]
 RewriteRule ^import/([0-9]+)$ 						?cmd=ImportSupplier&IdSupplier=$1 [L]
 RewriteRule ^import/([0-9]+)$ 						?cmd=ImportSupplier&IdSupplier=$1 [L]
 RewriteRule ^import/([0-9]+)/page/([0-9]+)$ 		?cmd=ImportSupplier&IdSupplier=$1&Page=$2 [L]
-RewriteRule ^import/([0-9]+)/ins/load$ 				?cmd=ImportSupplierInsLoad&IdSupplier=$1 [L]
-RewriteRule ^import/([0-9]+)/ins/exe$ 				?cmd=ImportSupplierInsExe&IdSupplier=$1 [L]
-RewriteRule ^import/([0-9]+)/([0-9]+)/upd/load$		?cmd=ImportSupplierUpdLoad&IdSupplier=$1&IdOrderImport=$2 [L]
-RewriteRule ^import/([0-9]+)/([0-9]+)/upd/exe$		?cmd=ImportSupplierUpdExe&IdSupplier=$1&IdOrderImport=$2 [L]
-RewriteRule ^import/([0-9]+)/([0-9]+)/del/load$		?cmd=ImportSupplierDelLoad&IdSupplier=$1&IdOrderImport=$2 [L]
-RewriteRule ^import/([0-9]+)/([0-9]+)/del/exe$		?cmd=ImportSupplierDelExe&IdSupplier=$1&IdOrderImport=$2 [L]
 
-RewriteRule ^import/([0-9]+)/([0-9]+)$				?cmd=ImportSupplierOrder&IdSupplier=$1&IdOrderImport=$2 [L]
-RewriteRule ^import/([0-9]+)/([0-9]+)/print$		?cmd=ImportSupplierOrderPrint&IdSupplier=$1&IdOrderImport=$2 [L]
-RewriteRule ^import/([0-9]+)/([0-9]+)/print/1$		?cmd=ImportSupplierOrderPrint1&IdSupplier=$1&IdOrderImport=$2 [L]
-
-RewriteRule ^import/([0-9]+)/([0-9]+)/ins/load$				?cmd=ImportSupplierOrderInsLoad&IdSupplier=$1&IdOrderImport=$2 [L]
-RewriteRule ^import/([0-9]+)/([0-9]+)/ins/exe$				?cmd=ImportSupplierOrderInsExe&IdSupplier=$1&IdOrderImport=$2 [L]
-RewriteRule ^import/([0-9]+)/([0-9]+)/([0-9]+)/upd/load$	?cmd=ImportSupplierOrderUpdLoad&IdSupplier=$1&IdOrderImport=$2&IdResource=$3 [L]
-RewriteRule ^import/([0-9]+)/([0-9]+)/([0-9]+)/upd/exe$		?cmd=ImportSupplierOrderUpdExe&IdSupplier=$1&IdOrderImport=$2&IdResource=$3 [L]
-
+RewriteRule ^import/([0-9]+)/([0-9]+)$				?cmd=ImportSupplierOrder&IdSupplier=$1&IdOrder=$2 [L]
+RewriteRule ^import/([0-9]+)/([0-9]+)/print$		?cmd=ImportSupplierOrderPrint&IdSupplier=$1&IdOrder=$2 [L]
+RewriteRule ^import/([0-9]+)/([0-9]+)/print/1$		?cmd=ImportSupplierOrderPrint1&IdSupplier=$1&IdOrder=$2 [L]
+RewriteRule ^import/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)$ 	?cmd=ImportSupplierOrderExe&IdSupplier=$1&IdOrder=$2&IdResource=$3&Count=$4&Price=$5 [L]
 #---------------------------------------------------------------------------------------------------------------------------
 # REPORT
 #---------------------------------------------------------------------------------------------------------------------------

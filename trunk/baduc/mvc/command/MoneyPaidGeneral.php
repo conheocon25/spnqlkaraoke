@@ -1,6 +1,6 @@
 <?php		
 	namespace MVC\Command;	
-	class PaidGeneral extends Command {
+	class MoneyPaidGeneral extends Command {
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");
 			//-------------------------------------------------------------
@@ -36,10 +36,9 @@
 			$PaidAll = $mPaidGeneral->findByPage(array($IdTerm, $Page, $Config->getValue() ));
 			$PN = new \MVC\Domain\PageNavigation( $Term->getPaids()->count(), $Config->getValue(), $Term->getURLDetail());
 			
-			$Title = "CHUNG";
+			$Title = "KHOẢN CHI KHÁC";
 			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
-				array("KHOẢN CHI", "/paid")
+				array("THU / CHI", "/money")			
 			);
 			
 			//-------------------------------------------------------------
