@@ -35,8 +35,7 @@
 			$PN = new \MVC\Domain\PageNavigation( $Table->getSessions()->count(), $Config->getValue(), $Table->getURLLog());
 						
 			$Title = "SỔ";
-			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
+			$Navigation = array(				
 				array("BÁN HÀNG", "/selling"),
 				array(mb_strtoupper($Domain->getName(), 'UTF8'), $Domain->getURLSelling()),
 				array(mb_strtoupper($Table->getName(), 'UTF8'), $Domain->getURLSelling())

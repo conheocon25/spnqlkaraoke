@@ -61,7 +61,7 @@ class OrderImport extends Object{
 	}
 	
 	function getValueStrPrint(){
-		$Value = new Number($this->getValue());
+		$Value = new \MVC\Library\Number($this->getValue());
 		return $Value->readDigit()." đồng";
 	}
 	
