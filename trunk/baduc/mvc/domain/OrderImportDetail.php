@@ -1,97 +1,75 @@
 <?php
 namespace MVC\Domain;
 require_once( "mvc/base/domain/DomainObject.php" );
-use MVC\Library\Number;
-use MVC\Library\Date;
 
 class OrderImportDetail extends Object{
-
-    private $id;
-	private $idorder;
-	private $idresource;
-	private $count;
-    private $price;
-	
-	private $Resource;
-	private $Order;
-	
+    private $Id;
+	private $IdOrder;
+	private $IdResource;
+	private $Count;
+    private $Price;
+		
 	/*Hàm khởi tạo và thiết lập các thuộc tính*/
-    function __construct( $id=null, $idorder=null, $idresource=null, $count=null, $price=null) {
-        $this->id = $id;
-		$this->idorder = $idorder;
-		$this->idresource = $idresource;
-		$this->count = $count;
-		$this->price = $price;
-        parent::__construct( $id );
+    function __construct( $Id=null, $IdOrder=null, $IdResource=null, $Count=null, $Price=null) {
+        $this->Id = $Id;
+		$this->IdOrder = $IdOrder;
+		$this->IdResource = $IdResource;
+		$this->Count = $Count;
+		$this->Price = $Price;
+        parent::__construct( $Id );
     }
-    function getId( ) {
-        return $this->id;
-    }	
+    function getId( ) {return $this->Id;}	
 
-    function setIdOrder( $idorder ) {
-        $this->idorder = $idorder;
-        $this->markDirty();
-    }
-    function getIdOrder( ) {
-        return $this->idorder;
-    }
-	function getOrder( ){
-		if (!isset($this->Order)){
-			$mOrder = new \MVC\Mapper\OrderImport();
-			$this->Order = $mOrder->find($this->getIdOrder());
-		}
-        return $this->Order;
-    }
-	
-	
-	function setIdResource( $idresource ) {
-        $this->idresource = $idresource;
-        $this->markDirty();
-    }
-    function getIdResource( ) {
-        return $this->idresource;
-    }
-	function getResource( ){
-		if (!isset($this->Resource)){
-			$mResource = new \MVC\Mapper\Resource();
-			$this->Resource = $mResource->find($this->getIdResource());
-		}
-        return $this->Resource;
+    function setIdOrder( $IdOrder ) {$this->IdOrder = $IdOrder;$this->markDirty();}
+    function getIdOrder( ) {return $this->IdOrder;}
+	function getOrder( ){		
+		$mOrder = new \MVC\Mapper\OrderImport();
+		$Order = $mOrder->find($this->getIdOrder());		
+        return $Order;
     }
 		
-	function getCount( ) {
-        return $this->count;
+	function setIdResource( $IdResource ) {$this->IdResource = $IdResource;$this->markDirty();}
+    function getIdResource( ) {return $this->IdResource;}
+	function getResource( ){		
+		$mResource = new \MVC\Mapper\Resource();
+		$Resource = $mResource->find($this->getIdResource());
+        return $Resource;
     }
-    function setCount( $count ) {
-        $this->count = $count;
-        $this->markDirty();
-    }
+		
+	function getCount( ) {return $this->Count;}
+    function setCount( $Count ) {$this->Count = $Count;$this->markDirty();}
 	function getCountPrint( ) {
-		if (!isset($this->count)){
+		if (!isset($this->Count)){
 			return 0;
 		}
-        return $this->count;
+        return $this->Count;
     }
 
-	function getPrice( ) {
-        return $this->price;
-    }
-	function setPrice( $price ) {
-        $this->price = $price;
-        $this->markDirty();
-    }
-	function getPricePrint( ) {
-		$N = new \MVC\Library\Number($this->price);
-        return $N->formatCurrency();
-    }
+	function getPrice( ) {return $this->Price;}
+	function setPrice( $Price ) {$this->Price = $Price;$this->markDirty();}
+	function getPricePrint( ) {$N = new \MVC\Library\Number($this->Price);return $N->formatCurrency();}
 
-	function getValue( ) {
-        return $this->count*$this->price;
-    }
-	function getValuePrint( ) {
-		$N = new \MVC\Library\Number($this->getValue());
-        return $N->formatCurrency()." đ";
-    }
+	function getValue( ) {return $this->Count*$this->Price;}
+	function getValuePrint( ) {$N = new \MVC\Library\Number($this->getValue());return $N->formatCurrency()." đ";}
+
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'IdOrder' 		=> $this->getIdOrder(),
+			'IdResource'	=> $this->getIdResource(),
+			'Count'			=> $this->getCount(),
+			'Price'			=> $this->getPrice()
+		);
+		return json_encode($json);
+	}
+	
+	function setArray( $Data ){        
+		$this->Id 			= $Data[0];
+		$this->IdOrder 		= $Data[1];	
+		$this->IdResource 	= $Data[2];	
+		$this->Count 		= $Data[3];	
+		$this->Price 		= $Data[4];	
+    }	
 	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
@@ -106,7 +84,7 @@ class OrderImportDetail extends Object{
 	
 	//---------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
-    static function find( $id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $id );}
+    static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}
 	
 }
 

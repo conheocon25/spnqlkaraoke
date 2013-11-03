@@ -15,7 +15,20 @@
 		<command name="SignoutLoad"><view>SignoutLoad</view></command>
 		<command name="SignoutExe"><view>SignoutExe</view><status value="CMD_OK"><forward>Home</forward></status></command>				
 		<command name="App"><view>App</view></command>
-				
+		
+		<command name="SettingThemeChangeExe">
+			<view>SettingThemeChangeExe</view>
+			<status value="CMD_OK"><forward>App</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- JSON LOAD			 															-->
+		<!-- ============================================================================== -->		
+		<command name="ObjectLoad"><view>ObjectLoad</view></command>
+		<command name="ObjectDel"><view>ObjectDel</view></command>
+		<command name="ObjectIns"><view>ObjectIns</view></command>
+		<command name="ObjectUpd"><view>ObjectUpd</view></command>
+		
 		<!-- ============================================================================== -->
 		<!-- GLOBAL			 																-->
 		<!-- ============================================================================== -->

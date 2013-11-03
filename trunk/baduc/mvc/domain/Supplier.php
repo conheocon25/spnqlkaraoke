@@ -4,53 +4,70 @@ require_once( "mvc/base/domain/DomainObject.php" );
 
 class Supplier extends Object{
 
-    private $id;
-	private $name;
-	private $phone;
-    private $address;
-	private $note;
-	private $debt;
-	
-	private $paids;
-	private $OrderTrackings;
-	private $PaidTrackings;
-			
+    private $Id;
+	private $Name;
+	private $Phone;
+    private $Address;
+	private $Note;
+	private $Debt;
+					
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
     function __construct( 
-		$id=null, 
-		$name=null, 
-		$phone=null, 
-		$address=null, 
-		$note=null,
-		$debt=null
+		$Id=null, 
+		$Name=null, 
+		$Phone=null, 
+		$Address=null, 
+		$Note=null,
+		$Debt=null
 	){
-        $this->id = $id;
-		$this->name = $name;
-		$this->phone = $phone;
-		$this->address = $address;
-		$this->note = $note;
-		$this->debt = $debt;
+        $this->Id 		= $Id;
+		$this->Name 	= $Name;
+		$this->Phone 	= $Phone;
+		$this->Address 	= $Address;
+		$this->Note 	= $Note;
+		$this->Debt 	= $Debt;
 		
-        parent::__construct( $id );
+        parent::__construct( $Id );
     }
-    function getId( ) {return $this->id;}	
+    function getId( ) {return $this->Id;}
 		
-    function setName( $name ) {$this->name = $name;$this->markDirty();}
-    function getName( ) {return $this->name;}
+    function setName( $Name ) {$this->Name = $Name; $this->markDirty();}
+    function getName( ) {return $this->Name;}
 	
-	function getPhone( ) {return $this->phone;}
-    function setPhone( $phone ) {$this->phone = $phone;$this->markDirty();}
+	function getPhone( ) {return $this->Phone;}
+    function setPhone( $Phone ) {$this->Phone = $Phone; $this->markDirty();}
 	
-	function setAddress( $address ) {$this->address = $address;$this->markDirty();}
-    function getAddress( ) {return $this->address;}
+	function setAddress( $Address ) {$this->Address = $Address; $this->markDirty();}
+    function getAddress( ) {return $this->Address;}
 	
-	function setNote( $Note ) {$this->note = $Note;$this->markDirty();}
-	function getNote( ) {return $this->note;}
+	function setNote( $Note ) {$this->Note = $Note; $this->markDirty();}
+	function getNote( ) {return $this->Note;}
 	
-	function setDebt( $Debt ) {$this->debt = $Debt; $this->markDirty();}
-	function getDebt( ){return $this->debt;}
+	function setDebt( $Debt ) {$this->Debt = $Debt; $this->markDirty();}
+	function getDebt( ){return $this->Debt;}
+	
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),			
+			'Name'			=> $this->getName(),
+			'Phone'			=> $this->getPhone(),
+			'Address'		=> $this->getAddress(),
+			'Note'			=> $this->getNote(),
+			'Debt'			=> $this->getDebt()
+		);
+		return json_encode($json);
+	}
+	
+	function setArray( $Data ){
+        $this->Id 		= $Data[0];
+		$this->Name 	= $Data[1];
+		$this->Phone 	= $Data[2];
+		$this->Address 	= $Data[3];
+		$this->Note 	= $Data[4];
+		$this->Debt 	= $Data[5];
+    }
 	
 	//--------------------------------------------------------	
 	//TÍNH CÔNG NỢ
