@@ -38,8 +38,7 @@
 			$URLCall = $Table->getURLCallExe();
 						
 			$Title = mb_strtoupper($Category->getName(), 'UTF8')." GỌI";
-			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
+			$Navigation = array(				
 				array("BÁN HÀNG", "/selling"),
 				array(mb_strtoupper($Domain->getName(), 'UTF8'), $Domain->getURLSelling())
 			);
