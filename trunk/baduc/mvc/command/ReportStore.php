@@ -72,7 +72,7 @@
 						$NewCount,
 						$NNewValue->formatCurrency()
 					);
-					$Sum += $NewValue;										
+					$Sum += $NewValue;
 				}
 				$CourseAll->next();
 			}

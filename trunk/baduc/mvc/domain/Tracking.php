@@ -347,7 +347,9 @@ class Tracking extends Object{
 	function getCustomerCollectGeneralValuePrint(){$N = new \MVC\Library\Number( $this->getCustomerCollectGeneralValue() );return $N->formatCurrency()." đ";}	
 	
 	//NỢ MỚI
-	function getCustomerNewDebt($IdCustomer){return \abs($this->getCustomerOldDebt($IdCustomer)) + $this->getCustomerDebtSessionAllValue($IdCustomer) - $this->getCustomerCollectAllValue($IdCustomer);}
+	function getCustomerNewDebt($IdCustomer){
+		return $this->getCustomerOldDebt($IdCustomer) + $this->getCustomerDebtSessionAllValue($IdCustomer) - $this->getCustomerCollectAllValue($IdCustomer);
+	}
 	function getCustomerNewDebtPrint($IdCustomer){$N = new \MVC\Library\Number( $this->getCustomerNewDebt($IdCustomer) );return $N->formatCurrency()." đ";}	
 	function getCustomerNewDebtStrPrint($IdCustomer){$N = new \MVC\Library\Number( $this->getCustomerNewDebt($IdCustomer) );return $N->readDigit();}
 	
@@ -415,6 +417,7 @@ class Tracking extends Object{
 	function getURLStoreInit(){return "/report/store/".$this->getId()."/init";}
 	function getURLStoreEvaluate(){return "/report/store/".$this->getId()."/evaluate";}
 	function getURLStoreEmpty(){return "/report/store/".$this->getId()."/empty";}
+	function getURLStorePrint(){return "/report/store/".$this->getId()."/print";}
 	
 	function getURLCourse(){return "/report/course/".$this->getId();}
 	function getURLResource(){return "/report/resource/".$this->getId();}
