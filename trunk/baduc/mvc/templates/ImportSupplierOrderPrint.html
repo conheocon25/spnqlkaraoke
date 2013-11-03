@@ -23,7 +23,7 @@
 			<th width="25%" align="right"><B>ĐƠN GIÁ</B></th>
 			<th width="25%" align="right"><B>THÀNH TIỀN</B></th>
 		</tr>
-		<tr tal:repeat="Detail OI/getDetails">
+		<tr tal:repeat="Detail OI/getDetailAll">
 			<td align="center" tal:content="repeat/Detail/number" />
 			<td>
 				<span tal:content="Detail/getResource/getName" />

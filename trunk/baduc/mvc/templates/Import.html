@@ -21,14 +21,14 @@
 									<tr role="row">
 										<th width="35">STT</th>
 										<th><div class="text-left">TÊN</div></th>
-										<th width="32"><i class="glyphicons-truck"/></th>
+										<th width="120"><div class="text-left">ĐƠN HÀNG</div></th>
 									</tr>
 								</thead>
 								<tbody role="alert" aria-live="polite" aria-relevant="all">
 									<tr class="gradeA odd" tal:repeat="Supplier SupplierAll">
 										<td align="center" tal:content="repeat/Supplier/number"/>
 										<td><a tal:attributes="href Supplier/getURLImport" ><span tal:content="Supplier/getName"/></a></td>
-										<td align="center"><a tal:attributes="href Supplier/getURLImport"><i class="glyphicons-truck"/></a></td>
+										<td align="left"><a tal:attributes="href Supplier/getURLImport">Xem (<span tal:content="Supplier/getOrderAll/count"/>)</a></td>
 									</tr>											
 								</tbody>
 							</table>

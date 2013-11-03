@@ -12,7 +12,7 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$IdSupplier = $request->getProperty("IdSupplier");
-			$IdOrderImport = $request->getProperty("IdOrderImport");
+			$IdOrder = $request->getProperty("IdOrder");
 						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -23,7 +23,7 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
-			$OI = $mOI->find($IdOrderImport);
+			$OI = $mOI->find($IdOrder);
 			$Supplier = $mSupplier->find($IdSupplier);
 			$DateCurrent = "Vĩnh Long, ngày ".\date("d")." tháng ".\date("m")." năm ".\date("Y");
 

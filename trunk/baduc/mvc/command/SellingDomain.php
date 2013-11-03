@@ -31,7 +31,6 @@
 			
 			$Title = mb_strtoupper($Domain->getName(), 'UTF8');
 			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
 				array("BÁN HÀNG", "/selling")				
 			);
 			
