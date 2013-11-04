@@ -55,8 +55,7 @@
 			}
 						
 			$Title = "BẢNG CÔNG NỢ KHÁCH HÀNG";
-			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
+			$Navigation = array(				
 				array("BÁO CÁO", "/report"),
 				array($Tracking->getName(), $Tracking->getURLView() )
 			);

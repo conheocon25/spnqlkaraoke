@@ -35,13 +35,17 @@ class Resource extends Object{
 	function setPrice( $Price ) {$this->Price = $Price;$this->markDirty();}
     function getPrice( ) {return $this->Price;}
 	function getPricePrint( ) {$num = new Number($this->Price);return $num->formatCurrency()." đ";}
+	function getPriceAverage(){
+		$mOID = new \MVC\Mapper\OrderImportDetail();		
+		return $mOID->evalPrice(array($this->getId()));
+	}
 	
 	function setUnit( $Unit ) {$this->Unit = $Unit;$this->markDirty();}
     function getUnit( ) {return $this->Unit;}
 		
 	function getDescription( ) {return $this->Description;}
 	function setDescription( $Description ) {$this->Description = $Description;$this->markDirty(); }
-	
+		
 	function toJSON(){
 		$json = array(
 			'Id' 			=> $this->getId(),	

@@ -403,19 +403,26 @@ class Tracking extends Object{
 		$EndDate = $this->getDateEnd();
 		while (strtotime($Date) <= strtotime($EndDate)){
 			$Data[] = array(
-					\date("d/m", strtotime($Date)),
-					"/report/selling/".$Date."/detail",
-					"/report/import/".$Date."/detail",
-					"/report/paid/".$Date."/detail",
-					"/report/collect/".$Date."/detail"
-			);
-			$Date = \date("Y-m-d", strtotime("+1 day", strtotime($Date)));}return $Data;
+						\date("d/m", strtotime($Date)),
+						"/report/selling/".$Date."/detail",
+						"/report/log/".$Date,
+						"/payroll/".$this->getId()."/absent/".$Date,
+						"/payroll/".$this->getId()."/late/".$Date,
+						$Date
+					);
+			$Date = \date("Y-m-d", strtotime("+1 day", strtotime($Date)));
 		}
+		return $Data;
+	}
 	
 	//-------------------------------------------------------------------------------
 	//LƯƠNG NHÂN VIÊN
 	//-------------------------------------------------------------------------------
-	function getPaidPayRollAll(){ $mPPR = new \MVC\Mapper\PaidPayRoll(); $PPRAll = $mPPR->findByTracking( array( $this->getDateStart(), $this->getDateEnd() )); return $PPRAll;}	
+	function getPaidPayRollAll(){ 
+		$mPPR = new \MVC\Mapper\PayRoll(); 
+		$PPRAll = $mPPR->findByTracking( array( $this->getDateStart(), $this->getDateEnd() )); 
+		return $PPRAll;
+	}
 	//TỔNG LƯƠNG CƠ BẢN
 	function getPaidPayRollAllValueBase(){ $PPRAll = $this->getPaidPayRollAll(); $Value = 0; $PPRAll->rewind(); while ( $PPRAll->valid() ){ $PPR = $PPRAll->current(); $Value += $PPR->getValueBase(); $PPRAll->next(); }  return $Value; }
 	function getPaidPayRollAllValueBasePrint(){ $N = new \MVC\Library\Number( $this->getPaidPayRollAllValueBase() ); return $N->formatCurrency()." đ"; }	
@@ -436,6 +443,9 @@ class Tracking extends Object{
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
 	function getURLView(){return "/report/".$this->getId();}
+	
+	function getURLPayRoll(){return "/payroll/".$this->getId();}
+	function getURLPayRollEmployee( $Employee ){return "/payroll/".$this->getId()."/".$Employee->getId();}
 	
 	function getURLCustomer(){return "/report/customer/".$this->getId();}
 	function getURLCustomerDetail($IdCustomer){return "/report/customer/".$this->getId()."/".$IdCustomer;}

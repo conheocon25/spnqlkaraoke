@@ -165,6 +165,13 @@ class Session extends Object{
     }
 	
 	//Tính ra tiền giờ làm tròn 15 phút
+	function getHoursReal(){	
+		$diff = strtotime($this->getDateTimeEnd()) - strtotime($this->getDateTime());
+		$H = round($diff/3600, 1);
+		//$M = round(($diff - $H*3600)/60,0);
+		return $H;
+	}
+	
 	function getHours(){	
 		$diff = strtotime($this->getDateTimeEnd()) - strtotime($this->getDateTime());
 		$H = floor($diff/3600);
