@@ -12,7 +12,7 @@ interface CourseCollection extends \Iterator {function add( Object $course );	}
 interface SupplierCollection extends \Iterator {function add( Object $supplier );	}
 
 interface PaidSupplierCollection extends \Iterator {function add( Object $PaidSupplier );}
-interface PayRollCollection extends \Iterator {function add( Object $PayRoll );}
+interface PaidPayRollCollection extends \Iterator {function add( Object $PaidPayRoll );}
 interface PaidGeneralCollection extends \Iterator {function add( Object $PaidGeneral );}
 
 interface TermPaidCollection extends \Iterator {function add( Object $TermPaid );}

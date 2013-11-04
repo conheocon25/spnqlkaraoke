@@ -11,10 +11,10 @@ class PaidPayRoll extends Mapper implements \MVC\Domain\PaidPayRollFinder{
 		
 		$selectAllStmt = sprintf("select * from %s", $tblPaidPayRoll);
 		$selectStmt = sprintf("select * from %s where id=?", $tblPaidPayRoll);
-		$updateStmt = sprintf("update %s set idemployee=?, date=?, value_base=?, value_sub=?, value_pre=?, note=? where id=?", $tblPaidPayRoll);
-		$insertStmt = sprintf("insert into %s (idemployee, date, value_base, value_sub, value_pre, note) values(?,?,?,?,?,?)", $tblPaidPayRoll);
+		$updateStmt = sprintf("update %s set id_employee=?, date=?, value_base=?, value_sub=?, value_pre=?, note=? where id=?", $tblPaidPayRoll);
+		$insertStmt = sprintf("insert into %s (id_employee, date, value_base, value_sub, value_pre, note) values(?,?,?,?,?,?)", $tblPaidPayRoll);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblPaidPayRoll);
-		$findByStmt = sprintf("select * from %s where idemployee = ? order by date DESC", $tblPaidPayRoll);
+		$findByStmt = sprintf("select * from %s where id_employee = ? order by date DESC", $tblPaidPayRoll);
 		$findByTrackingStmt = sprintf(
 			"select
 				*
@@ -29,7 +29,7 @@ class PaidPayRoll extends Mapper implements \MVC\Domain\PaidPayRollFinder{
 		$findByPageStmt = sprintf("
 							SELECT * 
 							FROM %s 							 
-							WHERE idemployee=:idemployee
+							WHERE id_employee=:id_employee
 							ORDER BY date desc
 							LIMIT :start,:max
 				", $tblPaidPayRoll);
@@ -51,7 +51,7 @@ class PaidPayRoll extends Mapper implements \MVC\Domain\PaidPayRollFinder{
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\PaidPayRoll( 
 			$array['id'],
-			$array['idemployee'],
+			$array['id_employee'],
 			$array['date'],
 			$array['value_base'],
 			$array['value_sub'],
@@ -108,7 +108,7 @@ class PaidPayRoll extends Mapper implements \MVC\Domain\PaidPayRollFinder{
     }
 	
 	function findByPage( $values ) {		
-		$this->findByPageStmt->bindValue(':idemployee', $values[0], \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':id_employee', $values[0], \PDO::PARAM_INT);
 		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
 		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);		
 		$this->findByPageStmt->execute();

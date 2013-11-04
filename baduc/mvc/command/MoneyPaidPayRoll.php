@@ -1,6 +1,6 @@
 <?php		
 	namespace MVC\Command;	
-	class PaidPayRoll extends Command{
+	class MoneyPaidPayRoll extends Command {
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");
 			//-------------------------------------------------------------
@@ -9,50 +9,48 @@
 			$Session = \MVC\Base\SessionRegistry::instance();
 			
 			//-------------------------------------------------------------
-			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------			
+			//THAM SỐ GỬI ĐẾN
+			//-------------------------------------------------------------
 			$IdEmployee = $request->getProperty('IdEmployee');
+			$Page = $request->getProperty('Page');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------						
-			$mConfig = new \MVC\Mapper\Config();
+			//-------------------------------------------------------------
 			$mEmployee = new \MVC\Mapper\Employee();
 			$mPaidPayRoll = new \MVC\Mapper\PaidPayRoll();
+			$mConfig = new \MVC\Mapper\Config();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
+			//-------------------------------------------------------------
 			$EmployeeAll = $mEmployee->findAll();
-			
-			if (!isset($IdEmployee)){
+			if (isset($IdEmployee)){
+				$Employee = $mEmployee->find($IdEmployee);
+			}else{
 				$Employee = $EmployeeAll->current();
 				$IdEmployee = $Employee->getId();
-			}else{
-				$Employee = $mEmployee->find($IdEmployee);
-			}
-						
-			$Title = mb_strtoupper($Employee->getName(), 'UTF8');
-			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
-				array("KHOẢN CHI", "/paid"),
-				array("LƯƠNG", "/paid/payroll")
-			);
-			
+			}						
 			$Config = $mConfig->findByName('ROW_PER_PAGE');
 			if (!isset($Page)) $Page = 1;
 			$PaidAll = $mPaidPayRoll->findByPage(array($IdEmployee, $Page, $Config->getValue() ));
-			$PN = new \MVC\Domain\PageNavigation( $Employee->getPayRollAll()->count(), $Config->getValue(), $Employee->getURLPPR() );
+			$PN = new \MVC\Domain\PageNavigation( $Employee->getPayRollAll()->count(), $Config->getValue(), $Employee->getURLPaid());
+			
+			$Title = $Employee->getName()." LƯƠNG";
+			$Navigation = array(
+				array("THU / CHI", "/money")			
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------									
-			$request->setObject('EmployeeAll', $EmployeeAll);
+			//-------------------------------------------------------------						
 			$request->setObject('Employee', $Employee);
-			$request->setProperty('Title', $Title);
-			$request->setProperty('Page', $Page);
-			$request->setObject('Navigation', $Navigation);
+			$request->setObject('EmployeeAll', $EmployeeAll);
+			$request->setObject('PaidAll', $PaidAll);
 			$request->setObject('PN', $PN);
+			$request->setProperty('Page', $Page);
+			$request->setProperty('Title', $Title);			
+			$request->setObject('Navigation', $Navigation);
 		}
 	}
 ?>

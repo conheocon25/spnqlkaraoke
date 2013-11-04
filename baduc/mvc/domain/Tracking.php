@@ -75,6 +75,9 @@ class Tracking extends Object{
 	function getPaidImport( ) {return $this->PaidImport;}	
 	function getPaidImportPrint( ) { $N = new \MVC\Library\Number($this->PaidImport); return $N->formatCurrency();}
 	
+	function getPaidValue( ) {return $this->PaidImport + $this->PaidPayRoll + $this->PaidGeneral;}
+	function getPaidValuePrint( ) { $N = new \MVC\Library\Number($this->getPaidValue() ); return $N->formatCurrency();}
+	
 	function setCollectGeneral( $CollectGeneral ) {$this->CollectGeneral = $CollectGeneral; $this->markDirty();}
 	function getCollectGeneral( ) {return $this->CollectGeneral;}	
 	function getCollectGeneralPrint( ){ $N = new \MVC\Library\Number($this->CollectGeneral); return $N->formatCurrency();}
@@ -88,51 +91,52 @@ class Tracking extends Object{
 	function getCollectSellingDebtPrint( ){ $N = new \MVC\Library\Number($this->CollectSellingDebt); return $N->formatCurrency();}
 	
 	function setCollectSellingNoDebt( $CollectSellingNoDebt ) {$this->CollectSellingNoDebt = $CollectSellingNoDebt; $this->markDirty();}
-	function getCollectSellingNoDebt( ) {return $this->CollectSellingNoDebt;}	
+	function getCollectSellingNoDebt( ) {return $this->CollectSellingNoDebt;}
 	function getCollectSellingNoDebtPrint( ){$N = new \MVC\Library\Number($this->CollectSellingNoDebt); return $N->formatCurrency();}
 	
-	function setEstateRate( $EstateRate ) {$this->EstateRate = $EstateRate;$this->markDirty();}   
-	function getEstateRate( ) {return $this->EstateRate;}
-	function getEstateRatePrint( ) {$N = new \MVC\Library\Number($this->EstateRate);return $N->formatCurrency();}
+	function getCollectValue( ) 		{ return $this->CollectGeneral + $this->CollectSellingNoDebt + $this->CollectSellingDebt + $this->CollectCustomer;}
+	function getCollectValuePrint( ) 	{ $N = new \MVC\Library\Number($this->getCollectValue() ); return $N->formatCurrency();}
 	
-	function setStoreValue( $StoreValue ) {$this->StoreValue = $StoreValue; $this->markDirty();}   
-	function getStoreValue( ) {return $this->StoreValue;}
-	function getStoreValuePrint( ) {$N = new \MVC\Library\Number($this->StoreValue); return $N->formatCurrency();}
+	function setEstateRate( $EstateRate ) 	{$this->EstateRate = $EstateRate;$this->markDirty();}   
+	function getEstateRate( ) 				{return $this->EstateRate;}
+	function getEstateRatePrint( ) 			{$N = new \MVC\Library\Number($this->EstateRate);return $N->formatCurrency();}
 	
+	function setStoreValue( $StoreValue ) 	{$this->StoreValue = $StoreValue; $this->markDirty();}
+	function getStoreValue( ) 				{return $this->StoreValue;}
+	function getStoreValuePrint( ) 			{$N = new \MVC\Library\Number($this->StoreValue); return $N->formatCurrency();}
+
 	function toJSON(){
-	
 		$json = array(
-			'Id' 					=> $this->getId(),
+			'Id' 					=> $this->getId(),			
 			'DateStart'				=> $this->getDateStart(),
 			'DateEnd'				=> $this->getDateEnd(),
-			'PaidGeneral'			=> $this->getPaidGeneral(), 
-			'PaidPayRoll'			=> $this->getPaidPayRoll(), 
-			'PaidImport'			=> $this->getPaidImport(), 
-			'CollectGeneral'		=> $this->getCollectGeneral(), 
-			'CollectCustomer'		=> $this->getCollectCustomer(), 
-			'CollectSellingDebt'	=> $this->getCollectSellingDebt(), 
-			'CollectSellingNoDebt'	=> $this->getCollectSellingNoDebt(), 
-			'EstateRate'			=> $this->getEstateRate(), 
+			'PaidGeneral'			=> $this->getPaidGeneral(),
+			'PaidPayRoll'			=> $this->getPaidPayRoll(),
+			'PaidImport'			=> $this->getPaidImport(),
+			'CollectGeneral'		=> $this->getCollectGeneral(),
+			'CollectCustomer'		=> $this->getCollectCustomer(),
+			'CollectSellingDebt'	=> $this->getCollectSellingDebt(),
+			'CollectSellingNoDebt'	=> $this->getCollectSellingNoDebt(),
+			'EstateRate'			=> $this->getEstateRate(),
 			'StoreValue'			=> $this->getStoreValue()
 		);
-		return json_encode($json);					
+		return json_encode($json);
 	}
 	
-	function setArray( $Data ){	
-        $this->Id 					= $Data[0];
+	function setArray( $Data ){        
+		$this->Id 					= $Data[0];
 		$this->DateStart 			= $Data[1];
 		$this->DateEnd 				= $Data[2];
 		$this->PaidGeneral 			= $Data[3];
 		$this->PaidPayRoll 			= $Data[4];
 		$this->PaidImport 			= $Data[5];
-		$this->CollectGeneral 		= $Data[6]; 
-		$this->CollectCustomer 		= $Data[7]; 
-		$this->CollectSellingDebt 	= $Data[8]; 
-		$this->CollectSellingNoDebt = $Data[9]; 
-		$this->EstateRate 			= $Data[10]; 
-		$this->StoreValue 			= $Data[11]; 
+		$this->CollectGeneral 		= $Data[6];
+		$this->CollectCustomer 		= $Data[7];
+		$this->CollectSellingDebt 	= $Data[8];
+		$this->CollectSellingNoDebt = $Data[9];
+		$this->EstateRate 			= $Data[10];
+		$this->StoreValue 			= $Data[11];
     }
-	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------
@@ -245,7 +249,7 @@ class Tracking extends Object{
 			
 		return $Value;
 	}	
-	function getValueDebtPrint(){ $N = new \MVC\Library\Number($this->getValueDebt()); return $N->formatCurrency()." đ";}
+	function getValueDebtPrint(){ $N = new \MVC\Library\Number($this->getValueDebt()); return $N->formatCurrency();}
 	
 	function getValueNoDebt(){
 		$Value = 
@@ -256,7 +260,7 @@ class Tracking extends Object{
 			
 		return $Value;
 	}	
-	function getValueNoDebtPrint(){ $N = new \MVC\Library\Number($this->getValueNoDebt()); return $N->formatCurrency()." đ";}
+	function getValueNoDebtPrint(){ $N = new \MVC\Library\Number($this->getValueNoDebt()); return $N->formatCurrency();}
 	
 	//-------------------------------------------------------------------------------------
 	//THEO DÕI SỐ TỒN KHO
@@ -403,26 +407,19 @@ class Tracking extends Object{
 		$EndDate = $this->getDateEnd();
 		while (strtotime($Date) <= strtotime($EndDate)){
 			$Data[] = array(
-						\date("d/m", strtotime($Date)),
-						"/report/selling/".$Date."/detail",
-						"/report/log/".$Date,
-						"/payroll/".$this->getId()."/absent/".$Date,
-						"/payroll/".$this->getId()."/late/".$Date,
-						$Date
-					);
-			$Date = \date("Y-m-d", strtotime("+1 day", strtotime($Date)));
+					\date("d/m", strtotime($Date)),
+					"/report/selling/".$Date."/detail",
+					"/report/import/".$Date."/detail",
+					"/report/paid/".$Date."/detail",
+					"/report/collect/".$Date."/detail"
+			);
+			$Date = \date("Y-m-d", strtotime("+1 day", strtotime($Date)));}return $Data;
 		}
-		return $Data;
-	}
 	
 	//-------------------------------------------------------------------------------
 	//LƯƠNG NHÂN VIÊN
 	//-------------------------------------------------------------------------------
-	function getPaidPayRollAll(){ 
-		$mPPR = new \MVC\Mapper\PayRoll(); 
-		$PPRAll = $mPPR->findByTracking( array( $this->getDateStart(), $this->getDateEnd() )); 
-		return $PPRAll;
-	}
+	function getPaidPayRollAll(){ $mPPR = new \MVC\Mapper\PaidPayRoll(); $PPRAll = $mPPR->findByTracking( array( $this->getDateStart(), $this->getDateEnd() )); return $PPRAll;}	
 	//TỔNG LƯƠNG CƠ BẢN
 	function getPaidPayRollAllValueBase(){ $PPRAll = $this->getPaidPayRollAll(); $Value = 0; $PPRAll->rewind(); while ( $PPRAll->valid() ){ $PPR = $PPRAll->current(); $Value += $PPR->getValueBase(); $PPRAll->next(); }  return $Value; }
 	function getPaidPayRollAllValueBasePrint(){ $N = new \MVC\Library\Number( $this->getPaidPayRollAllValueBase() ); return $N->formatCurrency()." đ"; }	
@@ -443,9 +440,6 @@ class Tracking extends Object{
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
 	function getURLView(){return "/report/".$this->getId();}
-	
-	function getURLPayRoll(){return "/payroll/".$this->getId();}
-	function getURLPayRollEmployee( $Employee ){return "/payroll/".$this->getId()."/".$Employee->getId();}
 	
 	function getURLCustomer(){return "/report/customer/".$this->getId();}
 	function getURLCustomerDetail($IdCustomer){return "/report/customer/".$this->getId()."/".$IdCustomer;}

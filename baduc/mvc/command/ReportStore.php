@@ -36,7 +36,7 @@
 				$R2CAll = $mR2C->findBy(array($Course->getId()));
 				
 				//Nếu có trong bảng ánh xạ mới tính toán
-				if ($R2CAll->count()>0){				
+				if ($R2CAll->count()>0){
 					$R2CAll->rewind();
 					
 					$PriceAverage 	= 0;
@@ -79,7 +79,8 @@
 			}
 			$NSum = new \MVC\Library\Number($Sum);
 			
-			if ($Save="yes"){
+			if ($Save=="yes"){
+				if ($Sum<0)$Sum=0;
 				$Tracking->setStoreValue($Sum);
 				$mTracking->update($Tracking);
 			}

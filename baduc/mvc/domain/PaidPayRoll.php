@@ -63,18 +63,35 @@ class PaidPayRoll extends Object{
 	function getValueReal( ) { return $this->ValueBase + $this->ValueSub - $this->ValuePre;}
 	function getValueRealPrint( ) { $num = number_format($this->getValueReal(), 0, ',', '.'); return $num." đ";}
 	
+	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLUpdLoad(){ return "/paid/payroll/".$this->getIdEmployee()."/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){ return "/paid/payroll/".$this->getIdEmployee()."/".$this->getId()."/upd/exe";}
-	
-	function getURLDelLoad(){ return "/paid/payroll/".$this->getIdEmployee()."/".$this->getId()."/del/load";}
-	function getURLDelExe(){ return "/paid/payroll/".$this->getIdEmployee()."/".$this->getId()."/del/exe";}
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'IdTerm'		=> $this->getIdEmployee(),
+			'Date'			=> $this->getDate(),
+			'ValueBase'		=> $this->getValueBase(),
+			'ValueSub'		=> $this->getValueSub(),
+			'ValuePre'		=> $this->getValuePre(),
+			'Note'			=> $this->getNote()
+		);
+		return json_encode($json);				
+	}
+			
+	function setArray( $Data ){
+        $this->Id 			= $Data[0];
+		$this->IdEmployee 	= $Data[1];
+		$this->Date 		= $Data[2];
+		$this->ValueBase 	= $Data[3];
+		$this->ValueSub 	= $Data[4];
+		$this->ValuePre 	= $Data[5];
+		$this->Note 		= $Data[6];
+    }
 	
 	/*--------------------------------------------------------------------*/	
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
-    static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}
-		
+    static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}		
 }
 ?>
