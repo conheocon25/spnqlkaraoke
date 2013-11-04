@@ -14,8 +14,7 @@ class CourseCollection extends Collection implements \MVC\Domain\CourseCollectio
 class SupplierCollection extends Collection implements \MVC\Domain\SupplierCollection {function targetClass( ) {return "\MVC\Domain\Supplier";}}
 
 class PaidSupplierCollection extends Collection implements \MVC\Domain\PaidSupplierCollection {function targetClass( ) {return "\MVC\Domain\PaidSupplier";}}
-class PaidPayRollCollection extends Collection implements \MVC\Domain\PaidPayRollCollection{function targetClass( ) {return "\MVC\Domain\PaidPayRoll";}}
-class PaidEmployeeCollection extends Collection implements \MVC\Domain\PaidEmployeeCollection{function targetClass( ) {return "\MVC\Domain\PaidEmployee";}}
+class PayRollCollection extends Collection implements \MVC\Domain\PayRollCollection{function targetClass( ) {return "\MVC\Domain\PayRoll";}}
 class PaidGeneralCollection extends Collection implements \MVC\Domain\PaidGeneralCollection{function targetClass( ) {return "\MVC\Domain\PaidGeneral";}}
 
 class TermPaidCollection extends Collection implements \MVC\Domain\TermPaidCollection{function targetClass(){return "\MVC\Domain\TermPaid";}}

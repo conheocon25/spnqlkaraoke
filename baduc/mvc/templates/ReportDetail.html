@@ -20,43 +20,53 @@
 		</div>
 		<div id="content">
 			<div metal:use-macro="mAdmin.xhtml/ContentHeader"/>			
-			<div metal:use-macro="mAdmin.xhtml/LocationBar"/>			
-			<div class="container-fluid">							
-				<div class="row">
-					<div class="col-xs-8">
-						<a class="btn btn-block btn-primary" target="blank" tal:attributes="href Tracking/getURLCollectGeneral">(1) TỔNG HỢP THU</a>
+			<div metal:use-macro="mAdmin.xhtml/LocationBar"/>
+			<div class="row">
+				<div class="container-fluid">
+					<div class="col-12">
+						<div class="widget-box">
+							<div class="widget-content nopadding">
+								<table class="table table-bordered table-striped table-hover">
+									<thead>
+										<tr>
+											<th width="60"><i class="glyphicons-macbook"/></th>
+											<th><div class="text-left">TÊN</div></th>											
+										</tr>
+									</thead>
+									<tbody>											
+										<tr>
+											<td class="center"><a target="blank" tal:attributes="href Tracking/getURLCollectGeneralSave"><i class="glyphicons-disk_save"/></a></td>
+											<td><a target="blank" tal:attributes="href Tracking/getURLCollectGeneral">(1) TỔNG HỢP THU</a></td>
+										</tr>
+										<tr>
+											<td class="center"><a target="blank" tal:attributes="href Tracking/getURLPaidGeneralSave"><i class="glyphicons-disk_save"/></a></td>
+											<td><a target="blank" tal:attributes="href Tracking/getURLPaidGeneral">(2) TỔNG HỢP CHI</a></td>
+										</tr>
+										<tr>
+											<td class="center"><a target="blank" tal:attributes="href Tracking/getURLStoreSave"><i class="glyphicons-disk_save"/></a></td>
+											<td><a tal:attributes="href Tracking/getURLStore">(3) TỔNG HỢP TỒN KHO</a></td>
+										</tr>
+										<tr>
+											<td class="center"></td>
+											<td><a tal:attributes="href Tracking/getURLCustomer">CHI TIẾT CÔNG NỢ CỦA KHÁCH HÀNG</a></td>
+										</tr>
+										<tr>
+											<td class="center"></td>
+											<td><a target="blank" tal:attributes="href Tracking/getURLCourse">THỐNG KÊ CÁC MÓN</a></td>
+										</tr>
+										<tr>
+											<td class="center"></td>
+											<td><a target="blank" tal:attributes="href Tracking/getURLResource">THỐNG KÊ NHẬP HÀNG</a></td>
+										</tr>
+										<tr>
+											<td class="center"></td>
+											<td><a target="blank" tal:attributes="href Tracking/getURLHours">THỐNG KÊ GIỜ HÁT</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
 					</div>
-					<div class="col-xs-4">
-						<a class="btn btn-block btn-primary" target="blank" tal:attributes="href Tracking/getURLCollectGeneralSave">LƯU KẾT QUẢ</a>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-8"><a class="btn btn-block btn-primary" target="blank" tal:attributes="href Tracking/getURLPaidGeneral">(2) TỔNG HỢP CHI</a></div>
-					<div class="col-xs-4"><a class="btn btn-block btn-primary" target="blank" tal:attributes="href Tracking/getURLPaidGeneralSave">LƯU KẾT QUẢ</a></div>
-				</div>
-				<div class="row">
-					<div class="col-xs-8"><a class="btn btn-block btn-primary" tal:attributes="href Tracking/getURLStore">(3) TỔNG HỢP TỒN KHO</a></div>
-					<div class="col-xs-4"><a class="btn btn-block btn-primary" tal:attributes="href Tracking/getURLStoreSave">LƯU KẾT QUẢ</a></div>
-				</div>
-				<div class="row">
-					<div class="col-xs-8"><a class="btn btn-block btn-primary" target="blank" tal:attributes="href Tracking/getURLGeneral">(4) TỔNG HỢP</a></div>
-					<div class="col-xs-4"></div>
-				</div>				
-				<div class="row">
-					<div class="col-xs-8"><a class="btn btn-block btn-primary" tal:attributes="href Tracking/getURLCustomer">CHI TIẾT CÔNG NỢ CỦA KHÁCH HÀNG</a></div>
-					<div class="col-xs-4"></div>
-				</div>
-				<div class="row">
-					<div class="col-xs-8"><a class="btn btn-block btn-primary" target="blank" tal:attributes="href Tracking/getURLCourse">THỐNG KÊ CÁC MÓN</a></div>
-					<div class="col-xs-4"></div>
-				</div>
-				<div class="row">
-					<div class="col-xs-8"><a class="btn btn-block btn-primary" target="blank" tal:attributes="href Tracking/getURLResource">THỐNG KÊ NHẬP HÀNG</a></div>
-					<div class="col-xs-4"></div>
-				</div>
-				<div class="row">
-					<div class="col-xs-8"><a class="btn btn-block btn-primary" target="blank" tal:attributes="href Tracking/getURLHours">THỐNG KÊ GIỜ HÁT</a></div>
-					<div class="col-xs-4"></div>
 				</div>
 			</div>
 		</div>

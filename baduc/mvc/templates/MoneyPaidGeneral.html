@@ -12,7 +12,7 @@
 			<ul style="display: block;">
 				<li tal:repeat="Term1 TermAll" tal:attributes="class php:Term1->getId()==Term->getId()?'active':'disable'">
 					<a tal:attributes="href Term1/getURLDetail">
-						<i class="glyphicons-edit"/> <span tal:content="Term1/getName" />
+						<i class="glyphicons-disk_open"/> <span tal:content="Term1/getName" />
 					</a>
 				</li>								
 			</ul>
@@ -22,10 +22,10 @@
 			<div metal:use-macro="mAdmin.xhtml/Locationbar"/>
 			<div Id="IdTerm" tal:attributes="alt Term/getId" class="row">
 				<div class="col-12">
-					<a href="#DialogIns" data-toggle="modal" class="btn btn-success btn-ins btn-small">
+					<a href="#DialogIns" data-toggle="modal" class="btn btn-primary btn-ins">
 						<i class="glyphicons-plus"/> Thêm mới
 					</a>
-					<a href="#DialogDelSelected" data-toggle="modal" class="btn btn-success btn-ins btn-small">
+					<a href="#DialogDelSelected" data-toggle="modal" class="btn btn-primary btn-ins">
 						<i class="glyphicons-remove_2"/> Xóa chọn
 					</a>
 					<div class="widget-box">						
@@ -64,7 +64,7 @@
 					<div id="DialogIns" class="modal fade">
 						<div class="modal-dialog">
 							<div class="modal-content">
-								<div class="modal-header"><h3><i class="glyphicons-fast_food modal-icon"/>THÊM KHOẢN CHI</h3></div>
+								<div class="modal-header"><h3><i class="glyphicons-disk_open modal-icon"/>THÊM KHOẢN CHI</h3></div>
 								<div class="form-horizontal">
 									<div class="modal-body">
 										<div class="control-group">
@@ -101,7 +101,7 @@
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h3><i class="glyphicons-fast_food modal-icon"/>CẬP NHẬT KHOẢN CHI</h3>
+									<h3><i class="glyphicons-disk_open modal-icon"/>CẬP NHẬT KHOẢN CHI</h3>
 								</div>
 								<div class="form-horizontal">
 									<div class="modal-body">

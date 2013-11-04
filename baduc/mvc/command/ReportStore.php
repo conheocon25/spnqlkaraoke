@@ -65,6 +65,7 @@
 					$Data[] = array(	
 						$Course->getId(), 
 						$Course->getName(),
+						$Course->getUnit(),
 						$OldCount,
 						$ImportCount,
 						$ExportCount, 
@@ -84,8 +85,7 @@
 			}
 			
 			$Title = "TỒN KHO";
-			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
+			$Navigation = array(				
 				array("BÁO CÁO", "/report"),
 				array($Tracking->getName(), $Tracking->getURLView() )
 			);

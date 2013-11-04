@@ -1,6 +1,6 @@
 <?php		
 	namespace MVC\Command;	
-	class ReportDetail extends Command {
+	class PayRoll extends Command {
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -10,34 +10,38 @@
 														
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
-			//-------------------------------------------------------------			
-			$IdTrack = $request->getProperty("IdTrack");
-									
+			//-------------------------------------------------------------
+			$IdTrack = $request->getProperty('IdTrack');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mTracking = new \MVC\Mapper\Tracking();			
-												
+			$mTracking = new \MVC\Mapper\Tracking();
+			$mEmployee = new \MVC\Mapper\Employee();
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$Tracking = $mTracking->find($IdTrack);
-			$TrackingAll = $mTracking->findAll();
-						
-			$DateCurrent = 'THÁNG '.\date("m/Y", strtotime($Tracking->getDateStart()));
-			$Title = $Tracking->getName();
-			$Navigation = array(				
-				array("BÁO CÁO", "/report")
-			);
+			$EmployeeAll = $mEmployee->findAll();
+			$TrackAll = $mTracking->findAll();
+			if (!isset($IdTrack)){
+				$Track = $TrackAll->current();
+				$IdTrack = $Track->getId();
+			}else{
+				$Track = $mTracking->find($IdTrack);
+			}
+			
+			$Title = "CHẤM CÔNG";
+			$Navigation = array();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------									
-			$request->setProperty('DateCurrent', $DateCurrent);
-			$request->setProperty('Title', $Title);
+			//-------------------------------------------------------------						
+			$request->setProperty('Title', $Title);						
+			$request->setObject('TrackAll', $TrackAll);
+			$request->setObject('EmployeeAll', $EmployeeAll);
+			$request->setObject('Track', $Track);
 			$request->setObject('Navigation', $Navigation);
-			$request->setObject('TrackingAll', $TrackingAll);
-			$request->setObject('Tracking', $Tracking);						
 		}
 	}
 ?>
