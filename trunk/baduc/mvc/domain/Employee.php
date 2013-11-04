@@ -105,7 +105,7 @@
 	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
-	//-------------------------------------------------------------------------------						
+	//-------------------------------------------------------------------------------								
 	function getPayRollAll(){
 		$mPPR = new \MVC\Mapper\PaidPayRoll();
 		$PRRAll = $mPPR->findBy(array($this->getId()));
@@ -125,8 +125,7 @@
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLUpdExe(){return "/object/upd/Employee/".$this->getId();}
-	function getURLDelExe(){return "/object/del/Employee/".$this->getId();}
+	function getURLPaid(){return "/money/paid/payroll/".$this->getId();}
 		
 }
 ?>

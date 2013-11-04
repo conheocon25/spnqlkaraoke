@@ -66,21 +66,6 @@ RewriteRule ^selling/([0-9]+)/([0-9]+)/checkin/exe$					?cmd=SellingDomainTableC
 RewriteRule ^selling/([0-9]+)/([0-9]+)/([0-9]+)/checkout/exe$		?cmd=SellingDomainTableCheckoutExe&IdDomain=$1&IdTable=$2&IdSession=$3 [L]
 
 #---------------------------------------------------------------------------------------------------------------------------
-# PAYROLL
-#---------------------------------------------------------------------------------------------------------------------------
-RewriteRule ^payroll$ 														?cmd=PayRoll [L]
-RewriteRule ^payroll/([0-9]+)$ 												?cmd=PayRoll&IdTrack=$1 [L]
-RewriteRule ^payroll/([0-9]+)/([0-9]+)$ 									?cmd=PayRollWork&IdTrack=$1&IdEmployee=$2 [L]
-
-RewriteRule ^payroll/([0-9]+)/([0-9]+)/([0-9_-]+)/yes$ 						?cmd=PayRollWorkDetail&IdTrack=$1&Date=$3&IdEmployee=$2&State=yes [L]
-RewriteRule ^payroll/([0-9]+)/([0-9]+)/all/yes$ 							?cmd=PayRollWorkDetail&IdTrack=$1&Date=all&IdEmployee=$2&State=yes [L]
-RewriteRule ^payroll/([0-9]+)/([0-9]+)/([0-9_-]+)/no$ 						?cmd=PayRollWorkDetail&IdTrack=$1&Date=$3&IdEmployee=$2&State=no [L]
-RewriteRule ^payroll/([0-9]+)/([0-9]+)/([0-9_-]+)/no/([0-9]+)$ 				?cmd=PayRollWorkDetail&IdTrack=$1&Date=$3&IdEmployee=$2&State=no&Minute=$4 [L]
-RewriteRule ^payroll/([0-9]+)/([0-9]+)/([0-9_-]+)/yes/([0-9]+)$ 			?cmd=PayRollWorkDetail&IdTrack=$1&Date=$3&IdEmployee=$2&State=yes&Minute=$4 [L]
-RewriteRule ^payroll/([0-9]+)/([0-9]+)/([0-9_-]+)/yes/([0-9]+)/([0-9]+)$ 	?cmd=PayRollWorkDetail&IdTrack=$1&Date=$3&IdEmployee=$2&State=yes&Minute=$4&Extra=$5 [L]
-RewriteRule ^payroll/([0-9]+)/([0-9]+)/([0-9_-]+)/no/([0-9]+)/([0-9]+)$ 	?cmd=PayRollWorkDetail&IdTrack=$1&Date=$3&IdEmployee=$2&State=no&Minute=$4&Extra=$5 [L]
-
-#---------------------------------------------------------------------------------------------------------------------------
 # MONEY
 #---------------------------------------------------------------------------------------------------------------------------
 RewriteRule ^money$ 												?cmd=Money [L]
@@ -96,6 +81,10 @@ RewriteRule ^money/collect/customer/([0-9]+)/page/([0-9]+)$ 		?cmd=MoneyCollectC
 RewriteRule ^money/paid/general$ 									?cmd=MoneyPaidGeneral [L]
 RewriteRule ^money/paid/general/([0-9]+)$ 							?cmd=MoneyPaidGeneral&IdTerm=$1 [L]
 RewriteRule ^money/paid/general/([0-9]+)/page/([0-9]+)$ 			?cmd=MoneyPaidGeneral&IdTerm=$1&Page=$2 [L]
+
+RewriteRule ^money/paid/payroll$ 									?cmd=MoneyPaidPayRoll [L]
+RewriteRule ^money/paid/payroll/([0-9]+)$ 							?cmd=MoneyPaidPayRoll&IdEmployee=$1 [L]
+RewriteRule ^money/paid/payroll/([0-9]+)/page/([0-9]+)$ 			?cmd=MoneyPaidPayRoll&IdEmployee=$1&Page=$2 [L]
 
 #---------------------------------------------------------------------------------------------------------------------------
 # CUSTOMER

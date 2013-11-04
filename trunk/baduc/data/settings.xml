@@ -35,13 +35,6 @@
 		</command>
 		
 		<!-- ============================================================================== -->
-		<!-- PAYROLL			 															-->
-		<!-- ============================================================================== -->		
-		<command name="PayRoll"><view>PayRoll</view></command>
-		<command name="PayRollWork"><view>PayRollWork</view></command>
-		<command name="PayRollWorkDetail"><status value="CMD_OK"><forward>PayRollWork</forward></status><view>PayRollWorkDetail</view></command>
-		
-		<!-- ============================================================================== -->
 		<!-- REPORT.DETAIL			 														-->
 		<!-- ============================================================================== -->
 		<command name="Report"><view>Report</view></command>
@@ -99,6 +92,7 @@
 		<command name="MoneyCollectGeneral"><view>MoneyCollectGeneral</view></command>
 		<command name="MoneyCollectCustomer"><view>MoneyCollectCustomer</view></command>
 		<command name="MoneyPaidGeneral"><view>MoneyPaidGeneral</view></command>
+		<command name="MoneyPaidPayRoll"><view>MoneyPaidPayRoll</view></command>
 							
 		<!-- ============================================================================== -->
 		<!-- SETTING	 															-->
