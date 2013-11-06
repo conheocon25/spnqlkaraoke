@@ -308,6 +308,12 @@ class Tracking extends Object{
 	function getCountCourse($IdCourse){$mSD = new \MVC\Mapper\SessionDetail();$Count = $mSD->trackByCount( array($IdCourse, $this->getDateStart(), $this->getDateEnd()) );return $Count;}
 	function getCountCoursePrint($IdCourse){$N = new \MVC\Library\Number($this->getCountCourse($IdCourse));return $N->formatCurrency();}
 	
+	function getCountCourse1($IdCourse){$mSD = new \MVC\Mapper\SessionDetail();$Count = $mSD->trackByCount1( array($IdCourse, $this->getDateStart(), $this->getDateEnd()) );return $Count;}
+	function getCountCourse1Print($IdCourse){$N = new \MVC\Library\Number($this->getCountCourse1($IdCourse));return $N->formatCurrency();}
+	
+	function getCountCourse2($IdCourse){$mSD = new \MVC\Mapper\SessionDetail();$Count = $mSD->trackByCount2( array($IdCourse, $this->getDateStart(), $this->getDateEnd()) );return $Count;}
+	function getCountCourse2Print($IdCourse){$N = new \MVC\Library\Number($this->getCountCourse2($IdCourse));return $N->formatCurrency();}
+	
 	//-------------------------------------------------------------------------------------
 	//THEO DÕI CÔNG NỢ KHÁCH HÀNG
 	//-------------------------------------------------------------------------------------
