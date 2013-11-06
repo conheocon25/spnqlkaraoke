@@ -18,9 +18,7 @@
 			//-------------------------------------------------------------
 			$Tracks = $mTracking->findAll();
 			$Title = "BÁO CÁO";			
-			$Navigation = array(
-				array("ỨNG DỤNG", "/app")
-			);
+			$Navigation = array();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
