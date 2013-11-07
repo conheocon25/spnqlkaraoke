@@ -17,19 +17,20 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mCategory = new \MVC\Mapper\Category();
-			$mCourse = new \MVC\Mapper\Course();
-			$mConfig = new \MVC\Mapper\Config();
+			$mCategory 	= new \MVC\Mapper\Category();
+			$mCourse 	= new \MVC\Mapper\Course();
+			$mConfig 	= new \MVC\Mapper\Config();
+			$mUnit 		= new \MVC\Mapper\Unit();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$CategoryAll = $mCategory->findAll();
-			$Category = $mCategory->find($IdCategory);
+			$UnitAll 		= $mUnit->findAll();
+			$CategoryAll 	= $mCategory->findAll();
+			$Category 		= $mCategory->find($IdCategory);
 			
 			$Title = mb_strtoupper($Category->getName(), 'UTF8');
-			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
+			$Navigation = array(				
 				array("THIẾT LẬP", "/setting"),
 				array("DANH MỤC MÓN", "/setting/category")
 			);
@@ -41,14 +42,15 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("Category", $Category);
-			$request->setObject("CategoryAll", $CategoryAll);
-			$request->setObject("CourseAll", $CourseAll);
+			$request->setObject("Category"		, $Category);
+			$request->setObject("UnitAll"		, $UnitAll);
+			$request->setObject("CategoryAll"	, $CategoryAll);
+			$request->setObject("CourseAll"		, $CourseAll);
 						
-			$request->setProperty("Title", $Title);
-			$request->setProperty("Page", $Page);
-			$request->setObject("Navigation", $Navigation);
-			$request->setObject("PN", $PN);
+			$request->setProperty("Title"		, $Title);
+			$request->setProperty("Page"		, $Page);
+			$request->setObject("Navigation"	, $Navigation);
+			$request->setObject("PN"			, $PN);
 		}
 	}
 ?>

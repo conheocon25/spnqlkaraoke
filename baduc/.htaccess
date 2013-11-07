@@ -87,10 +87,6 @@ RewriteRule ^money/paid/payroll/([0-9]+)$ 							?cmd=MoneyPaidPayRoll&IdEmploye
 RewriteRule ^money/paid/payroll/([0-9]+)/page/([0-9]+)$ 			?cmd=MoneyPaidPayRoll&IdEmployee=$1&Page=$2 [L]
 
 #---------------------------------------------------------------------------------------------------------------------------
-# CUSTOMER
-#---------------------------------------------------------------------------------------------------------------------------
-
-#---------------------------------------------------------------------------------------------------------------------------
 # IMPORT
 #---------------------------------------------------------------------------------------------------------------------------
 RewriteRule ^import$ 								?cmd=Import [L]
@@ -212,30 +208,15 @@ RewriteRule ^collect/general/([0-9]+)/([0-9]+)/del/exe$		?cmd=CollectGeneralDelE
 RewriteRule ^setting$ 												?cmd=Setting [L]
 RewriteRule ^setting/theme/([a-z0-9_-]+)$ 							?cmd=SettingThemeChangeExe&Theme=$1 [L]
 
-#---------------------------------------------------------------------------------------------------------------------------
-# SETTING.CUSTOMER
-#---------------------------------------------------------------------------------------------------------------------------
 RewriteRule ^setting/customer$ 										?cmd=SettingCustomer [L]
 RewriteRule ^setting/customer/page/([0-9]+)$ 						?cmd=SettingCustomer&Page=$1 [L]
+
 RewriteRule ^setting/category$ 										?cmd=SettingCategory [L]
 RewriteRule ^setting/category/page/([0-9]+)$ 						?cmd=SettingCategory&Page=$1 [L]
 RewriteRule ^setting/category/([0-9]+)$ 							?cmd=SettingCategoryCourse&IdCategory=$1 [L]
 RewriteRule ^setting/category/([0-9]+)/page/([0-9]+)$ 				?cmd=SettingCategoryCourse&IdCategory=$1&Page=$2 [L]
+RewriteRule ^setting/category/([a-z0-9]+)/([a-z0-9]+)/recipe$ 		?cmd=SettingCategoryCourseRecipe&IdCategory=$1&IdCourse=$2 [L]
 
-#---------------------------------------------------------------------------------------------------------------------------
-# SETTING.CATEGORY.COURSE.RECIPE
-#---------------------------------------------------------------------------------------------------------------------------
-RewriteRule ^setting/category/([a-z0-9]+)/([a-z0-9]+)/recipe$ 						?cmd=SettingCategoryCourseRecipe&IdCategory=$1&IdCourse=$2 [L]
-RewriteRule ^setting/category/([a-z0-9]+)/([a-z0-9]+)/recipe/ins/load$ 				?cmd=SettingCategoryCourseRecipeInsLoad&IdCategory=$1&IdCourse=$2 [L]
-RewriteRule ^setting/category/([a-z0-9]+)/([a-z0-9]+)/recipe/ins/exe$ 				?cmd=SettingCategoryCourseRecipeInsExe&IdCategory=$1&IdCourse=$2 [L]
-RewriteRule ^setting/category/([a-z0-9]+)/([a-z0-9]+)/recipe/([a-z0-9]+)/upd/load$ 	?cmd=SettingCategoryCourseRecipeUpdLoad&IdCategory=$1&IdCourse=$2&IdRecipe=$3 [L]
-RewriteRule ^setting/category/([a-z0-9]+)/([a-z0-9]+)/recipe/([a-z0-9]+)/upd/exe$ 	?cmd=SettingCategoryCourseRecipeUpdExe&IdCategory=$1&IdCourse=$2&IdRecipe=$3 [L]
-RewriteRule ^setting/category/([a-z0-9]+)/([a-z0-9]+)/recipe/([a-z0-9]+)/del/load$ 	?cmd=SettingCategoryCourseRecipeDelLoad&IdCategory=$1&IdCourse=$2&IdRecipe=$3 [L]
-RewriteRule ^setting/category/([a-z0-9]+)/([a-z0-9]+)/recipe/([a-z0-9]+)/del/exe$ 	?cmd=SettingCategoryCourseRecipeDelExe&IdCategory=$1&IdCourse=$2&IdRecipe=$3 [L]
-
-#---------------------------------------------------------------------------------------------------------------------------
-# SETTING.DOMAIN
-#---------------------------------------------------------------------------------------------------------------------------
 RewriteRule ^setting/domain$ 										?cmd=SettingDomain [L]
 RewriteRule ^setting/domain/page/([0-9]+)$ 							?cmd=SettingDomain&Page=$1 [L]
 RewriteRule ^setting/domain/([0-9]+)$ 								?cmd=SettingDomainTable&IdDomain=$1 [L]

@@ -28,6 +28,11 @@ class Resource extends Object{
 			
 	function getIdSupplier( ) {return $this->IdSupplier;}
     function setIdSupplier( $supplier ) {$this->IdSupplier = $supplier;$this->markDirty();}
+	function getSupplier(){
+		$mSupplier = new \MVC\Mapper\Supplier();
+		$Supplier = $mSupplier->find( $this->getIdSupplier() );
+		return $Supplier;
+	}
 	
     function setName( $Name ) {$this->Name = $Name;$this->markDirty();}
     function getName( ) {return $this->Name;}
