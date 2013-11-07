@@ -19,16 +19,17 @@
 			//-------------------------------------------------------------			
 			$mCategory = new \MVC\Mapper\Category();
 			$mCourse = new \MVC\Mapper\Course();
+			$mResource = new \MVC\Mapper\Resource();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$Course = $mCourse->find($IdCourse);
-			$Category = $mCategory->find($IdCategory);
-			$Title = mb_strtoupper($Course->getName(), 'UTF8');
+			$Course 		= $mCourse->find($IdCourse);
+			$Category 		= $mCategory->find($IdCategory);
+			$ResourceAll 	= $mResource->findAll();
+			$Title = mb_strtoupper($Course->getName(), 'UTF8')." CÔNG THỨC";
 			
-			$Navigation = array(
-				array("ỨNG DỤNG", "/app"),
+			$Navigation = array(				
 				array("THIẾT LẬP", "/setting"),
 				array("DANH MỤC MÓN", "/setting/category"),
 				array(mb_strtoupper($Category->getName()), $Category->getURLCourse())
@@ -37,10 +38,10 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			$request->setObject("Course", $Course);
-			
-			$request->setProperty( "Title", $Title );
-			$request->setObject("Navigation", $Navigation);			
+			$request->setObject("Course"		, $Course);
+			$request->setObject("ResourceAll"	, $ResourceAll);			
+			$request->setProperty( "Title"		, $Title);
+			$request->setObject("Navigation"	, $Navigation);
 		}
 	}
 ?>

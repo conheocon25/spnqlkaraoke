@@ -46,17 +46,24 @@ class R2C extends Object{
 	
 	function getRate(){return ($this->getValue1()*$this->getValue2());}
 	
-	//-------------------------------------------------------------------------------
-	//DEFINE URL SETTING.R2C
-	//-------------------------------------------------------------------------------
-	function getURLUpdLoad(){return "/setting/category/".$this->getCourse()->getCategory()->getId()."/".$this->getIdCourse()."/recipe/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){return "/setting/category/".$this->getCourse()->getCategory()->getId()."/".$this->getIdCourse()."/recipe/".$this->getId()."/upd/exe";}
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),	
+			'IdCourse'		=> $this->getIdCourse(),
+			'IdResource'	=> $this->getIdResource(),
+			'Value1'		=> $this->getValue1(),
+			'Value2'		=> $this->getValue2()
+		);		
+		return json_encode($json);
+	}
 	
-	function getURLDelLoad(){return "/setting/category/".$this->getCourse()->getCategory()->getId()."/".$this->getIdCourse()."/recipe/".$this->getId()."/del/load";}
-	function getURLDelExe(){return "/setting/category/".$this->getCourse()->getCategory()->getId()."/".$this->getIdCourse()."/recipe/".$this->getId()."/del/exe";}
-	//-------------------------------------------------------------------------------
-	//DEFINE URL SELLING
-	//-------------------------------------------------------------------------------
+	function setArray( $Data ){
+        $this->Id 			= $Data[0];
+		$this->IdCourse 	= $Data[1];
+		$this->IdResource 	= $Data[2];
+		$this->Value1 		= $Data[3];
+		$this->Value2 		= $Data[4];
+    }	
 		
 	//----------------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}

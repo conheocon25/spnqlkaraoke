@@ -31,8 +31,7 @@ class Course extends Object{
 		$Price2=null, 
 		$Price3=null, 
 		$Price4=null, 
-		$Picture=Null,
-		$Rate=Null) 
+		$Picture=Null) 
 	{
         $this->Id = $Id;
 		$this->IdCategory = $IdCategory;
@@ -44,7 +43,7 @@ class Course extends Object{
 		$this->Price3 = $Price3;
 		$this->Price4 = $Price4;
 		$this->Picture = $Picture;
-		$this->Rate = $Rate;
+		
         parent::__construct( $Id );
     }
     function getId( ) {return $this->Id;}
@@ -80,10 +79,7 @@ class Course extends Object{
 	
 	function setPicture( $Picture ) {$this->Picture = $Picture;$this->markDirty();}	
 	function getPicture( ) {return $this->Picture;}
-	
-	function setRate( $Rate ) {$this->Rate = $Rate;$this->markDirty();}	
-	function getRate( ) {return $this->Rate;}
-	
+			
 	public function toJSON(){
 		$json = array(
 			'Id' 			=> $this->getId(),
@@ -95,8 +91,7 @@ class Course extends Object{
 		 	'Price2'		=> $this->getPrice2(),
 		 	'Price3'		=> $this->getPrice3(),
 		 	'Price4'		=> $this->getPrice4(),
-		 	'Picture'		=> $this->getPicture(),
-		 	'Rate'			=> $this->getRate()
+		 	'Picture'		=> $this->getPicture()		 	
 		);
 		return json_encode($json);
 	}
@@ -111,9 +106,15 @@ class Course extends Object{
 		$this->Price3 		= $Data[7];
 		$this->Price4 		= $Data[8];
 		$this->Picture 		= $Data[9];
-		$this->Rate 		= $Data[10];
     }
-				
+	
+	function getURLRecipe(){return "/setting/category/".$this->getIdCategory()."/".$this->getId()."/recipe";}
+	
+	function getRecipeAll(){
+		$mR2C = new \MVC\Mapper\R2C();
+		$R2CAll = $mR2C->findBy(array($this->getId()));
+		return $R2CAll;
+	}
 	//----------------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ){$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}

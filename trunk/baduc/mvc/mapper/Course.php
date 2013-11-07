@@ -69,7 +69,7 @@ class Course extends Mapper implements \MVC\Domain\CourseFinder {
 			$array['price3'],
 			$array['price4'],
 			$array['picture']			
-			 );
+		);
         return $obj;
     }
 
