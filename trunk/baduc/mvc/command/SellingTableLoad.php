@@ -1,6 +1,6 @@
 <?php		
 	namespace MVC\Command;	
-	class Selling extends Command {
+	class SellingTableLoad extends Command {
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");
 			//-------------------------------------------------------------
@@ -11,37 +11,29 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-									
+			$IdTable = $request->getProperty("IdTable");
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			require_once("mvc/base/mapper/MapperDefault.php");
-			$mSD 		= new \MVC\Mapper\SessionDetail();
+			$mTable 	= new \MVC\Mapper\Table();
+									
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
-			$DomainAll = $mDomain->findAll();
-			$CategoryAll 	= $mCategory->findAll();	
-			$Top10			= $mSD->findByTop10(array());
-			$Domain			= $DomainAll->current();			
-			//-------------------------------------------------------------
-			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------									
-			$Title = "BÁN HÀNG";
-			$Navigation = array();
+			$Table 				= $mTable->find($IdTable);
+			$TableAll 			= $mTable->findAll();
+			$TableAllNonGuest	= $mTable->findAllNonGuest(array());
+			$TableAllGuest		= $mTable->findAllGuest(array($IdTable));
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
-			$request->setProperty('Title', $Title);
-			$request->setProperty('ActiveAdmin', 'Selling');
-			$request->setObject('Navigation', $Navigation);
+			//-------------------------------------------------------------			
+			$request->setObject('Table'				, $Table);
+			$request->setObject('TableAll'			, $TableAll);
+			$request->setObject('TableAllNonGuest'	, $TableAllNonGuest);
+			$request->setObject('TableAllGuest'		, $TableAllGuest);
 			
-			$request->setObject('DomainAll', $DomainAll);			
-			$request->setObject('Domain', $Domain);			
-			$request->setObject('CategoryAll', $CategoryAll);			
-			$request->setObject('Top10', $Top10);			
-						
 			return self::statuses('CMD_DEFAULT');
 		}
 	}
