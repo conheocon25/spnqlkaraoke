@@ -7,10 +7,14 @@
 					<i class="glyphicon glyphicon-th-list"></i>
 				</span>
 				<h5>PHIẾU TÍNH TIỀN</h5>
+				<div class="buttons" tal:condition="not: Table/getSessionActive">
+					<a title="Ghi Gio" class="btn Checkout" tal:attributes="alt Table/getURLCheckinExe"><i class="glyphicons-disk_import" /></a>
+				</div>
 				<div class="buttons" tal:condition="Table/getSessionActive">
 					<a title="Chuyển bàn" data-toggle="modal" class="btn SessionMove" href="#DialogMove" tal:attributes="data-session-id Table/getSessionActive/getId"><i class="glyphicons-move" /></a>
 					<a title="Gom bàn" data-toggle="modal" class="btn SessionMerge" href="#DialogMerge" tal:attributes="data-session-id Table/getSessionActive/getId"><i class="glyphicons-resize_small"/></a>
 					<a title="Chỉnh sửa giao dịch" data-toggle="modal" class="btn SessionUpdate" href="#DialogSession" tal:attributes="data-session-id Table/getSessionActive/getId"><i class="glyphicons-edit" /></a>
+					
 					<a title="Tính phiếu" class="btn Checkout" tal:attributes="alt Table/getSessionActive/getURLCheckoutExe"><i class="glyphicons-ok_2" /></a>
 					<a title="In phiếu" class="btn" target="blank" tal:attributes="href Table/getSessionActive/getURLPrint"><i class="glyphicons-print"></i></a>
 				</div>
