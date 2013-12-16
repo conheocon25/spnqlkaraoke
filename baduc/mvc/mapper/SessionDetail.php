@@ -127,6 +127,14 @@ class SessionDetail extends Mapper implements \MVC\Domain\UserFinder {
 			LIMIT 10
 		", $tblSession, $tblSessionDetail);
 		
+		$findByTop10Stmt = sprintf("
+			SELECT 1 as id, 2 as idsession, idcourse, sum(count) as count, 3 as price 
+				FROM %s
+			GROUP BY idcourse
+			ORDER BY count DESC
+			LIMIT 10
+		", $tblSessionDetail);
+		
 		/*
         * Gán chuỗi vừa được xử lí cho các Statement của PDO
 		* luôn đảm bảo các tiền tố được truyền đi đúng
@@ -146,6 +154,7 @@ class SessionDetail extends Mapper implements \MVC\Domain\UserFinder {
 		$this->trackByCategoryStmt = self::$PDO->prepare( $trackByCategoryStmt);
 		$this->trackByCourseStmt = self::$PDO->prepare( $trackByCourseStmt);
 		$this->trackByExportStmt = self::$PDO->prepare( $trackByExportStmt);
+		$this->findByTop10Stmt = self::$PDO->prepare( $findByTop10Stmt);
 		
     } 
     function getCollection( array $raw ) {
@@ -195,6 +204,10 @@ class SessionDetail extends Mapper implements \MVC\Domain\UserFinder {
         return $this->selectAllStmt;
     }
 	
+	function findByTop10( $values ) {	
+        $this->findByTop10Stmt->execute( $values );
+        return new SessionDetailCollection( $this->findByTop10Stmt->fetchAll(), $this );
+    }
 	/*
     * Command	: findBySession	
 	* Input		: array($IdTable)

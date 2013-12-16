@@ -66,6 +66,11 @@ class Table extends Object{
 		return $Domain;
 	}
 	
+	function getSessionRecent(){		
+		$mSession = new	\MVC\Mapper\Session();		
+		$SessionAll = $mSession->findByTablePage(array($this->getId(), 1, 5));
+		return $SessionAll;
+	}
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------	

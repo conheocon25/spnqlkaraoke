@@ -15,3 +15,10 @@
 	.modal-icon { margin-top: -10px; font-size: 20px; margin-right: 7px; }
 
 	.icheckbox_flat-blue { top: -4px !important; margin-bottom: -10px !important; }
+	
+	#sidebar a { cursor: pointer; }
+
+	.size-12 { font-size: 12px; }
+	
+	.course-item { text-align: center; }
+	.course-item button { width: 26px; margin-top: -5px; }
