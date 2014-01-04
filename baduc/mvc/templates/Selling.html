@@ -23,6 +23,26 @@
 			<div class="row">
 				<div class="col-4">
 					<div id="TableAll"/>
+					<div class="widget-box">
+						<div class="controls">
+							<input id="SearchName" type="text" placeholder="Nhập tìm món ăn" style="width:55%;"/>
+							<a href="#DialogInsCourse" class="btn" data-toggle="modal" tal:attributes="data-id-category Config/getValue">
+								<i class="glyphicons-plus" />
+							</a>
+							<a class="btn RemoveCourseSearch">
+								<i class="glyphicons-circle_remove" />
+							</a>
+							<!--
+							<a href="#DialogCallCourse" class="btn CallCourse" data-toggle="modal">
+								<i class="glyphicons-bell" />
+							</a>
+							!-->
+							<a href="#DialogPrepareCourse" class="btn CoursePreparePrint" data-toggle="modal">
+								<i class="glyphicons-stopwatch" />
+							</a>
+						</div>
+					</div>
+					<div id="CourseF"/>
 				</div>
 				<div class="col-5">
 					<div id="Session"/>

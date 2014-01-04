@@ -23,7 +23,8 @@
 			$DomainAll = $mDomain->findAll();
 			$CategoryAll 	= $mCategory->findAll();	
 			$Top10			= $mSD->findByTop10(array());
-			$Domain			= $DomainAll->current();			
+			$Domain			= $DomainAll->current();	
+			$Config			= $mConfig->findByName("CATEGORY_AUTO");
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
@@ -41,7 +42,7 @@
 			$request->setObject('Domain', $Domain);			
 			$request->setObject('CategoryAll', $CategoryAll);			
 			$request->setObject('Top10', $Top10);			
-						
+			$request->setObject('Config'		, $Config);			
 			return self::statuses('CMD_DEFAULT');
 		}
 	}
