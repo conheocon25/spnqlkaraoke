@@ -25,6 +25,8 @@
 		<command name="ObjectIns"><view>ObjectIns</view></command>
 		<command name="ObjectUpd"><view>ObjectUpd</view></command>
 		
+		<command name="SearchCustomer"><view>SearchCustomer</view></command>
+		<command name="NotifyCourse"><view>NotifyCourse</view></command>
 		<!-- ============================================================================== -->
 		<!-- GLOBAL			 																-->
 		<!-- ============================================================================== -->											
