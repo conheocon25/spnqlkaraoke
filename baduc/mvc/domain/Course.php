@@ -1,11 +1,9 @@
 <?php
 Namespace MVC\Domain;
 use MVC\Library\Number;
-
 require_once( "mvc/base/domain/DomainObject.php");
 
 class Course extends Object{
-
     private $Id;
 	private $IdCategory;
 	private $Name;
@@ -16,7 +14,8 @@ class Course extends Object{
 	private $Price3;
 	private $Price4;
 	private $Picture;
-	private $Rate;
+	private $Prepare;
+	private $IsDiscount;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
@@ -31,19 +30,22 @@ class Course extends Object{
 		$Price2=null, 
 		$Price3=null, 
 		$Price4=null, 
-		$Picture=Null) 
+		$Picture=null,
+		$Prepare=null,
+		$IsDiscount=null) 
 	{
-        $this->Id = $Id;
-		$this->IdCategory = $IdCategory;
-		$this->Name = $Name;
-		$this->ShortName = $ShortName;
-		$this->Unit = $Unit;
-		$this->Price1 = $Price1;
-		$this->Price2 = $Price2;
-		$this->Price3 = $Price3;
-		$this->Price4 = $Price4;
-		$this->Picture = $Picture;
-		
+        $this->Id 			= $Id;
+		$this->IdCategory 	= $IdCategory;
+		$this->Name 		= $Name;
+		$this->ShortName 	= $ShortName;
+		$this->Unit 		= $Unit;
+		$this->Price1 		= $Price1;
+		$this->Price2 		= $Price2;
+		$this->Price3 		= $Price3;
+		$this->Price4 		= $Price4;
+		$this->Picture 		= $Picture;
+		$this->Prepare 		= $Prepare;
+		$this->IsDiscount 	= $IsDiscount;		
         parent::__construct( $Id );
     }
     function getId( ) {return $this->Id;}
@@ -79,7 +81,13 @@ class Course extends Object{
 	
 	function setPicture( $Picture ) {$this->Picture = $Picture;$this->markDirty();}	
 	function getPicture( ) {return $this->Picture;}
-			
+	
+	function setPrepare( $Picture ) {$this->Prepare = $Prepare;$this->markDirty();}	
+	function getPrepare( ) {return $this->Prepare;}
+	
+	function setIsDiscount( $IsDiscount ) {$this->IsDiscount = $IsDiscount;$this->markDirty();}	
+	function getIsDiscount( ) {return $this->IsDiscount;}
+	
 	public function toJSON(){
 		$json = array(
 			'Id' 			=> $this->getId(),
@@ -91,7 +99,9 @@ class Course extends Object{
 		 	'Price2'		=> $this->getPrice2(),
 		 	'Price3'		=> $this->getPrice3(),
 		 	'Price4'		=> $this->getPrice4(),
-		 	'Picture'		=> $this->getPicture()		 	
+		 	'Picture'		=> $this->getPicture(),
+			'Prepare'		=> $this->getPrepare(),
+			'IsDiscount'	=> $this->getIsDiscount()
 		);
 		return json_encode($json);
 	}
@@ -106,10 +116,11 @@ class Course extends Object{
 		$this->Price3 		= $Data[7];
 		$this->Price4 		= $Data[8];
 		$this->Picture 		= $Data[9];
+		$this->Prepare 		= $Data[10];
+		$this->IsDiscount 	= $Data[11];
     }
 	
-	function getURLRecipe(){return "/setting/category/".$this->getIdCategory()."/".$this->getId()."/recipe";}
-	
+	function getURLRecipe(){return "/setting/category/".$this->getIdCategory()."/".$this->getId()."/recipe";}	
 	function getRecipeAll(){
 		$mR2C = new \MVC\Mapper\R2C();
 		$R2CAll = $mR2C->findBy(array($this->getId()));

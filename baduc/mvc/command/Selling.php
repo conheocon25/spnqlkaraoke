@@ -25,6 +25,7 @@
 			$Top10			= $mSD->findByTop10(array());
 			$Domain			= $DomainAll->current();	
 			$Config			= $mConfig->findByName("CATEGORY_AUTO");
+			$UnitAll		= $mUnit->findAll();
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
@@ -36,11 +37,11 @@
 			//-------------------------------------------------------------
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveAdmin', 'Selling');
-			$request->setObject('Navigation', $Navigation);
-			
+			$request->setObject('Navigation', $Navigation);			
 			$request->setObject('DomainAll', $DomainAll);			
 			$request->setObject('Domain', $Domain);			
-			$request->setObject('CategoryAll', $CategoryAll);			
+			$request->setObject('CategoryAll', $CategoryAll);	
+			$request->setObject('UnitAll'		, $UnitAll);			
 			$request->setObject('Top10', $Top10);			
 			$request->setObject('Config'		, $Config);			
 			return self::statuses('CMD_DEFAULT');
