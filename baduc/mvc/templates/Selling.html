@@ -28,18 +28,7 @@
 							<input id="SearchName" type="text" placeholder="Nhập tìm món ăn" style="width:55%;"/>
 							<a href="#DialogInsCourse" class="btn" data-toggle="modal" tal:attributes="data-id-category Config/getValue">
 								<i class="glyphicons-plus" />
-							</a>
-							<a class="btn RemoveCourseSearch">
-								<i class="glyphicons-circle_remove" />
-							</a>
-							<!--
-							<a href="#DialogCallCourse" class="btn CallCourse" data-toggle="modal">
-								<i class="glyphicons-bell" />
-							</a>
-							!-->
-							<a href="#DialogPrepareCourse" class="btn CoursePreparePrint" data-toggle="modal">
-								<i class="glyphicons-stopwatch" />
-							</a>
+							</a>							
 						</div>
 					</div>
 					<div id="CourseF"/>
@@ -149,109 +138,11 @@
 			</div>
 		</div>
 		
-		<!-- INSERT DIALOG  -->
-		<div id="DialogCallCourse" class="modal fade">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h3><i class="glyphicons-bell modal-icon"/>DANH SÁCH MÓN ĐANG CHỜ ...</h3>
-					</div>
-					<div class="form-horizontal">
-						<div class="modal-body">
-							<div id="CourseLog" />
-						</div>
-						<div class="modal-footer">							
-							<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Đóng lại</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- DIALOG PREPARE	-->
-		<div id="DialogPrepareCourse" class="modal fade">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h3><i class="glyphicons-stopwatch modal-icon"/>IN BẾP</h3>
-					</div>
-					<form class="form">
-						<div class="form-group">
-							<div id="CoursePrepare" width="320px" height="480px"/>
-						</div>
-						<div class="modal-footer">									
-							<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Đóng</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<!-- END DIALOG PREPARE -->
-					
-		<div id="audioNotify" />
-		<!-- END INSERT DIALOG  -->
-		
+			
 		<div metal:use-macro="mAdmin.xhtml/Footer"/>
 		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
 		<script>
-			//THIẾT LẬP NOTIFY CHO HỆ THỐNG			
-			function getNotifyCourse(){
-				var TypeNotify;
-				$.ajax({
-					type: "POST",
-					dataType: "json",
-					url: '/notify/course',
-					success: function(data){																													
-						if (data.result == "OK"){
-							//NGHE NHẠC NỀN CẢNH BÁO
-							$("#audioNotify").jPlayer({
-								ready: function() {
-									$(this).jPlayer("setMedia", {
-										mp3:"/data/notify/bell01.mp3"
-									}).jPlayer("play");
-								},
-								swfPath: "data",
-								supplied: "mp3",
-								loop: true,
-								wmode: "window"
-							});
-							//TĂNG SỐ LẦN NOTIFY
-							nCountNotify = nCountNotify + 1;
-							
-							//HIỂN THỊ THÔNG BÁO
-							if (data.type==1){
-								TypeNotify = "gritter-red";
-							}else{
-								TypeNotify = "gritter-green";
-							}
-							$.gritter.add({
-								title:	data.title,
-								text:	data.message,
-								position: 'bottom-left',														
-								class_name:TypeNotify,
-								sticky:true,
-								after_close: function(){
-									nCountNotify = nCountNotify - 1;
-									if (nCountNotify == 0){
-										$("#audioNotify").jPlayer("destroy");
-									}
-								}
-							});
-						}		
-					}					
-				});
-			}
-			var nCountNotify = 0;
-			$.extend($.gritter.options, { 
-				position: 'bottom-left',
-				fade_in_speed: 'medium', 
-				fade_out_speed: 2000 
-			});
-			/*
-			setInterval(function(){
-				getNotifyCourse();
-			}, 10000);
-			*/
-			
+						
 			//NẠP DANH SÁCH CÁC BÀN			
 			$('.Domain').click(function(){
 				var IdDomain = $(this).attr('alt');
@@ -300,23 +191,7 @@
 			$(".RemoveCourseSearch").click(function(){
 				$("#CourseF").html("");
 			});
-			
-			//-----------------------------------------------------------------------------------
-			//PREPARE COURSE
-			$(".CoursePreparePrint").click(function(){
-				URL = "/selling/log/course/print/prepare";
-				var mPDF = new PDFObject({
-					url: URL,				
-					height: "500px",
-					pdfOpenParams:{
-						view: 'Fit', 
-						toolbar: '1', 
-						statusbar: '1', 
-						messages: '1',
-						navpanes: '1' 
-					}				
-				}).embed("CoursePrepare");
-			});
+						
         </script>
 	</body>
 </html>
