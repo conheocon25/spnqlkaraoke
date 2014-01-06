@@ -86,6 +86,7 @@
 		<command name="SellingTableCheckoutExe"><view>SellingTableCheckoutExe</view></command>
 		<command name="CallLog"><view>CallLog</view></command>
 		<command name="CallLogLoading"><view>CallLogLoading</view></command>
+		
 		<!-- ============================================================================== -->
 		<!-- MONEY		 																	-->
 		<!-- ============================================================================== -->

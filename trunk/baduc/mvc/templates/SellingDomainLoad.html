@@ -20,6 +20,8 @@
 				//Nhớ lại Table đang được chọn.
 				$("#TableActive").attr('alt', 'Table'+IdTable);
 			});
+			//Mặc định lấy click của BÀN đầu tiên
+			$('.Table:first').click();
 			
 			$('.gallery-masonry').masonry({
 				itemSelector: '.item',
