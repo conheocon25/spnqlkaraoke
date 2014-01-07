@@ -25,10 +25,7 @@
 					<div id="TableAll"/>
 					<div class="widget-box">
 						<div class="controls">
-							<input id="SearchName" type="text" placeholder="Nhập tìm món ăn" style="width:55%;"/>
-							<a href="#DialogInsCourse" class="btn" data-toggle="modal" tal:attributes="data-id-category Config/getValue">
-								<i class="glyphicons-plus" />
-							</a>							
+							<input id="SearchName" type="text" placeholder="Nhập tìm món ăn" style="width:100%;"/>														
 						</div>
 					</div>
 					<div id="CourseF"/>
@@ -84,60 +81,7 @@
 		</div>
 		<div id="TableActive" />
 		<div id="DomainActive" tal:attributes="alt Domain/getId"/>
-		
-		<!-- INSERT DIALOG  -->
-		<div id="DialogInsCourse" class="modal fade">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h3><i class="glyphicons-fast_food modal-icon"/>THÊM MÓN TỰ CHỌN</h3>
-					</div>
-					<div class="form-horizontal">
-						<div class="modal-body">													
-							<div class="form-group">
-								<label class="control-label">Tên</label>
-								<div class="controls">
-									<input id="CName1" name="CName1" type="text" class="form-control input-small"/>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label">Tên ngắn</label>
-								<div class="controls">
-									<input id="CShortName1" name="CShortName1" type="text" class="form-control input-small"/>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label">Giá bán</label>
-								<div class="controls">
-									<input id="CPrice1" name="CPrice1" type="text" class="form-control input-small"/>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label">Đơn vị</label>
-								<div class="controls">
-									<select name="CUnit1" id="CUnit1" style="width:80%;">
-										<option tal:repeat="Unit UnitAll" tal:attributes="value Unit/getName">
-											<span tal:content="Unit/getName" />
-										</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label">Số phút chuẩn bị</label>
-								<div class="controls">
-									<input id="CPrepare1" name="CPrepare1" type="text" class="form-control input-small"/>
-								</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button id="URLInsCourseButton" class="btn btn-primary btn-small"><i class="glyphicons-download_alt"/> Lưu</button>
-							<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
+			
 			
 		<div metal:use-macro="mAdmin.xhtml/Footer"/>
 		<div metal:use-macro="mAdmin.xhtml/IncludeJS"/>
@@ -151,33 +95,6 @@
 			});
 			$('.Domain:first').click();
 			
-			//-----------------------------------------------------------------------------------
-			//Insert 1 COURSE
-			$('#URLInsCourseButton').click(function(){
-				var Data = [];
-				Data[0] = 'null';								
-				Data[1] = 22;
-				Data[2] = $('#CName1').val();
-				Data[3] = $('#CShortName1').val();
-				Data[4] = $('#CUnit1').val();
-				Data[5] = $('#CPrice1').val();
-				Data[6] = $('#CPrice1').val();
-				Data[7] = $('#CPrice1').val();
-				Data[8] = $('#CPrice1').val();
-				Data[9] = "";
-				Data[10] = $('#CPrepare1').val();
-				Data[11] = 0;
-				
-				var URL = "/object/ins/Course";
-				$.ajax({
-					type: "POST",
-					data: {Data:Data},
-					url: URL,
-					success: function(msg){
-						location.reload();
-					}
-				});
-			});
 			
 			//---------------------------------------------------------------------------
 			//Xử lí search tên			
