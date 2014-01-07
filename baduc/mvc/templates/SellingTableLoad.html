@@ -330,6 +330,255 @@
 			</div>
 		</div>
 		<!-- END DIALOG EDIT -->
-       
+       <script type="text/javascript">
+		/*<![CDATA[*/
+			$('#DateTime1').datetimepicker({
+				language:  'vi',
+				weekStart: 1,
+				todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				forceParse: 0,
+				showMeridian: 1
+			});
+			$('#DateTimeEnd1').datetimepicker({
+				language:  'vi',
+				weekStart: 1,
+				todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				forceParse: 0,
+				showMeridian: 1
+			});			
+			$("#SearchIdCustomer").change(function(){				
+				URL = "/search/customer/"+$(this).val();
+				$.getJSON(URL, function(data){
+					$("#IdCustomer1").attr('alt', data.Id);					
+					$("#DiscountPercent1").val(data.Discount);
+					$("#CustomerName").val(data.Name);
+				});				
+			});
+			$(".SessionPreview").click(function(){
+				URL = $(this).attr('alt');
+				var mPDF = new PDFObject({ 		
+					url: URL,				
+					height: "500px",
+					pdfOpenParams:{
+						view: 'Fit', 
+						toolbar: '1', 
+						statusbar: '1', 
+						messages: '1',
+						navpanes: '1' 
+					}				
+				}).embed("DocPreview");												
+				$("#DocPreview").show().printElement();	
+			});
+			//-----------------------------------------------------------------------------------
+			//Delete 1 DETAIL			
+			//-----------------------------------------------------------------------------------
+			$('.remove-item').click(function(){
+				$('#URLDelButton').attr('alt', $(this).attr('data-id'));
+			});			
+			$('#URLDelButton').click(function(e){								
+				var URL = "/object/del/SessionDetail/" + $(this).attr('alt');
+				var IdTable = $("#CurrentTable").attr('alt');
+				$("#DialogDel").modal('hide');
+				e.stopImmediatePropagation();
+				$.ajax({
+					type: "POST",					
+					url: URL,
+					success: function(msg){
+						$("#Session").load("/selling/load/table/"+IdTable);
+					}
+				});
+			});
+			
+			//-----------------------------------------------------------------------------------
+			//Delete 1 SESSION			
+			//-----------------------------------------------------------------------------------
+			$('.remove-session-item').click(function(){
+				$('#URLSessionDelButton').attr('alt', $(this).attr('data-id'));
+			});			
+			$('#URLSessionDelButton').click(function(e){								
+				var URL = "/object/del/Session/" + $(this).attr('alt');
+				var IdTable = $("#CurrentTable").attr('alt');
+				$("#DialogSessionDel").modal('hide');
+				e.stopImmediatePropagation();
+				$.ajax({
+					type: "POST",					
+					url: URL,
+					success: function(msg){
+						$("#Session").load("/selling/load/table/"+IdTable);
+					}
+				});
+			});
+			
+			//-----------------------------------------------------------------------------------
+			//Update 1 SESSION
+			//-----------------------------------------------------------------------------------
+			$('.SessionUpdate').click(function(e){
+				//Load dữ liệu JSON về
+				var url = "/object/load/Session/" + $(this).attr('data-session-id');
+				
+				//Load dữ liệu JSON lên FORM
+				$.getJSON(url, function(data){					
+					$('#URLSessionUpdButton').attr('alt', data.Id);
+					$('#DateTime1').attr('value'		, data.DateTime);
+					$('#DateTimeEnd1').attr('value'		, data.DateTimeEnd);
+					$('#DiscountPercent1').attr('value'	, data.DiscountPercent);
+					$('#DiscountValue1').attr('value'	, data.DiscountValue);
+					$('#CustomerName').attr('value'		, data.CustomerName);					
+					$('#Note1').attr('value'			, data.Note);
+					
+					$('#IdUser1').attr('alt'			, data.IdUser);
+					$('#IdCustomer1').attr('alt'		, data.IdCustomer);					
+					$('#Surtax1').attr('alt'			, data.Surtax);
+					$('#Payment1').attr('alt'			, data.Payment);
+				});
+			});
+			$("#URLSessionUpdButton").click(function(){
+				var IdTable = $("#CurrentTable").attr('alt');
+				var Data = [];
+				Data[0] 	= $('#URLSessionUpdButton').attr('alt');
+				Data[1] 	= IdTable;
+				Data[2] 	= $('#IdUser1').attr('alt');				
+				Data[3] 	= $('#IdCustomer1').attr('alt');				
+				Data[4] 	= $('#IdEmployee1').val();
+				Data[5] 	= $('#DateTime1').val();
+				Data[6] 	= $('#DateTimeEnd1').val();
+				Data[7] 	= $('#Note1').val();
+				Data[8] 	= $('#Status1').val();
+				Data[9] 	= $('#DiscountValue1').val();
+				Data[10] 	= $('#DiscountPercent1').val();
+				Data[11] 	= $('#Surtax1').val();
+				Data[12] 	= "0";//$('#Payment1').val();
+				$("#DialogSession").modal('hide');
+									
+				var URL = "/object/upd/Session";
+				$.ajax({
+					type: "POST",
+					data: {Data:Data},
+					url: URL,
+					success: function(msg){
+						var TableActive = "#" + $("#TableActive").attr('alt');
+						if ($('#Status1').val()>0){														
+							$(TableActive).removeClass('actived');
+						}
+						$("#Session").load("/selling/load/table/"+IdTable);
+					}
+				});
+			});
+			
+											
+			//-----------------------------------------------------------------------------------
+			//click gọi món
+			//-----------------------------------------------------------------------------------
+			$('.Course').click(function(e){
+				var IdCourse 	= $(this).attr('alt');
+				var Delta 		= $(this).attr('data-delta');
+				var IdTable 	= $("#CurrentTable").attr('alt');
+				URL = "/selling/call/table/"+IdTable+"/"+IdCourse+"/"+Delta;				
+				e.stopImmediatePropagation();
+				$.ajax({
+					type: "POST", 
+					async: false,
+					url: URL,
+					dataType: 'json',
+					success: function(data){
+						var TableActive = "#" + $("#TableActive").attr('alt');
+						$("#Session").load("/selling/load/table/"+IdTable);
+						
+						//Đánh dấu Table có khách
+						$(TableActive).addClass('actived');
+					}
+				});
+			});
+			
+			//-----------------------------------------------------------------------------------
+			//Load 1 SESSION DETAIL
+			//-----------------------------------------------------------------------------------
+			$('.update-item').click(function(){
+				//Load dữ liệu JSON về
+				var url = "/object/load/SessionDetail/" + $(this).attr('data-id');
+				
+				//Load dữ liệu JSON lên FORM
+				$.getJSON(url, function(data){
+					$('#URLUpdButton').attr('alt', data.Id);
+					$('#IdCourse1').attr('value', data.IdCourse);
+					$('#Name1').attr('value', data.Name);
+					$('#Count1').attr('value', data.Count);
+					$('#Price1').attr('value', data.Price);
+				});
+			});
+			
+			//-----------------------------------------------------------------------------------
+			//CHECKOUT
+			//-----------------------------------------------------------------------------------
+			$('.Checkout').click(function(e){
+				var URL = $(this).attr('alt');
+				var IdTable = $("#CurrentTable").attr('alt');
+				$.ajax({
+					type: "POST",					
+					url: URL,
+					success: function(msg){
+						var TableActive = "#" + $("#TableActive").attr('alt');
+						$("#Session").load("/selling/load/table/"+IdTable);
+																		
+						//Đánh dấu Table có khách
+						$(TableActive).toggleClass('actived');
+					}
+				});
+			});
+						
+			//-----------------------------------------------------------------------------------
+			//Update 1 SESSION DETAIL
+			//-----------------------------------------------------------------------------------
+			$("#FormSDUpdate").validate({
+				rules:{
+					Count1:{
+						min: 0,
+						required:true
+					},
+					Price1:{
+						min: 0,
+						required:true
+					}
+				},
+				errorClass: "help-inline",
+				errorElement: "span",
+				highlight:function(element, errorClass, validClass) {
+					$(element).parents('.form-group').addClass('has-error');
+				},
+				unhighlight: function(element, errorClass, validClass) {
+					$(element).parents('.form-group').removeClass('has-error');
+					$(element).parents('.form-group').addClass('has-success');
+				},
+				submitHandler: function (form) {					
+					var IdTable = $("#CurrentTable").attr('alt');
+					var Data = [];
+					Data[0] = $('#URLUpdButton').attr('alt');				
+					Data[1] = $('#IdSession').attr('alt')				
+					Data[2] = $('#IdCourse1').val();
+					Data[3] = $('#Count1').val();
+					Data[4] = $('#Price1').val();
+					
+					$("#DialogEdit").modal('hide');
+										
+					var URL = "/object/upd/SessionDetail";
+					$.ajax({
+						type: "POST",
+						data: {Data:Data},
+						url: URL,
+						success: function(msg){
+							$("#Session").load("/selling/load/table/"+IdTable);
+						}
+					});
+					return false;
+				}
+			});
+		/*]]>*/
+		</script>
 	</body>
 </html>
