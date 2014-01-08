@@ -59,6 +59,7 @@ RewriteRule ^calllog$ 											?cmd=CallLog [L]
 RewriteRule ^calllog/loading$ 									?cmd=CallLogLoading [L]
 RewriteRule ^calllog/loading/([0-9]+)$ 							?cmd=CallLogLoading&IdCL=$1 [L]
 
+
 #---------------------------------------------------------------------------------------------------------------------------
 # MONEY
 #---------------------------------------------------------------------------------------------------------------------------
@@ -156,6 +157,20 @@ RewriteRule ^paid/payroll/([0-9]+)/([0-9]+)/upd/load$		?cmd=PaidPayRollUpdLoad&I
 RewriteRule ^paid/payroll/([0-9]+)/([0-9]+)/upd/exe$		?cmd=PaidPayRollUpdExe&IdEmployee=$1&IdPaid=$2 [L]
 RewriteRule ^paid/payroll/([0-9]+)/([0-9]+)/del/load$		?cmd=PaidPayRollDelLoad&IdEmployee=$1&IdPaid=$2 [L]
 RewriteRule ^paid/payroll/([0-9]+)/([0-9]+)/del/exe$		?cmd=PaidPayRollDelExe&IdEmployee=$1&IdPaid=$2 [L]
+#---------------------------------------------------------------------------------------------------------------------------
+# PAYROLL
+#---------------------------------------------------------------------------------------------------------------------------
+RewriteRule ^payroll$ 												?cmd=PayRoll [L]
+RewriteRule ^payroll/([0-9]+)$ 										?cmd=PayRoll&IdTrack=$1 [L]
+RewriteRule ^payroll/([0-9]+)/([0-9]+)$ 							?cmd=PayRollWork&IdTrack=$1&IdEmployee=$2 [L]
+
+RewriteRule ^payroll/([0-9]+)/([0-9]+)/([0-9_-]+)/yes$ 						?cmd=PayRollWorkDetail&IdTrack=$1&Date=$3&IdEmployee=$2&State=yes [L]
+RewriteRule ^payroll/([0-9]+)/([0-9]+)/all/yes$ 							?cmd=PayRollWorkDetail&IdTrack=$1&Date=all&IdEmployee=$2&State=yes [L]
+RewriteRule ^payroll/([0-9]+)/([0-9]+)/([0-9_-]+)/no$ 						?cmd=PayRollWorkDetail&IdTrack=$1&Date=$3&IdEmployee=$2&State=no [L]
+RewriteRule ^payroll/([0-9]+)/([0-9]+)/([0-9_-]+)/no/([0-9]+)$ 				?cmd=PayRollWorkDetail&IdTrack=$1&Date=$3&IdEmployee=$2&State=no&Minute=$4 [L]
+RewriteRule ^payroll/([0-9]+)/([0-9]+)/([0-9_-]+)/yes/([0-9]+)$ 			?cmd=PayRollWorkDetail&IdTrack=$1&Date=$3&IdEmployee=$2&State=yes&Minute=$4 [L]
+RewriteRule ^payroll/([0-9]+)/([0-9]+)/([0-9_-]+)/yes/([0-9]+)/([0-9]+)$ 	?cmd=PayRollWorkDetail&IdTrack=$1&Date=$3&IdEmployee=$2&State=yes&Minute=$4&Extra=$5 [L]
+RewriteRule ^payroll/([0-9]+)/([0-9]+)/([0-9_-]+)/no/([0-9]+)/([0-9]+)$ 	?cmd=PayRollWorkDetail&IdTrack=$1&Date=$3&IdEmployee=$2&State=no&Minute=$4&Extra=$5 [L]
 
 #---------------------------------------------------------------------------------------------------------------------------
 # PAID.SUPPLIER
