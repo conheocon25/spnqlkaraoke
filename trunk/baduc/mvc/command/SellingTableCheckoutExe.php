@@ -27,6 +27,8 @@
 			$Session = $mSession->find($IdSession);
 			
 			//Thanh toán đủ
+			$DateTime = \date("Y-m-d H:i:s");
+			$Session->setDateTimeEnd( $DateTime );			
 			$Session->setStatus(1);
 			$mSession->update($Session);
 			

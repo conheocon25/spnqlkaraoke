@@ -29,11 +29,11 @@
 							<div id="IdSession" tal:attributes="alt Table/getSessionActive/getId" />
 						</div>
 						<div class="invoice-to">
-							<ul><li><span tal:content="Table/getSessionActive/getUser/getName"/></li></ul>
+							<ul><li><span tal:content="Table/getSessionActive/getUser/getName"/></li></ul>							
 						</div>
-						<div class="invoice-from">
-							<ul><li><span tal:content="Table/getSessionActive/getDateTimePrint"/></li></ul>
-						</div>
+						<div class="invoice-from">							
+							<ul><li><span tal:content="Table/getSessionActive/getTimeRangePrint"/></li></ul>							
+						</div>												
 					</div>
 						<table class="table table-striped table-hover">
 							<thead>
@@ -64,6 +64,13 @@
 						<table width="100%">
 							<tr>								
 								<td tal:content="Table/getSessionActive/getNote" />
+							</tr>
+							<tr>
+								<td style="text-align:right;">GIỜ KARAOKE:</td>
+								<td style="color:#5476A6;text-align:right;"><span tal:content="Table/getSessionActive/getHours"></span></td>
+							</tr><tr>
+								<td style="text-align:right;">TIỀN KARAOKE:</td>
+								<td style="color:#5476A6;text-align:right;"><span tal:content="Table/getSessionActive/getValueHoursPrint" ></span></td>
 							</tr>
 							<tr>
 								<td style="text-align:right;">GIẢM GIÁ %:</td>
