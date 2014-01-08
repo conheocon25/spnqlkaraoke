@@ -68,6 +68,18 @@
 		<command name="ReportStorePrint"><view>ReportStorePrint</view></command>
 		
 		<!-- ============================================================================== -->
+		<!-- PAYROLL			 															-->
+		<!-- ============================================================================== -->		
+		<command name="PayRoll"><view>PayRoll</view></command>
+		<command name="PayRollWork"><view>PayRollWork</view></command>
+		<command name="PayRollWorkDetail">
+			<status value="CMD_OK">
+				<forward>PayRollWork</forward>
+			</status>
+			<view>PayRollWorkDetail</view>
+		</command>
+		
+		<!-- ============================================================================== -->
 		<!-- SELLING.DOMAIN		 															-->
 		<!-- ============================================================================== -->
 		<command name="Selling"><view>Selling</view></command>

@@ -34,6 +34,7 @@
 					$IdTable,				//IdTable
 					$IdUser ,				//IdUser đổi lại User hiện hành
 					1,						//IdCustomer
+					1,						//IdEmployee
 					\date("Y-m-d H:i:s"), 	//DateTime
 					null, 					//DateTimeEnd
 					"",						//Note

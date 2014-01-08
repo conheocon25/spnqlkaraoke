@@ -39,6 +39,7 @@
 					$IdTable,				//IdTable
 					1,						//IdUser
 					1,						//IdCustomer	
+					1,						//IdEmployee	
 					\date("Y-m-d H:i:s"), 	//DateTime
 					null, 					//DateTimeEnd
 					"",						//Note
@@ -82,6 +83,7 @@
 				$mSD->update($SD);
 				
 				//Thêm nhật kí gọi món
+				/*
 				if ($SD->getCourse()->getPrepare()>0){
 					$CL = new \MVC\Domain\CourseLog(
 						null,
@@ -92,6 +94,7 @@
 					);
 					$mCL->insert($CL);
 				}
+				*/
 			}
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

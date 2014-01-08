@@ -411,15 +411,17 @@ class Tracking extends Object{
 		$Data = array();
 		$Date = $this->getDateStart();
 		$EndDate = $this->getDateEnd();
-		while (strtotime($Date) <= strtotime($EndDate)){
-			$Data[] = array(
-					\date("d/m", strtotime($Date)),
-					"/report/selling/".$Date."/detail",
-					"/report/import/".$Date."/detail",
-					"/report/paid/".$Date."/detail",
-					"/report/collect/".$Date."/detail"
-			);
-			$Date = \date("Y-m-d", strtotime("+1 day", strtotime($Date)));}return $Data;
+			while (strtotime($Date) <= strtotime($EndDate)){
+				$Data[] = array(
+						\date("d/m", strtotime($Date)),
+						"/report/selling/".$Date."/detail",
+						"/report/import/".$Date."/detail",
+						"/report/paid/".$Date."/detail",
+						"/report/collect/".$Date."/detail",
+						$Date
+				);
+				$Date = \date("Y-m-d", strtotime("+1 day", strtotime($Date)));
+			}return $Data;
 		}
 	
 	//-------------------------------------------------------------------------------
@@ -449,6 +451,9 @@ class Tracking extends Object{
 	
 	function getURLCustomer(){return "/report/customer/".$this->getId();}
 	function getURLCustomerDetail($IdCustomer){return "/report/customer/".$this->getId()."/".$IdCustomer;}
+	
+	function getURLPayRoll(){return "/payroll/".$this->getId();}	
+	function getURLPayRollEmployee( $Employee ){return "/payroll/".$this->getId()."/".$Employee->getId();}
 	
 	function getURLPaidGeneral(){return "/report/paid/".$this->getId();}
 	function getURLPaidGeneralSave(){return "/report/paid/".$this->getId()."/save";}
